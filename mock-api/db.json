@@ -1,0 +1,48 @@
+{
+    "tours": [
+        {
+            "id": "1",
+            "name": "Mountain Hotel",
+            "city": "Denver",
+            "description": "A thrilling adventure in the mountains.",
+            "price": "299",
+            "duration": "3 days",
+            "startDate": "2024-12-01",
+            "endDate": "2024-12-03",
+            "facilities": [
+                "Guide",
+                "Meals",
+                "Accommodation"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Beach Escape",
+            "city": "Miami",
+            "description": "Relax on the sunny beaches of Miami.",
+            "price": "199",
+            "duration": "2 days",
+            "startDate": "2024-12-10",
+            "endDate": "2024-12-11",
+            "facilities": [
+                "Beach Umbrella",
+                "Snacks"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Grand Hotel",
+            "city": "Denver",
+            "description": "A thrilling adventure in the mountains.",
+            "price": "299",
+            "duration": "3 days",
+            "startDate": "2024-12-01",
+            "endDate": "2024-12-03",
+            "facilities": [
+                "Guide",
+                "Meals",
+                "Accommodation"
+            ]
+        }
+    ]
+}
