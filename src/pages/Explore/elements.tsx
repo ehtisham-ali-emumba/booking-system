@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { images_png } from "../../assets";
 
 // Styled Components
 export const SignInContainer = styled.div`
   max-width: 420px;
-  margin: 5rem auto;
+  margin: 20px auto;
   padding: 2.5rem;
   background: white;
   border-radius: 12px;
@@ -57,4 +58,14 @@ export const Input = styled.input`
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   }
+`;
+
+export const ImageBannerBackgroundWrapper = styled.div`
+  background: url(${images_png.exploreBanner});
+  background-size: contain;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 `;

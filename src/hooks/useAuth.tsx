@@ -1,5 +1,5 @@
 export const useAuth = () => ({
-  isAuthenticated: false,
+  isAuthenticated: true,
   loading: false,
   login: () => {},
 });

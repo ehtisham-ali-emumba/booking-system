@@ -4,7 +4,8 @@ import Explore from "../pages/Explore";
 import TourDetails from "../pages/TourDetails";
 import { MainLayout } from "../layout/MainLayout";
 import { PrivateRoute } from "./PrivateRoute";
-import SignIn from "../pages/SignIn";
+import Tours from "../pages/Tours";
+import BookTour from "../pages/BookTour";
 
 // Define your routes as an array of route objects
 const routes: RouteObject[] = [
@@ -17,31 +18,43 @@ const routes: RouteObject[] = [
     ),
   },
   {
-    path: "/about-us",
+    path: "/explore",
     element: (
       <PrivateRoute>
-        <MainLayout>
+        <MainLayout hideExplore>
           <Explore />
         </MainLayout>
       </PrivateRoute>
     ),
   },
   {
-    path: "/services",
+    path: "/tours",
     element: (
       <PrivateRoute>
         <MainLayout>
+          <Tours />
+        </MainLayout>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/tour/:tourId",
+    element: (
+      <PrivateRoute>
+        <MainLayout hideExplore>
           <TourDetails />
         </MainLayout>
       </PrivateRoute>
     ),
   },
   {
-    path: "/signin",
+    path: "/book/tour",
     element: (
-      <MainLayout>
-        <SignIn />
-      </MainLayout>
+      <PrivateRoute>
+        <MainLayout hideExplore>
+          <BookTour />
+        </MainLayout>
+      </PrivateRoute>
     ),
   },
 ];

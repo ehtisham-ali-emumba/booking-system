@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
-// Styled Components
 export const SignInContainer = styled.div`
   max-width: 420px;
   margin: 5rem auto;
+  margin-top: 0px;
   padding: 2.5rem;
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background-color: rgb(221, 190, 190);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.h1`
@@ -56,5 +61,94 @@ export const Input = styled.input`
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+`;
+
+// Colors
+const colors = {
+  accentOrange: "#f67e5f",
+  hoverOrange: "#e56e50",
+  darkBlue: "#1e2a4a",
+  textGray: "#4a4a4a",
+};
+
+export const ImagesGrid = styled.div`
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+export const SvgDecorator = styled.div`
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+`;
+
+export const ImageGallery = styled.div`
+  display: flex;
+  height: 520px;
+  padding: 20px 0px 20px 50px;
+`;
+
+export const FlexCol = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`;
+export const ImageTile = styled.div<{ image: string }>`
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  flex: 1;
+  margin: 10px;
+  border-radius: 8px;
+`;
+
+export const HeroContent = styled.div`
+  max-width: 600px;
+  padding-top: 40px;
+
+  @media (max-width: 992px) {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+`;
+
+export const HeroTitle = styled.h1`
+  font-size: 54px;
+  line-height: 1.2;
+  font-weight: bold;
+  color: ${colors.darkBlue};
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
+`;
+
+export const TitleUnderline = styled.span`
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 10%;
+    bottom: -10px;
+    height: 8px;
+    background: linear-gradient(to right, ${colors.accentOrange}, #ffd39e);
+    border-radius: 4px;
+  }
+`;
+
+export const HeroSubtitle = styled.p`
+  font-size: 18px;
+  line-height: 1.6;
+  color: ${colors.textGray};
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
   }
 `;

@@ -1,64 +1,70 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { SIGN_IN } from "../../constants/strings";
+import { images_png } from "../../assets";
+import { MainDecoration } from "../../assets/svg";
 import {
-  SignInContainer,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Title,
-  ErrorMessage,
+  HeroContent,
+  HeroTitle,
+  TitleUnderline,
+  HeroSubtitle,
+  ImagesGrid,
+  SvgDecorator,
+  ImageGallery,
+  ImageTile,
+  FlexCol,
 } from "./elements";
-import { Button } from "../../components/Button";
-import { useAuth } from "../../hooks";
+import { Button } from "../../components";
+import { Link } from "react-router-dom";
+import { Container, ContentSection } from "../../styles";
 
-const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
+const Home = () => {
   return (
-    <SignInContainer>
-      <Title>{SIGN_IN.TITLE}sd</Title>
+    <>
+      <Container>
+        <ContentSection>
+          <HeroContent>
+            <HeroTitle>
+              <TitleUnderline>Explore</TitleUnderline> The New World
+              <br />
+              With Tourbay
+            </HeroTitle>
 
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+            <HeroSubtitle>
+              No matter where in the world you want to go, we can help get you
+              there and make your tour a stupendous memory.
+            </HeroSubtitle>
+            <Link to="/explore">
+              <Button>Explore News</Button>
+            </Link>
+          </HeroContent>
+        </ContentSection>
 
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label htmlFor="email">{SIGN_IN.EMAIL.LABEL}</Label>
-          <Input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder={SIGN_IN.EMAIL.PLACEHOLDER}
-            required
-          />
-        </FormGroup>
-
-        <FormGroup>
-          <Label htmlFor="password">{SIGN_IN.PASSWORD.LABEL}</Label>
-          <Input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder={SIGN_IN.PASSWORD.PLACEHOLDER}
-            required
-          />
-        </FormGroup>
-
-        <Button kind="submit">{SIGN_IN.BUTTON}</Button>
-      </Form>
-    </SignInContainer>
+        <ImagesGrid>
+          <SvgDecorator>
+            <div style={{ zIndex: 15 }}>
+              <MainDecoration />
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                zIndex: 18,
+                top: "35%",
+                left: 0,
+                right: 0,
+              }}
+            >
+              <ImageGallery>
+                <ImageTile image={images_png.homeMain1} />
+                <FlexCol>
+                  <ImageTile image={images_png.homeMain2} />
+                  <ImageTile image={images_png.homeMain3} />
+                </FlexCol>
+              </ImageGallery>
+            </div>
+          </SvgDecorator>
+        </ImagesGrid>
+      </Container>
+      <div style={{ marginTop: "400px" }} />
+    </>
   );
 };
 
-export default SignIn;
+export default Home;
