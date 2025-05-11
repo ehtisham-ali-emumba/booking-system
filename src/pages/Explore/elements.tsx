@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { images_png } from "../../assets";
+import { Card } from "antd";
+import { Button } from "../../components";
 
-// Styled Components
 export const SignInContainer = styled.div`
   max-width: 420px;
   margin: 20px auto;
@@ -62,10 +63,56 @@ export const Input = styled.input`
 
 export const ImageBannerBackgroundWrapper = styled.div`
   background: url(${images_png.exploreBanner});
-  background-size: contain;
+  background-size: cover;
   height: 600px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  background-repeat: no-repeat;
+`;
+
+export const CardUI = styled(Card)`
+  border-radius: 20px;
+  padding: 0px 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: -63px;
+`;
+
+export const IconCircle = styled.div`
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  margin-top: 4px;
+`;
+
+export const HeaderText = styled.div`
+  font-weight: bold;
+  color: #1e1e2f;
+  font-size: 20px;
+`;
+
+export const ItemWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  min-width: 220px;
+`;
+
+export const Divider = styled.div`
+  width: 1px;
+  background-color: #e0e0e0;
+  height: 60px;
+  margin: 0 52px 0 16px;
+`;
+
+export const SearchButton = styled((props) => (
+  <Button variant="primary" {...props} />
+))`
+  border-radius: 16px;
+  padding: 20px 12px;
+  height: 90px;
 `;

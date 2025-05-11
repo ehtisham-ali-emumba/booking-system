@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import routes from "./routes";
+import { QueryProvider } from "./providers/ReactQueryProvider";
 
 const AppRoutes = () => {
   return useRoutes(routes);
@@ -7,9 +8,11 @@ const AppRoutes = () => {
 
 function MainApp() {
   return (
-    <Router>
-      <AppRoutes />
-    </Router>
+    <QueryProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </QueryProvider>
   );
 }
 

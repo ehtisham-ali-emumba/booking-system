@@ -1,69 +1,35 @@
-import { Card, Row, Col } from "antd";
+import { useState } from "react";
+import { Row, Col } from "antd";
 import {
   EnvironmentOutlined,
   CalendarOutlined,
   DollarOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import styled from "styled-components";
-import { Button, Input } from "../../components";
-import { Link } from "react-router-dom";
+import { Input } from "../../components";
 import { CustomRangePicker } from "../../components";
 import { Select } from "../../components/Select";
-
-// Styled Components
-const StyledCard = styled(Card)`
-  border-radius: 20px;
-  padding: 0px 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  margin-bottom: -63px;
-`;
-
-const IconCircle = styled.div`
-  background: #f0f0f0;
-  border-radius: 50%;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px;
-  margin-top: 4px;
-`;
-
-const Label = styled.div`
-  font-weight: bold;
-  color: #1e1e2f;
-  font-size: 20px;
-`;
-
-const Subtext = styled.div`
-  color: #8c8c8c;
-  font-size: 14px;
-  margin-top: 4px;
-`;
-
-const ItemWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  min-width: 220px;
-`;
-
-const Divider = styled.div`
-  width: 1px;
-  background: #e0e0e0;
-  height: 60px;
-  margin: 0 52px 0 16px;
-`;
-
-const SearchButton = styled((props) => <Button variant="primary" {...props} />)`
-  border-radius: 16px;
-  padding: 20px 12px;
-  height: 90px;
-`;
+import {
+  CardUI,
+  ItemWrapper,
+  IconCircle,
+  HeaderText,
+  Divider,
+  SearchButton,
+} from "./elements";
+import { priceRanges } from "./utils";
 
 const SearchBox = () => {
+  const [location, setLocation] = useState<string>("");
+  const [dateRange, setDateRange] = useState<[string, string] | null>(null);
+  const [priceRange, setPriceRange] = useState<string | null>(null);
+
+  const handleSearch = () => {
+    console.log("Location::>>", location, dateRange, priceRange);
+  };
+
   return (
-    <StyledCard>
+    <CardUI>
       <Row align="middle" justify="space-between">
         {/* Location */}
         <Col flex="1">
@@ -72,11 +38,13 @@ const SearchBox = () => {
               <EnvironmentOutlined style={{ fontSize: 20, color: "grey" }} />
             </IconCircle>
             <div>
-              <Label>Location</Label>
+              <HeaderText>Location</HeaderText>
               <Input
                 inputProps={{
                   placeholder: "Where you want to go?",
                   variant: "borderless",
+                  value: location,
+                  onChange: (e) => setLocation(e.target.value),
                 }}
               />
             </div>
@@ -92,8 +60,13 @@ const SearchBox = () => {
               <CalendarOutlined style={{ fontSize: 18, color: "grey" }} />
             </IconCircle>
             <div>
-              <Label>Choose Date</Label>
-              <CustomRangePicker />
+              <HeaderText>Choose Date</HeaderText>
+              <CustomRangePicker
+                dateProps={{
+                  onChange: (dates) => setDateRange(dates),
+                  needConfirm: true,
+                }}
+              />
             </div>
           </ItemWrapper>
         </Col>
@@ -107,17 +80,15 @@ const SearchBox = () => {
               <DollarOutlined style={{ fontSize: 18, color: "grey" }} />
             </IconCircle>
             <div>
-              <Label>Price Range</Label>
+              <HeaderText>Price Range</HeaderText>
               <Select
                 selectProps={{
                   variant: "borderless",
                   placeholder: "Choose Here",
                   size: "small",
-                  options: [
-                    { value: "jack", label: "Jack" },
-                    { value: "lucy", label: "Lucy" },
-                    { value: "Yiminghe", label: "yiminghe" },
-                  ],
+                  value: priceRange,
+                  onChange: (value) => setPriceRange(value),
+                  options: priceRanges,
                 }}
               />
             </div>
@@ -126,14 +97,12 @@ const SearchBox = () => {
 
         {/* Search Button */}
         <Col>
-          <Link to="/tours">
-            <SearchButton>
-              <SearchOutlined style={{ fontSize: 28, color: "#fff" }} />
-            </SearchButton>
-          </Link>
+          <SearchButton onClick={handleSearch}>
+            <SearchOutlined style={{ fontSize: 28, color: "#fff" }} />
+          </SearchButton>
         </Col>
       </Row>
-    </StyledCard>
+    </CardUI>
   );
 };
 

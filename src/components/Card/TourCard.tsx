@@ -4,6 +4,7 @@ import { DollarOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { Button } from "../Button";
 import { colors } from "../../constants";
+import { getPriceLabel } from "../../utils/priceUtils";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -104,7 +105,7 @@ const TourCard: React.FC<AttractionCardProps> = ({
         {price && (
           <MetaInfo>
             <DollarOutlined />
-            <MetaText>{price}</MetaText>
+            <MetaText>{getPriceLabel(price)}</MetaText>
           </MetaInfo>
         )}
 

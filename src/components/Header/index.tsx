@@ -18,13 +18,13 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
 
       <NavMenu>
         <Space size={36}>
-          <Button href="/" variant="secondary">
-            <Link to="/add-tour">Add Tour</Link>
+          <Button variant="secondary">
+            <Link to="/">Add Tour</Link>
           </Button>
-          <Button href="/" variant="secondary">
-            <Link to="/book-tour">Book Tour</Link>
+          <Button variant="secondary">
+            <Link to="/">Book Tour</Link>
           </Button>
-          <Button href="/my-tours" variant="secondary">
+          <Button variant="secondary">
             <Link to="/my-tours">My Tours</Link>
           </Button>
         </Space>

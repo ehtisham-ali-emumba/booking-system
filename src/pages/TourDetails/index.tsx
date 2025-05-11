@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { Typography, Flex } from "antd";
+import { Flex } from "antd";
 import {
   EnvironmentOutlined,
   ClockCircleOutlined,
@@ -10,98 +9,55 @@ import { ImageGallery } from "./ImageGallery";
 import { Spacer } from "../../components/Spacer";
 import { Button } from "../../components";
 import WhatsIncluded from "./WhatsIncluded";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const { Title, Text } = Typography;
+import {
+  MuseumContainer,
+  InfoRow,
+  MuseumTitle,
+  InfoIcon,
+  PriceText,
+  InfoText,
+  Padder,
+  Wrapper,
+  DescriptionText,
+} from "./elements";
+import { useTourQueryById } from "../../hooks/queries";
+import Loader from "../../components/Loader";
+import ErrorContainer from "../../components/ErrorContainer";
+import type { Tour } from "../../types";
+import { getPriceLabel } from "../../utils/priceUtils";
 
-const Container = styled.div`
-  margin-top: 100px;
-`;
-
-const Padder = styled.div`
-  padding: 20px;
-`;
-const MuseumContainer = styled.div``;
-
-const MuseumTitle = styled(Title)`
-  color: #1c223b;
-  font-weight: 700;
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 24px !important;
-
-  @media (max-width: 768px) {
-    font-size: 32px;
-  }
-`;
-
-const InfoRow = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 32px;
-  margin-bottom: 16px;
-`;
-
-const InfoIcon = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6e7490;
-  background-color: rgb(245, 245, 247);
-  border-radius: 50%;
-  padding: 4px;
-  font-size: 18px;
-`;
-
-const InfoText = styled(Text)`
-  color: #6e7490;
-  font-size: 16px;
-  margin-left: 4px;
-`;
-
-const PriceText = styled(Text)`
-  color: #6e7490;
-  font-size: 16px;
-`;
-
-// Museum text component
-const HeaderTexts = () => {
+const HeaderTexts = ({ tour }: { tour: Tour }) => {
   return (
     <MuseumContainer>
-      <MuseumTitle>Pérez Art Museum Miami</MuseumTitle>
+      <MuseumTitle>{tour.name}</MuseumTitle>
 
       <Flex>
         <InfoRow>
           <InfoIcon>
             <EnvironmentOutlined />
           </InfoIcon>
-          <InfoText>Miami</InfoText>
+          <InfoText>{tour.city}</InfoText>
         </InfoRow>
 
         <InfoRow>
           <InfoIcon>
             <DollarOutlined />
           </InfoIcon>
-          <PriceText>$50 - $200</PriceText>
+          <PriceText>{getPriceLabel(tour.price)}</PriceText>
         </InfoRow>
 
         <InfoRow>
           <InfoIcon>
             <ClockCircleOutlined />
           </InfoIcon>
-          <InfoText>3 Days</InfoText>
+          <InfoText>{tour.duration}</InfoText>
         </InfoRow>
       </Flex>
     </MuseumContainer>
   );
 };
-
-const DescriptionText = styled.p`
-  text-align: center;
-  margin: 0 20px;
-  font-size: 16px;
-  line-height: 1.5;
-`;
 
 const Description = () => {
   return (
@@ -129,14 +85,21 @@ const Description = () => {
 };
 
 const TourDetails = () => {
+  const { tourId } = useParams<{ tourId: string }>();
+  const { data: tour, isLoading, error } = useTourQueryById(tourId!);
+
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorContainer message={error.message} />;
+  if (!tour) return null;
+
   return (
     <Layout style={{ backgroundColor: "transparent" }}>
-      <Container>
+      <Wrapper>
         <Header style={{ backgroundColor: "transparent" }}>
-          <HeaderTexts />
+          <HeaderTexts tour={tour} />
         </Header>
         <Spacer marginTop="80px" />
-        <ImageGallery />
+        <ImageGallery tour={tour} />
         <Spacer marginTop="40px" />
         <Description />
         <Padder>
@@ -149,7 +112,7 @@ const TourDetails = () => {
             </Button>
           </Link>
         </Flex>
-      </Container>
+      </Wrapper>
       <Spacer marginTop="80px" />
     </Layout>
   );

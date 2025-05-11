@@ -1,4 +1,7 @@
+import { Flex, Typography } from "antd";
 import styled from "styled-components";
+
+const { Title: TitleAntd, Text } = Typography;
 
 export const Container = styled.div`
   margin-top: 150px;
@@ -54,4 +57,83 @@ export const Input = styled.input`
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   }
+`;
+
+export const Wrapper = styled.div`
+  margin-top: 100px;
+`;
+
+export const Padder = styled.div`
+  padding: 20px;
+`;
+export const MuseumContainer = styled.div``;
+
+export const MuseumTitle = styled(TitleAntd)`
+  color: #1c223b;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 24px !important;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+`;
+
+export const InfoRow = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 32px;
+  margin-bottom: 16px;
+`;
+
+export const InfoIcon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6e7490;
+  background-color: rgb(245, 245, 247);
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 18px;
+`;
+
+export const InfoText = styled(Text)`
+  color: #6e7490;
+  font-size: 16px;
+  margin-left: 4px;
+`;
+
+export const PriceText = styled(Text)`
+  color: #6e7490;
+  font-size: 16px;
+`;
+
+export const DescriptionText = styled.p`
+  text-align: center;
+  margin: 0 20px;
+  font-size: 16px;
+  line-height: 1.5;
+`;
+
+export const WrapperImages = styled(Flex)`
+  height: 420px;
+  margin: 10px;
+  padding: 20px;
+`;
+
+export const ImageUI = styled.img`
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 24px;
+`;
+
+export const SmallImage = styled.img`
+  flex: 1;
+  height: 175px;
+  width: 100% !important;
+  padding: 0px 10px;
+  object-fit: cover;
+  border-radius: 24px;
 `;

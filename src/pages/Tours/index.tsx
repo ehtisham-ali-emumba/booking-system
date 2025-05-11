@@ -3,15 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { TourCard, CardWrapper } from "../../components/Card";
 import { Container } from "../../styles";
 import styled from "styled-components";
-import { attractions } from "./utils";
+import { useTourQuery } from "../../hooks/queries";
+import Loader from "../../components/Loader";
+import ErrorContainer from "../../components/ErrorContainer";
 
 const Wrapper = styled(Container)`
   justify-content: flex-start;
 `;
+
 const { Title } = Typography;
 export default function Tours() {
   const navigate = useNavigate();
+  const { data: tours, isLoading, error } = useTourQuery();
 
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorContainer message={`Error: ${error?.message}`} />;
   return (
     <Wrapper>
       <div
@@ -26,19 +32,17 @@ export default function Tours() {
           Top Destinations At “Miami”
         </Title>
         <CardWrapper>
-          {[...attractions, ...attractions, ...attractions].map(
-            (attraction) => (
-              <TourCard
-                key={attraction.id}
-                imageSrc={attraction.imageSrc}
-                title={attraction.title}
-                description={attraction.description}
-                price={attraction.price}
-                duration={attraction.duration}
-                onClick={() => navigate(`/tour/${attraction.id}`)}
-              />
-            )
-          )}
+          {tours?.map((tour) => (
+            <TourCard
+              key={tour.id}
+              imageSrc={tour.imageSrc}
+              title={tour.name}
+              description={tour.description}
+              price={tour.price}
+              duration={tour.duration}
+              onClick={() => navigate(`/tour/${tour.id}`)}
+            />
+          ))}
         </CardWrapper>
       </div>
     </Wrapper>

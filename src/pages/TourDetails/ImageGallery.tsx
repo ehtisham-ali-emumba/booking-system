@@ -1,43 +1,23 @@
-import styled from "styled-components";
-import { images_png } from "../../assets";
-import { Col, Flex } from "antd";
+import { Col } from "antd";
 import { Flex1 } from "../../styles";
+import type { Tour } from "../../types";
+import { ImageUI, SmallImage, WrapperImages } from "./elements";
 
-const WrapperImages = styled(Flex)`
-  height: 420px;
-  margin: 10px;
-  padding: 20px;
-`;
-
-const ImageUI = styled.img`
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  border-radius: 24px;
-`;
-
-const SmallImage = styled.img`
-  flex: 1;
-  height: 175px;
-  width: 100% !important;
-  padding: 0px 10px;
-  object-fit: cover;
-  border-radius: 24px;
-`;
-export const ImageGallery = () => {
+export const ImageGallery = ({ tour }: { tour: Tour }) => {
+  const { imageSrc, images } = tour;
   return (
     <WrapperImages>
       <Flex1 style={{ flex: 1 }}>
-        <ImageUI src={images_png.constant} />
+        <ImageUI src={imageSrc} />
       </Flex1>
       <Flex1 style={{ marginLeft: "20px" }}>
         <Col>
-          <SmallImage src={images_png.constant} />
-          <SmallImage src={images_png.constant} style={{ marginTop: "25px" }} />
+          <SmallImage src={images[1]} />
+          <SmallImage src={images[2]} style={{ marginTop: "25px" }} />
         </Col>
         <Col>
-          <SmallImage src={images_png.constant} />
-          <SmallImage src={images_png.constant} style={{ marginTop: "25px" }} />
+          <SmallImage src={images[3]} />
+          <SmallImage src={images[4]} style={{ marginTop: "25px" }} />
         </Col>
       </Flex1>
     </WrapperImages>

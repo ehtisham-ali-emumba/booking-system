@@ -1,5 +1,4 @@
 import { ImageBannerBackgroundWrapper } from "./elements";
-import {} from "../../styles";
 import SearchBox from "./SearchBox";
 import { PopularSearch } from "./PopularSearch";
 

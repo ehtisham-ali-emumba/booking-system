@@ -44,9 +44,7 @@ export const CustomRangePicker: React.FC<DateType> = ({
         variant="borderless"
         suffixIcon={null}
         placeholder={["", ""]}
-        components={{
-          input: () => null,
-        }}
+        components={{}}
         style={{
           width: "0px",
           height: "0px",

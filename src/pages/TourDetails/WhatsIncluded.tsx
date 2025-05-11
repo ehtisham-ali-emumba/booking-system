@@ -39,7 +39,6 @@ const StyledDivider = styled(Divider)`
   background-color: #f0f0f0;
 `;
 
-// Travel information component
 const WhatsIncluded = () => {
   return (
     <>
