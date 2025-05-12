@@ -1,6 +1,10 @@
 import React from "react";
-import { Space, Select, Input } from "antd";
-export type PhoneInputProps = {};
+import { Space, Select, Input, type InputProps, type SelectProps } from "antd";
+
+export type PhoneInputProps = {
+  inputProps?: InputProps;
+  selectProps?: SelectProps;
+};
 
 const options = [
   {
@@ -17,11 +21,11 @@ const options = [
   },
 ];
 
-const PhoneInput: React.FC<PhoneInputProps> = ({}) => {
+const PhoneInput: React.FC<PhoneInputProps> = ({ inputProps, selectProps }) => {
   return (
     <Space.Compact style={{ width: "100%" }}>
-      <Select defaultValue="+1" options={options} />
-      <Input />
+      <Select defaultValue="+1" options={options} {...selectProps} />
+      <Input type="number" {...inputProps} />
     </Space.Compact>
   );
 };

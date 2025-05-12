@@ -9,6 +9,7 @@ export type Booking = {
   children: number;
   paymentMethod: string;
   tourId: string;
+  countryCode: string;
 };
 
 // Create a Jotai atom with local storage persistence

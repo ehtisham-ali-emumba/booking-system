@@ -118,7 +118,7 @@ const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export { TourCard, CardWrapper };

@@ -17,15 +17,28 @@ import {
   Divider,
   SearchButton,
 } from "./elements";
-import { priceRanges } from "./utils";
+import { generateParams, priceRanges } from "./utils";
+import { useNavigate } from "react-router-dom";
 
 const SearchBox = () => {
   const [location, setLocation] = useState<string>("");
-  const [dateRange, setDateRange] = useState<[string, string] | null>(null);
+  const [dateRange, setDateRange] = useState<[string, string] | []>([]);
   const [priceRange, setPriceRange] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    console.log("Location::>>", location, dateRange, priceRange);
+    const params = generateParams({
+      location,
+      start_date: dateRange?.[0],
+      end_date: dateRange?.[1],
+      price: priceRange,
+    });
+    navigate(`/tours?${params}`);
+  };
+
+  const dateHandler = (dates: any, dateStrings: [string, string]) => {
+    if (!dates) setDateRange([]);
+    else setDateRange([dateStrings[0], dateStrings[1]]);
   };
 
   return (
@@ -53,7 +66,6 @@ const SearchBox = () => {
 
         <Divider />
 
-        {/* Date */}
         <Col flex="1">
           <ItemWrapper>
             <IconCircle>
@@ -63,7 +75,7 @@ const SearchBox = () => {
               <HeaderText>Choose Date</HeaderText>
               <CustomRangePicker
                 dateProps={{
-                  onChange: (dates) => setDateRange(dates),
+                  onChange: dateHandler,
                   needConfirm: true,
                 }}
               />

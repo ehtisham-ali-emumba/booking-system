@@ -14,20 +14,38 @@ type DateType = {
 
 const iconStyles = { style: { fontSize: "12px", color: "#bfbfbf" } };
 export const CustomRangePicker: React.FC<DateType> = ({
-  dateProps,
+  dateProps = {},
   customText = "Choose Here",
 }) => {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const [dateText, setDateText] = useState("");
+  const { onChange = () => {} } = dateProps;
 
   const handleToggle = () => {
     setIsPickerOpen((prev) => !prev);
   };
 
+  const onChangeHandler = (dates: any, dateStrings: [string, string]) => {
+    if (!dates) {
+      setIsPickerOpen(false);
+      setDateText("");
+    } else {
+      setIsPickerOpen(true);
+      setDateText(`${dateStrings[0]} - ${dateStrings[1]}`);
+    }
+    onChange(dates, dateStrings);
+  };
   return (
     <>
       <Button size="small" variant="secondary" onClick={handleToggle}>
-        <Text style={{ fontSize: "16px", fontWeight: "400", color: "#bfbfbf" }}>
-          {customText}
+        <Text
+          style={{
+            fontSize: "16px",
+            fontWeight: "400",
+            color: dateText ? "black" : "#bfbfbf",
+          }}
+        >
+          {dateText || customText}
           <InlineSpacer marginLeft="5px" />
           {isPickerOpen ? (
             <UpOutlined {...iconStyles} />
@@ -40,11 +58,14 @@ export const CustomRangePicker: React.FC<DateType> = ({
         {...dateProps}
         open={isPickerOpen}
         onOpenChange={handleToggle}
+        onChange={onChangeHandler}
         allowClear
         variant="borderless"
         suffixIcon={null}
         placeholder={["", ""]}
         components={{}}
+        disabledDate={(current) => current && current.toDate() < new Date()}
+        format="DD-MM-YY"
         style={{
           width: "0px",
           height: "0px",

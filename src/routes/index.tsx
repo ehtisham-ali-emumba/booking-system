@@ -6,6 +6,7 @@ import { MainLayout } from "../layout/MainLayout";
 import { PrivateRoute } from "./PrivateRoute";
 import Tours from "../pages/Tours";
 import BookTour from "../pages/BookTour";
+import MyTours from "../pages/MyTours";
 
 // Define your routes as an array of route objects
 const routes: RouteObject[] = [
@@ -33,6 +34,16 @@ const routes: RouteObject[] = [
       <PrivateRoute>
         <MainLayout>
           <Tours />
+        </MainLayout>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/my-tours",
+    element: (
+      <PrivateRoute>
+        <MainLayout>
+          <MyTours />
         </MainLayout>
       </PrivateRoute>
     ),

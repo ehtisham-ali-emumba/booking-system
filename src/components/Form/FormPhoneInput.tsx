@@ -1,5 +1,5 @@
 import React from "react";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 import styled from "styled-components";
 import { FieldLabel } from "./elements";
 import PhoneInput from "../PhoneInput";
@@ -21,6 +21,12 @@ export const FormPhoneInput: React.FC<FormInputProps> = ({
   control,
   label = name,
 }) => {
+  const { setValue } = useFormContext();
+  const countryCode = useWatch({
+    control,
+    name: "countryCode",
+  });
+
   return (
     <div>
       <Controller
@@ -29,7 +35,13 @@ export const FormPhoneInput: React.FC<FormInputProps> = ({
         render={({ field, fieldState: { error } }) => (
           <>
             <FieldLabel>{label}</FieldLabel>
-            <PhoneInput />
+            <PhoneInput
+              inputProps={{ ...field }}
+              selectProps={{
+                value: countryCode,
+                onChange: (value) => setValue("countryCode", value),
+              }}
+            />
             {error && <ErrorText>{error.message}</ErrorText>}
           </>
         )}

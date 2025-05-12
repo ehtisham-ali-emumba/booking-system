@@ -6,12 +6,22 @@ export const bookFormValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  phone: Yup.string(),
+  phone: Yup.string()
+    .required("Phone number is required")
+    .matches(/^\d+$/, "Phone number must contain only digits"),
   adults: Yup.number()
+    .transform((value, originalValue) =>
+      originalValue === "" || isNaN(originalValue) ? undefined : value
+    )
     .required("Number of adults is required")
+    .typeError("Number of adults must be a valid number")
     .min(1, "At least 1 adult is required"),
   children: Yup.number()
+    .transform((value, originalValue) =>
+      originalValue === "" || isNaN(originalValue) ? undefined : value
+    )
     .required("Number of children is required")
+    .typeError("Number of children must be a valid number")
     .min(0, "Cannot be negative"),
   paymentMethod: Yup.string().required("Payment method is required"),
   countryCode: Yup.string(),

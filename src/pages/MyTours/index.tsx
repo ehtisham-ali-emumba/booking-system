@@ -10,7 +10,7 @@ import { useAtom } from "jotai";
 import { bookingAtom } from "../../atoms/bookingAtom";
 import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
-import { BlankSlate } from "../../components";
+import { BlankSlate } from "../../components/BlankSlate";
 
 const Wrapper = styled(Container)`
   justify-content: flex-start;
@@ -18,17 +18,17 @@ const Wrapper = styled(Container)`
 
 const { Title } = Typography;
 
-export default function Tours() {
+export default function MyTours() {
   const navigate = useNavigate();
   const { data: tours, isLoading, error } = useTourQuery();
   const [bookings] = useAtom(bookingAtom); // Access bookings from the atom
   const { deleteBooking } = useDeleteBooking();
 
-  // map lookup for bookings
-  const bookingMap = useMemo(
-    () => new Map(bookings.map((booking) => [booking.tourId, booking])),
-    [bookings]
-  );
+  const filterMyTours = useMemo(() => {
+    if (!tours || !bookings) return [];
+    const bookingSet = new Set(bookings.map((booking) => booking.tourId));
+    return tours.filter((tour) => bookingSet.has(tour.id));
+  }, [tours, bookings]);
 
   if (isLoading) return <Loader />;
   if (error) return <ErrorContainer message={`Error: ${error?.message}`} />;
@@ -43,12 +43,17 @@ export default function Tours() {
           paddingBottom: "82px",
         }}
       >
-        <Title style={{ textAlign: "center", marginBottom: "40px" }}>
-          Top Destinations
+        <Title
+          style={{
+            textAlign: "left",
+            marginBottom: "40px",
+            marginLeft: "12px",
+          }}
+        >
+          My Tours
         </Title>
         <CardWrapper>
-          {tours?.map((tour) => {
-            const hasBooking = bookingMap.has(tour.id); // O(1) lookup
+          {filterMyTours?.map((tour) => {
             return (
               <TourCard
                 key={tour.id}
@@ -57,14 +62,14 @@ export default function Tours() {
                 description={tour.description}
                 price={tour.price}
                 duration={tour.duration}
-                hasBooking={hasBooking}
-                onUpdateBooking={() => navigate(`/book/tour/${tour.id}`)} // Navigate to view booking
-                onDeleteBooking={() => deleteBooking(tour.id)} // Use deleteBooking hook
+                hasBooking
+                onUpdateBooking={() => navigate(`/book/tour/${tour.id}`)}
+                onDeleteBooking={() => deleteBooking(tour.id)}
                 onClick={() => navigate(`/tour/${tour.id}`)}
               />
             );
           })}
-          {tours?.length === 0 && <BlankSlate />}
+          {filterMyTours.length === 0 && <BlankSlate />}
         </CardWrapper>
       </div>
     </Wrapper>
