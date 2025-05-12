@@ -1,107 +1,95 @@
-import styled from "styled-components";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography, Row, Col } from "antd";
-import { Button, Input, Select } from "../../components";
-import { Spacer } from "../../components/Spacer";
+import { Button, Spacer } from "../../components";
+import { FormInput } from "../../components/Form";
+import { bookFormValidationSchema } from "./utils";
+import FormSelect from "../../components/Form/FormSelect";
+import { FormWrapper } from "./elements";
+import { FormPhoneInput } from "../../components/Form/FormPhoneInput";
 
-const { Title, Text } = Typography;
-
-// Styled Wrapper
-const FormWrapper = styled.div`
-  margin: 0 auto;
-  padding: 0px 20px;
-`;
-
-// Styled Label
-const Label = styled(Text)`
-  display: block;
-  font-size: 16px;
-  color: #a1a1b5;
-  margin-bottom: 6px;
-  margin-top: 24px;
-`;
+const { Title } = Typography;
 
 const BookForm = () => {
+  const { control, handleSubmit } = useForm({
+    resolver: yupResolver(bookFormValidationSchema),
+  });
+
+  const onSubmit = (data: any) => {
+    console.log("Form Data:", data);
+  };
+
   return (
     <FormWrapper>
       <Title level={2} style={{ color: "#1e1e3f" }}>
         Confirm Your Booking
       </Title>
 
-      <Label>Name</Label>
-      <Input
-        inputProps={{
-          placeholder: "Enter your name",
-        }}
-      />
+      <form>
+        <FormInput
+          name="name"
+          control={control}
+          inputProps={{
+            placeholder: "Enter your name",
+          }}
+        />
 
-      <Label>Email</Label>
-      <Input
-        inputProps={{
-          placeholder: "Enter your email",
-        }}
-      />
+        <FormInput
+          name="email"
+          control={control}
+          inputProps={{
+            placeholder: "Enter your email",
+          }}
+        />
 
-      <Label>Phone</Label>
-      <Row gutter={16}>
-        <Col span={6}>
-          <Select
-            selectProps={{
-              style: { width: "100%" },
-              placeholder: "Select",
-              defaultValue: "+1",
-              size: "large",
-              options: [
-                { value: "+1", label: "+1" },
-                { value: "+44", label: "+44" },
-                { value: "+91", label: "+91" },
-              ],
-            }}
-          />
-        </Col>
-        <Col span={18}>
-          <Input
-            inputProps={{
-              placeholder: "Phone number",
-            }}
-          />
-        </Col>
-      </Row>
+        <FormPhoneInput name="phone" control={control} label="Phone Number" />
 
-      <Row gutter={16}>
-        <Col span={12}>
-          <Label>Numbers of Adults</Label>
-          <Input
-            inputProps={{
-              placeholder: "0",
-            }}
-          />
-        </Col>
-        <Col span={12}>
-          <Label>Numbers of Childrens</Label>
-          <Input
-            inputProps={{
-              placeholder: "0",
-            }}
-          />
-        </Col>
-      </Row>
+        <Row gutter={16}>
+          <Col span={12}>
+            <FormInput
+              name="adults"
+              label="No. of Adults"
+              control={control}
+              inputProps={{
+                placeholder: "0",
+                type: "number",
+              }}
+            />
+          </Col>
+          <Col span={12}>
+            <FormInput
+              name="children"
+              label="No. of Children"
+              control={control}
+              inputProps={{
+                placeholder: "0",
+                type: "number",
+              }}
+            />
+          </Col>
+        </Row>
 
-      <Label>Payment Method</Label>
-      <Select
-        selectProps={{
-          style: { width: "100%" },
-          placeholder: "Select",
-          size: "large",
-          options: [
-            { value: "credit_card", label: "Credit Card" },
-            { value: "paypal", label: "PayPal" },
-            { value: "bank_transfer", label: "Bank Transfer" },
-          ],
-        }}
-      />
+        <FormSelect
+          name="paymentMethod"
+          label="Payment Method"
+          control={control}
+          selectProps={{
+            style: { width: "100%" },
+            placeholder: "Select",
+            size: "large",
+            options: [
+              { value: "credit_card", label: "Credit Card" },
+              { value: "paypal", label: "PayPal" },
+              { value: "bank_transfer", label: "Bank Transfer" },
+            ],
+          }}
+        />
 
-      <Spacer marginTop="30px" />
-      <Button fullWidth>Confirm</Button>
+        <Spacer marginTop="30px" />
+        <Button fullWidth onClick={handleSubmit(onSubmit)}>
+          Confirm
+        </Button>
+      </form>
     </FormWrapper>
   );
 };

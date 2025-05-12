@@ -1,6 +1,6 @@
 import { Input as InputField, type InputProps } from "antd";
 
-type InputType = {
+export type InputType = {
   inputProps?: InputProps;
 };
 

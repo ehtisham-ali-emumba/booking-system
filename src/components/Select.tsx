@@ -2,7 +2,7 @@ import { Select as Select_, type SelectProps } from "antd";
 import { useState } from "react";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 
-type SelectType = {
+export type SelectType = {
   selectProps?: SelectProps;
 };
 
