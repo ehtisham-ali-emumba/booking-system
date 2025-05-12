@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { colors as appColors } from "../constants";
 
 // Define the button variants
-type ButtonVariant = "primary" | "outlined" | "secondary";
+type ButtonVariant = "primary" | "outlined" | "secondary" | "icon";
 
 // Define the props interface
 type StyledButtonProps = Omit<ButtonProps, "variant"> & {
@@ -91,6 +91,27 @@ const outlinedStyles = css`
   }
 `;
 
+// Define icon button styles
+const iconStyles = css`
+  width: 50px !important;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 24px;
+  color: ${appColors.accentOrange};
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: rgb(235, 234, 234) !important;
+    border-color: #e56e50 !important;
+    color: ${appColors.accentOrange} !important;
+  }
+`;
+
 // Create the styled component
 export const Button = styled(AntdButton)<StyledButtonProps>`
   border-radius: 8px;
@@ -102,7 +123,8 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
   justify-content: center;
 
   // Apply size styles
-  ${({ size = "medium" }) => getSizeStyles(size)}
+  ${({ size = "medium", variant }) =>
+    variant !== "icon" ? getSizeStyles(size) : null}
 
   // Apply variant styles
   ${({ variant = "primary" }) => {
@@ -111,6 +133,8 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
         return secondaryStyles;
       case "outlined":
         return outlinedStyles;
+      case "icon":
+        return iconStyles;
       case "primary":
       default:
         return primaryStyles;

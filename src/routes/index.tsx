@@ -48,7 +48,7 @@ const routes: RouteObject[] = [
     ),
   },
   {
-    path: "/book/tour",
+    path: "/book/tour/:tourId",
     element: (
       <PrivateRoute>
         <MainLayout hideExplore>

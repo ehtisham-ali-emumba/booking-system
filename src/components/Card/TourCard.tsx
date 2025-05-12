@@ -1,15 +1,25 @@
 import React from "react";
-import { Card, Typography } from "antd";
-import { DollarOutlined, ClockCircleOutlined } from "@ant-design/icons";
+import {
+  DollarOutlined,
+  ClockCircleOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import styled from "styled-components";
 import { Button } from "../Button";
-import { colors } from "../../constants";
 import { getPriceLabel } from "../../utils/priceUtils";
+import DeleteConfirmationModal from "../ConfirmationModal";
+import {
+  StyledCard,
+  CardTitle,
+  CardDescription,
+  MetaInfoContainer,
+  MetaInfo,
+  MetaText,
+  HoverButton,
+  BookingActionsContainer,
+} from "./elements";
 
-const { Title, Paragraph, Text } = Typography;
-
-// Define the props interface for our card component
-interface AttractionCardProps {
+interface TourCardProps {
   imageSrc: string;
   imageAlt?: string;
   title: string;
@@ -18,79 +28,31 @@ interface AttractionCardProps {
   duration?: string;
   className?: string;
   onClick?: () => void;
+  hasBooking?: boolean;
+  onDeleteBooking?: () => void;
+  onUpdateBooking?: () => void;
 }
-
-const StyledCard = styled(Card)`
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  height: 100%;
-  width: 350px;
-
-  .ant-card-cover img {
-    height: 240px;
-  }
-`;
-
-const CardTitle = styled(Title)`
-  margin-top: 0 !important;
-  margin-bottom: 4px !important;
-`;
-
-const CardDescription = styled(Paragraph)`
-  color: ${colors.text.secondary};
-  font-size: 16px;
-  margin-bottom: 16px !important;
-`;
-
-const MetaInfoContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  margin-top: 23px;
-  ${StyledCard}:hover & {
-    display: none;
-  }
-`;
-
-const MetaInfo = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: ${colors.background.badge};
-  padding: 8px 16px;
-  border-radius: 100px;
-  gap: 8px;
-`;
-
-const MetaText = styled(Text)`
-  color: ${colors.text.secondary};
-  font-size: 16px;
-  font-weight: 500;
-`;
-
-const HoverButton = styled(Button)`
-  display: none;
-  width: 100%;
-  cursor: pointer;
-  text-align: center;
-
-  &:hover {
-    background-color: #147dd6;
-  }
-
-  ${StyledCard}:hover & {
-    display: block;
-  }
-`;
-
-// Main Component
-const TourCard: React.FC<AttractionCardProps> = ({
+const TourCard: React.FC<TourCardProps> = ({
   imageSrc,
-  imageAlt = "Attraction",
+  imageAlt = "TourCard Image",
   title,
   description,
   price,
   duration,
   className,
   onClick,
+  hasBooking,
+  onDeleteBooking = () => {},
+  onUpdateBooking = () => {},
 }) => {
+  const onViewBookingClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClick?.();
+  };
+  const onUpdateBookingClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onUpdateBooking?.();
+  };
   return (
     <StyledCard
       hoverable={false}
@@ -101,22 +63,52 @@ const TourCard: React.FC<AttractionCardProps> = ({
       <CardTitle level={4}>{title}</CardTitle>
       <CardDescription>{description}</CardDescription>
 
-      <MetaInfoContainer>
-        {price && (
-          <MetaInfo>
-            <DollarOutlined />
-            <MetaText>{getPriceLabel(price)}</MetaText>
-          </MetaInfo>
-        )}
+      {hasBooking ? (
+        // New layout when booking exists
+        <BookingActionsContainer>
+          <DeleteConfirmationModal
+            onConfirm={onDeleteBooking}
+            message="Are you sure you want to delete this booking?"
+          >
+            {(onOpen) => (
+              <Button
+                variant="icon"
+                shape="circle"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpen(); // Open the modal
+                }}
+                icon={<DeleteOutlined style={{ fontSize: 26 }} />}
+              />
+            )}
+          </DeleteConfirmationModal>
 
-        {duration && (
-          <MetaInfo>
-            <ClockCircleOutlined />
-            <MetaText>{duration}</MetaText>
-          </MetaInfo>
-        )}
-      </MetaInfoContainer>
-      <HoverButton>View Details</HoverButton>
+          <Button variant="primary" onClick={onViewBookingClick}>
+            Details
+          </Button>
+          <Button variant="primary" onClick={onUpdateBookingClick}>
+            Update
+          </Button>
+        </BookingActionsContainer>
+      ) : (
+        <>
+          <MetaInfoContainer>
+            {price && (
+              <MetaInfo>
+                <DollarOutlined />
+                <MetaText>{getPriceLabel(price)}</MetaText>
+              </MetaInfo>
+            )}
+            {duration && (
+              <MetaInfo>
+                <ClockCircleOutlined />
+                <MetaText>{duration}</MetaText>
+              </MetaInfo>
+            )}
+          </MetaInfoContainer>
+          <HoverButton>View Details</HoverButton>
+        </>
+      )}
     </StyledCard>
   );
 };

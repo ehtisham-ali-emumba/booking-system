@@ -1,22 +1,52 @@
+import { useAtom } from "jotai";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography, Row, Col } from "antd";
 import { Button, Spacer } from "../../components";
 import { FormInput } from "../../components/Form";
-import { bookFormValidationSchema } from "./utils";
+import {
+  bookFormValidationSchema,
+  getBookingByTourId,
+  isBookingExists,
+  removeBookingByTourId,
+} from "./utils";
 import FormSelect from "../../components/Form/FormSelect";
 import { FormWrapper } from "./elements";
 import { FormPhoneInput } from "../../components/Form/FormPhoneInput";
+import { bookingAtom, type Booking } from "../../atoms/bookingAtom";
+import { useEffect } from "react";
+import { notifee } from "../../services";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
 const BookForm = () => {
-  const { control, handleSubmit } = useForm({
+  const { tourId } = useParams<{ tourId: string }>();
+  const navigate = useNavigate();
+  const [bookings, setBookings] = useAtom(bookingAtom);
+
+  const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(bookFormValidationSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log("Form Data:", data);
+  // Prefill form if a booking with tourId exists
+  useEffect(() => {
+    if (!tourId) return;
+    if (isBookingExists(bookings, tourId)) {
+      const existingBooking = getBookingByTourId(bookings, tourId);
+      reset(existingBooking);
+    }
+  }, [tourId, bookings, reset]);
+
+  const onSubmit = (bookFormData: Booking) => {
+    const filterBookings = removeBookingByTourId(bookings, tourId!);
+    setBookings([
+      ...filterBookings,
+      { ...bookFormData, tourId: tourId!, phone: "123123" },
+    ]);
+    notifee.showSuccessNotification("Success", "Booking confirmed!");
+    navigate(-1);
   };
 
   return (

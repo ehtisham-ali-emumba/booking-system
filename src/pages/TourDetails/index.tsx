@@ -106,7 +106,7 @@ const TourDetails = () => {
           <WhatsIncluded />
         </Padder>
         <Flex justify="center">
-          <Link to="/book/tour">
+          <Link to={`/book/tour/${tourId}`}>
             <Button style={{ alignSelf: "center", width: "200px" }}>
               Book Now
             </Button>

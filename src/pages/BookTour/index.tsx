@@ -1,25 +1,12 @@
 import styled from "styled-components";
-import { Typography, Image } from "antd";
-import {
-  EnvironmentOutlined,
-  ClockCircleOutlined,
-  DollarOutlined,
-} from "@ant-design/icons";
-import { Flex1, Header, Layout } from "../../styles";
+import { Image } from "antd";
+import { Flex1, Layout } from "../../styles";
 import { Spacer } from "../../components/Spacer";
-import { Button } from "../../components";
-import { Link } from "react-router-dom";
 import { images_png } from "../../assets";
 import BookForm from "./BookForm";
 
-const { Title, Text } = Typography;
-
 const Container = styled.div`
   margin-top: 100px;
-`;
-
-const Padder = styled.div`
-  padding: 20px;
 `;
 
 const ImageUI = styled(Image)`
