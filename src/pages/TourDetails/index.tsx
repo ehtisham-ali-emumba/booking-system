@@ -29,6 +29,7 @@ import ErrorContainer from "../../components/ErrorContainer";
 import type { Tour } from "../../types";
 import { getPriceLabel } from "../../utils/priceUtils";
 import ItinerarySchedule from "./ItinerarySchedule";
+import { strings } from "../../constants/strings";
 
 const HeaderTexts = ({ tour }: { tour: Tour }) => {
   return (
@@ -61,24 +62,9 @@ const HeaderTexts = ({ tour }: { tour: Tour }) => {
 const Description = () => {
   return (
     <>
-      <DescriptionText>
-        The Pérez Art Museum Miami (PAMM) is a modern and contemporary art
-        museum located in Miami, Florida. It is dedicated to collecting and
-        exhibiting international art of the 20th and 21st centuries, with a
-        particular focus on works from the Americas, Europe, and Africa.
-      </DescriptionText>
-      <DescriptionText>
-        The Pérez Art Museum Miami (PAMM) is a modern and contemporary art
-        museum located in Miami, Florida. It is dedicated to collecting and
-        exhibiting international art of the 20th and 21st centuries, with a
-        particular focus on works from the Americas, Europe, and Africa.
-      </DescriptionText>
-      <DescriptionText>
-        The Pérez Art Museum Miami (PAMM) is a modern and contemporary art
-        museum located in Miami, Florida. It is dedicated to collecting and
-        exhibiting international art of the 20th and 21st centuries, with a
-        particular focus on works from the Americas, Europe, and Africa.
-      </DescriptionText>
+      <DescriptionText>{strings.tourDesc}</DescriptionText>
+      <DescriptionText>{strings.tourDesc}</DescriptionText>
+      <DescriptionText>{strings.tourDesc}</DescriptionText>
     </>
   );
 };
@@ -108,7 +94,7 @@ const TourDetails = () => {
         <Flex justify="center">
           <Link to={`/book/tour/${tourId}`}>
             <Button style={{ alignSelf: "center", width: "200px" }}>
-              Book Now
+              {strings.bookNow}
             </Button>
           </Link>
         </Flex>

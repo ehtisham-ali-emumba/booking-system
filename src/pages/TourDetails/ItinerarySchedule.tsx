@@ -1,100 +1,28 @@
 import styled, { css } from "styled-components";
 import { Typography, Card } from "antd";
-import { CloudOutlined, SunOutlined } from "@ant-design/icons";
-import { Divider } from "../Explore/elements";
 import { colors } from "../../constants";
 import { sizeMobile } from "../../utils";
+import { strings } from "../../constants/strings";
+import { itineraryData } from "./utils";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const ItinerarySchedule = () => {
-  const itineraryData = [
-    {
-      day: "Day 1",
-      temperature: "18°C",
-      weatherIcon: <SunOutlined />,
-      activities: [
-        "Tours with American Sign Language",
-        "Audio description group tours",
-        "Large-print gallery notes",
-        "Lunch Included.",
-      ],
-    },
-    {
-      day: "Day 2",
-      temperature: "14°C",
-      weatherIcon: <CloudOutlined />,
-      activities: [
-        "Tours with American Sign Language",
-        "Audio description group tours",
-        "Large-print gallery notes",
-        "Lunch Included.",
-      ],
-    },
-    {
-      day: "Day 3",
-      temperature: "17°C",
-      weatherIcon: <SunOutlined />,
-      activities: [
-        "Tours with American Sign Language",
-        "Audio description group tours",
-        "Large-print gallery notes",
-        "Lunch Included.",
-      ],
-    },
-    ,
-    {
-      day: "Day 4",
-      temperature: "17°C",
-      weatherIcon: <SunOutlined />,
-      activities: [
-        "Tours with American Sign Language",
-        "Audio description group tours",
-        "Large-print gallery notes",
-        "Lunch Included.",
-      ],
-    },
-    ,
-    {
-      day: "Day 6",
-      temperature: "17°C",
-      weatherIcon: <SunOutlined />,
-      activities: [
-        "Tours with American Sign Language",
-        "Audio description group tours",
-        "Large-print gallery notes",
-        "Lunch Included.",
-      ],
-    },
-    ,
-    {
-      day: "Day 7",
-      temperature: "17°C",
-      weatherIcon: <SunOutlined />,
-      activities: [
-        "Tours with American Sign Language",
-        "Audio description group tours",
-        "Large-print gallery notes",
-        "Lunch Included.",
-      ],
-    },
-  ];
-
   return (
     <Container>
-      <Title level={2}>Itinerary Schedule</Title>
+      <Title level={2}>{strings.itinerary}</Title>
       <ScrollContainer>
         {itineraryData.map((item, index) => (
           <StyledCard key={index}>
             <CardHeader>
-              <TextDay>{item.day}</TextDay>
+              <TextDay>{item!.day}</TextDay>
               <WeatherInfo>
-                {item.weatherIcon}
-                <TextWeather>{item.temperature}</TextWeather>
+                {item!.weatherIcon}
+                <TextWeather>{item!.temperature}</TextWeather>
               </WeatherInfo>
             </CardHeader>
             <ul>
-              {item.activities.map((activity, idx) => (
+              {item!.activities.map((activity, idx) => (
                 <li key={idx}>
                   <TextDetail>{activity}</TextDetail>
                 </li>

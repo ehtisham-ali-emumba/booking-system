@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { Typography, Divider } from "antd";
 import { sizeMobile } from "../../utils";
+import { strings } from "../../constants/strings";
 
 const { Text, Title } = Typography;
 
@@ -55,31 +56,28 @@ const StyledDivider = styled(Divider)`
 const WhatsIncluded = () => {
   return (
     <>
-      <Title>What's Included</Title>
+      <Title>{strings.whatsIncluded.title}</Title>
       <InfoContainer>
         <InfoRow>
-          <Label>Destination</Label>
-          <Value>Miami</Value>
+          <Label>{strings.whatsIncluded.destination}</Label>
+          <Value>{strings.whatsIncluded.destinationValue}</Value>
         </InfoRow>
 
         <StyledDivider />
 
         <InfoRow>
-          <Label>Departure Location</Label>
-          <Value>2000 Brush St, Detroit, MI 48226, United States</Value>
+          <Label>{strings.whatsIncluded.departure}</Label>
+          <Value>{strings.whatsIncluded.departureValue}</Value>
         </InfoRow>
 
         <InfoRow>
-          <Label>Return</Label>
-          <Value>7:00 PM on Day 3</Value>
+          <Label>{strings.whatsIncluded.return}</Label>
+          <Value>{strings.whatsIncluded.returnValue}</Value>
         </InfoRow>
 
         <InfoRow>
-          <Label>Return</Label>
-          <Value>
-            Basic first aid kit Basic first aid kit Basic first aid kit Basic
-            first aid kit
-          </Value>
+          <Label>{strings.whatsIncluded.return}</Label>
+          <Value>{strings.whatsIncluded.additionalInfo}</Value>
         </InfoRow>
 
         <StyledDivider />
