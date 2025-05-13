@@ -56,6 +56,19 @@ const WhatsIncluded = () => {
           <Value>2000 Brush St, Detroit, MI 48226, United States</Value>
         </InfoRow>
 
+        <InfoRow>
+          <Label>Return</Label>
+          <Value>7:00 PM on Day 3</Value>
+        </InfoRow>
+
+        <InfoRow>
+          <Label>Return</Label>
+          <Value>
+            Basic first aid kit Basic first aid kit Basic first aid kit Basic
+            first aid kit
+          </Value>
+        </InfoRow>
+
         <StyledDivider />
       </InfoContainer>
     </>

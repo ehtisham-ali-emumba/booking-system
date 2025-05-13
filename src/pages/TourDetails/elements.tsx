@@ -1,5 +1,6 @@
 import { Flex, Typography } from "antd";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { sizeMobile } from "../../utils";
 
 const { Title: TitleAntd, Text } = Typography;
 
@@ -65,6 +66,9 @@ export const Wrapper = styled.div`
 
 export const Padder = styled.div`
   padding: 20px;
+  ${sizeMobile(css`
+    padding: 0px;
+  `)}
 `;
 export const MuseumContainer = styled.div``;
 

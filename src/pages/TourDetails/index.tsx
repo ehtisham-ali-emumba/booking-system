@@ -27,6 +27,7 @@ import Loader from "../../components/Loader";
 import ErrorContainer from "../../components/ErrorContainer";
 import type { Tour } from "../../types";
 import { getPriceLabel } from "../../utils/priceUtils";
+import ItinerarySchedule from "./ItinerarySchedule";
 
 const HeaderTexts = ({ tour }: { tour: Tour }) => {
   return (
@@ -104,6 +105,7 @@ const TourDetails = () => {
         <Description />
         <Padder>
           <WhatsIncluded />
+          <ItinerarySchedule />
         </Padder>
         <Flex justify="center">
           <Link to={`/book/tour/${tourId}`}>
