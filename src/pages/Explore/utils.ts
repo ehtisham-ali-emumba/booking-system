@@ -1,9 +1,10 @@
 export const cityNames = [
+  "Miami",
+  "Seattle",
+  "Boston",
   "New York",
   "Los Angeles",
   "San Francisco",
-  "Seattle",
-  "Boston",
   "Washington D.C.",
   "Toronto",
   "Vancouver",

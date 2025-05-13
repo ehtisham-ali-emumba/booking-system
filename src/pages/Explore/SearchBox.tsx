@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Flex, Col } from "antd";
 import {
   EnvironmentOutlined,
@@ -31,6 +31,7 @@ const FlexBox = styled(Flex)`
     align-items: flex-start;
   `)}
 `;
+
 const SearchBox = () => {
   const [location, setLocation] = useState<string>("");
   const [dateRange, setDateRange] = useState<[string, string] | []>([]);
@@ -51,6 +52,11 @@ const SearchBox = () => {
     if (!dates) setDateRange([]);
     else setDateRange([dateStrings[0], dateStrings[1]]);
   };
+
+  // Use useMemo to compute whether the search button should be disabled
+  const isSearchDisabled = useMemo(() => {
+    return !location && dateRange.length === 0 && !priceRange;
+  }, [location, dateRange, priceRange]);
 
   return (
     <CardUI>
@@ -120,7 +126,7 @@ const SearchBox = () => {
 
         {/* Search Button */}
         <Col>
-          <SearchButton onClick={handleSearch}>
+          <SearchButton onClick={handleSearch} disabled={isSearchDisabled}>
             <SearchOutlined style={{ fontSize: 28, color: "#fff" }} />
           </SearchButton>
         </Col>
