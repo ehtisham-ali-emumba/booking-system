@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Row, Col } from "antd";
+import { Flex, Col } from "antd";
 import {
   EnvironmentOutlined,
   CalendarOutlined,
@@ -19,7 +19,18 @@ import {
 } from "./elements";
 import { generateParams, priceRanges } from "./utils";
 import { useNavigate } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { sizeMobile } from "../../utils";
 
+const FlexBox = styled(Flex)`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  ${sizeMobile(css`
+    flex-direction: column;
+    align-items: flex-start;
+  `)}
+`;
 const SearchBox = () => {
   const [location, setLocation] = useState<string>("");
   const [dateRange, setDateRange] = useState<[string, string] | []>([]);
@@ -43,7 +54,7 @@ const SearchBox = () => {
 
   return (
     <CardUI>
-      <Row align="middle" justify="space-between">
+      <FlexBox>
         {/* Location */}
         <Col flex="1">
           <ItemWrapper>
@@ -113,7 +124,7 @@ const SearchBox = () => {
             <SearchOutlined style={{ fontSize: 28, color: "#fff" }} />
           </SearchButton>
         </Col>
-      </Row>
+      </FlexBox>
     </CardUI>
   );
 };

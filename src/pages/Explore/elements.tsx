@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { images_png } from "../../assets";
 import { Card } from "antd";
 import { Button } from "../../components";
+import { sizeMobile } from "../../utils";
 
 export const SignInContainer = styled.div`
   max-width: 420px;
@@ -70,6 +71,9 @@ export const ImageBannerBackgroundWrapper = styled.div`
   justify-content: center;
   align-items: flex-end;
   background-repeat: no-repeat;
+  ${sizeMobile(css`
+    height: 450px;
+  `)}
 `;
 
 export const CardUI = styled(Card)`
@@ -77,6 +81,9 @@ export const CardUI = styled(Card)`
   padding: 0px 8px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   margin-bottom: -63px;
+  ${sizeMobile(css`
+    margin-bottom: -153px;
+  `)};
 `;
 
 export const IconCircle = styled.div`
@@ -107,6 +114,11 @@ export const Divider = styled.div`
   background-color: #e0e0e0;
   height: 60px;
   margin: 0 52px 0 16px;
+  ${sizeMobile(css`
+    height: 1px;
+    width: 270px;
+    margin: 20px 0px;
+  `)};
 `;
 
 export const SearchButton = styled((props) => (
@@ -115,4 +127,9 @@ export const SearchButton = styled((props) => (
   border-radius: 16px;
   padding: 20px 12px;
   height: 90px;
+
+  ${sizeMobile(css`
+    height: 50px;
+    margin-top: 20px;
+  `)};
 `;
