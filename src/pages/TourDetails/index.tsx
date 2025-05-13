@@ -12,15 +12,16 @@ import WhatsIncluded from "./WhatsIncluded";
 import { Link, useParams } from "react-router-dom";
 
 import {
-  MuseumContainer,
+  Container2,
   InfoRow,
-  MuseumTitle,
+  TourTitle,
   InfoIcon,
   PriceText,
   InfoText,
   Padder,
   Wrapper,
   DescriptionText,
+  InfoBox,
 } from "./elements";
 import { useTourQueryById } from "../../hooks/queries";
 import Loader from "../../components/Loader";
@@ -31,32 +32,29 @@ import ItinerarySchedule from "./ItinerarySchedule";
 
 const HeaderTexts = ({ tour }: { tour: Tour }) => {
   return (
-    <MuseumContainer>
-      <MuseumTitle>{tour.name}</MuseumTitle>
-
-      <Flex>
+    <Container2>
+      <TourTitle>{tour.name}</TourTitle>
+      <InfoBox>
         <InfoRow>
           <InfoIcon>
             <EnvironmentOutlined />
           </InfoIcon>
           <InfoText>{tour.city}</InfoText>
         </InfoRow>
-
         <InfoRow>
           <InfoIcon>
             <DollarOutlined />
           </InfoIcon>
           <PriceText>{getPriceLabel(tour.price)}</PriceText>
         </InfoRow>
-
         <InfoRow>
           <InfoIcon>
             <ClockCircleOutlined />
           </InfoIcon>
           <InfoText>{tour.duration} days</InfoText>
         </InfoRow>
-      </Flex>
-    </MuseumContainer>
+      </InfoBox>
+    </Container2>
   );
 };
 

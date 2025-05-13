@@ -2,7 +2,7 @@ import { Flex, Layout as Layout_ } from "antd";
 
 import { Header as Header_ } from "antd/es/layout/layout";
 import styled, { css } from "styled-components";
-import { sizeMobile } from "../utils";
+import { sizeLg, sizeMobile, sizeTablet } from "../utils";
 
 export const Wrapper = styled.div`
   min-height: 700px;
@@ -33,4 +33,10 @@ export const Header = styled(Header_)`
 
 export const Flex1 = styled(Flex)`
   flex: 1;
+  ${sizeLg(css`
+    margin-top: 20px;
+  `)}
+  ${sizeMobile(css`
+    flex-direction: column;
+  `)}
 `;

@@ -1,6 +1,6 @@
-import { Flex, Typography } from "antd";
+import { Col, Flex, Typography } from "antd";
 import styled, { css } from "styled-components";
-import { sizeMobile } from "../../utils";
+import { sizeMobile, sizeLg, sizeTablet } from "../../utils";
 
 const { Title: TitleAntd, Text } = Typography;
 
@@ -67,20 +67,22 @@ export const Wrapper = styled.div`
 export const Padder = styled.div`
   padding: 20px;
   ${sizeMobile(css`
-    padding: 0px;
+    padding: 8px;
   `)}
 `;
-export const MuseumContainer = styled.div``;
+export const Container2 = styled.div``;
 
-export const MuseumTitle = styled(TitleAntd)`
+export const TourTitle = styled(TitleAntd)`
   color: #1c223b;
   font-weight: 700;
   font-size: 42px;
   line-height: 1.2;
   margin-bottom: 24px !important;
 
-  @media (max-width: 768px) {
-    font-size: 32px;
+   ${sizeMobile(css`
+     font-size: 32px !important;
+     text-align: center;
+   `)}
   }
 `;
 
@@ -90,7 +92,11 @@ export const InfoRow = styled.div`
   margin-left: 32px;
   margin-bottom: 16px;
 `;
-
+export const InfoBox = styled(Flex)`
+  ${sizeMobile(css`
+    flex-direction: column;
+  `)}
+`;
 export const InfoIcon = styled.span`
   display: flex;
   align-items: center;
@@ -115,7 +121,7 @@ export const PriceText = styled(Text)`
 
 export const DescriptionText = styled.p`
   text-align: center;
-  margin: 0 20px;
+  margin: 16px 20px;
   font-size: 16px;
   line-height: 1.5;
 `;
@@ -124,20 +130,54 @@ export const WrapperImages = styled(Flex)`
   height: 420px;
   margin: 10px;
   padding: 20px;
+
+  ${sizeLg(css`
+    flex-direction: column;
+    height: auto;
+  `)}
+  ${sizeMobile(css`
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  `)}
 `;
 
+export const GroupImageCol = styled(Col)`
+  flex: 1;
+  ${sizeTablet(css`
+    margin-top: 30px;
+  `)}
+  ${sizeMobile(css`
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 0px;
+  `)}
+`;
 export const ImageUI = styled.img`
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
   border-radius: 24px;
+  margin-right: 12px;
+  ${sizeMobile(css`
+    margin-right: 0px;
+  `)}
+  ${sizeLg(css`
+    height: 400px !important;
+  `)}
 `;
 
 export const SmallImage = styled.img`
   flex: 1;
-  height: 175px;
+  height: 190px;
+  min-width: 300px !important;
   width: 100% !important;
-  padding: 0px 10px;
+  padding: 8px;
   object-fit: cover;
   border-radius: 24px;
+  ${sizeLg(css`
+    height: 320px !important;
+  `)}
 `;

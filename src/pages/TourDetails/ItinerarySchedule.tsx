@@ -125,7 +125,7 @@ const TextDetail = styled.span`
 const Container = styled.div`
   padding: 20px;
   ${sizeMobile(css`
-    padding: 8px;
+    padding: 0px;
   `)}
 `;
 

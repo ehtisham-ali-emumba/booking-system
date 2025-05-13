@@ -11,3 +11,9 @@ export const sizeTablet = (content: CSSProp) => css`
     ${content};
   }
 `;
+
+export const sizeLg = (content: CSSProp) => css`
+  @media (max-width: 1200px) {
+    ${content};
+  }
+`;

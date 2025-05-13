@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Typography, Divider } from "antd";
+import { sizeMobile } from "../../utils";
 
 const { Text, Title } = Typography;
 
 // Container for the entire information section
 const InfoContainer = styled.div`
-  padding: 20px;
+  padding: 16px;
   margin: 0 auto;
 `;
 
@@ -14,6 +15,9 @@ const InfoRow = styled.div`
   display: flex;
   align-items: baseline;
   margin: 20px 0;
+  ${sizeMobile(css`
+    flex-direction: column;
+  `)}
 `;
 
 // Label styling
@@ -23,7 +27,13 @@ const Label = styled(Text)`
   min-width: 350px;
   font-weight: 600;
   color: #262626;
-  flex: 0 0 200px;
+  max-width: 200px;
+  flex: 1;
+  ${sizeMobile(css`
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  `)}
 `;
 
 // Value styling
@@ -31,6 +41,9 @@ const Value = styled(Text)`
   font-size: 16px;
   color: #262626;
   flex: 1;
+  ${sizeMobile(css`
+    display: block;
+  `)}
 `;
 
 // Custom divider with specific styling
