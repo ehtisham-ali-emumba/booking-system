@@ -53,6 +53,12 @@ const TourCard: React.FC<TourCardProps> = ({
     e.stopPropagation();
     onUpdateBooking?.();
   };
+  const durationNumber = parseInt(duration || "0", 10);
+  const canDelete = durationNumber > 3;
+  const conditionalText = canDelete
+    ? "Are you sure you want to delete this booking?"
+    : `You can’t delete “${title}” because there are only 3 days remaining untill beginning of this tour. `;
+
   return (
     <StyledCard
       hoverable={false}
@@ -68,7 +74,8 @@ const TourCard: React.FC<TourCardProps> = ({
         <BookingActionsContainer>
           <DeleteConfirmationModal
             onConfirm={onDeleteBooking}
-            message="Are you sure you want to delete this booking?"
+            message={conditionalText}
+            hideConfirmButton={!canDelete}
           >
             {(onOpen) => (
               <Button
@@ -102,7 +109,7 @@ const TourCard: React.FC<TourCardProps> = ({
             {duration && (
               <MetaInfo>
                 <ClockCircleOutlined />
-                <MetaText>{duration}</MetaText>
+                <MetaText>{duration} days</MetaText>
               </MetaInfo>
             )}
           </MetaInfoContainer>

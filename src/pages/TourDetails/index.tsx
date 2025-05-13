@@ -52,7 +52,7 @@ const HeaderTexts = ({ tour }: { tour: Tour }) => {
           <InfoIcon>
             <ClockCircleOutlined />
           </InfoIcon>
-          <InfoText>{tour.duration}</InfoText>
+          <InfoText>{tour.duration} days</InfoText>
         </InfoRow>
       </Flex>
     </MuseumContainer>
