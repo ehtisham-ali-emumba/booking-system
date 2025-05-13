@@ -12,4 +12,5 @@ export const images_png = {
     "https://cdn.pixabay.com/photo/2015/05/29/07/47/stone-789012_1280.jpg",
   building:
     "https://cdn.pixabay.com/photo/2015/05/27/10/17/sevilla-tower-786180_1280.jpg",
+  city: "https://cdn.pixabay.com/photo/2019/10/27/18/48/skyline-4582510_1280.jpg",
 };

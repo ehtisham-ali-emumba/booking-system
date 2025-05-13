@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { sizeMobile } from "../../utils";
+import { sizeLg } from "../../utils";
 import { Container } from "../../styles";
 
 export const SignInContainer = styled.div`
@@ -75,7 +75,7 @@ const colors = {
 };
 
 export const HomeContainer = styled(Container)`
-  ${sizeMobile(css`
+  ${sizeLg(css`
     flex-direction: column;
   `)};
 `;
@@ -84,13 +84,13 @@ export const ImagesGrid = styled.div`
   display: flex;
   flex: 1;
   justify-content: flex-end;
-  ${sizeMobile(css`
+  ${sizeLg(css`
     justify-content: center;
   `)};
 `;
 
 export const SvgParent = styled.div`
-  ${sizeMobile(css`
+  ${sizeLg(css`
     display: none;
   `)};
 `;
@@ -98,7 +98,7 @@ export const ImageGallery = styled.div`
   display: flex;
   height: 520px;
   padding: 20px 0px 20px 50px;
-  ${sizeMobile(css`
+  ${sizeLg(css`
     padding: 0px 20px;
     flex-direction: column;
   `)};
@@ -109,7 +109,7 @@ export const GalleryWrapper = styled.div`
   top: 35%;
   left: 0;
   right: 0;
-  ${sizeMobile(css`
+  ${sizeLg(css`
     top: 0;
   `)};
 `;
@@ -118,6 +118,9 @@ export const FlexCol = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  ${sizeLg(css`
+    margin-top: 20px;
+  `)};
 `;
 export const ImageTileLg = styled.div<{ image: string }>`
   background-image: url(${(props) => props.image});
@@ -126,8 +129,12 @@ export const ImageTileLg = styled.div<{ image: string }>`
   margin: 10px;
   border-radius: 8px;
 
-  ${sizeMobile(css`
-    min-height: 350px;
+  ${sizeLg(css`
+    min-height: 400px;
+    background-repeat: no-repeat;
+    border-radius: 24px !important;
+    background-size: cover;
+    margin: 0px;
   `)};
 `;
 export const ImageTileSm = styled.div<{ image: string }>`
@@ -137,21 +144,22 @@ export const ImageTileSm = styled.div<{ image: string }>`
   margin: 10px;
   border-radius: 8px;
 
-  ${sizeMobile(css`
-    min-height: 200px;
+  ${sizeLg(css`
+    min-height: 300px;
+    border-radius: 24px !important;
   `)};
 `;
 export const HeroContent = styled.div`
   max-width: 600px;
   padding-top: 40px;
-
+  padding: 0 8px;
   @media (max-width: 992px) {
     max-width: 100%;
     text-align: center;
     margin-bottom: 40px;
   }
 
-  ${sizeMobile(css`
+  ${sizeLg(css`
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 0px;
@@ -169,7 +177,7 @@ export const HeroTitle = styled.h1`
     font-size: 40px;
   }
 
-  ${sizeMobile(css`
+  ${sizeLg(css`
     line-height: 1.6;
   `)};
 `;

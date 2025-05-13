@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { images_png } from "../../assets";
 import { Card } from "antd";
 import { Button } from "../../components";
-import { sizeMobile } from "../../utils";
+import { sizeLg, sizeMobile } from "../../utils";
 
 export const SignInContainer = styled.div`
   max-width: 420px;
@@ -65,13 +65,13 @@ export const Input = styled.input`
 export const ImageBannerBackgroundWrapper = styled.div`
   background: url(${images_png.exploreBanner});
   background-size: cover;
-  height: 600px;
+  height: 480px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   background-repeat: no-repeat;
-  ${sizeMobile(css`
+  ${sizeLg(css`
     height: 450px;
   `)}
 `;
@@ -81,8 +81,14 @@ export const CardUI = styled(Card)`
   padding: 0px 8px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   margin-bottom: -63px;
+  height: auto;
   ${sizeMobile(css`
     margin-bottom: -153px;
+    min-width: 280px !important;
+  `)};
+  ${sizeLg(css`
+    margin-bottom: -210px;
+    min-width: 400px;
   `)};
 `;
 
@@ -128,7 +134,7 @@ export const SearchButton = styled((props) => (
   padding: 20px 12px;
   height: 90px;
 
-  ${sizeMobile(css`
+  ${sizeLg(css`
     height: 50px;
     margin-top: 20px;
   `)};

@@ -4,7 +4,7 @@ import { Button } from "../../components";
 import { cityNames } from "./utils";
 import { colors } from "../../constants";
 import { Link } from "react-router-dom";
-import { sizeMobile } from "../../utils";
+import { sizeLg, sizeMobile } from "../../utils";
 
 const { Text, Title } = Typography;
 
@@ -39,6 +39,9 @@ const SearchBox = styled(Flex)`
   justify-content: center;
   ${sizeMobile(css`
     margin-top: 70px !important;
+  `)}
+  ${sizeLg(css`
+    margin-top: 110px !important;
   `)}
 `;
 

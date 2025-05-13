@@ -20,13 +20,13 @@ import {
 import { generateParams, priceRanges } from "./utils";
 import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { sizeMobile } from "../../utils";
+import { sizeLg } from "../../utils";
 
 const FlexBox = styled(Flex)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  ${sizeMobile(css`
+  ${sizeLg(css`
     flex-direction: column;
     align-items: flex-start;
   `)}

@@ -48,8 +48,8 @@ const Home = () => {
             <ImageGallery>
               <ImageTileLg image={images_png.homeMain1} />
               <FlexCol>
-                <ImageTileSm image={images_png.homeMain2} />
-                <ImageTileSm image={images_png.homeMain3} />
+                <ImageTileSm image={images_png.city} />
+                <ImageTileSm image={images_png.city} />
               </FlexCol>
             </ImageGallery>
           </GalleryWrapper>
