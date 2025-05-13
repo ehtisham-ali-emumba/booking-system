@@ -17,6 +17,7 @@ import {
 import { Button } from "../../components";
 import { Link } from "react-router-dom";
 import { ContentSection } from "../../styles";
+import { strings } from "../../constants/strings";
 
 const Home = () => {
   return (
@@ -25,17 +26,13 @@ const Home = () => {
         <ContentSection>
           <HeroContent>
             <HeroTitle>
-              <TitleUnderline>Explore</TitleUnderline> The New World
-              <br />
-              With Tourbay
+              <TitleUnderline>{strings.home.titleUnderline}</TitleUnderline>{" "}
+              {strings.home.title}
             </HeroTitle>
 
-            <HeroSubtitle>
-              No matter where in the world you want to go, we can help get you
-              there and make your tour a stupendous memory.
-            </HeroSubtitle>
+            <HeroSubtitle>{strings.home.subtitle}</HeroSubtitle>
             <Link to="/explore">
-              <Button>Explore News</Button>
+              <Button>{strings.home.exploreButton}</Button>
             </Link>
           </HeroContent>
         </ContentSection>

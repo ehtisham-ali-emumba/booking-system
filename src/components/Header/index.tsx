@@ -11,6 +11,8 @@ import { Button } from "../Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
+import { strings } from "../../constants/strings";
+import { TourLogoSvg } from "../../assets";
 
 type HeaderProps = {
   hideExplore?: boolean;
@@ -26,22 +28,18 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
   return (
     <StyledHeader>
       <Link to="/">
-        <Logo>
-          Tour<span>bay</span>
-        </Logo>
+        <TourLogoSvg style={{ marginTop: "30px" }} />
       </Link>
-
-      {/* Desktop Navigation */}
       <NavMenu>
         <Space size={36}>
           <Link to="/tours">
-            <Button variant="secondary">Add Tour</Button>
+            <Button variant="secondary">{strings.header.addTour}</Button>
           </Link>
           <Link to="/tours">
-            <Button variant="secondary">Book Tour</Button>
+            <Button variant="secondary">{strings.header.bookTour}</Button>
           </Link>
           <Link to="/my-tours">
-            <Button variant="secondary">My Tours</Button>
+            <Button variant="secondary">{strings.header.myTours}</Button>
           </Link>
         </Space>
       </NavMenu>
@@ -51,7 +49,9 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
         <div />
       ) : (
         <Link to="/explore">
-          <ExploreButton type="primary">Explore News</ExploreButton>
+          <ExploreButton type="primary">
+            {strings.header.exploreButton}
+          </ExploreButton>
         </Link>
       )}
 
@@ -63,29 +63,26 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       </HamburgerMenu>
 
       {/* Mobile Menu Modal */}
-
       <MobileMenu isOpen={isMobileMenuOpen}>
         <div className="menu-header">
-          <Logo>
-            Tour<span>bay</span>
-          </Logo>
+          <TourLogoSvg style={{ marginTop: "5px" }} />
           <Button variant="icon-transparent" onClick={toggleMobileMenu}>
             <CloseOutlined />
           </Button>
         </div>
         <div className="menu-links">
           <Link to="/tours" onClick={toggleMobileMenu}>
-            Add Tour
+            {strings.header.addTour}
           </Link>
           <Link to="/tours" onClick={toggleMobileMenu}>
-            Book Tour
+            {strings.header.bookTour}
           </Link>
           <Link to="/my-tours" onClick={toggleMobileMenu}>
-            My Tours
+            {strings.header.myTours}
           </Link>
           {!hideExplore && (
             <Link to="/explore" onClick={toggleMobileMenu}>
-              Explore News
+              {strings.header.exploreButton}
             </Link>
           )}
         </div>

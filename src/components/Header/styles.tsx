@@ -1,4 +1,4 @@
-import { Layout, Button } from "antd";
+import { Layout, Button, Image } from "antd";
 import styled from "styled-components";
 import { colors } from "../../constants";
 import { zIndex } from "../../utils";
@@ -15,14 +15,10 @@ export const StyledHeader = styled(Layout.Header)`
   z-index: ${zIndex.navBar};
 `;
 
-export const Logo = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-
-  span {
-    color: ${colors.accentOrange};
-  }
+export const Logo = styled(Image)`
+  height: 100px !important;
+  width: 100px !important;
+  object-fit: cover;
 `;
 
 export const NavMenu = styled.div`
