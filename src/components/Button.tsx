@@ -3,7 +3,12 @@ import styled, { css } from "styled-components";
 import { colors as appColors } from "../constants";
 
 // Define the button variants
-type ButtonVariant = "primary" | "outlined" | "secondary" | "icon";
+type ButtonVariant =
+  | "primary"
+  | "outlined"
+  | "secondary"
+  | "icon"
+  | "icon-transparent";
 
 // Define the props interface
 type StyledButtonProps = Omit<ButtonProps, "variant"> & {
@@ -112,6 +117,13 @@ const iconStyles = css`
   }
 `;
 
+const iconTransparentStyles = css`
+  ${iconStyles}
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+`;
+
 // Create the styled component
 export const Button = styled(AntdButton)<StyledButtonProps>`
   border-radius: 8px;
@@ -124,7 +136,9 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
 
   // Apply size styles
   ${({ size = "medium", variant }) =>
-    variant !== "icon" ? getSizeStyles(size) : null}
+    ["icon", "icon-transparent"].includes(variant!)
+      ? null
+      : getSizeStyles(size)}
 
   // Apply variant styles
   ${({ variant = "primary" }) => {
@@ -135,6 +149,8 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
         return outlinedStyles;
       case "icon":
         return iconStyles;
+      case "icon-transparent":
+        return iconTransparentStyles;
       case "primary":
       default:
         return primaryStyles;
