@@ -58,3 +58,16 @@ export const Input = styled.input`
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   }
 `;
+
+export const Box = styled.div({
+  marginTop: "150px",
+  width: "100%",
+  marginRight: "32px",
+  paddingBottom: "82px",
+});
+
+export const Heading = styled(Title)({
+  textAlign: "left",
+  marginBottom: "40px",
+  marginLeft: "12px",
+});

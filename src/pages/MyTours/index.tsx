@@ -1,4 +1,3 @@
-import { Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 import { TourCard, CardWrapper } from "../../components/Card";
 import { Container } from "../../styles";
@@ -11,12 +10,12 @@ import { bookingAtom } from "../../atoms/bookingAtom";
 import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components/BlankSlate";
+import { strings } from "../../constants/strings";
+import { Box, Heading } from "./elements";
 
 const Wrapper = styled(Container)`
   justify-content: flex-start;
 `;
-
-const { Title } = Typography;
 
 export default function MyTours() {
   const navigate = useNavigate();
@@ -35,23 +34,8 @@ export default function MyTours() {
 
   return (
     <Wrapper>
-      <div
-        style={{
-          marginTop: "150px",
-          width: "100%",
-          marginRight: "32px",
-          paddingBottom: "82px",
-        }}
-      >
-        <Title
-          style={{
-            textAlign: "left",
-            marginBottom: "40px",
-            marginLeft: "12px",
-          }}
-        >
-          My Tours
-        </Title>
+      <Box>
+        <Heading>{strings.header.myTours}</Heading>
         <CardWrapper>
           {filterMyTours?.map((tour) => {
             return (
@@ -71,7 +55,7 @@ export default function MyTours() {
           })}
           {filterMyTours.length === 0 && <BlankSlate />}
         </CardWrapper>
-      </div>
+      </Box>
     </Wrapper>
   );
 }
