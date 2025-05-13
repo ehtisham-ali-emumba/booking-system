@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { sizeLg } from "../../utils";
 import { Container } from "../../styles";
+import { images_png } from "../../assets";
 
 export const SignInContainer = styled.div`
   max-width: 420px;
@@ -168,7 +169,7 @@ export const HeroContent = styled.div`
 
 export const HeroTitle = styled.h1`
   font-size: 54px;
-  line-height: 1.2;
+  line-height: 1.4;
   font-weight: bold;
   color: ${colors.darkBlue};
   margin-bottom: 20px;
@@ -184,6 +185,20 @@ export const HeroTitle = styled.h1`
 
 export const TitleUnderline = styled.span`
   position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 21px;
+    background-image: url(${images_png.lineExploreText});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 `;
 
 export const HeroSubtitle = styled.p`
