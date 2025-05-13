@@ -1,5 +1,15 @@
+import { Image } from "antd";
 import styled from "styled-components";
 
+export const Box = styled.div`
+  margin-top: 100px;
+`;
+
+export const ImageUI = styled(Image)`
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover;
+`;
 export const FormWrapper = styled.div`
   margin: 0 auto;
   padding: 0px 20px;
