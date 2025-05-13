@@ -93,7 +93,7 @@ export const IconCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
+  margin-right: 4px;
   margin-top: 4px;
 `;
 
@@ -106,7 +106,7 @@ export const HeaderText = styled.div`
 export const ItemWrapper = styled.div`
   display: flex;
   align-items: flex-start;
-  min-width: 220px;
+  min-width: 280px;
 `;
 
 export const Divider = styled.div`

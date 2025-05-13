@@ -40,7 +40,7 @@ const SearchBox = () => {
 
   const handleSearch = () => {
     const params = generateParams({
-      location,
+      city: location,
       start_date: dateRange?.[0],
       end_date: dateRange?.[1],
       price: priceRange,

@@ -64,8 +64,7 @@ export const CustomRangePicker: React.FC<DateType> = ({
         suffixIcon={null}
         placeholder={["", ""]}
         components={{}}
-        disabledDate={(current) => current && current.toDate() < new Date()}
-        format="DD-MM-YY"
+        format="YYYY-MM-DD"
         style={{
           width: "0px",
           height: "0px",

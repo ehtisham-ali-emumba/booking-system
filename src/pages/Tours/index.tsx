@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CardWrapper, TourCard } from "../../components/Card";
 import { Container } from "../../styles";
 import styled from "styled-components";
@@ -11,22 +11,6 @@ import { bookingAtom } from "../../atoms/bookingAtom";
 import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components";
-
-export interface Tour {
-  id: string;
-  name: string;
-  city: string;
-  description: string;
-  price: string;
-  duration: string;
-  startDate: string;
-  endDate: string;
-  facilities: string[]; // e.g. "Guide", "Meals"
-  imageSrc: string;
-  images: string[];
-}
-
-export type ToursResponse = Tour[];
 
 const Wrapper = styled(Container)`
   justify-content: flex-start;
@@ -42,15 +26,62 @@ const { Title } = Typography;
 
 export default function Tours() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const city = queryParams.get("city");
+  const price = queryParams.get("price");
+  const start_date = queryParams.get("start_date");
+  const end_date = queryParams.get("end_date");
+
   const { data: tours, isLoading, error } = useTourQuery();
-  const [bookings] = useAtom(bookingAtom); // Access bookings from the atom
+  const [bookings] = useAtom(bookingAtom);
   const { deleteBooking } = useDeleteBooking();
 
-  // map lookup for bookings
   const bookingMap = useMemo(
     () => new Map(bookings.map((booking) => [booking.tourId, booking])),
     [bookings]
   );
+
+  // Parse price range
+  const [startPrice, endPrice] = useMemo(() => {
+    if (!price) return [null, null];
+    const [start, end] = price.split("-").map((p) => parseFloat(p));
+    return [start, end];
+  }, [price]);
+
+  // Filter tours based on city name, price range, and date range
+  const filteredTours = useMemo(() => {
+    let filtered = tours;
+
+    // Filter by city
+    if (city) {
+      filtered = filtered?.filter(
+        (tour) => tour.city.toLowerCase() === city.toLowerCase()
+      );
+    }
+
+    // Filter by price range
+    if (startPrice !== null && endPrice !== null) {
+      filtered = filtered?.filter((tour) => {
+        const tourPrice = parseFloat(tour.price);
+        return tourPrice >= startPrice && tourPrice <= endPrice;
+      });
+    }
+
+    // Filter by date range
+    if (start_date && end_date) {
+      const filterStartDate = new Date(start_date);
+      const filterEndDate = new Date(end_date);
+      filtered = filtered?.filter((tour) => {
+        const tourStartDate = new Date(tour.startDate);
+        const tourEndDate = new Date(tour.endDate);
+
+        return tourStartDate <= filterEndDate && tourEndDate >= filterStartDate;
+      });
+    }
+
+    return filtered;
+  }, [city, tours, startPrice, endPrice, start_date, end_date]);
 
   if (isLoading) return <Loader />;
   if (error) return <ErrorContainer message={`Error: ${error?.message}`} />;
@@ -59,10 +90,10 @@ export default function Tours() {
     <Wrapper>
       <Box>
         <Title style={{ textAlign: "center", marginBottom: "40px" }}>
-          Top Destinations
+          {`Top Destinations${city ? ` at "${city}"` : ""}`}
         </Title>
         <CardWrapper>
-          {tours?.map((tour) => {
+          {filteredTours?.map((tour) => {
             const hasBooking = bookingMap.has(tour.id);
             return (
               <TourCard
@@ -79,7 +110,7 @@ export default function Tours() {
               />
             );
           })}
-          {tours?.length === 0 && <BlankSlate />}
+          {filteredTours?.length === 0 && <BlankSlate />}
         </CardWrapper>
       </Box>
     </Wrapper>
