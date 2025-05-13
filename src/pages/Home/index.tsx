@@ -6,19 +6,22 @@ import {
   TitleUnderline,
   HeroSubtitle,
   ImagesGrid,
-  SvgDecorator,
   ImageGallery,
-  ImageTile,
   FlexCol,
+  HomeContainer,
+  GalleryWrapper,
+  SvgParent,
+  ImageTileLg,
+  ImageTileSm,
 } from "./elements";
 import { Button } from "../../components";
 import { Link } from "react-router-dom";
-import { Container, ContentSection } from "../../styles";
+import { ContentSection } from "../../styles";
 
 const Home = () => {
   return (
     <>
-      <Container>
+      <HomeContainer>
         <ContentSection>
           <HeroContent>
             <HeroTitle>
@@ -38,31 +41,21 @@ const Home = () => {
         </ContentSection>
 
         <ImagesGrid>
-          <SvgDecorator>
-            <div style={{ zIndex: 15 }}>
-              <MainDecoration />
-            </div>
-            <div
-              style={{
-                position: "absolute",
-                zIndex: 18,
-                top: "35%",
-                left: 0,
-                right: 0,
-              }}
-            >
-              <ImageGallery>
-                <ImageTile image={images_png.homeMain1} />
-                <FlexCol>
-                  <ImageTile image={images_png.homeMain2} />
-                  <ImageTile image={images_png.homeMain3} />
-                </FlexCol>
-              </ImageGallery>
-            </div>
-          </SvgDecorator>
+          <SvgParent>
+            <MainDecoration />
+          </SvgParent>
+          <GalleryWrapper>
+            <ImageGallery>
+              <ImageTileLg image={images_png.homeMain1} />
+              <FlexCol>
+                <ImageTileSm image={images_png.homeMain2} />
+                <ImageTileSm image={images_png.homeMain3} />
+              </FlexCol>
+            </ImageGallery>
+          </GalleryWrapper>
         </ImagesGrid>
-      </Container>
-      <div style={{ marginTop: "400px" }} />
+      </HomeContainer>
+      <div style={{ marginTop: "80px" }} />
     </>
   );
 };

@@ -1,4 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { sizeMobile } from "../../utils";
+import { Container } from "../../styles";
 
 export const SignInContainer = styled.div`
   max-width: 420px;
@@ -72,23 +74,44 @@ const colors = {
   textGray: "#4a4a4a",
 };
 
+export const HomeContainer = styled(Container)`
+  ${sizeMobile(css`
+    flex-direction: column;
+  `)};
+`;
 export const ImagesGrid = styled.div`
   position: relative;
   display: flex;
   flex: 1;
   justify-content: flex-end;
+  ${sizeMobile(css`
+    justify-content: center;
+  `)};
 `;
 
-export const SvgDecorator = styled.div`
-  position: absolute;
-  right: 0px;
-  z-index: 1;
+export const SvgParent = styled.div`
+  ${sizeMobile(css`
+    display: none;
+  `)};
 `;
-
 export const ImageGallery = styled.div`
   display: flex;
   height: 520px;
   padding: 20px 0px 20px 50px;
+  ${sizeMobile(css`
+    padding: 0px 20px;
+    flex-direction: column;
+  `)};
+`;
+export const GalleryWrapper = styled.div`
+  position: absolute;
+  z-index: 18;
+  top: 35%;
+  left: 0;
+  right: 0;
+  ${sizeMobile(css`
+    top: 0;
+  `)};
 `;
 
 export const FlexCol = styled.div`
@@ -96,14 +119,28 @@ export const FlexCol = styled.div`
   flex: 1;
   flex-direction: column;
 `;
-export const ImageTile = styled.div<{ image: string }>`
+export const ImageTileLg = styled.div<{ image: string }>`
   background-image: url(${(props) => props.image});
   background-size: cover;
   flex: 1;
   margin: 10px;
   border-radius: 8px;
-`;
 
+  ${sizeMobile(css`
+    min-height: 350px;
+  `)};
+`;
+export const ImageTileSm = styled.div<{ image: string }>`
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  flex: 1;
+  margin: 10px;
+  border-radius: 8px;
+
+  ${sizeMobile(css`
+    min-height: 200px;
+  `)};
+`;
 export const HeroContent = styled.div`
   max-width: 600px;
   padding-top: 40px;
@@ -113,6 +150,12 @@ export const HeroContent = styled.div`
     text-align: center;
     margin-bottom: 40px;
   }
+
+  ${sizeMobile(css`
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 0px;
+  `)};
 `;
 
 export const HeroTitle = styled.h1`
@@ -125,6 +168,10 @@ export const HeroTitle = styled.h1`
   @media (max-width: 768px) {
     font-size: 40px;
   }
+
+  ${sizeMobile(css`
+    line-height: 1.6;
+  `)};
 `;
 
 export const TitleUnderline = styled.span`
