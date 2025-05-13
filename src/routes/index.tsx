@@ -3,7 +3,6 @@ import Home from "../pages/Home";
 import Explore from "../pages/Explore";
 import TourDetails from "../pages/TourDetails";
 import { MainLayout } from "../layout/MainLayout";
-import { PrivateRoute } from "./PrivateRoute";
 import Tours from "../pages/Tours";
 import BookTour from "../pages/BookTour";
 import MyTours from "../pages/MyTours";
@@ -21,51 +20,41 @@ const routes: RouteObject[] = [
   {
     path: "/explore",
     element: (
-      <PrivateRoute>
-        <MainLayout hideExplore>
-          <Explore />
-        </MainLayout>
-      </PrivateRoute>
+      <MainLayout hideExplore>
+        <Explore />
+      </MainLayout>
     ),
   },
   {
     path: "/tours",
     element: (
-      <PrivateRoute>
-        <MainLayout>
-          <Tours />
-        </MainLayout>
-      </PrivateRoute>
+      <MainLayout>
+        <Tours />
+      </MainLayout>
     ),
   },
   {
     path: "/my-tours",
     element: (
-      <PrivateRoute>
-        <MainLayout>
-          <MyTours />
-        </MainLayout>
-      </PrivateRoute>
+      <MainLayout>
+        <MyTours />
+      </MainLayout>
     ),
   },
   {
     path: "/tour/:tourId",
     element: (
-      <PrivateRoute>
-        <MainLayout hideExplore>
-          <TourDetails />
-        </MainLayout>
-      </PrivateRoute>
+      <MainLayout hideExplore>
+        <TourDetails />
+      </MainLayout>
     ),
   },
   {
     path: "/book/tour/:tourId",
     element: (
-      <PrivateRoute>
-        <MainLayout hideExplore>
-          <BookTour />
-        </MainLayout>
-      </PrivateRoute>
+      <MainLayout hideExplore>
+        <BookTour />
+      </MainLayout>
     ),
   },
 ];
