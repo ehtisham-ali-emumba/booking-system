@@ -11,13 +11,7 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Container = styled(Wrapper)`
-  padding: 0 0 0 40px;
-
-  ${sizeMobile(css`
-    padding: 0;
-  `)}
-`;
+export const Container = styled(Wrapper)``;
 
 export const ContentSection = styled.div`
   flex: 1;

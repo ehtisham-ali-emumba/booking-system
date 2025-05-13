@@ -1,6 +1,6 @@
 import { Typography } from "antd";
 import { useNavigate } from "react-router-dom";
-import { TourCard, CardWrapper } from "../../components/Card";
+import { CardWrapper, TourCard } from "../../components/Card";
 import { Container } from "../../styles";
 import styled from "styled-components";
 import { useTourQuery } from "../../hooks/queries";
@@ -14,6 +14,12 @@ import { BlankSlate } from "../../components";
 
 const Wrapper = styled(Container)`
   justify-content: flex-start;
+  margin-bottom: 80px;
+`;
+
+const Box = styled.div`
+  margin-top: 110px;
+  width: 100%;
 `;
 
 const { Title } = Typography;
@@ -35,20 +41,13 @@ export default function Tours() {
 
   return (
     <Wrapper>
-      <div
-        style={{
-          marginTop: "150px",
-          width: "100%",
-          marginRight: "32px",
-          paddingBottom: "82px",
-        }}
-      >
+      <Box>
         <Title style={{ textAlign: "center", marginBottom: "40px" }}>
           Top Destinations
         </Title>
         <CardWrapper>
           {tours?.map((tour) => {
-            const hasBooking = bookingMap.has(tour.id); // O(1) lookup
+            const hasBooking = bookingMap.has(tour.id);
             return (
               <TourCard
                 key={tour.id}
@@ -58,15 +57,15 @@ export default function Tours() {
                 price={tour.price}
                 duration={tour.duration}
                 hasBooking={hasBooking}
-                onUpdateBooking={() => navigate(`/book/tour/${tour.id}`)} // Navigate to view booking
-                onDeleteBooking={() => deleteBooking(tour.id)} // Use deleteBooking hook
+                onUpdateBooking={() => navigate(`/book/tour/${tour.id}`)}
+                onDeleteBooking={() => deleteBooking(tour.id)}
                 onClick={() => navigate(`/tour/${tour.id}`)}
               />
             );
           })}
           {tours?.length === 0 && <BlankSlate />}
         </CardWrapper>
-      </div>
+      </Box>
     </Wrapper>
   );
 }
