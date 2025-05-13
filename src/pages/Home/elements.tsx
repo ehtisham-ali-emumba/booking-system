@@ -184,17 +184,6 @@ export const HeroTitle = styled.h1`
 
 export const TitleUnderline = styled.span`
   position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 10%;
-    bottom: -10px;
-    height: 8px;
-    background: linear-gradient(to right, ${colors.accentOrange}, #ffd39e);
-    border-radius: 4px;
-  }
 `;
 
 export const HeroSubtitle = styled.p`
