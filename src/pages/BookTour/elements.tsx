@@ -1,10 +1,17 @@
-import { Image } from "antd";
-import styled from "styled-components";
+import { Flex, Image } from "antd";
+import styled, { css } from "styled-components";
+import { sizeTablet } from "../../utils";
 
 export const Box = styled.div`
   margin-top: 100px;
 `;
 
+export const ImageWrapper = styled(Flex)`
+  flex: 1;
+  ${sizeTablet(css`
+    display: none;
+  `)}
+`;
 export const ImageUI = styled(Image)`
   height: 100% !important;
   width: 100% !important;

@@ -2,7 +2,7 @@ import { Flex1, Layout } from "../../styles";
 import { Spacer } from "../../components/Spacer";
 import { images_png } from "../../assets";
 import BookForm from "./BookForm";
-import { Box, ImageUI } from "./elements";
+import { Box, ImageUI, ImageWrapper } from "./elements";
 
 const BookTour = () => {
   return (
@@ -13,9 +13,9 @@ const BookTour = () => {
           <Flex1>
             <BookForm />
           </Flex1>
-          <Flex1>
+          <ImageWrapper>
             <ImageUI src={images_png.building} preview={false} />
-          </Flex1>
+          </ImageWrapper>
         </Flex1>
       </Box>
       <Spacer marginTop="80px" />
