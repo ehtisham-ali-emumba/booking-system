@@ -12,6 +12,22 @@ import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components";
 
+export interface Tour {
+  id: string;
+  name: string;
+  city: string;
+  description: string;
+  price: string;
+  duration: string;
+  startDate: string;
+  endDate: string;
+  facilities: string[]; // e.g. "Guide", "Meals"
+  imageSrc: string;
+  images: string[];
+}
+
+export type ToursResponse = Tour[];
+
 const Wrapper = styled(Container)`
   justify-content: flex-start;
   margin-bottom: 80px;

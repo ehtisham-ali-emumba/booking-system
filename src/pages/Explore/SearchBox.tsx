@@ -53,7 +53,6 @@ const SearchBox = () => {
     else setDateRange([dateStrings[0], dateStrings[1]]);
   };
 
-  // Use useMemo to compute whether the search button should be disabled
   const isSearchDisabled = useMemo(() => {
     return !location && dateRange.length === 0 && !priceRange;
   }, [location, dateRange, priceRange]);
