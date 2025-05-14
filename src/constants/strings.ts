@@ -1,3 +1,4 @@
+// rename
 export const strings = {
   home: {
     titleUnderline: "Explore",

@@ -21,16 +21,33 @@ import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
+type BookFormDataType = {
+  name: string;
+  email: string;
+  phone: string;
+  adults: number;
+  children: number;
+  paymentMethod: string;
+  countryCode: string;
+};
 const BookForm = () => {
   const { tourId } = useParams<{ tourId: string }>();
   const navigate = useNavigate();
   const [bookings, setBookings] = useAtom(bookingAtom);
 
   const formMethods = useForm({
-    defaultValues: {},
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      adults: 0,
+      children: 0,
+      paymentMethod: "",
+      countryCode: "+1",
+    },
     resolver: yupResolver(bookFormValidationSchema),
   });
-  const { control, handleSubmit, reset, getValues } = formMethods;
+  const { control, handleSubmit, reset } = formMethods;
 
   // Prefill form if a booking with tourId exists
   useEffect(() => {
@@ -41,7 +58,7 @@ const BookForm = () => {
     }
   }, [tourId, bookings, reset]);
 
-  const onSubmit = (bookFormData: Booking) => {
+  const onSubmit = (bookFormData: BookFormDataType) => {
     const filterBookings = removeBookingByTourId(bookings, tourId!);
     setBookings([
       ...filterBookings,
@@ -59,7 +76,7 @@ const BookForm = () => {
         </Title>
 
         <form>
-          <FormInput
+          <FormInput<BookFormDataType>
             name="name"
             control={control}
             inputProps={{

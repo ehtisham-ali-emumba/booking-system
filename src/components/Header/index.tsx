@@ -1,7 +1,6 @@
 import { Space } from "antd";
 import {
   StyledHeader,
-  Logo,
   NavMenu,
   ExploreButton,
   HamburgerMenu,

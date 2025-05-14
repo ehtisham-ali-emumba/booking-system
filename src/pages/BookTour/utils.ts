@@ -24,7 +24,7 @@ export const bookFormValidationSchema = Yup.object().shape({
     .typeError("Number of children must be a valid number")
     .min(0, "Cannot be negative"),
   paymentMethod: Yup.string().required("Payment method is required"),
-  countryCode: Yup.string(),
+  countryCode: Yup.string().required("Country code is required"),
 });
 
 export const isBookingExists = (bookings: Booking[], tourId: string) => {

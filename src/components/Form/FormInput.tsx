@@ -1,5 +1,9 @@
-import React from "react";
-import { Controller } from "react-hook-form";
+import {
+  Controller,
+  type FieldValues,
+  type Path,
+  type UseFormReturn,
+} from "react-hook-form";
 import { Input, type InputType } from "../Input";
 import styled from "styled-components";
 import { FieldLabel } from "./elements";
@@ -10,19 +14,19 @@ const ErrorText = styled.div`
   margin-top: 4px;
 `;
 
-type FormInputProps = {
-  name: string;
-  control: any;
+interface FormInputProps<T extends FieldValues> {
+  name: Path<T>;
+  control: UseFormReturn<T>["control"];
   inputProps?: InputType["inputProps"];
   label?: string;
-};
+}
 
-export const FormInput: React.FC<FormInputProps> = ({
+export const FormInput = <T extends FieldValues>({
   name,
   control,
   inputProps,
   label = name,
-}) => {
+}: FormInputProps<T>) => {
   return (
     <div>
       <Controller

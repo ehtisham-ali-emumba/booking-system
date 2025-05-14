@@ -25,7 +25,10 @@ export const CustomRangePicker: React.FC<DateType> = ({
     setIsPickerOpen((prev) => !prev);
   };
 
-  const onChangeHandler = (dates: any, dateStrings: [string, string]) => {
+  const onChangeHandler: RangePickerProps["onChange"] = (
+    dates,
+    dateStrings
+  ) => {
     if (!dates) {
       setIsPickerOpen(false);
       setDateText("");
