@@ -26,7 +26,9 @@ const ButtonContainer = styled.div`
   margin-top: 16px;
 `;
 
-const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
+export const DeleteConfirmationModal: React.FC<
+  DeleteConfirmationModalProps
+> = ({
   children,
   onCancel = () => {},
   onConfirm = () => {},
@@ -79,5 +81,3 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
     </>
   );
 };
-
-export default DeleteConfirmationModal;

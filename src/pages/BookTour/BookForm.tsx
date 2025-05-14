@@ -18,6 +18,7 @@ import { bookingAtom } from "../../atoms/bookingAtom";
 import { useEffect } from "react";
 import { notifee } from "../../services";
 import { useNavigate } from "react-router-dom";
+import { uiStrings } from "../../constants";
 
 const { Title } = Typography;
 
@@ -30,7 +31,7 @@ type BookFormDataType = {
   paymentMethod: string;
   countryCode: string;
 };
-const BookForm = () => {
+export const BookForm = () => {
   const { tourId } = useParams<{ tourId: string }>();
   const navigate = useNavigate();
   const [bookings, setBookings] = useAtom(bookingAtom);
@@ -72,7 +73,7 @@ const BookForm = () => {
     <FormProvider {...formMethods}>
       <FormWrapper>
         <Title level={2} style={{ color: "#1e1e3f" }}>
-          Confirm Your Booking
+          {uiStrings.confirmYourBooking}
         </Title>
 
         <form>
@@ -80,7 +81,7 @@ const BookForm = () => {
             name="name"
             control={control}
             inputProps={{
-              placeholder: "Enter your name",
+              placeholder: uiStrings.enterYourName,
             }}
           />
 
@@ -88,17 +89,21 @@ const BookForm = () => {
             name="email"
             control={control}
             inputProps={{
-              placeholder: "Enter your email",
+              placeholder: uiStrings.enterYourEmail,
             }}
           />
 
-          <FormPhoneInput name="phone" control={control} label="Phone Number" />
+          <FormPhoneInput
+            name="phone"
+            control={control}
+            label={uiStrings.enterYourPhone}
+          />
 
           <Row gutter={16}>
             <Col span={12}>
               <FormInput
                 name="adults"
-                label="No. of Adults"
+                label={uiStrings.numberOfAdults}
                 control={control}
                 inputProps={{
                   placeholder: "0",
@@ -109,7 +114,7 @@ const BookForm = () => {
             <Col span={12}>
               <FormInput
                 name="children"
-                label="No. of Children"
+                label={uiStrings.numberOfChildren}
                 control={control}
                 inputProps={{
                   placeholder: "0",
@@ -121,28 +126,26 @@ const BookForm = () => {
 
           <FormSelect
             name="paymentMethod"
-            label="Payment Method"
+            label={uiStrings.paymentMethod}
             control={control}
             selectProps={{
               style: { width: "100%" },
-              placeholder: "Select",
+              placeholder: uiStrings.selectPaymentMethod,
               size: "large",
               options: [
-                { value: "credit_card", label: "Credit Card" },
-                { value: "paypal", label: "PayPal" },
-                { value: "bank_transfer", label: "Bank Transfer" },
+                { value: "credit_card", label: uiStrings.creditCard },
+                { value: "paypal", label: uiStrings.paypal },
+                { value: "bank_transfer", label: uiStrings.bankTransfer },
               ],
             }}
           />
 
           <Spacer marginTop="30px" />
           <Button fullWidth onClick={handleSubmit(onSubmit)}>
-            Confirm
+            {uiStrings.confirm}
           </Button>
         </form>
       </FormWrapper>
     </FormProvider>
   );
 };
-
-export default BookForm;

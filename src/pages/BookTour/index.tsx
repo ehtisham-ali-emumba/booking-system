@@ -1,10 +1,10 @@
 import { Flex1, Layout } from "../../styles";
 import { Spacer } from "../../components/Spacer";
 import { images_png } from "../../assets";
-import BookForm from "./BookForm";
+import { BookForm } from "./BookForm";
 import { Box, ImageUI, ImageWrapper } from "./elements";
 
-const BookTour = () => {
+export const BookTour = () => {
   return (
     <Layout style={{ backgroundColor: "transparent" }}>
       <Box>
@@ -22,5 +22,3 @@ const BookTour = () => {
     </Layout>
   );
 };
-
-export default BookTour;

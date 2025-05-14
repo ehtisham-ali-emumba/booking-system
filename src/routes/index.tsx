@@ -1,13 +1,12 @@
 import { type RouteObject } from "react-router-dom";
-import Home from "../pages/Home";
-import Explore from "../pages/Explore";
-import TourDetails from "../pages/TourDetails";
+import { Home } from "../pages/Home";
+import { Explore } from "../pages/Explore";
+import { TourDetails } from "../pages/TourDetails";
 import { MainLayout } from "../layout/MainLayout";
-import Tours from "../pages/Tours";
-import BookTour from "../pages/BookTour";
-import MyTours from "../pages/MyTours";
+import { Tours } from "../pages/Tours";
+import { BookTour } from "../pages/BookTour";
+import { MyTours } from "../pages/MyTours";
 
-// Define your routes as an array of route objects
 const routes: RouteObject[] = [
   {
     path: "/",

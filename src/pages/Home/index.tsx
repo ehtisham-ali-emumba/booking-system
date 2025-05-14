@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import { ContentSection } from "../../styles";
 import { uiStrings } from "../../constants/uiStrings";
 
-const Home = () => {
+export const Home = () => {
   return (
     <>
       <HomeContainer>
@@ -56,5 +56,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;

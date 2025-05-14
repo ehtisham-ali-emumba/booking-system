@@ -2,7 +2,7 @@ import { ImageBannerBackgroundWrapper } from "./elements";
 import SearchBox from "./SearchBox";
 import { PopularSearch } from "./PopularSearch";
 
-const Explore = () => {
+export const Explore = () => {
   return (
     <>
       <ImageBannerBackgroundWrapper>
@@ -12,5 +12,3 @@ const Explore = () => {
     </>
   );
 };
-
-export default Explore;

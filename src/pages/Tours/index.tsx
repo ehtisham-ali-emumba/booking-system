@@ -25,7 +25,7 @@ const Box = styled.div`
 
 const { Title } = Typography;
 
-export default function Tours() {
+export const Tours = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -116,4 +116,4 @@ export default function Tours() {
       </Box>
     </Wrapper>
   );
-}
+};

@@ -7,7 +7,7 @@ import {
 import styled from "styled-components";
 import { Button } from "../Button";
 import { getPriceLabel } from "../../utils/priceUtils";
-import DeleteConfirmationModal from "../ConfirmationModal";
+import { DeleteConfirmationModal } from "../ConfirmationModal";
 import {
   StyledCard,
   CardTitle,

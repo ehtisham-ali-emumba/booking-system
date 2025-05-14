@@ -52,7 +52,9 @@ const HeaderTexts = ({ tour }: { tour: Tour }) => {
           <InfoIcon>
             <ClockCircleOutlined />
           </InfoIcon>
-          <InfoText>{tour.duration} days</InfoText>
+          <InfoText>
+            {tour.duration} {uiStrings.days}
+          </InfoText>
         </InfoRow>
       </InfoBox>
     </Container2>
@@ -69,7 +71,7 @@ const Description = () => {
   );
 };
 
-const TourDetails = () => {
+export const TourDetails = () => {
   const { tourId } = useParams<{ tourId: string }>();
   const { data: tour, isLoading, error } = useTourQueryById(tourId!);
 
@@ -103,5 +105,3 @@ const TourDetails = () => {
     </Layout>
   );
 };
-
-export default TourDetails;

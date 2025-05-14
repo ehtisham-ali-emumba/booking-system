@@ -17,7 +17,7 @@ const Wrapper = styled(Container)`
   justify-content: flex-start;
 `;
 
-export default function MyTours() {
+export const MyTours = () => {
   const navigate = useNavigate();
   const { data: tours, isLoading, error } = useTourQuery();
   const [bookings] = useAtom(bookingAtom); // Access bookings from the atom
@@ -58,4 +58,4 @@ export default function MyTours() {
       </Box>
     </Wrapper>
   );
-}
+};
