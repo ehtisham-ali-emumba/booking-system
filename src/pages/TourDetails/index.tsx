@@ -29,7 +29,7 @@ import ErrorContainer from "../../components/ErrorContainer";
 import type { Tour } from "../../types";
 import { getPriceLabel } from "../../utils/priceUtils";
 import ItinerarySchedule from "./ItinerarySchedule";
-import { strings } from "../../constants/strings";
+import { uiStrings } from "../../constants/uiStrings";
 
 const HeaderTexts = ({ tour }: { tour: Tour }) => {
   return (
@@ -62,9 +62,9 @@ const HeaderTexts = ({ tour }: { tour: Tour }) => {
 const Description = () => {
   return (
     <>
-      <DescriptionText>{strings.tourDesc}</DescriptionText>
-      <DescriptionText>{strings.tourDesc}</DescriptionText>
-      <DescriptionText>{strings.tourDesc}</DescriptionText>
+      <DescriptionText>{uiStrings.tourDesc}</DescriptionText>
+      <DescriptionText>{uiStrings.tourDesc}</DescriptionText>
+      <DescriptionText>{uiStrings.tourDesc}</DescriptionText>
     </>
   );
 };
@@ -94,7 +94,7 @@ const TourDetails = () => {
         <Flex justify="center">
           <Link to={`/book/tour/${tourId}`}>
             <Button style={{ alignSelf: "center", width: "200px" }}>
-              {strings.bookNow}
+              {uiStrings.bookNow}
             </Button>
           </Link>
         </Flex>

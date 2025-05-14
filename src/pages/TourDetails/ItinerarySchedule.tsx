@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { Typography, Card } from "antd";
 import { colors } from "../../constants";
 import { sizeMobile } from "../../utils";
-import { strings } from "../../constants/strings";
+import { uiStrings } from "../../constants/uiStrings";
 import { itineraryData } from "./utils";
 
 const { Title } = Typography;
@@ -10,7 +10,7 @@ const { Title } = Typography;
 const ItinerarySchedule = () => {
   return (
     <Container>
-      <Title level={2}>{strings.itinerary}</Title>
+      <Title level={2}>{uiStrings.itinerary}</Title>
       <ScrollContainer>
         {itineraryData.map((item, index) => (
           <StyledCard key={index}>

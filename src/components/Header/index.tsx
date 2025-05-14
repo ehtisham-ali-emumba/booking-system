@@ -10,7 +10,7 @@ import { Button } from "../Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { strings } from "../../constants/strings";
+import { uiStrings } from "../../constants/uiStrings";
 import { TourLogoSvg } from "../../assets";
 
 type HeaderProps = {
@@ -32,13 +32,13 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       <NavMenu>
         <Space size={36}>
           <Link to="/tours">
-            <Button variant="secondary">{strings.header.addTour}</Button>
+            <Button variant="secondary">{uiStrings.header.addTour}</Button>
           </Link>
           <Link to="/tours">
-            <Button variant="secondary">{strings.header.bookTour}</Button>
+            <Button variant="secondary">{uiStrings.header.bookTour}</Button>
           </Link>
           <Link to="/my-tours">
-            <Button variant="secondary">{strings.header.myTours}</Button>
+            <Button variant="secondary">{uiStrings.header.myTours}</Button>
           </Link>
         </Space>
       </NavMenu>
@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       ) : (
         <Link to="/explore">
           <ExploreButton type="primary">
-            {strings.header.exploreButton}
+            {uiStrings.header.exploreButton}
           </ExploreButton>
         </Link>
       )}
@@ -71,17 +71,17 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
         </div>
         <div className="menu-links">
           <Link to="/tours" onClick={toggleMobileMenu}>
-            {strings.header.addTour}
+            {uiStrings.header.addTour}
           </Link>
           <Link to="/tours" onClick={toggleMobileMenu}>
-            {strings.header.bookTour}
+            {uiStrings.header.bookTour}
           </Link>
           <Link to="/my-tours" onClick={toggleMobileMenu}>
-            {strings.header.myTours}
+            {uiStrings.header.myTours}
           </Link>
           {!hideExplore && (
             <Link to="/explore" onClick={toggleMobileMenu}>
-              {strings.header.exploreButton}
+              {uiStrings.header.exploreButton}
             </Link>
           )}
         </div>

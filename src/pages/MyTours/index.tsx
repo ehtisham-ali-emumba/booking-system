@@ -10,7 +10,7 @@ import { bookingAtom } from "../../atoms/bookingAtom";
 import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components/BlankSlate";
-import { strings } from "../../constants/strings";
+import { uiStrings } from "../../constants/uiStrings";
 import { Box, Heading } from "./elements";
 
 const Wrapper = styled(Container)`
@@ -35,7 +35,7 @@ export default function MyTours() {
   return (
     <Wrapper>
       <Box>
-        <Heading>{strings.header.myTours}</Heading>
+        <Heading>{uiStrings.header.myTours}</Heading>
         <CardWrapper>
           {filterMyTours?.map((tour) => {
             return (

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Typography, Divider } from "antd";
 import { sizeMobile } from "../../utils";
-import { strings } from "../../constants/strings";
+import { uiStrings } from "../../constants/uiStrings";
 
 const { Text, Title } = Typography;
 
@@ -56,28 +56,28 @@ const StyledDivider = styled(Divider)`
 const WhatsIncluded = () => {
   return (
     <>
-      <Title>{strings.whatsIncluded.title}</Title>
+      <Title>{uiStrings.whatsIncluded.title}</Title>
       <InfoContainer>
         <InfoRow>
-          <Label>{strings.whatsIncluded.destination}</Label>
-          <Value>{strings.whatsIncluded.destinationValue}</Value>
+          <Label>{uiStrings.whatsIncluded.destination}</Label>
+          <Value>{uiStrings.whatsIncluded.destinationValue}</Value>
         </InfoRow>
 
         <StyledDivider />
 
         <InfoRow>
-          <Label>{strings.whatsIncluded.departure}</Label>
-          <Value>{strings.whatsIncluded.departureValue}</Value>
+          <Label>{uiStrings.whatsIncluded.departure}</Label>
+          <Value>{uiStrings.whatsIncluded.departureValue}</Value>
         </InfoRow>
 
         <InfoRow>
-          <Label>{strings.whatsIncluded.return}</Label>
-          <Value>{strings.whatsIncluded.returnValue}</Value>
+          <Label>{uiStrings.whatsIncluded.return}</Label>
+          <Value>{uiStrings.whatsIncluded.returnValue}</Value>
         </InfoRow>
 
         <InfoRow>
-          <Label>{strings.whatsIncluded.return}</Label>
-          <Value>{strings.whatsIncluded.additionalInfo}</Value>
+          <Label>{uiStrings.whatsIncluded.return}</Label>
+          <Value>{uiStrings.whatsIncluded.additionalInfo}</Value>
         </InfoRow>
 
         <StyledDivider />

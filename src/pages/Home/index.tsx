@@ -17,7 +17,7 @@ import {
 import { Button } from "../../components";
 import { Link } from "react-router-dom";
 import { ContentSection } from "../../styles";
-import { strings } from "../../constants/strings";
+import { uiStrings } from "../../constants/uiStrings";
 
 const Home = () => {
   return (
@@ -26,13 +26,13 @@ const Home = () => {
         <ContentSection>
           <HeroContent>
             <HeroTitle>
-              <TitleUnderline>{strings.home.titleUnderline}</TitleUnderline>{" "}
-              {strings.home.title}
+              <TitleUnderline>{uiStrings.home.titleUnderline}</TitleUnderline>{" "}
+              {uiStrings.home.title}
             </HeroTitle>
 
-            <HeroSubtitle>{strings.home.subtitle}</HeroSubtitle>
+            <HeroSubtitle>{uiStrings.home.subtitle}</HeroSubtitle>
             <Link to="/explore">
-              <Button>{strings.home.exploreButton}</Button>
+              <Button>{uiStrings.home.exploreButton}</Button>
             </Link>
           </HeroContent>
         </ContentSection>

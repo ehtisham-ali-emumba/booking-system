@@ -1,3 +1,5 @@
+import { uiStrings } from "../constants";
+
 const priceRanges = [
   { min: 50, max: 200, label: "$50 - $200" },
   { min: 200, max: 400, label: "$200 - $400" },
@@ -12,5 +14,5 @@ export const getPriceLabel = (price: number | string): string => {
     const priceValue = typeof price === "string" ? parseFloat(price) : price;
     return priceValue >= min && priceValue <= max;
   });
-  return range ? range.label : "Price not available";
+  return range ? range.label : uiStrings.priceNotAvailable;
 };

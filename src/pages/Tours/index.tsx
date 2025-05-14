@@ -11,6 +11,7 @@ import { bookingAtom } from "../../atoms/bookingAtom";
 import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components";
+import { uiStrings } from "../../constants";
 
 const Wrapper = styled(Container)`
   justify-content: flex-start;
@@ -90,7 +91,7 @@ export default function Tours() {
     <Wrapper>
       <Box>
         <Title style={{ textAlign: "center", marginBottom: "40px" }}>
-          {`Top Destinations${city ? ` at "${city}"` : ""}`}
+          {`${uiStrings.topDestinations}${city ? ` at "${city}"` : ""}`}
         </Title>
         <CardWrapper>
           {filteredTours?.map((tour) => {

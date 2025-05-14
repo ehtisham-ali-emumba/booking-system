@@ -1,5 +1,4 @@
-// rename
-export const strings = {
+export const uiStrings = {
   home: {
     titleUnderline: "Explore",
     title: "The New World With Tourbay",
@@ -31,4 +30,20 @@ export const strings = {
         exhibiting international art of the 20th and 21st centuries, with a
         particular focus on works from the Americas, Europe, and Africa.`,
   itinerary: "Itinerary Schedule",
+  topDestinations: "Top Destinations",
+  deleteConfirmation: "Delete Confirmation",
+  deleteConfirmationMessage:
+    "Are you sure you want to delete this booking? This action cannot be undone.",
+  cancel: "Cancel",
+  confirm: "Confirm",
+  noToursMessage: "Sorry, We didn’t found any tour right now",
+  chooseHere: "Choose Here",
+  wantToDeleteBooking: "Are you sure you want to delete this booking?",
+  deleteLimitText: ({ title }: { title: string }) =>
+    `You can’t delete “${title}” because there are only 3 days remaining untill beginning of this tour. `,
+  details: "Details",
+  update: "Update",
+  days: "days",
+  viewDetails: "View Details",
+  priceNotAvailable: "Price not available",
 };

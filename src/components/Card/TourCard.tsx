@@ -18,6 +18,7 @@ import {
   HoverButton,
   BookingActionsContainer,
 } from "./elements";
+import { uiStrings } from "../../constants";
 
 interface TourCardProps {
   imageSrc: string;
@@ -56,8 +57,8 @@ const TourCard: React.FC<TourCardProps> = ({
   const durationNumber = parseInt(duration || "0", 10);
   const canDelete = durationNumber > 3;
   const conditionalText = canDelete
-    ? "Are you sure you want to delete this booking?"
-    : `You can’t delete “${title}” because there are only 3 days remaining untill beginning of this tour. `;
+    ? uiStrings.wantToDeleteBooking
+    : uiStrings.deleteLimitText({ title });
 
   return (
     <StyledCard
@@ -91,10 +92,10 @@ const TourCard: React.FC<TourCardProps> = ({
           </DeleteConfirmationModal>
 
           <Button variant="primary" onClick={onViewBookingClick}>
-            Details
+            {uiStrings.details}
           </Button>
           <Button variant="primary" onClick={onUpdateBookingClick}>
-            Update
+            {uiStrings.update}
           </Button>
         </BookingActionsContainer>
       ) : (
@@ -109,11 +110,13 @@ const TourCard: React.FC<TourCardProps> = ({
             {duration && (
               <MetaInfo>
                 <ClockCircleOutlined />
-                <MetaText>{duration} days</MetaText>
+                <MetaText>
+                  {duration} {uiStrings.days}
+                </MetaText>
               </MetaInfo>
             )}
           </MetaInfoContainer>
-          <HoverButton>View Details</HoverButton>
+          <HoverButton>{uiStrings.viewDetails}</HoverButton>
         </>
       )}
     </StyledCard>

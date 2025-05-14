@@ -1,5 +1,6 @@
 import { Typography } from "antd";
 import { PlaceholderSvg } from "../assets";
+import { uiStrings } from "../constants";
 
 const { Title } = Typography;
 
@@ -23,7 +24,7 @@ export const BlankSlate = () => {
           marginTop: "20px",
         }}
       >
-        Sorry, We didn’t found any tour right now at “Miami”
+        {uiStrings.noToursMessage}
       </Title>
     </div>
   );

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "../Button";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { InlineSpacer } from "../Spacer";
+import { uiStrings } from "../../constants";
 
 const { Text } = Typography;
 
@@ -17,7 +18,7 @@ export type DatePickerOnChangeType = RangePickerProps["onChange"];
 const iconStyles = { style: { fontSize: "12px", color: "#bfbfbf" } };
 export const CustomRangePicker: React.FC<DateType> = ({
   dateProps = {},
-  customText = "Choose Here",
+  customText = uiStrings.chooseHere,
 }) => {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const [dateText, setDateText] = useState("");

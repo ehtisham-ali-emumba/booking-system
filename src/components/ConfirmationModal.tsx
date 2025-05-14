@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Typography } from "antd";
 import styled from "styled-components";
 import { Button } from "./Button";
+import { uiStrings } from "../constants";
 
 const { Text, Title } = Typography;
 
@@ -30,8 +31,8 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
   onCancel = () => {},
   onConfirm = () => {},
   hideConfirmButton = false,
-  heading = "Delete Confirmation",
-  message = "Are you sure you want to delete this?",
+  heading = uiStrings.deleteConfirmation,
+  message = uiStrings.deleteConfirmationMessage,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -66,11 +67,11 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
         <Text>{message}</Text>
         <ButtonContainer>
           <Button variant="secondary" onClick={handleCancel}>
-            Cancel
+            {uiStrings.cancel}
           </Button>
           {!hideConfirmButton && (
             <Button variant="primary" onClick={handleConfirm}>
-              Confirm
+              {uiStrings.confirm}
             </Button>
           )}
         </ButtonContainer>
