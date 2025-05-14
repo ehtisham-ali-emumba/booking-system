@@ -26,10 +26,10 @@ export const priceRanges = [
   { value: "1000+", label: "$1000 Above" },
 ];
 
-export const generateParams = (params: Record<string, any>): string => {
+export const generateParams = (params: Record<string, unknown>): string => {
   return Object.entries(params)
     .filter(
-      ([_, value]) => value !== null && value !== undefined && value !== ""
+      ([, value]) => value !== null && value !== undefined && value !== ""
     )
     .map(([key, value]) => `${key}=${value}`)
     .join("&");

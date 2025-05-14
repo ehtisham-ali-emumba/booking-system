@@ -6,7 +6,7 @@ import {
   DollarOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Input } from "../../components";
+import { Input, type DatePickerOnChangeType } from "../../components";
 import { CustomRangePicker } from "../../components";
 import { Select } from "../../components/Select";
 import {
@@ -48,7 +48,7 @@ const SearchBox = () => {
     navigate(`/tours?${params}`);
   };
 
-  const dateHandler = (dates: any, dateStrings: [string, string]) => {
+  const dateHandler: DatePickerOnChangeType = (dates, dateStrings) => {
     if (!dates) setDateRange([]);
     else setDateRange([dateStrings[0], dateStrings[1]]);
   };

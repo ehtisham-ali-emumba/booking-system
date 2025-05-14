@@ -34,7 +34,7 @@ export const itineraryData = [
       "Lunch Included.",
     ],
   },
-  ,
+
   {
     day: "Day 4",
     temperature: "17°C",
@@ -46,7 +46,7 @@ export const itineraryData = [
       "Lunch Included.",
     ],
   },
-  ,
+
   {
     day: "Day 6",
     temperature: "17°C",
@@ -58,7 +58,6 @@ export const itineraryData = [
       "Lunch Included.",
     ],
   },
-  ,
   {
     day: "Day 7",
     temperature: "17°C",

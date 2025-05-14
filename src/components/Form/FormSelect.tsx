@@ -1,5 +1,9 @@
-import React from "react";
-import { Controller } from "react-hook-form";
+import {
+  Controller,
+  type FieldValues,
+  type Path,
+  type UseFormReturn,
+} from "react-hook-form";
 import { Select, type SelectType } from "../Select";
 import styled from "styled-components";
 import { FieldLabel } from "./elements";
@@ -10,19 +14,19 @@ const ErrorText = styled.div`
   margin-top: 4px;
 `;
 
-type FormSelectProps = {
-  name: string;
-  control: any;
+type FormSelectProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: UseFormReturn<T>["control"];
   selectProps?: SelectType["selectProps"];
   label?: string;
 };
 
-const FormSelect: React.FC<FormSelectProps> = ({
+const FormSelect = <T extends FieldValues>({
   name,
   control,
   selectProps,
   label = name,
-}) => {
+}: FormSelectProps<T>) => {
   return (
     <div>
       <Controller

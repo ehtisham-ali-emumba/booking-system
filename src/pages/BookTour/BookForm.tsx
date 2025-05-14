@@ -14,7 +14,7 @@ import {
 import FormSelect from "../../components/Form/FormSelect";
 import { FormWrapper } from "./elements";
 import { FormPhoneInput } from "../../components/Form/FormPhoneInput";
-import { bookingAtom, type Booking } from "../../atoms/bookingAtom";
+import { bookingAtom } from "../../atoms/bookingAtom";
 import { useEffect } from "react";
 import { notifee } from "../../services";
 import { useNavigate } from "react-router-dom";

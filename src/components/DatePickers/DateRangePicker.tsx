@@ -12,6 +12,8 @@ type DateType = {
   customText?: string;
 };
 
+export type DatePickerOnChangeType = RangePickerProps["onChange"];
+
 const iconStyles = { style: { fontSize: "12px", color: "#bfbfbf" } };
 export const CustomRangePicker: React.FC<DateType> = ({
   dateProps = {},
@@ -25,10 +27,7 @@ export const CustomRangePicker: React.FC<DateType> = ({
     setIsPickerOpen((prev) => !prev);
   };
 
-  const onChangeHandler: RangePickerProps["onChange"] = (
-    dates,
-    dateStrings
-  ) => {
+  const onChangeHandler: DatePickerOnChangeType = (dates, dateStrings) => {
     if (!dates) {
       setIsPickerOpen(false);
       setDateText("");
