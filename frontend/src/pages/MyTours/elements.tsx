@@ -16,7 +16,6 @@ export const Title = styled.h1`
 export const Box = styled.div({
   marginTop: "150px",
   width: "100%",
-  marginRight: "32px",
   paddingBottom: "82px",
 });
 

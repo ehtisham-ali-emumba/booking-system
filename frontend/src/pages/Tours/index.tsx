@@ -83,7 +83,7 @@ export const Tours = () => {
           <ErrorContainer message={`Error: ${error.message}`} />
         ) : (
           <CardWrapper>
-            {!filteredTours.length ? (
+            {filteredTours.length ? (
               filteredTours.map((tour) => {
                 const hasBooking = bookingMap.has(tour._id);
                 return (

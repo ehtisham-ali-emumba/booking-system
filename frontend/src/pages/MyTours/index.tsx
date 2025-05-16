@@ -14,7 +14,7 @@ import { Box, Heading, MyTourContainer } from "./elements";
 export const MyTours = () => {
   const navigate = useNavigate();
   const { data: tours, isLoading, error } = useTourQuery();
-  const [bookings] = useAtom(bookingAtom); // Access bookings from the atom
+  const [bookings] = useAtom(bookingAtom);
   const { deleteBooking } = useDeleteBooking();
 
   const filterMyTours = useMemo(() => {

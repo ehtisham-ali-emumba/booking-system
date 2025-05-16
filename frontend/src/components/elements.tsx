@@ -9,6 +9,7 @@ export const BlankSlateWrapper = styled.div`
   align-items: center;
   flex: 1;
   flex-direction: column;
+  padding: 0px 16px;
 `;
 
 export const BlankSlateTitle = styled((props) => (
