@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
-import { sizeLg } from "../../utils";
+import { sizeLg, sizeMobile } from "../../utils";
 import { Wrapper } from "../../styles";
 import { images_png } from "../../assets";
+import { colors } from "../../constants";
 
 export const SignInContainer = styled.div`
   max-width: 420px;
@@ -66,14 +67,6 @@ export const Input = styled.input`
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   }
 `;
-
-// Colors
-const colors = {
-  accentOrange: "#f67e5f",
-  hoverOrange: "#e56e50",
-  darkBlue: "#1e2a4a",
-  textGray: "#4a4a4a",
-};
 
 export const HomeContainer = styled(Wrapper)`
   ${sizeLg(css`
@@ -174,9 +167,9 @@ export const HeroTitle = styled.h1`
   color: ${colors.darkBlue};
   margin-bottom: 20px;
 
-  @media (max-width: 768px) {
+  ${sizeMobile(css`
     font-size: 40px;
-  }
+  `)};
 
   ${sizeLg(css`
     line-height: 1.6;
@@ -207,7 +200,7 @@ export const HeroSubtitle = styled.p`
   color: ${colors.textGray};
   margin-bottom: 40px;
 
-  @media (max-width: 768px) {
+  ${sizeMobile(css`
     font-size: 16px;
-  }
+  `)};
 `;

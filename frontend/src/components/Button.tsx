@@ -1,12 +1,12 @@
 import { Button as AntdButton, type ButtonProps } from "antd";
 import styled, { css } from "styled-components";
-import { colors as appColors } from "../constants";
+import { colors } from "../constants";
 
 // Define the button variants
 type ButtonVariant =
   | "primary"
   | "outlined"
-  | "secondary"
+  | "btnSecondary"
   | "icon"
   | "icon-transparent";
 
@@ -15,18 +15,6 @@ type StyledButtonProps = Omit<ButtonProps, "variant"> & {
   variant?: ButtonVariant;
   size?: "small" | "medium" | "large";
   fullWidth?: boolean;
-};
-
-// Define colors object since it was referenced in the original code
-const colors = {
-  secondary: "#333333",
-  white: "#ffffff",
-  outline: "#f7774a",
-  hover: {
-    primary: "#e56e50",
-    secondary: "#666666",
-    outlined: "#fff8f6",
-  },
 };
 
 // Apply size styles using function for better readability
@@ -56,7 +44,7 @@ const getSizeStyles = (size = "medium") => {
 
 // Define primary button styles
 const primaryStyles = css`
-  background-color: ${appColors.accentOrange};
+  background-color: ${colors.accentOrange};
   color: ${colors.white};
   border: none;
   &:hover,
@@ -67,17 +55,17 @@ const primaryStyles = css`
   }
 `;
 
-// Define secondary (text) button styles
+// Define btnSecondary (text) button styles
 const secondaryStyles = css`
   background-color: transparent;
-  color: ${colors.secondary};
+  color: ${colors.btnSecondary};
   border: none;
   box-shadow: none;
 
   &:hover,
   &:focus {
     background-color: transparent !important;
-    color: ${colors.hover.secondary} !important;
+    color: ${colors.btnHover.btnSecondary} !important;
     border-color: transparent !important;
   }
 `;
@@ -90,7 +78,7 @@ const outlinedStyles = css`
   font-weight: 600;
   &:hover,
   &:focus {
-    background-color: ${colors.hover.outlined} !important;
+    background-color: ${colors.btnHover.outlined} !important;
     color: ${colors.outline} !important;
     border-color: ${colors.outline} !important;
   }
@@ -105,14 +93,14 @@ const iconStyles = css`
   justify-content: center;
   padding: 0;
   font-size: 24px;
-  color: ${appColors.accentOrange};
+  color: ${colors.accentOrange};
   border: none;
 
   &:hover,
   &:focus {
     background-color: rgb(235, 234, 234) !important;
     border-color: #e56e50 !important;
-    color: ${appColors.accentOrange} !important;
+    color: ${colors.accentOrange} !important;
   }
 `;
 
@@ -141,7 +129,7 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
   // Apply variant styles
   ${({ variant = "primary" }) => {
     switch (variant) {
-      case "secondary":
+      case "btnSecondary":
         return secondaryStyles;
       case "outlined":
         return outlinedStyles;

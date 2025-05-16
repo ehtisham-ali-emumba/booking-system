@@ -7,9 +7,18 @@ export const colors = {
     light: "#888888",
   },
   background: {
-    card: "#ffffff",
     badge: "#f5f5f5",
   },
   border: "#e8e8e8",
   placeholderColor: "red",
+  darkBlue: "#1e2a4a",
+  textGray: "#4a4a4a",
+  btnSecondary: "#333333",
+  white: "#ffffff",
+  outline: "#f7774a",
+  btnHover: {
+    primary: "#e56e50",
+    btnSecondary: "#666666",
+    outlined: "#fff8f6",
+  },
 };
