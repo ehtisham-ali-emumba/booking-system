@@ -8,6 +8,7 @@ export const uiStrings = {
   addTour: "Add Tour",
   bookTour: "Book Tour",
   myTours: "My Tours",
+  virtualization: "Virtualization",
 
   whatsIncluded: "What's Included",
   destination: "Destination",

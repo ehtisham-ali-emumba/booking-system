@@ -31,8 +31,8 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       </Link>
       <NavMenu>
         <Space size={36}>
-          <Link to="/tours">
-            <Button variant="secondary">{uiStrings.addTour}</Button>
+          <Link to="/virtualization">
+            <Button variant="secondary">{uiStrings.virtualization}</Button>
           </Link>
           <Link to="/tours">
             <Button variant="secondary">{uiStrings.bookTour}</Button>
@@ -68,8 +68,8 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
           </Button>
         </div>
         <div className="menu-links">
-          <Link to="/tours" onClick={toggleMobileMenu}>
-            {uiStrings.addTour}
+          <Link to="/virtualization" onClick={toggleMobileMenu}>
+            {uiStrings.virtualization}
           </Link>
           <Link to="/tours" onClick={toggleMobileMenu}>
             {uiStrings.bookTour}

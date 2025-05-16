@@ -6,6 +6,7 @@ import { MainLayout } from "../layout/MainLayout";
 import { Tours } from "../pages/Tours";
 import { BookTour } from "../pages/BookTour";
 import { MyTours } from "../pages/MyTours";
+import { Virtualization } from "../pages/Virtualization";
 
 const routes: RouteObject[] = [
   {
@@ -37,6 +38,14 @@ const routes: RouteObject[] = [
     element: (
       <MainLayout>
         <MyTours />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/virtualization",
+    element: (
+      <MainLayout>
+        <Virtualization />
       </MainLayout>
     ),
   },
