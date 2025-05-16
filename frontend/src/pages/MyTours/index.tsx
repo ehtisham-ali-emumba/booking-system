@@ -26,7 +26,7 @@ export const MyTours = () => {
   const filterMyTours = useMemo(() => {
     if (!tours || !bookings) return [];
     const bookingSet = new Set(bookings.map((booking) => booking.tourId));
-    return tours.filter((tour) => bookingSet.has(tour.id));
+    return tours.filter((tour) => bookingSet.has(tour._id));
   }, [tours, bookings]);
 
   if (isLoading) return <Loader />;
@@ -40,16 +40,16 @@ export const MyTours = () => {
           {filterMyTours?.map((tour) => {
             return (
               <TourCard
-                key={tour.id}
+                key={tour._id}
                 imageSrc={tour.imageSrc}
                 title={tour.name}
                 description={tour.description}
                 price={tour.price}
                 duration={tour.duration}
                 hasBooking
-                onUpdateBooking={() => navigate(`/book/tour/${tour.id}`)}
-                onDeleteBooking={() => deleteBooking(tour.id)}
-                onClick={() => navigate(`/tour/${tour.id}`)}
+                onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
+                onDeleteBooking={() => deleteBooking(tour._id)}
+                onClick={() => navigate(`/tour/${tour._id}`)}
               />
             );
           })}

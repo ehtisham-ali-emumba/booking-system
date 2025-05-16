@@ -2,9 +2,8 @@ import mongoose from "mongoose";
 
 export const connectDB = async (): Promise<void> => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://ehtishamali:ehtishamali@emumbawork.vrtaa4f.mongodb.net/?retryWrites=true&w=majority&appName=EmumbaWork"
-    );
+    const MONGODB_URI = process.env.MONGODB_URI as string;
+    await mongoose.connect(MONGODB_URI);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Failed to connect to MongoDB:", err);

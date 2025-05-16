@@ -14,6 +14,29 @@ export const getAllTours = async (
   }
 };
 
+// Get a single tour by ID
+export const getTourById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const tour: ITour | null = await TourModel.findById(id);
+
+    if (!tour) {
+      res.status(404).json({ error: "Tour not found" });
+      return;
+    }
+
+    res.status(200).json(tour);
+  } catch (err) {
+    res.status(500).json({
+      error: "Failed to fetch tour",
+      details: err instanceof Error ? err.message : "Unknown error",
+    });
+  }
+};
+
 // Create a new tour
 export const createTour = async (
   req: Request,

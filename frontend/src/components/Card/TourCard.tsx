@@ -19,6 +19,7 @@ import {
   BookingActionsContainer,
 } from "./elements";
 import { uiStrings } from "../../constants";
+import { truncate } from "../../utils";
 
 interface TourCardProps {
   imageSrc: string;
@@ -68,7 +69,7 @@ const TourCard: React.FC<TourCardProps> = ({
       onClick={onClick}
     >
       <CardTitle level={4}>{title}</CardTitle>
-      <CardDescription>{description}</CardDescription>
+      <CardDescription>{truncate(description, 24, "...")}</CardDescription>
 
       {hasBooking ? (
         // New layout when booking exists

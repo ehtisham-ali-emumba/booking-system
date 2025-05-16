@@ -95,19 +95,20 @@ export const Tours = () => {
         </Title>
         <CardWrapper>
           {filteredTours?.map((tour) => {
-            const hasBooking = bookingMap.has(tour.id);
+            console.log("🚀 ~ {filteredTours?.map ~ tour:", tour);
+            const hasBooking = bookingMap.has(tour._id);
             return (
               <TourCard
-                key={tour.id}
+                key={tour._id}
                 imageSrc={tour.imageSrc}
                 title={tour.name}
                 description={tour.description}
                 price={tour.price}
                 duration={tour.duration}
                 hasBooking={hasBooking}
-                onUpdateBooking={() => navigate(`/book/tour/${tour.id}`)}
-                onDeleteBooking={() => deleteBooking(tour.id)}
-                onClick={() => navigate(`/tour/${tour.id}`)}
+                onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
+                onDeleteBooking={() => deleteBooking(tour._id)}
+                onClick={() => navigate(`/tour/${tour._id}`)}
               />
             );
           })}
