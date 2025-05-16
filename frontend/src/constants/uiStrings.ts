@@ -1,29 +1,24 @@
 export const uiStrings = {
-  home: {
-    titleUnderline: "Explore",
-    title: "The New World With Tourbay",
-    subtitle:
-      "No matter where in the world you want to go, we can help get you there and make your tour a stupendous memory.",
-    exploreButton: "Explore News",
-  },
-  header: {
-    logo: "Tourbay",
-    addTour: "Add Tour",
-    bookTour: "Book Tour",
-    myTours: "My Tours",
-    exploreButton: "Explore News",
-  },
-  whatsIncluded: {
-    title: "What's Included",
-    destination: "Destination",
-    departure: "Departure Location",
-    return: "Return",
-    destinationValue: "Miami",
-    departureValue: "2000 Brush St, Detroit, MI 48226, United States",
-    returnValue: "7:00 PM on Day 3",
-    additionalInfo:
-      "Basic first aid kit Basic first aid kit Basic first aid kit Basic first aid kit",
-  },
+  explore: "Explore",
+  homepage_title: "The New World With Tourbay",
+  homepage_subtitle:
+    "No matter where in the world you want to go, we can help get you there and make your tour a stupendous memory.",
+  exploreNews: "Explore News",
+  tourbay: "Tourbay",
+  addTour: "Add Tour",
+  bookTour: "Book Tour",
+  myTours: "My Tours",
+
+  whatsIncluded: "What's Included",
+  destination: "Destination",
+  departureLoc: "Departure Location",
+  return: "Return",
+  destinationValue: "Miami",
+  departureAddress: "2000 Brush St, Detroit, MI 48226, United States",
+  returnTime: "7:00 PM on Day 3",
+  additionalInfo:
+    "Basic first aid kit Basic first aid kit Basic first aid kit Basic first aid kit",
+
   bookNow: "Book Now",
   tourDesc: `The Pérez Art Museum Miami (PAMM) is a modern and contemporary art
         museum located in Miami, Florida. It is dedicated to collecting and
@@ -57,4 +52,9 @@ export const uiStrings = {
   bankTransfer: "Bank Transfer",
   paypal: "PayPal",
   selectPaymentMethod: "Select payment method",
+  popularSearch: "Popular Search",
+  priceRange: "Price Range",
+  chooseDate: "Choose Date",
+  location: "Location",
+  whereYouWantToGo: "Where you want to go?",
 };

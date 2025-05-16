@@ -6,7 +6,7 @@ export const ImageGallery = ({ tour }: { tour: Tour }) => {
   const { imageSrc, images } = tour;
   return (
     <WrapperImages>
-      <Flex1 style={{ flex: 1 }}>
+      <Flex1>
         <ImageUI src={imageSrc} />
       </Flex1>
       <Flex1>

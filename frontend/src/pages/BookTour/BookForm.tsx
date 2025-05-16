@@ -72,9 +72,7 @@ export const BookForm = () => {
   return (
     <FormProvider {...formMethods}>
       <FormWrapper>
-        <Title level={2} style={{ color: "#1e1e3f" }}>
-          {uiStrings.confirmYourBooking}
-        </Title>
+        <Title level={2}>{uiStrings.confirmYourBooking}</Title>
 
         <form>
           <FormInput<BookFormDataType>

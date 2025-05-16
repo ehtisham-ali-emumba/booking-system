@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ErrorWrapper = styled.div`
   display: flex;
-  height: 50vh;
+  height: 10vh;
   color: red;
   font-size: 20px;
   text-align: center;

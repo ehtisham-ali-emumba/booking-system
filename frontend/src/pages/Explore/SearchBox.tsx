@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Flex, Col } from "antd";
+import { Col } from "antd";
 import {
   EnvironmentOutlined,
   CalendarOutlined,
@@ -16,21 +16,11 @@ import {
   HeaderText,
   Divider,
   SearchButton,
+  SearchFlexBox,
 } from "./elements";
 import { generateParams, priceRanges } from "./utils";
 import { useNavigate } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { sizeLg } from "../../utils";
-
-const FlexBox = styled(Flex)`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  ${sizeLg(css`
-    flex-direction: column;
-    align-items: flex-start;
-  `)}
-`;
+import { uiStrings } from "../../constants";
 
 const SearchBox = () => {
   const [location, setLocation] = useState<string>("");
@@ -59,18 +49,17 @@ const SearchBox = () => {
 
   return (
     <CardUI>
-      <FlexBox>
-        {/* Location */}
+      <SearchFlexBox>
         <Col flex="1">
           <ItemWrapper>
             <IconCircle>
               <EnvironmentOutlined style={{ fontSize: 20, color: "grey" }} />
             </IconCircle>
             <div>
-              <HeaderText>Location</HeaderText>
+              <HeaderText>{uiStrings.location}</HeaderText>
               <Input
                 inputProps={{
-                  placeholder: "Where you want to go?",
+                  placeholder: uiStrings.whereYouWantToGo,
                   variant: "borderless",
                   value: location,
                   onChange: (e) => setLocation(e.target.value),
@@ -79,16 +68,14 @@ const SearchBox = () => {
             </div>
           </ItemWrapper>
         </Col>
-
         <Divider />
-
         <Col flex="1">
           <ItemWrapper>
             <IconCircle>
               <CalendarOutlined style={{ fontSize: 18, color: "grey" }} />
             </IconCircle>
             <div>
-              <HeaderText>Choose Date</HeaderText>
+              <HeaderText>{uiStrings.chooseDate}</HeaderText>
               <CustomRangePicker
                 dateProps={{
                   onChange: dateHandler,
@@ -98,21 +85,18 @@ const SearchBox = () => {
             </div>
           </ItemWrapper>
         </Col>
-
         <Divider />
-
-        {/* Price */}
         <Col flex="1">
           <ItemWrapper>
             <IconCircle>
               <DollarOutlined style={{ fontSize: 18, color: "grey" }} />
             </IconCircle>
             <div>
-              <HeaderText>Price Range</HeaderText>
+              <HeaderText>{uiStrings.priceRange}</HeaderText>
               <Select
                 selectProps={{
                   variant: "borderless",
-                  placeholder: "Choose Here",
+                  placeholder: uiStrings.chooseHere,
                   size: "small",
                   value: priceRange,
                   onChange: (value) => setPriceRange(value),
@@ -122,14 +106,12 @@ const SearchBox = () => {
             </div>
           </ItemWrapper>
         </Col>
-
-        {/* Search Button */}
         <Col>
           <SearchButton onClick={handleSearch} disabled={isSearchDisabled}>
             <SearchOutlined style={{ fontSize: 28, color: "#fff" }} />
           </SearchButton>
         </Col>
-      </FlexBox>
+      </SearchFlexBox>
     </CardUI>
   );
 };

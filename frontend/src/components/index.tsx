@@ -5,3 +5,4 @@ export * from "./DatePickers";
 export * from "./Spacer";
 export * from "./Select";
 export * from "./BlankSlate";
+export * from "./Loader";

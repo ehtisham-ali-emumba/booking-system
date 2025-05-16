@@ -26,17 +26,15 @@ export const Home = () => {
         <ContentSection>
           <HeroContent>
             <HeroTitle>
-              <TitleUnderline>{uiStrings.home.titleUnderline}</TitleUnderline>{" "}
-              {uiStrings.home.title}
+              <TitleUnderline>{uiStrings.explore}</TitleUnderline>
+              {uiStrings.homepage_title}
             </HeroTitle>
-
-            <HeroSubtitle>{uiStrings.home.subtitle}</HeroSubtitle>
+            <HeroSubtitle>{uiStrings.homepage_subtitle}</HeroSubtitle>
             <Link to="/explore">
-              <Button>{uiStrings.home.exploreButton}</Button>
+              <Button>{uiStrings.exploreNews}</Button>
             </Link>
           </HeroContent>
         </ContentSection>
-
         <ImagesGrid>
           <SvgParent>
             <MainDecoration />

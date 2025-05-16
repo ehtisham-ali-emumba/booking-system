@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { TourCard, CardWrapper } from "../../components/Card";
-import { Container } from "../../styles";
-import styled from "styled-components";
 import { useTourQuery } from "../../hooks/queries";
-import Loader from "../../components/Loader";
+import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
 import { useAtom } from "jotai";
 import { bookingAtom } from "../../atoms/bookingAtom";
@@ -11,11 +9,7 @@ import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components/BlankSlate";
 import { uiStrings } from "../../constants/uiStrings";
-import { Box, Heading } from "./elements";
-
-const Wrapper = styled(Container)`
-  justify-content: flex-start;
-`;
+import { Box, Heading, MyTourContainer } from "./elements";
 
 export const MyTours = () => {
   const navigate = useNavigate();
@@ -29,33 +23,39 @@ export const MyTours = () => {
     return tours.filter((tour) => bookingSet.has(tour._id));
   }, [tours, bookings]);
 
-  if (isLoading) return <Loader />;
-  if (error) return <ErrorContainer message={`Error: ${error?.message}`} />;
-
   return (
-    <Wrapper>
+    <MyTourContainer>
       <Box>
-        <Heading>{uiStrings.header.myTours}</Heading>
-        <CardWrapper>
-          {filterMyTours?.map((tour) => {
-            return (
-              <TourCard
-                key={tour._id}
-                imageSrc={tour.imageSrc}
-                title={tour.name}
-                description={tour.description}
-                price={tour.price}
-                duration={tour.duration}
-                hasBooking
-                onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
-                onDeleteBooking={() => deleteBooking(tour._id)}
-                onClick={() => navigate(`/tour/${tour._id}`)}
-              />
-            );
-          })}
-          {filterMyTours.length === 0 && <BlankSlate />}
-        </CardWrapper>
+        <Heading>{uiStrings.myTours}</Heading>
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <ErrorContainer message={`Error: ${error.message}`} />
+        ) : (
+          <CardWrapper>
+            {filterMyTours.length ? (
+              filterMyTours.map((tour) => {
+                return (
+                  <TourCard
+                    key={tour._id}
+                    imageSrc={tour.imageSrc}
+                    title={tour.name}
+                    description={tour.description}
+                    price={tour.price}
+                    duration={tour.duration}
+                    hasBooking
+                    onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
+                    onDeleteBooking={() => deleteBooking(tour._id)}
+                    onClick={() => navigate(`/tour/${tour._id}`)}
+                  />
+                );
+              })
+            ) : (
+              <BlankSlate />
+            )}
+          </CardWrapper>
+        )}
       </Box>
-    </Wrapper>
+    </MyTourContainer>
   );
 };

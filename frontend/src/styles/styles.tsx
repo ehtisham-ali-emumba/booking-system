@@ -11,8 +11,6 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Container = styled(Wrapper)``;
-
 export const ContentSection = styled.div`
   flex: 1;
   display: flex;

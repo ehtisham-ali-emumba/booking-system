@@ -32,13 +32,13 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       <NavMenu>
         <Space size={36}>
           <Link to="/tours">
-            <Button variant="secondary">{uiStrings.header.addTour}</Button>
+            <Button variant="secondary">{uiStrings.addTour}</Button>
           </Link>
           <Link to="/tours">
-            <Button variant="secondary">{uiStrings.header.bookTour}</Button>
+            <Button variant="secondary">{uiStrings.bookTour}</Button>
           </Link>
           <Link to="/my-tours">
-            <Button variant="secondary">{uiStrings.header.myTours}</Button>
+            <Button variant="secondary">{uiStrings.myTours}</Button>
           </Link>
         </Space>
       </NavMenu>
@@ -48,9 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
         <div />
       ) : (
         <Link to="/explore">
-          <ExploreButton type="primary">
-            {uiStrings.header.exploreButton}
-          </ExploreButton>
+          <ExploreButton type="primary">{uiStrings.exploreNews}</ExploreButton>
         </Link>
       )}
 
@@ -71,17 +69,17 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
         </div>
         <div className="menu-links">
           <Link to="/tours" onClick={toggleMobileMenu}>
-            {uiStrings.header.addTour}
+            {uiStrings.addTour}
           </Link>
           <Link to="/tours" onClick={toggleMobileMenu}>
-            {uiStrings.header.bookTour}
+            {uiStrings.bookTour}
           </Link>
           <Link to="/my-tours" onClick={toggleMobileMenu}>
-            {uiStrings.header.myTours}
+            {uiStrings.myTours}
           </Link>
           {!hideExplore && (
             <Link to="/explore" onClick={toggleMobileMenu}>
-              {uiStrings.header.exploreButton}
+              {uiStrings.exploreNews}
             </Link>
           )}
         </div>

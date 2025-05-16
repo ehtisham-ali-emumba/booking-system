@@ -1,6 +1,8 @@
-import { Col, Flex, Typography } from "antd";
+import { Card, Col, Divider, Flex, Typography } from "antd";
 import styled, { css } from "styled-components";
 import { sizeMobile, sizeLg, sizeTablet } from "../../utils";
+import { Button } from "../../components";
+import { colors } from "../../constants";
 
 const { Title: TitleAntd, Text } = Typography;
 
@@ -180,4 +182,120 @@ export const SmallImage = styled.img`
   ${sizeLg(css`
     height: 320px !important;
   `)}
+`;
+
+export const BookNowButton = styled(Button)`
+  align-self: center;
+  width: 200px;
+`;
+
+export const InfoContainer = styled.div`
+  padding: 16px;
+  margin: 0 auto;
+`;
+
+export const InfoRowBox = styled.div`
+  display: flex;
+  align-items: baseline;
+  margin: 20px 0;
+  ${sizeMobile(css`
+    flex-direction: column;
+  `)}
+`;
+
+export const LabelBox = styled(Text)`
+  font-size: 16px;
+  padding: 0 30px;
+  min-width: 350px;
+  font-weight: 600;
+  color: #262626;
+  max-width: 200px;
+  flex: 1;
+  ${sizeMobile(css`
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  `)}
+`;
+
+export const Value = styled(Text)`
+  font-size: 16px;
+  color: #262626;
+  flex: 1;
+  ${sizeMobile(css`
+    display: block;
+  `)}
+`;
+
+export const StyledDivider = styled(Divider)`
+  margin: 10px 0;
+  background-color: #f0f0f0;
+`;
+
+export const TextDay = styled.span`
+  font-size: 22px;
+  font-weight: 500 !important;
+`;
+export const TextWeather = styled.span`
+  font-size: 22px;
+  font-weight: 500 !important;
+`;
+export const TextDetail = styled.span`
+  font-size: 15px;
+`;
+export const ItinearyContainer = styled.div`
+  padding: 20px;
+  ${sizeMobile(css`
+    padding: 0px;
+  `)}
+`;
+
+export const ScrollContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 16px 0;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const StyledCard = styled(Card)`
+  min-width: 400px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  ${sizeMobile(css`
+    min-width: 300px;
+  `)}
+  ul {
+    padding-left: 20px;
+    padding-top: 16px;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+`;
+
+export const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const WeatherInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    font-size: 28px;
+    color: ${colors.neutralGray};
+  }
 `;

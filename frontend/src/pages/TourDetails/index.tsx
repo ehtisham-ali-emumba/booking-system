@@ -7,8 +7,7 @@ import {
 import { Header, Layout } from "../../styles";
 import { ImageGallery } from "./ImageGallery";
 import { Spacer } from "../../components/Spacer";
-import { Button } from "../../components";
-import WhatsIncluded from "./WhatsIncluded";
+import { WhatsIncluded } from "./WhatsIncluded";
 import { Link, useParams } from "react-router-dom";
 
 import {
@@ -22,13 +21,14 @@ import {
   Wrapper,
   DescriptionText,
   InfoBox,
+  BookNowButton,
 } from "./elements";
 import { useTourQueryById } from "../../hooks/queries";
-import Loader from "../../components/Loader";
+import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
 import type { Tour } from "../../types";
 import { getPriceLabel } from "../../utils/priceUtils";
-import ItinerarySchedule from "./ItinerarySchedule";
+import { ItinerarySchedule } from "./ItinerarySchedule";
 import { uiStrings } from "../../constants/uiStrings";
 
 const HeaderTexts = ({ tour }: { tour: Tour }) => {
@@ -75,14 +75,14 @@ export const TourDetails = () => {
   const { tourId } = useParams<{ tourId: string }>();
   const { data: tour, isLoading, error } = useTourQueryById(tourId!);
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader paddingTop="80px" />;
   if (error) return <ErrorContainer message={error.message} />;
   if (!tour) return null;
 
   return (
-    <Layout style={{ backgroundColor: "transparent" }}>
+    <Layout>
       <Wrapper>
-        <Header style={{ backgroundColor: "transparent" }}>
+        <Header>
           <HeaderTexts tour={tour} />
         </Header>
         <Spacer marginTop="80px" />
@@ -95,9 +95,7 @@ export const TourDetails = () => {
         </Padder>
         <Flex justify="center">
           <Link to={`/book/tour/${tourId}`}>
-            <Button style={{ alignSelf: "center", width: "200px" }}>
-              {uiStrings.bookNow}
-            </Button>
+            <BookNowButton>{uiStrings.bookNow}</BookNowButton>
           </Link>
         </Flex>
       </Wrapper>

@@ -7,7 +7,7 @@ export interface Tour {
   duration: string;
   startDate: string;
   endDate: string;
-  facilities: string[]; // e.g. "Guide", "Meals"
+  facilities: string[];
   imageSrc: string;
   images: string[];
 }

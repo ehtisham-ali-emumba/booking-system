@@ -1,10 +1,7 @@
-import { Typography } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CardWrapper, TourCard } from "../../components/Card";
-import { Container } from "../../styles";
-import styled from "styled-components";
 import { useTourQuery } from "../../hooks/queries";
-import Loader from "../../components/Loader";
+import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
 import { useAtom } from "jotai";
 import { bookingAtom } from "../../atoms/bookingAtom";
@@ -12,18 +9,7 @@ import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components";
 import { uiStrings } from "../../constants";
-
-const Wrapper = styled(Container)`
-  justify-content: flex-start;
-  margin-bottom: 80px;
-`;
-
-const Box = styled.div`
-  margin-top: 110px;
-  width: 100%;
-`;
-
-const { Title } = Typography;
+import { Box, Container, ContentTitle } from "./elements";
 
 export const Tours = () => {
   const navigate = useNavigate();
@@ -52,18 +38,18 @@ export const Tours = () => {
 
   // Filter tours based on city name, price range, and date range
   const filteredTours = useMemo(() => {
-    let filtered = tours;
+    let filtered = tours ?? [];
 
     // Filter by city
     if (city) {
-      filtered = filtered?.filter(
+      filtered = filtered.filter(
         (tour) => tour.city.toLowerCase() === city.toLowerCase()
       );
     }
 
     // Filter by price range
     if (startPrice !== null && endPrice !== null) {
-      filtered = filtered?.filter((tour) => {
+      filtered = filtered.filter((tour) => {
         const tourPrice = parseFloat(tour.price);
         return tourPrice >= startPrice && tourPrice <= endPrice;
       });
@@ -73,7 +59,7 @@ export const Tours = () => {
     if (start_date && end_date) {
       const filterStartDate = new Date(start_date);
       const filterEndDate = new Date(end_date);
-      filtered = filtered?.filter((tour) => {
+      filtered = filtered.filter((tour) => {
         const tourStartDate = new Date(tour.startDate);
         const tourEndDate = new Date(tour.endDate);
 
@@ -84,37 +70,43 @@ export const Tours = () => {
     return filtered;
   }, [city, tours, startPrice, endPrice, start_date, end_date]);
 
-  if (isLoading) return <Loader />;
-  if (error) return <ErrorContainer message={`Error: ${error?.message}`} />;
-
   return (
-    <Wrapper>
+    <Container>
       <Box>
-        <Title style={{ textAlign: "center", marginBottom: "40px" }}>
+        <ContentTitle>
           {`${uiStrings.topDestinations}${city ? ` at "${city}"` : ""}`}
-        </Title>
-        <CardWrapper>
-          {filteredTours?.map((tour) => {
-            console.log("🚀 ~ {filteredTours?.map ~ tour:", tour);
-            const hasBooking = bookingMap.has(tour._id);
-            return (
-              <TourCard
-                key={tour._id}
-                imageSrc={tour.imageSrc}
-                title={tour.name}
-                description={tour.description}
-                price={tour.price}
-                duration={tour.duration}
-                hasBooking={hasBooking}
-                onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
-                onDeleteBooking={() => deleteBooking(tour._id)}
-                onClick={() => navigate(`/tour/${tour._id}`)}
-              />
-            );
-          })}
-          {filteredTours?.length === 0 && <BlankSlate />}
-        </CardWrapper>
+        </ContentTitle>
+
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <ErrorContainer message={`Error: ${error.message}`} />
+        ) : (
+          <CardWrapper>
+            {filteredTours.length ? (
+              filteredTours.map((tour) => {
+                const hasBooking = bookingMap.has(tour._id);
+                return (
+                  <TourCard
+                    key={tour._id}
+                    imageSrc={tour.imageSrc}
+                    title={tour.name}
+                    description={tour.description}
+                    price={tour.price}
+                    duration={tour.duration}
+                    hasBooking={hasBooking}
+                    onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
+                    onDeleteBooking={() => deleteBooking(tour._id)}
+                    onClick={() => navigate(`/tour/${tour._id}`)}
+                  />
+                );
+              })
+            ) : (
+              <BlankSlate />
+            )}
+          </CardWrapper>
+        )}
       </Box>
-    </Wrapper>
+    </Container>
   );
 };

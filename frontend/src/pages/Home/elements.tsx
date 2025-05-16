@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { sizeLg } from "../../utils";
-import { Container } from "../../styles";
+import { Wrapper } from "../../styles";
 import { images_png } from "../../assets";
 
 export const SignInContainer = styled.div`
@@ -75,7 +75,7 @@ const colors = {
   textGray: "#4a4a4a",
 };
 
-export const HomeContainer = styled(Container)`
+export const HomeContainer = styled(Wrapper)`
   ${sizeLg(css`
     flex-direction: column;
   `)};
