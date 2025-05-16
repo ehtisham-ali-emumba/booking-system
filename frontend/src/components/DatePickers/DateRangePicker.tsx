@@ -1,12 +1,11 @@
-import { DatePicker, Typography } from "antd";
+import { DatePicker } from "antd";
 import type { RangePickerProps } from "antd/es/date-picker";
 import { useState } from "react";
 import { Button } from "../Button";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { InlineSpacer } from "../Spacer";
 import { uiStrings } from "../../constants";
-
-const { Text } = Typography;
+import { CustomText, datePickerStyles, iconStyles } from "./elements";
 
 type DateType = {
   dateProps?: RangePickerProps;
@@ -15,7 +14,6 @@ type DateType = {
 
 export type DatePickerOnChangeType = RangePickerProps["onChange"];
 
-const iconStyles = { style: { fontSize: "12px", color: "#bfbfbf" } };
 export const CustomRangePicker: React.FC<DateType> = ({
   dateProps = {},
   customText = uiStrings.chooseHere,
@@ -41,13 +39,7 @@ export const CustomRangePicker: React.FC<DateType> = ({
   return (
     <>
       <Button size="small" variant="secondary" onClick={handleToggle}>
-        <Text
-          style={{
-            fontSize: "16px",
-            fontWeight: "400",
-            color: dateText ? "black" : "#bfbfbf",
-          }}
-        >
+        <CustomText dateText={!!dateText}>
           {dateText || customText}
           <InlineSpacer marginLeft="5px" />
           {isPickerOpen ? (
@@ -55,7 +47,7 @@ export const CustomRangePicker: React.FC<DateType> = ({
           ) : (
             <DownOutlined {...iconStyles} />
           )}
-        </Text>
+        </CustomText>
       </Button>
       <DatePicker.RangePicker
         {...dateProps}
@@ -68,11 +60,7 @@ export const CustomRangePicker: React.FC<DateType> = ({
         placeholder={["", ""]}
         components={{}}
         format="YYYY-MM-DD"
-        style={{
-          width: "0px",
-          height: "0px",
-          marginLeft: "-100px",
-        }}
+        style={datePickerStyles}
         size="small"
         separator={null}
       />

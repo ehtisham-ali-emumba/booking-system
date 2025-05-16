@@ -70,9 +70,7 @@ const TourCard: React.FC<TourCardProps> = ({
     >
       <CardTitle level={4}>{title}</CardTitle>
       <CardDescription>{truncate(description, 24, "...")}</CardDescription>
-
       {hasBooking ? (
-        // New layout when booking exists
         <BookingActionsContainer>
           <DeleteConfirmationModal
             onConfirm={onDeleteBooking}
@@ -85,13 +83,12 @@ const TourCard: React.FC<TourCardProps> = ({
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  onOpen(); // Open the modal
+                  onOpen();
                 }}
                 icon={<DeleteOutlined style={{ fontSize: 26 }} />}
               />
             )}
           </DeleteConfirmationModal>
-
           <Button variant="primary" onClick={onViewBookingClick}>
             {uiStrings.details}
           </Button>
@@ -124,7 +121,7 @@ const TourCard: React.FC<TourCardProps> = ({
   );
 };
 
-// Grid layout for displaying multiple cards
+// Flex layout wrapper for displaying multiple cards
 const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;

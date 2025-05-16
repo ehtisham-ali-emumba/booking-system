@@ -40,9 +40,9 @@ const FormSelect = <T extends FieldValues>({
               selectProps={{
                 ...selectProps,
                 onChange: (value) => {
-                  field.onChange(value); // Ensure onChange is handled
+                  field.onChange(value);
                 },
-                value: field.value, // Ensure value is controlled
+                value: field.value,
               }}
             />
             {error && <ErrorText>{error.message}</ErrorText>}

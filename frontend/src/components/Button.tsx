@@ -96,7 +96,6 @@ const outlinedStyles = css`
   }
 `;
 
-// Define icon button styles
 const iconStyles = css`
   width: 50px !important;
   height: 50px;
@@ -124,7 +123,6 @@ const iconTransparentStyles = css`
   box-shadow: none;
 `;
 
-// Create the styled component
 export const Button = styled(AntdButton)<StyledButtonProps>`
   border-radius: 8px;
   cursor: pointer;
