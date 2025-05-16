@@ -18,7 +18,7 @@ export const colors = {
   outline: "#f7774a",
   btnHover: {
     primary: "#e56e50",
-    btnSecondary: "#666666",
+    secondary: "#666666",
     outlined: "#fff8f6",
   },
 };

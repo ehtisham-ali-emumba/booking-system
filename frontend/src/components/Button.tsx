@@ -6,7 +6,7 @@ import { colors } from "../constants";
 type ButtonVariant =
   | "primary"
   | "outlined"
-  | "btnSecondary"
+  | "secondary"
   | "icon"
   | "icon-transparent";
 
@@ -55,7 +55,6 @@ const primaryStyles = css`
   }
 `;
 
-// Define btnSecondary (text) button styles
 const secondaryStyles = css`
   background-color: transparent;
   color: ${colors.btnSecondary};
@@ -65,12 +64,11 @@ const secondaryStyles = css`
   &:hover,
   &:focus {
     background-color: transparent !important;
-    color: ${colors.btnHover.btnSecondary} !important;
+    color: ${colors.btnHover.secondary} !important;
     border-color: transparent !important;
   }
 `;
 
-// Define outlined button styles
 const outlinedStyles = css`
   background-color: transparent;
   color: ${colors.outline};
@@ -129,7 +127,7 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
   // Apply variant styles
   ${({ variant = "primary" }) => {
     switch (variant) {
-      case "btnSecondary":
+      case "secondary":
         return secondaryStyles;
       case "outlined":
         return outlinedStyles;
