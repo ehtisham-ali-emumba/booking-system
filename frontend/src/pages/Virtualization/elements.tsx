@@ -16,3 +16,10 @@ export const Heading = styled(Typography.Title)({
   textAlign: "center",
   marginBottom: "40px",
 });
+
+export const InputContainer = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  margin: "30px 0px",
+  width: "100%",
+});

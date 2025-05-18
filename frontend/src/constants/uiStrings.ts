@@ -58,4 +58,5 @@ export const uiStrings = {
   chooseDate: "Choose Date",
   location: "Location",
   whereYouWantToGo: "Where you want to go?",
+  searchPlaceholder: "Search by name or email",
 };

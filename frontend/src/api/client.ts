@@ -4,7 +4,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-class ApiClient {
+export class ApiClient {
   private static _singleton: ApiClient | null = null;
   private static _axiosInstance: AxiosInstance;
 
@@ -29,5 +29,3 @@ class ApiClient {
     return ApiClient._axiosInstance;
   }
 }
-
-export default ApiClient;
