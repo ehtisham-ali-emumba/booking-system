@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRandomUsers } from "../api/services";
 
-export const useRandomUsers = (page = 1) =>
+export const useRandomUsers = ({ page }: { page: number }) =>
   useQuery<RandomUser[], Error>({
     queryKey: ["randomUsers", page],
     queryFn: () => getRandomUsers({ page }),

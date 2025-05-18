@@ -7,7 +7,7 @@ import { Box, Heading, Container, InputContainer } from "./elements";
 import { useRandomUsers } from "../../hooks/useRandomUsers";
 
 export const Virtualization = () => {
-  const { data: users = [], isLoading, error } = useRandomUsers();
+  const { data: users = [], isLoading, error } = useRandomUsers({ page: 1 });
 
   return (
     <Container>
