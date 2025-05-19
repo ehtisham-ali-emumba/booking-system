@@ -43,11 +43,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/virtualization",
-    element: (
-      <MainLayout>
-        <Virtualization />
-      </MainLayout>
-    ),
+    element: <Virtualization />,
   },
   {
     path: "/tour/:tourId",

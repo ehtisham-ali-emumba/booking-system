@@ -4,12 +4,14 @@ import { Typography } from "antd";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
+  height: 100vh !important;
 `;
 
 export const Box = styled.div({
-  marginTop: "110px",
   width: "100%",
-  paddingBottom: "82px",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
 });
 
 export const Heading = styled(Typography.Title)({
@@ -20,6 +22,20 @@ export const Heading = styled(Typography.Title)({
 export const InputContainer = styled.div({
   display: "flex",
   justifyContent: "center",
-  margin: "30px 0px",
+  margin: "20px 0px",
   width: "100%",
 });
+
+export const GridWrapper = styled.div<{ width?: number }>`
+  margin: 0 auto !important;
+  width: ${(props) => props.width || "100%"} !important;
+`;
+
+export const ListContainer = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100%;
+`;

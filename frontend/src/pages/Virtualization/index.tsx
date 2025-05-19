@@ -1,15 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { FixedSizeGrid as Grid } from "react-window";
 import { useInfiniteUsers, type RandomUser } from "../../hooks/useRandomUsers";
-import { listWrapperStyles, UserCard } from "../../components/Card";
+import { UserCard } from "../../components/Card";
 import { Input, Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
 import { BlankSlate } from "../../components/BlankSlate";
 import { uiStrings } from "../../constants/uiStrings";
-import { Box, Heading, Container, InputContainer } from "./elements";
+import {
+  Box,
+  Heading,
+  Container,
+  InputContainer,
+  GridWrapper,
+  ListContainer,
+} from "./elements";
+import { useHandleResize } from "../../hooks/useHandleResize";
 
 const COLUMN_WIDTH = 300;
 const ROW_HEIGHT = 370;
+const gridStyles = {
+  overflowX: "hidden",
+  padding: "0 5px",
+} as const;
 
 export const Virtualization = () => {
   const [search, setSearch] = useState("");
@@ -17,24 +29,38 @@ export const Virtualization = () => {
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
 
-  const { data, isLoading, isError, error, isFetchingNextPage } =
-    useInfiniteUsers();
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteUsers();
 
   const users: RandomUser[] = data
     ? data.pages.flatMap((page) => page.users)
     : [];
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (gridContainerRef.current) {
-        const width = gridContainerRef.current.offsetWidth;
-        setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const rowCount = Math.ceil(users.length / numColumns);
+
+  const handleResize = () => {
+    if (gridContainerRef.current) {
+      const width = gridContainerRef.current.offsetWidth;
+      setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
+    }
+  };
+  useHandleResize(handleResize);
+  useEffect(handleResize, []);
+
+  const handleItemsRendered = useCallback(
+    ({ visibleRowStopIndex }: { visibleRowStopIndex: number }) => {
+      if (!isFetchingNextPage && visibleRowStopIndex >= rowCount - 1)
+        fetchNextPage();
+    },
+    [hasNextPage, isFetchingNextPage, fetchNextPage, rowCount]
+  );
 
   const Cell = ({ columnIndex, rowIndex, style }: any) => {
     const userIndex = rowIndex * numColumns + columnIndex;
@@ -56,12 +82,13 @@ export const Virtualization = () => {
     );
   };
 
-  const rowCount = Math.ceil(users.length / numColumns);
-
   return (
     <Container>
       <Box>
-        <Heading>{uiStrings.virtualization}</Heading>
+        <Heading>
+          {uiStrings.virtualization}
+          {numColumns}
+        </Heading>
         <InputContainer>
           <Input
             inputProps={{
@@ -73,41 +100,34 @@ export const Virtualization = () => {
             }}
           />
         </InputContainer>
-        <div
-          ref={gridContainerRef}
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <ListContainer ref={gridContainerRef}>
           {isLoading ? (
             <Loader />
           ) : isError ? (
             <ErrorContainer message={`Error: ${(error as Error).message}`} />
           ) : users.length ? (
             <>
-              <Grid
-                columnCount={numColumns}
-                columnWidth={COLUMN_WIDTH}
-                height={rowCount * ROW_HEIGHT}
-                rowCount={rowCount}
-                rowHeight={ROW_HEIGHT}
-                width={numColumns * COLUMN_WIDTH}
-                ref={listRef}
-                style={{
-                  ...listWrapperStyles,
-                  margin: "0 auto",
-                }}
-              >
-                {Cell}
-              </Grid>
-              {isFetchingNextPage && <Loader />}
+              <GridWrapper width={numColumns * COLUMN_WIDTH}>
+                <Grid
+                  columnCount={numColumns}
+                  columnWidth={COLUMN_WIDTH}
+                  height={640}
+                  rowCount={rowCount}
+                  rowHeight={ROW_HEIGHT}
+                  width={numColumns * COLUMN_WIDTH}
+                  ref={listRef}
+                  style={gridStyles}
+                  onItemsRendered={handleItemsRendered}
+                >
+                  {Cell}
+                </Grid>
+              </GridWrapper>
+              {isFetchingNextPage && <Loader paddingTop={"0px"} />}
             </>
           ) : (
             <BlankSlate />
           )}
-        </div>
+        </ListContainer>
       </Box>
     </Container>
   );
