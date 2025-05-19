@@ -21,7 +21,6 @@ import {
 } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { debounce } from "../../utils/appUtils";
-import { UserDetailsModal } from "./UserDetailsModal";
 
 const COLUMN_WIDTH = 300;
 const ROW_HEIGHT = 370;
@@ -30,10 +29,9 @@ const gridStyles = {
   padding: "0 5px",
 } as const;
 
-export const Virtualization = () => {
+export const HondaAutos = () => {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [selectedUser, setSelectedUser] = useState<RandomUser | null>(null);
   const listRef = useRef<FixedSizeGrid>(null);
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
@@ -113,7 +111,6 @@ export const Virtualization = () => {
           phone={user.phone}
           country={user.location.country}
           city={user.location.city}
-          onClick={() => setSelectedUser(user)}
         />
       </div>
     );
@@ -162,10 +159,6 @@ export const Virtualization = () => {
             <BlankSlate />
           )}
         </ListContainer>
-        <UserDetailsModal
-          user={selectedUser}
-          onClose={() => setSelectedUser(null)}
-        />
       </Box>
     </Container>
   );

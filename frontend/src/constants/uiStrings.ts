@@ -9,6 +9,7 @@ export const uiStrings = {
   bookTour: "Book Tour",
   myTours: "My Tours",
   virtualization: "Virtualization",
+  hondaAutos: "Honda Autos",
 
   whatsIncluded: "What's Included",
   destination: "Destination",

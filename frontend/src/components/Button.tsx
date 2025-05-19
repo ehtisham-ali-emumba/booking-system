@@ -61,8 +61,7 @@ const secondaryStyles = css`
   border: none;
   box-shadow: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: transparent !important;
     color: ${colors.btnHover.secondary} !important;
     border-color: transparent !important;

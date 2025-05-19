@@ -28,6 +28,9 @@ export const NavMenu = styled.div`
   @media (max-width: 768px) {
     display: none; /* Hide desktop menu on mobile */
   }
+  .active-button {
+    color: ${colors.accentOrange};
+  }
 `;
 
 export const ExploreButton = styled(Button)`
@@ -93,9 +96,14 @@ export const MobileMenu = styled.div<{ isOpen: boolean }>`
     margin-top: 24px;
     align-items: center;
 
+    .active-button {
+      color: ${colors.accentOrange};
+      text-decoration: underline;
+    }
+
     a {
       font-size: 18px;
-      color: ${colors.accentOrange};
+      color: ${colors.btnSecondary};
       text-decoration: none;
 
       &:hover {
