@@ -29,7 +29,8 @@ export const CardDescription = styled(Paragraph)`
 export const MetaInfoContainer = styled.div`
   display: flex;
   gap: 16px;
-  margin-top: 23px;
+  margin-top: 25px;
+  margin-bottom: 8px;
   ${StyledCard}:hover & {
     display: none;
   }
