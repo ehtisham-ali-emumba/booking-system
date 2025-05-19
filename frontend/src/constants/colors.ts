@@ -21,4 +21,5 @@ export const colors = {
     secondary: "#666666",
     outlined: "#fff8f6",
   },
+  disabledColor: "#e0e0e0",
 };

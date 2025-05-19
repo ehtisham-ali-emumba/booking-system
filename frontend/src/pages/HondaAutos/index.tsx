@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { FixedSizeGrid, FixedSizeGrid as Grid } from "react-window";
 import { useInfiniteUsers, type RandomUser } from "../../hooks/useRandomUsers";
 import { UserCard } from "../../components/Card";
@@ -20,7 +14,6 @@ import {
   ListContainer,
 } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
-import { debounce } from "../../utils/appUtils";
 
 const COLUMN_WIDTH = 300;
 const ROW_HEIGHT = 370;
@@ -31,7 +24,6 @@ const gridStyles = {
 
 export const HondaAutos = () => {
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
   const listRef = useRef<FixedSizeGrid>(null);
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
@@ -50,25 +42,6 @@ export const HondaAutos = () => {
     ? data.pages.flatMap((page) => page.users)
     : [];
 
-  const filteredUsers = !debouncedSearch
-    ? users
-    : users.filter((user) => {
-        const fullName = `${user.name.first} ${user.name.last}`.toLowerCase();
-        return (
-          fullName.includes(debouncedSearch.toLowerCase()) ||
-          user.email.toLowerCase().includes(debouncedSearch.toLowerCase())
-        );
-      });
-
-  const debouncedCallback = useMemo(() => {
-    return debounce<(value: string) => void>((value: string) => {
-      setDebouncedSearch(value);
-    }, 300);
-  }, []);
-  useEffect(() => {
-    debouncedCallback(search);
-  }, [search]);
-
   const handleResize = () => {
     if (gridContainerRef.current) {
       const width = gridContainerRef.current.offsetWidth;
@@ -79,11 +52,12 @@ export const HondaAutos = () => {
   useHandleResize(handleResize);
   useEffect(handleResize, []);
 
-  const rowCount = Math.ceil(filteredUsers.length / numColumns);
+  const rowCount = Math.ceil(users.length / numColumns);
+
   const handleItemsRendered = useCallback(
     ({ visibleRowStopIndex }: { visibleRowStopIndex: number }) => {
       if (!isFetchingNextPage && visibleRowStopIndex >= rowCount - 1)
-        fetchNextPage();
+        console.log("🚀 ~ HondaAutos ~ fetchNextPage():");
     },
     [hasNextPage, isFetchingNextPage, fetchNextPage, rowCount]
   );
@@ -98,7 +72,7 @@ export const HondaAutos = () => {
     style: React.CSSProperties;
   }) => {
     const userIndex = rowIndex * numColumns + columnIndex;
-    const user = filteredUsers[userIndex];
+    const user = users[userIndex];
     if (!user) return null;
     return (
       <div style={style}>
@@ -136,7 +110,7 @@ export const HondaAutos = () => {
             <Loader />
           ) : isError ? (
             <ErrorContainer message={`Error: ${(error as Error).message}`} />
-          ) : filteredUsers.length ? (
+          ) : users.length ? (
             <>
               <GridWrapper width={numColumns * COLUMN_WIDTH}>
                 <Grid

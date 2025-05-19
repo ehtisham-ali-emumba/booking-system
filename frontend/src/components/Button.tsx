@@ -150,5 +150,6 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
   &:disabled {
     cursor: not-allowed;
     pointer-events: none;
+    background-color: ${colors.disabledColor} !important;
   }
 `;
