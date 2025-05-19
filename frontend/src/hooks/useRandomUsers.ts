@@ -1,10 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import { getRandomUsers } from "../api/services";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { getRandomUsers } from "../api/services/randomUserService";
+import { QUERY_KEYS } from "../constants/reactQueryKeys";
 
-export const useRandomUsers = ({ page }: { page: number }) =>
-  useQuery<RandomUser[], Error>({
-    queryKey: ["randomUsers", page],
-    queryFn: () => getRandomUsers({ page }),
+export const useInfiniteUsers = () =>
+  useInfiniteQuery<{ users: RandomUser[]; nextPage: number }, Error>({
+    queryKey: [QUERY_KEYS.RANDOM_USERS],
+    queryFn: ({ pageParam = 1 }) =>
+      getRandomUsers({ page: pageParam as number }),
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+    initialPageParam: 1,
   });
 
 export type RandomUser = {

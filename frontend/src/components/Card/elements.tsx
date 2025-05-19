@@ -81,6 +81,8 @@ export const StyledUserCard = styled(Card)`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   height: 100%;
   width: 280px;
+  margin: 10px;
+  height: 350px !important;
   .ant-card-body {
     padding: 0px !important;
   }

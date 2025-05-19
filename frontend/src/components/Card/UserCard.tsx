@@ -2,7 +2,6 @@ import React from "react";
 import {
   MailOutlined,
   PhoneOutlined,
-  InfoCircleOutlined,
   EnvironmentOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
@@ -85,11 +84,14 @@ const UserCard: React.FC<UserCardProps> = ({
 };
 
 // Flex layout wrapper for displaying multiple cards
-const UserCardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-`;
 
-export { UserCard, UserCardWrapper };
+const listWrapperStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "25px",
+  justifyContent: "center",
+} as const;
+
+const UserCardWrapper = styled.div({ ...listWrapperStyles });
+
+export { UserCard, UserCardWrapper, listWrapperStyles };
