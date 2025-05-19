@@ -22,6 +22,7 @@ import {
 } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { debounce } from "../../utils/appUtils";
+import { UserDetailsModal } from "./UserDetailsModal";
 
 const COLUMN_WIDTH = 300;
 const ROW_HEIGHT = 370;
@@ -33,6 +34,7 @@ const gridStyles = {
 export const Virtualization = () => {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [selectedUser, setSelectedUser] = useState<RandomUser | null>(null);
   const listRef = useRef<any>(null);
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
@@ -104,6 +106,7 @@ export const Virtualization = () => {
           phone={user.phone}
           country={user.location.country}
           city={user.location.city}
+          onClick={useCallback(() => setSelectedUser(user), [user])}
         />
       </div>
     );
@@ -112,10 +115,7 @@ export const Virtualization = () => {
   return (
     <Container>
       <Box>
-        <Heading>
-          {uiStrings.virtualization}
-          {numColumns}
-        </Heading>
+        <Heading>{uiStrings.virtualization}</Heading>
         <InputContainer>
           <Input
             inputProps={{
@@ -155,6 +155,10 @@ export const Virtualization = () => {
             <BlankSlate />
           )}
         </ListContainer>
+        <UserDetailsModal
+          user={selectedUser}
+          onClose={() => setSelectedUser(null)}
+        />
       </Box>
     </Container>
   );

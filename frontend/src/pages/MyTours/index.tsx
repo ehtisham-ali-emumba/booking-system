@@ -10,6 +10,7 @@ import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components/BlankSlate";
 import { uiStrings } from "../../constants/uiStrings";
 import { Box, Heading, MyTourContainer } from "./elements";
+import { filterTours } from "./utils";
 
 export const MyTours = () => {
   const navigate = useNavigate();
@@ -17,11 +18,10 @@ export const MyTours = () => {
   const [bookings] = useAtom(bookingAtom);
   const { deleteBooking } = useDeleteBooking();
 
-  const filterMyTours = useMemo(() => {
-    if (!tours || !bookings) return [];
-    const bookingSet = new Set(bookings.map((booking) => booking.tourId));
-    return tours.filter((tour) => bookingSet.has(tour._id));
-  }, [tours, bookings]);
+  const filterMyTours = useMemo(
+    () => filterTours(tours, bookings),
+    [tours, bookings]
+  );
 
   return (
     <MyTourContainer>
