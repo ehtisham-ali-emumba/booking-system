@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 import { FixedSizeGrid as Grid } from "react-window";
 import { useInfiniteUsers, type RandomUser } from "../../hooks/useRandomUsers";
 import { UserCard } from "../../components/Card";
@@ -15,6 +21,7 @@ import {
   ListContainer,
 } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
+import { debounce } from "../../utils/appUtils";
 
 const COLUMN_WIDTH = 300;
 const ROW_HEIGHT = 370;
@@ -25,6 +32,7 @@ const gridStyles = {
 
 export const Virtualization = () => {
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const listRef = useRef<any>(null);
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
@@ -43,7 +51,24 @@ export const Virtualization = () => {
     ? data.pages.flatMap((page) => page.users)
     : [];
 
-  const rowCount = Math.ceil(users.length / numColumns);
+  const filteredUsers = !debouncedSearch
+    ? users
+    : users.filter((user) => {
+        const fullName = `${user.name.first} ${user.name.last}`.toLowerCase();
+        return (
+          fullName.includes(debouncedSearch.toLowerCase()) ||
+          user.email.toLowerCase().includes(debouncedSearch.toLowerCase())
+        );
+      });
+
+  const debouncedCallback = useMemo(() => {
+    return debounce((value: string) => {
+      setDebouncedSearch(value);
+    }, 300);
+  }, []);
+  useEffect(() => {
+    debouncedCallback(search);
+  }, [search]);
 
   const handleResize = () => {
     if (gridContainerRef.current) {
@@ -51,9 +76,11 @@ export const Virtualization = () => {
       setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
     }
   };
+
   useHandleResize(handleResize);
   useEffect(handleResize, []);
 
+  const rowCount = Math.ceil(filteredUsers.length / numColumns);
   const handleItemsRendered = useCallback(
     ({ visibleRowStopIndex }: { visibleRowStopIndex: number }) => {
       if (!isFetchingNextPage && visibleRowStopIndex >= rowCount - 1)
@@ -64,7 +91,7 @@ export const Virtualization = () => {
 
   const Cell = ({ columnIndex, rowIndex, style }: any) => {
     const userIndex = rowIndex * numColumns + columnIndex;
-    const user = users[userIndex];
+    const user = filteredUsers[userIndex];
     if (!user) return null;
     return (
       <div style={style}>
@@ -105,7 +132,7 @@ export const Virtualization = () => {
             <Loader />
           ) : isError ? (
             <ErrorContainer message={`Error: ${(error as Error).message}`} />
-          ) : users.length ? (
+          ) : filteredUsers.length ? (
             <>
               <GridWrapper width={numColumns * COLUMN_WIDTH}>
                 <Grid
