@@ -1,4 +1,6 @@
-export function debounce<T extends (...args: any[]) => void>(
+import type { TSFixMe } from "../types";
+
+export function debounce<T extends (...args: TSFixMe[]) => void>(
   fn: T,
   delay: number
 ) {

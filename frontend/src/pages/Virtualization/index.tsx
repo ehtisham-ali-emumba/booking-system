@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import { FixedSizeGrid as Grid } from "react-window";
+import { FixedSizeGrid, FixedSizeGrid as Grid } from "react-window";
 import { useInfiniteUsers, type RandomUser } from "../../hooks/useRandomUsers";
 import { UserCard } from "../../components/Card";
 import { Input, Loader } from "../../components";
@@ -35,7 +35,7 @@ export const Virtualization = () => {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedUser, setSelectedUser] = useState<RandomUser | null>(null);
-  const listRef = useRef<any>(null);
+  const listRef = useRef<FixedSizeGrid>(null);
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
 
@@ -64,7 +64,7 @@ export const Virtualization = () => {
       });
 
   const debouncedCallback = useMemo(() => {
-    return debounce((value: string) => {
+    return debounce<(value: string) => void>((value: string) => {
       setDebouncedSearch(value);
     }, 300);
   }, []);
@@ -91,7 +91,15 @@ export const Virtualization = () => {
     [hasNextPage, isFetchingNextPage, fetchNextPage, rowCount]
   );
 
-  const Cell = ({ columnIndex, rowIndex, style }: any) => {
+  const Cell = ({
+    columnIndex,
+    rowIndex,
+    style,
+  }: {
+    columnIndex: number;
+    rowIndex: number;
+    style: React.CSSProperties;
+  }) => {
     const userIndex = rowIndex * numColumns + columnIndex;
     const user = filteredUsers[userIndex];
     if (!user) return null;
@@ -106,7 +114,7 @@ export const Virtualization = () => {
           phone={user.phone}
           country={user.location.country}
           city={user.location.city}
-          onClick={useCallback(() => setSelectedUser(user), [user])}
+          onClick={() => setSelectedUser(user)}
         />
       </div>
     );
