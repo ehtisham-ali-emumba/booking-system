@@ -145,6 +145,7 @@ export const StyledHondaAutoCard = styled(Card)`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   height: 415px;
   width: 300px;
+  margin: 0 auto;
   .ant-card-cover img {
     height: 240px;
   }

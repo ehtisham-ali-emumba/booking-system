@@ -6,7 +6,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { colors } from "../../constants";
 import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
 import { CarUpdateModal, type CarUpdateFormValues } from "./CarUpdateModal";
-import { CarGrid } from "./CardGrid";
+import { CarGrid } from "./CarGrid";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 
 export const HondaAutos = () => {
@@ -60,7 +60,7 @@ export const HondaAutos = () => {
           <Input
             inputProps={{
               placeholder: uiStrings.carSearchPlaceholder,
-              style: { maxWidth: "320px" },
+              style: { maxWidth: "280px" },
               value: search,
               onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value),
@@ -85,7 +85,7 @@ export const HondaAutos = () => {
         open={deleteModalOpen}
         onConfirm={handleDeleteSubmit}
         onCancel={onCloseDeleteModal}
-        message={"Would you like to delete this auto?"}
+        message={uiStrings.deleteAutoConfirmation}
       />
     </Container>
   );

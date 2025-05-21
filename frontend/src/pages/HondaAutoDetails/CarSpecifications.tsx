@@ -1,17 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { Button, Spacer } from "../../components";
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 import { colors, uiStrings } from "../../constants";
-import {
-  CarSpecsContainer,
-  SpecsTitle,
-  SpecItem,
-  SpecLabel,
-  SpecValue,
-  SpecActions,
-  Divider,
-  Row,
-} from "./elements";
+import { CarSpecsContainer, SpecsTitle, Row } from "./elements";
 import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
 import { ModifyCarSpecModal } from "./ModifyCarSpecModal";

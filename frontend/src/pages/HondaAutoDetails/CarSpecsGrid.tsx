@@ -12,6 +12,7 @@ import {
   FixedSizeList as List,
   type ListChildComponentProps,
 } from "react-window";
+import { uiStrings } from "../../constants";
 
 type CarSpecsGridType = {
   auto: HondaAuto;
@@ -53,9 +54,20 @@ export const CarSpecsGrid: React.FC<CarSpecsGridType> = ({
     );
   };
 
-  return (
-    <List height={350} itemCount={carSpecs.length} itemSize={56} width="100%">
+  const listHeight = Math.max(carSpecs.length * 60, 200);
+
+  return carSpecs.length ? (
+    <List
+      height={listHeight}
+      itemCount={carSpecs.length}
+      itemSize={56}
+      width="100%"
+    >
       {Row}
     </List>
+  ) : (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <p>{uiStrings.noSpecsFound}</p>
+    </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Modal, Form, Typography } from "antd";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Wrapper } from "../../styles";
+import { sizeMobile } from "../../utils";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
@@ -19,17 +20,22 @@ export const Heading = styled(Typography.Title)({
   marginBottom: "40px",
 });
 
-export const InputContainer = styled.div({
-  display: "flex",
-  justifyContent: "center",
-  margin: "20px 0px 25px 0px",
-  width: "100%",
-  gap: "10px",
-});
+export const InputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px 25px 0px;
+  width: 100%;
+  gap: 10px;
+  ${sizeMobile(css`
+    gap: 0px;
+    margin: 20px auto;
+  `)}
+`;
 
 export const GridWrapper = styled.div<{ width?: number }>`
   margin: 0 auto !important;
   width: ${(props) => props.width || "100%"} !important;
+  height: 100%;
 `;
 
 export const ListContainer = styled.div`

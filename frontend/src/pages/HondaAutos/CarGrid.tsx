@@ -23,6 +23,7 @@ export const CarGrid = memo(
     const navigate = useNavigate();
     const { hondaAutos } = useHondaAutosAtom();
     const [numColumns, setNumColumns] = useState(1);
+    const [gridHeight, setGridHeight] = useState(580);
 
     const gridContainerRef = useRef<HTMLDivElement>(null);
 
@@ -30,6 +31,8 @@ export const CarGrid = memo(
       if (gridContainerRef.current) {
         const width = gridContainerRef.current.offsetWidth;
         setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
+        const height = gridContainerRef.current.offsetHeight;
+        setGridHeight(height);
       }
     };
 
@@ -78,7 +81,7 @@ export const CarGrid = memo(
             <Grid
               columnCount={numColumns}
               columnWidth={COLUMN_WIDTH}
-              height={580}
+              height={gridHeight}
               rowCount={rowCount}
               rowHeight={ROW_HEIGHT}
               width={numColumns * COLUMN_WIDTH}

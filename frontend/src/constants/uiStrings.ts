@@ -65,4 +65,6 @@ export const uiStrings = {
   hondaAutoNotFound: "Honda Auto not found",
   carSpecs: "Car Specifications",
   deleteSpecConfirmation: "Would you like to delete this specification?",
+  deleteAutoConfirmation: "Would you like to delete this auto?",
+  noSpecsFound: "No specifications available",
 };
