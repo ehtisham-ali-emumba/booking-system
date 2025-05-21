@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Button, Spacer } from "../../components";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { colors, uiStrings } from "../../constants";
@@ -33,25 +33,23 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
 
   const carSpecs = getHondaAutoSpecs(auto);
 
-  const addOrEditSpec = (key: string, value: string | number) => {
-    addOrEditHondaAutoAttribute(id, key, value);
-  };
+  const handleAddEditClick = useCallback(
+    (isEditMode?: boolean, key = "", value?: string | number) => {
+      setEditingKey(key);
+      setEditingValue(value ?? "");
+      setIsEditMode(!!isEditMode);
+      setModalOpen(true);
+    },
+    []
+  );
 
-  const handleAddEditClick = (
-    isEditMode?: boolean,
-    key = "",
-    value?: string | number
-  ) => {
-    setEditingKey(key);
-    setEditingValue(value ?? "");
-    setIsEditMode(!!isEditMode);
-    setModalOpen(true);
-  };
-
-  const handleModalOk = (key: string, value: string) => {
-    addOrEditSpec(key, value);
-    setModalOpen(false);
-  };
+  const handleModalOk = useCallback(
+    (key: string, value: string) => {
+      addOrEditHondaAutoAttribute(id, key, value);
+      setModalOpen(false);
+    },
+    [addOrEditHondaAutoAttribute]
+  );
 
   return (
     <CarSpecsContainer>
