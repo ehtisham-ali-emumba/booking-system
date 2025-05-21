@@ -16,6 +16,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "A sporty sedan blending style, comfort, and efficiency.",
     mileage: "15 km/l",
     fuelCapacity: "47 L",
+    seatingCapacity: 5,
+    bodyType: "Sedan",
   },
   {
     id: 2,
@@ -31,6 +33,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Premium comfort meets powerful performance in this classic.",
     mileage: "14 km/l",
     fuelCapacity: "56 L",
+    seatingCapacity: 5,
+    bodyType: "Sedan",
   },
   {
     id: 3,
@@ -46,6 +50,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Versatile SUV with spacious interior and advanced safety.",
     mileage: "13 km/l",
     fuelCapacity: "57 L",
+    seatingCapacity: 5,
+    bodyType: "SUV",
   },
   {
     id: 4,
@@ -61,6 +67,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Compact crossover with bold design and flexible space.",
     mileage: "16 km/l",
     fuelCapacity: "40 L",
+    seatingCapacity: 5,
+    bodyType: "Crossover",
   },
   {
     id: 5,
@@ -76,6 +84,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Urban favorite with sleek looks and smart features.",
     mileage: "17 km/l",
     fuelCapacity: "40 L",
+    seatingCapacity: 5,
+    bodyType: "Sedan",
   },
   {
     id: 6,
@@ -91,6 +101,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Compact hatchback with surprising space and agility.",
     mileage: "18 km/l",
     fuelCapacity: "40 L",
+    seatingCapacity: 5,
+    bodyType: "Hatchback",
   },
   {
     id: 7,
@@ -106,6 +118,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Family SUV with rugged looks and flexible seating.",
     mileage: "15 km/l",
     fuelCapacity: "42 L",
+    seatingCapacity: 7,
+    bodyType: "SUV",
   },
   {
     id: 8,
@@ -121,6 +135,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Ultimate minivan for comfort, space, and family trips.",
     mileage: "11 km/l",
     fuelCapacity: "55 L",
+    seatingCapacity: 8,
+    bodyType: "Minivan",
   },
   {
     id: 9,
@@ -136,6 +152,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Spacious SUV with power and advanced tech for adventures.",
     mileage: "10 km/l",
     fuelCapacity: "73 L",
+    seatingCapacity: 8,
+    bodyType: "SUV",
   },
   {
     id: 10,
@@ -151,6 +169,8 @@ export const hondaAutos: HondaAuto[] = [
     description: "Small car, big personality—perfect for city driving.",
     mileage: "19 km/l",
     fuelCapacity: "40 L",
+    seatingCapacity: 5,
+    bodyType: "Hatchback",
   },
 ];
 
@@ -169,6 +189,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Hybrid sedan that blends efficiency with elegance.",
     mileage: "22 km/l",
     fuelCapacity: "40 L",
+    seatingCapacity: 5,
+    bodyType: "Sedan",
   },
   {
     id: 12,
@@ -184,6 +206,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Rugged pickup with car-like comfort and utility.",
     mileage: "9 km/l",
     fuelCapacity: "73 L",
+    seatingCapacity: 5,
+    bodyType: "Pickup",
   },
   {
     id: 13,
@@ -199,6 +223,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Adventure-ready SUV with bold style and power.",
     mileage: "10 km/l",
     fuelCapacity: "73 L",
+    seatingCapacity: 5,
+    bodyType: "SUV",
   },
   {
     id: 14,
@@ -214,6 +240,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Futuristic electric car with retro-inspired design.",
     mileage: "220 km/charge",
     fuelCapacity: "35.5 kWh",
+    seatingCapacity: 4,
+    bodyType: "Hatchback",
   },
   {
     id: 15,
@@ -229,6 +257,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Fun, compact roadster for pure driving excitement.",
     mileage: "20 km/l",
     fuelCapacity: "25 L",
+    seatingCapacity: 2,
+    bodyType: "Roadster",
   },
   {
     id: 16,
@@ -244,6 +274,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Smart minivan with hybrid efficiency and space.",
     mileage: "17 km/l",
     fuelCapacity: "36 L",
+    seatingCapacity: 7,
+    bodyType: "Minivan",
   },
   {
     id: 17,
@@ -259,6 +291,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Spacious van designed for family comfort and travel.",
     mileage: "15 km/l",
     fuelCapacity: "52 L",
+    seatingCapacity: 8,
+    bodyType: "Van",
   },
   {
     id: 18,
@@ -274,6 +308,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Versatile wagon with hybrid power and ample cargo.",
     mileage: "23 km/l",
     fuelCapacity: "40 L",
+    seatingCapacity: 5,
+    bodyType: "Wagon",
   },
   {
     id: 19,
@@ -289,6 +325,8 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Ultra-compact kei car with maximum interior space.",
     mileage: "25 km/l",
     fuelCapacity: "27 L",
+    seatingCapacity: 4,
+    bodyType: "Kei Car",
   },
   {
     id: 20,
@@ -304,5 +342,7 @@ export const hondaAutosMoreData: HondaAuto[] = [
     description: "Eco-friendly sedan with advanced hybrid technology.",
     mileage: "21 km/l",
     fuelCapacity: "26.5 L",
+    seatingCapacity: 5,
+    bodyType: "Sedan",
   },
 ];

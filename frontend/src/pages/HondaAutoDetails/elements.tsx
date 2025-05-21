@@ -93,7 +93,7 @@ export const ManufacturerName = styled.a`
 export const RatingContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 `;
 
 export const StarRating = styled.div`
@@ -111,6 +111,7 @@ export const Price = styled.div`
   font-size: 28px;
   font-weight: 700;
   color: #333;
+  margin-top: 8px;
 `;
 
 export const CurrencySymbol = styled.span`

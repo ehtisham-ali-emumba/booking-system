@@ -13,15 +13,27 @@ import {
 } from "./elements";
 import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 import { getHondaAutoSpecs } from "./utils";
+import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
 
-export const CarSpecifications: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
+type CarSpecsType = {
+  auto: HondaAuto;
+};
+
+export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
+  const { id } = auto;
+  const { addOrEditHondaAutoAttribute, deleteHondaAutoAttribute } =
+    useHondaAutoDetailsAtom();
   const carSpecs = getHondaAutoSpecs(auto);
+
+  const addOrEditSpec = (newSpec = "new spec", specValue = "Data here...") => {
+    addOrEditHondaAutoAttribute(id, newSpec, specValue);
+  };
 
   return (
     <CarSpecsContainer>
       <Row>
         <SpecsTitle>{uiStrings.carSpecs}</SpecsTitle>
-        <Button variant="icon-transparent">
+        <Button variant="icon-transparent" onClick={() => addOrEditSpec()}>
           <PlusOutlined style={{ color: colors.black, fontSize: 20 }} />
         </Button>
       </Row>
@@ -33,7 +45,10 @@ export const CarSpecifications: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
             <SpecValue>{spec.value}</SpecValue>
             <SpecActions>
               <EditOutlined style={{ fontSize: 20 }} />
-              <DeleteOutlined style={{ fontSize: 20, color: "red" }} />
+              <DeleteOutlined
+                style={{ fontSize: 20, color: "red" }}
+                onClick={() => deleteHondaAutoAttribute(auto.id, spec.label)}
+              />
             </SpecActions>
           </SpecItem>
           {index < carSpecs.length - 1 && <Divider />}

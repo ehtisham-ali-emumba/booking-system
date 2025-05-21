@@ -1,11 +1,27 @@
 import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 
 export const getHondaAutoSpecs = (auto: HondaAuto) => {
-  const specs: { label: string; value: string | number }[] = [];
+  const specs: { label: keyof HondaAuto; value: HondaAuto[keyof HondaAuto] }[] =
+    [];
   Object.entries(auto).map(([key, value]) => {
-    if (["id", "name", "desc", "imageSrc", "chipText"].includes(key)) return; // Skip these keys
+    if (
+      [
+        "id",
+        "name",
+        "price",
+        "modelYear",
+        "desc",
+        "imageSrc",
+        "chipText",
+        "engine",
+        "fuelType",
+        "color",
+        "description",
+      ].includes(key)
+    )
+      return; // Hide these keys in specifications
     specs.push({
-      label: key.charAt(0).toUpperCase() + key.slice(1),
+      label: key as keyof HondaAuto,
       value: value,
     });
   });

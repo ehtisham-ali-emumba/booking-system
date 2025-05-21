@@ -52,15 +52,14 @@ export const CarGrid = memo(({ handleEditClick }: CarGridProps) => {
       <div style={style}>
         <HondaAutoCard
           id={auto.id}
-          name={auto?.name}
-          modelYear={auto?.modelYear}
-          price={auto?.price}
-          engine={auto?.engine}
-          transmission={auto?.transmission}
-          fuelType={auto?.fuelType}
-          color={auto?.color}
-          imageSrc={auto?.imageSrc}
-          description={auto?.description}
+          name={auto.name}
+          modelYear={auto.modelYear}
+          price={auto.price}
+          engine={auto.engine}
+          fuelType={auto.fuelType}
+          color={auto.color}
+          imageSrc={auto.imageSrc}
+          description={auto.description}
           onClick={() => navigate(`/honda-auto/${auto.id}`)}
           chipText={auto?.chipText}
           onEditClick={(carId) => handleEditClick(carId)}

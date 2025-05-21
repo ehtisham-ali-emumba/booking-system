@@ -23,7 +23,6 @@ interface HondaAutoCardProps {
   modelYear: number;
   price: number;
   engine: string;
-  transmission: string;
   fuelType: string;
   color: string;
   imageSrc: string;
@@ -55,7 +54,6 @@ export const HondaAutoCard: React.FC<HondaAutoCardProps> = ({
   modelYear,
   price,
   engine,
-  transmission,
   description,
   fuelType,
   color,
@@ -98,7 +96,6 @@ export const HondaAutoCard: React.FC<HondaAutoCardProps> = ({
         {truncate(description, 60, "...")}
       </HondaAutoCardDescription>
       <HondaAutoMetaInfoContainer>
-        <HondaAutoMetaText>{transmission}</HondaAutoMetaText>
         <HondaAutoMetaText>{engine}</HondaAutoMetaText>
         <HondaAutoMetaText>{fuelType}</HondaAutoMetaText>
         <HondaAutoMetaText>{color}</HondaAutoMetaText>

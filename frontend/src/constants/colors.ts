@@ -1,6 +1,7 @@
 export const colors = {
   accentOrange: "#F16B51",
   neutralGray: "#797c9a",
+  chip: "rgb(234, 233, 233)",
   text: {
     primary: "#000000",
     secondary: "#666666",

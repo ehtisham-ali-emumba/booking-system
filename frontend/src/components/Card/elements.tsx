@@ -191,7 +191,7 @@ export const HondaAutoMetaText = styled(Text)`
   color: ${colors.text.primary};
   font-size: 14px;
   font-weight: 500;
-  background-color: ${colors.background.badge};
+  background-color: ${colors.chip};
   padding: 4px 16px;
   border-radius: 50px;
 `;

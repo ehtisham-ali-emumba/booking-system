@@ -22,9 +22,13 @@ import ErrorContainer from "../../components/ErrorContainer";
 import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
 import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 import { CarSpecifications } from "./CarSpecifications";
+import {
+  HondaAutoMetaInfoContainer,
+  HondaAutoMetaText,
+} from "../../components/Card/elements";
 
 const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
-  const { name, modelYear, price, imageSrc } = auto;
+  const { name, modelYear, price, imageSrc, engine, fuelType, color } = auto;
   return (
     <CarContainer>
       <CarImageContainer>
@@ -44,7 +48,11 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
           <StarRating>★★★★★</StarRating>
           <ReviewCount>(5)</ReviewCount>
         </RatingContainer>
-
+        <HondaAutoMetaInfoContainer>
+          <HondaAutoMetaText>{engine}</HondaAutoMetaText>
+          <HondaAutoMetaText>{fuelType}</HondaAutoMetaText>
+          <HondaAutoMetaText>{color}</HondaAutoMetaText>
+        </HondaAutoMetaInfoContainer>
         <Price>
           <CurrencySymbol>$ {price}</CurrencySymbol>
         </Price>
@@ -56,7 +64,8 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
 export const HondaAutoDetails = () => {
   const { hondaAutoId } = useParams<{ hondaAutoId: string }>();
 
-  const { getHondaAutoById } = useHondaAutoDetailsAtom();
+  const { getHondaAutoById, deleteHondaAutoAttribute } =
+    useHondaAutoDetailsAtom();
   const autoDetails = getHondaAutoById(Number(hondaAutoId));
 
   if (!autoDetails)
