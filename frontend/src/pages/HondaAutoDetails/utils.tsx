@@ -28,3 +28,12 @@ export const getHondaAutoSpecs = (auto: HondaAuto) => {
 
   return specs;
 };
+
+export const deleteIconStyle = {
+  fontSize: 20,
+  color: "red",
+};
+
+export const editIconStyle = {
+  fontSize: 20,
+};
