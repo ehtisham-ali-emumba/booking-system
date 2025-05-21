@@ -124,7 +124,7 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
         open={deleteModalOpen}
         onConfirm={handleDeleteSubmit}
         onCancel={onCloseDeleteModal}
-        message={"Would you like to delete this specification?"}
+        message={uiStrings.deleteSpecConfirmation}
       />
     </CarSpecsContainer>
   );

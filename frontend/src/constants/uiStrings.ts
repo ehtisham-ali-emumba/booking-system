@@ -64,4 +64,5 @@ export const uiStrings = {
   by: "By",
   hondaAutoNotFound: "Honda Auto not found",
   carSpecs: "Car Specifications",
+  deleteSpecConfirmation: "Would you like to delete this specification?",
 };
