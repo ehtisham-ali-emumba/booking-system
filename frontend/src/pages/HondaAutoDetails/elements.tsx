@@ -58,9 +58,10 @@ export const CarImageContainer = styled.div`
 
 export const CarImage = styled.img`
   width: 200px;
-  height: auto;
+  height: 150px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
+  object-fit: cover;
 `;
 
 export const CarInfo = styled.div`
@@ -107,16 +108,10 @@ export const ReviewCount = styled.span`
   font-size: 16px;
 `;
 
-export const Price = styled.div`
+export const CurrencySymbol = styled.span`
   font-size: 28px;
   font-weight: 700;
   color: #333;
-  margin-top: 8px;
-`;
-
-export const CurrencySymbol = styled.span`
-  font-weight: 500;
-  margin-right: 3px;
 `;
 
 export const CarSpecsContainer = styled.div`

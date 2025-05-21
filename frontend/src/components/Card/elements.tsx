@@ -171,6 +171,7 @@ export const HondaAutoMetaInfoContainer = styled.div`
   gap: 5px;
   flex-wrap: wrap;
   margin-top: 10px;
+  margin-bottom: 8px;
 `;
 
 export const PriceWrapper = styled.div`

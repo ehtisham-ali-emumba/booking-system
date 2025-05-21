@@ -14,7 +14,6 @@ import {
   RatingContainer,
   StarRating,
   ReviewCount,
-  Price,
   CurrencySymbol,
 } from "./elements";
 import { useParams } from "react-router-dom";
@@ -53,9 +52,8 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
           <HondaAutoMetaText>{fuelType}</HondaAutoMetaText>
           <HondaAutoMetaText>{color}</HondaAutoMetaText>
         </HondaAutoMetaInfoContainer>
-        <Price>
-          <CurrencySymbol>$ {price}</CurrencySymbol>
-        </Price>
+
+        <CurrencySymbol>$ {price}</CurrencySymbol>
       </CarInfo>
     </CarContainer>
   );
