@@ -146,6 +146,9 @@ export const SpecLabel = styled.div`
   font-weight: 600;
   color: #666;
   font-size: 16px;
+  padding: 0 8px;
+  min-width: 120px;
+  text-transform: capitalize;
 `;
 
 export const SpecValue = styled.div`
