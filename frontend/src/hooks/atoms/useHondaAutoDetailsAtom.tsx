@@ -13,12 +13,12 @@ export const useHondaAutoDetailsAtom = () => {
   );
 
   const deleteHondaAutoAttribute = useCallback(
-    (autoId: number, key: keyof HondaAuto | (string | {})) => {
+    (autoId: number, key: string) => {
       setHondaAutos((prevAutos) =>
         prevAutos.map((auto) => {
           if (auto.id !== autoId) return auto;
-          // @ts-ignore
-          const { [key]: _, ...rest } = auto;
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { [key as keyof HondaAuto]: _, ...rest } = auto;
           return rest as HondaAuto;
         })
       );

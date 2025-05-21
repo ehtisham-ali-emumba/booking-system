@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Form, Input, InputNumber } from "antd";
 import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
+import type { TSFixMe } from "../../types";
 
 export type CarUpdateFormValues = {
   id: number;
@@ -36,8 +37,8 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
     }
   }, [open, editingCarId, form]);
 
-  const handleFinish = (values: any) => {
-    onOk({ ...values, id: editingCarId });
+  const handleFinish = (values: Omit<CarUpdateFormValues, "id">) => {
+    onOk({ ...values, id: editingCarId! });
     form.resetFields();
   };
 
@@ -55,7 +56,7 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
       <CarUpdateStyledForm
         form={form}
         layout="vertical"
-        onFinish={handleFinish}
+        onFinish={handleFinish as TSFixMe}
       >
         <Form.Item
           label="Car Name"
