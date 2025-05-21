@@ -64,8 +64,7 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
 export const HondaAutoDetails = () => {
   const { hondaAutoId } = useParams<{ hondaAutoId: string }>();
 
-  const { getHondaAutoById, deleteHondaAutoAttribute } =
-    useHondaAutoDetailsAtom();
+  const { getHondaAutoById } = useHondaAutoDetailsAtom();
   const autoDetails = getHondaAutoById(Number(hondaAutoId));
 
   if (!autoDetails)

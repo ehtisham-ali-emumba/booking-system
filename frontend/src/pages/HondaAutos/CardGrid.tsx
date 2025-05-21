@@ -16,78 +16,81 @@ const gridStyles = {
 
 type CarGridProps = {
   handleEditClick: (carId: number) => void;
+  handleDeleteClick: (carId: number) => void;
 };
-export const CarGrid = memo(({ handleEditClick }: CarGridProps) => {
-  const navigate = useNavigate();
-  const { hondaAutos, deleteHondaAuto } = useHondaAutosAtom();
-  const [numColumns, setNumColumns] = useState(1);
+export const CarGrid = memo(
+  ({ handleEditClick, handleDeleteClick }: CarGridProps) => {
+    const navigate = useNavigate();
+    const { hondaAutos } = useHondaAutosAtom();
+    const [numColumns, setNumColumns] = useState(1);
 
-  const gridContainerRef = useRef<HTMLDivElement>(null);
+    const gridContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleResize = () => {
-    if (gridContainerRef.current) {
-      const width = gridContainerRef.current.offsetWidth;
-      setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
-    }
-  };
+    const handleResize = () => {
+      if (gridContainerRef.current) {
+        const width = gridContainerRef.current.offsetWidth;
+        setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
+      }
+    };
 
-  useHandleResize(handleResize);
-  useEffect(handleResize, []);
+    useHandleResize(handleResize);
+    useEffect(handleResize, []);
 
-  const rowCount = Math.ceil(hondaAutos.length / numColumns);
+    const rowCount = Math.ceil(hondaAutos.length / numColumns);
 
-  const Cell = ({
-    columnIndex,
-    rowIndex,
-    style,
-  }: {
-    columnIndex: number;
-    rowIndex: number;
-    style: React.CSSProperties;
-  }) => {
-    const userIndex = rowIndex * numColumns + columnIndex;
-    const auto = hondaAutos[userIndex];
-    if (!auto) return null;
+    const Cell = ({
+      columnIndex,
+      rowIndex,
+      style,
+    }: {
+      columnIndex: number;
+      rowIndex: number;
+      style: React.CSSProperties;
+    }) => {
+      const userIndex = rowIndex * numColumns + columnIndex;
+      const auto = hondaAutos[userIndex];
+      if (!auto) return null;
+      return (
+        <div style={style}>
+          <HondaAutoCard
+            id={auto.id}
+            name={auto.name}
+            modelYear={auto.modelYear}
+            price={auto.price}
+            engine={auto.engine}
+            fuelType={auto.fuelType}
+            color={auto.color}
+            imageSrc={auto.imageSrc}
+            description={auto.description}
+            onClick={() => navigate(`/honda-auto/${auto.id}`)}
+            chipText={auto?.chipText}
+            onEditClick={(carId) => handleEditClick(carId)}
+            onDeleteClick={(id) => handleDeleteClick(id)}
+          />
+        </div>
+      );
+    };
+
     return (
-      <div style={style}>
-        <HondaAutoCard
-          id={auto.id}
-          name={auto.name}
-          modelYear={auto.modelYear}
-          price={auto.price}
-          engine={auto.engine}
-          fuelType={auto.fuelType}
-          color={auto.color}
-          imageSrc={auto.imageSrc}
-          description={auto.description}
-          onClick={() => navigate(`/honda-auto/${auto.id}`)}
-          chipText={auto?.chipText}
-          onEditClick={(carId) => handleEditClick(carId)}
-          onDeleteClick={(id) => deleteHondaAuto(id)}
-        />
-      </div>
+      <ListContainer ref={gridContainerRef}>
+        {hondaAutos.length ? (
+          <GridWrapper width={numColumns * COLUMN_WIDTH}>
+            <Grid
+              columnCount={numColumns}
+              columnWidth={COLUMN_WIDTH}
+              height={580}
+              rowCount={rowCount}
+              rowHeight={ROW_HEIGHT}
+              width={numColumns * COLUMN_WIDTH}
+              style={gridStyles}
+            >
+              {Cell}
+            </Grid>
+          </GridWrapper>
+        ) : (
+          <BlankSlate />
+        )}
+      </ListContainer>
     );
-  };
-
-  return (
-    <ListContainer ref={gridContainerRef}>
-      {hondaAutos.length ? (
-        <GridWrapper width={numColumns * COLUMN_WIDTH}>
-          <Grid
-            columnCount={numColumns}
-            columnWidth={COLUMN_WIDTH}
-            height={580}
-            rowCount={rowCount}
-            rowHeight={ROW_HEIGHT}
-            width={numColumns * COLUMN_WIDTH}
-            style={gridStyles}
-          >
-            {Cell}
-          </Grid>
-        </GridWrapper>
-      ) : (
-        <BlankSlate />
-      )}
-    </ListContainer>
-  );
-});
+  }
+);

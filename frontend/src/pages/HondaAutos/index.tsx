@@ -7,22 +7,50 @@ import { colors } from "../../constants";
 import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
 import { CarUpdateModal, type CarUpdateFormValues } from "./CarUpdateModal";
 import { CarGrid } from "./CardGrid";
+import { ConfirmationModal } from "../../components/ConfirmationModal";
 
 export const HondaAutos = () => {
   const [search, setSearch] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [editingCarId, setEditingCarId] = useState<number | null>(null);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deleteCarId, setDeleteCarId] = useState<number | null>(null);
 
-  const { addHondaAuto, updateHondaAuto } = useHondaAutosAtom();
+  const { addHondaAuto, updateHondaAuto, deleteHondaAuto } =
+    useHondaAutosAtom();
 
   const handleEditClick = useCallback((carId: number) => {
     setEditingCarId(carId);
-    setModalOpen(true);
+    setEditModalOpen(true);
   }, []);
 
-  const handleCarUpdateSubmit = (values: CarUpdateFormValues) => {
-    updateHondaAuto(values);
-  };
+  const onCloseEditModal = useCallback(() => {
+    setEditingCarId(null);
+    setEditModalOpen(false);
+  }, []);
+
+  const handleCarUpdateSubmit = useCallback(
+    (values: CarUpdateFormValues) => {
+      updateHondaAuto(values);
+      onCloseEditModal();
+    },
+    [updateHondaAuto, onCloseEditModal]
+  );
+
+  const handleDeleteClick = useCallback((carId: number) => {
+    setDeleteCarId(carId);
+    setDeleteModalOpen(true);
+  }, []);
+
+  const onCloseDeleteModal = useCallback(() => {
+    setDeleteModalOpen(false);
+    setDeleteCarId(null);
+  }, []);
+
+  const handleDeleteSubmit = useCallback(() => {
+    deleteHondaAuto(deleteCarId!);
+    onCloseDeleteModal();
+  }, [deleteHondaAuto, deleteCarId, onCloseDeleteModal]);
 
   return (
     <Container>
@@ -42,13 +70,22 @@ export const HondaAutos = () => {
             <PlusOutlined style={{ color: colors.accentOrange }} />
           </Button>
         </InputContainer>
-        <CarGrid handleEditClick={handleEditClick} />
+        <CarGrid
+          handleEditClick={handleEditClick}
+          handleDeleteClick={handleDeleteClick}
+        />
       </Box>
       <CarUpdateModal
-        open={modalOpen}
+        open={editModalOpen}
         editingCarId={editingCarId}
         onOk={handleCarUpdateSubmit}
-        onCancel={() => setModalOpen(false)}
+        onCancel={onCloseEditModal}
+      />
+      <ConfirmationModal
+        open={deleteModalOpen}
+        onConfirm={handleDeleteSubmit}
+        onCancel={onCloseDeleteModal}
+        message={"Would you like to delete this auto?"}
       />
     </Container>
   );

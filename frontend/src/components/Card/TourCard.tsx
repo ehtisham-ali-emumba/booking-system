@@ -7,7 +7,7 @@ import {
 import styled from "styled-components";
 import { Button } from "../Button";
 import { getPriceLabel } from "../../utils/priceUtils";
-import { DeleteConfirmationModal } from "../ConfirmationModal";
+import { ConfirmationModal } from "../ConfirmationModal";
 import {
   StyledCard,
   CardTitle,
@@ -72,7 +72,7 @@ const TourCard: React.FC<TourCardProps> = ({
       <CardDescription>{truncate(description, 24, "...")}</CardDescription>
       {hasBooking ? (
         <BookingActionsContainer>
-          <DeleteConfirmationModal
+          <ConfirmationModal
             onConfirm={onDeleteBooking}
             message={conditionalText}
             hideConfirmButton={!canDelete}
@@ -88,7 +88,7 @@ const TourCard: React.FC<TourCardProps> = ({
                 icon={<DeleteOutlined style={{ fontSize: 26 }} />}
               />
             )}
-          </DeleteConfirmationModal>
+          </ConfirmationModal>
           <Button variant="primary" onClick={onViewBookingClick}>
             {uiStrings.details}
           </Button>

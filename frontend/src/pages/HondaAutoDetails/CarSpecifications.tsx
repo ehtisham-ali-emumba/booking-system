@@ -16,6 +16,7 @@ import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 import { getHondaAutoSpecs } from "./utils";
 import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
 import { ModifyCarSpecModal } from "./ModifyCarSpecModal";
+import { ConfirmationModal } from "../../components/ConfirmationModal";
 
 type CarSpecsType = {
   auto: HondaAuto;
@@ -26,7 +27,11 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
   const { addOrEditHondaAutoAttribute, deleteHondaAutoAttribute } =
     useHondaAutoDetailsAtom();
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modifyModalOpen, setModifyModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deleteSelectedAttr, setDeleteSelectedAttr] = useState<string | null>(
+    null
+  );
   const [editingKey, setEditingKey] = useState<string>("");
   const [editingValue, setEditingValue] = useState<string | number>("");
   const [isEditMode, setIsEditMode] = useState(false);
@@ -38,18 +43,44 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
       setEditingKey(key);
       setEditingValue(value ?? "");
       setIsEditMode(!!isEditMode);
-      setModalOpen(true);
+      setModifyModalOpen(true);
     },
     []
   );
 
-  const handleModalOk = useCallback(
+  const onCloseModifyModal = useCallback(() => {
+    setModifyModalOpen(false);
+    setEditingKey("");
+    setEditingValue("");
+  }, []);
+
+  const handleModifyModalSubmit = useCallback(
     (key: string, value: string) => {
       addOrEditHondaAutoAttribute(id, key, value);
-      setModalOpen(false);
+      onCloseModifyModal();
     },
-    [addOrEditHondaAutoAttribute]
+    [id, addOrEditHondaAutoAttribute, onCloseModifyModal]
   );
+
+  const handleDeleteClick = useCallback((key: string) => {
+    setDeleteSelectedAttr(key);
+    setDeleteModalOpen(true);
+  }, []);
+
+  const onCloseDeleteModal = useCallback(() => {
+    setDeleteModalOpen(false);
+    setDeleteSelectedAttr(null);
+  }, []);
+
+  const handleDeleteSubmit = useCallback(() => {
+    deleteHondaAutoAttribute(auto.id, deleteSelectedAttr!);
+    onCloseDeleteModal();
+  }, [
+    deleteHondaAutoAttribute,
+    auto.id,
+    deleteSelectedAttr,
+    onCloseDeleteModal,
+  ]);
 
   return (
     <CarSpecsContainer>
@@ -74,7 +105,7 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
               />
               <DeleteOutlined
                 style={{ fontSize: 20, color: "red" }}
-                onClick={() => deleteHondaAutoAttribute(auto.id, spec.label)}
+                onClick={() => handleDeleteClick(spec.label)}
               />
             </SpecActions>
           </SpecItem>
@@ -82,12 +113,18 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
         </div>
       ))}
       <ModifyCarSpecModal
-        open={modalOpen}
+        open={modifyModalOpen}
         initialKey={editingKey}
         initialValue={editingValue}
-        onSubmit={handleModalOk}
-        onCancel={() => setModalOpen(false)}
+        onSubmit={handleModifyModalSubmit}
+        onCancel={onCloseModifyModal}
         isEditMode={isEditMode}
+      />
+      <ConfirmationModal
+        open={deleteModalOpen}
+        onConfirm={handleDeleteSubmit}
+        onCancel={onCloseDeleteModal}
+        message={"Would you like to delete this specification?"}
       />
     </CarSpecsContainer>
   );

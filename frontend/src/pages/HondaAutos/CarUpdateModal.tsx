@@ -39,7 +39,6 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
   const handleFinish = (values: any) => {
     onOk({ ...values, id: editingCarId });
     form.resetFields();
-    onCancel();
   };
 
   return (

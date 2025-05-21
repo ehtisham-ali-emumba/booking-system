@@ -6,13 +6,14 @@ import { uiStrings } from "../constants";
 
 const { Text, Title } = Typography;
 
-interface DeleteConfirmationModalProps {
-  children: (onOpen: () => void) => React.ReactNode;
+interface ConfirmationModalProps {
+  children?: (onOpen: () => void) => React.ReactNode;
   onCancel?: () => void;
   onConfirm?: () => void;
   message?: string;
   hideConfirmButton?: boolean;
   heading?: string;
+  open?: boolean;
 }
 
 const ErrorHeading = styled(Title)`
@@ -26,15 +27,14 @@ const ButtonContainer = styled.div`
   margin-top: 16px;
 `;
 
-export const DeleteConfirmationModal: React.FC<
-  DeleteConfirmationModalProps
-> = ({
+export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   children,
   onCancel = () => {},
   onConfirm = () => {},
   hideConfirmButton = false,
   heading = uiStrings.deleteConfirmation,
   message = uiStrings.deleteConfirmationMessage,
+  open,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -49,19 +49,20 @@ export const DeleteConfirmationModal: React.FC<
 
   const handleConfirm = (e: React.MouseEvent) => {
     e.stopPropagation();
-    handleClose();
     onConfirm();
   };
 
+  const modalVisible = typeof children === "function" ? isVisible : !!open;
+
   return (
     <>
-      {/* Render the custom comp */}
-      {children(handleOpen)}
+      {/* Render the custom comp if children is provided */}
+      {typeof children === "function" && children(handleOpen)}
 
       <Modal
-        open={isVisible}
+        open={modalVisible}
         onCancel={handleCancel}
-        footer={null} // Custom footer with buttons
+        footer={null}
         centered
         closable={false}
       >
