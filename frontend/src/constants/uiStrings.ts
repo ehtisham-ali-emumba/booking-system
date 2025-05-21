@@ -60,4 +60,5 @@ export const uiStrings = {
   location: "Location",
   whereYouWantToGo: "Where you want to go?",
   searchPlaceholder: "Search by name or email",
+  carSearchPlaceholder: "Search by car name or model",
 };

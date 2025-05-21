@@ -1,7 +1,7 @@
 import { Layout, Button, Image } from "antd";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "../../constants";
-import { zIndex } from "../../utils";
+import { sizeTablet, zIndex } from "../../utils";
 
 export const StyledHeader = styled(Layout.Header)`
   display: flex;
@@ -25,8 +25,9 @@ export const NavMenu = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 768px) {
-    display: none; /* Hide desktop menu on mobile */
+   ${sizeTablet(css`
+     display: none; /* Hide desktop menu on mobile */
+   `)} 
   }
   .active-button {
     color: ${colors.accentOrange};
@@ -45,10 +46,9 @@ export const ExploreButton = styled(Button)`
     border-color: #e56e50 !important;
     color: white !important;
   }
-
-  @media (max-width: 768px) {
-    display: none; /* Hide explore button on mobile */
-  }
+  ${sizeTablet(css`
+    display: none; /* Hide desktop menu on mobile */
+  `)}
 `;
 
 export const HamburgerMenu = styled.div`
@@ -66,9 +66,9 @@ export const HamburgerMenu = styled.div`
     border-radius: 2px;
   }
 
-  @media (max-width: 768px) {
-    display: flex; /* Show hamburger menu on mobile */
-  }
+  ${sizeTablet(css`
+    display: flex; /* Hide desktop menu on mobile */
+  `)}
 `;
 
 export const MobileMenu = styled.div<{ isOpen: boolean }>`

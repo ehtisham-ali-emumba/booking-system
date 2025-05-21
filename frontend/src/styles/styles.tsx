@@ -38,3 +38,9 @@ export const Flex1 = styled(Flex)`
     flex-direction: column;
   `)}
 `;
+
+export const ContentWrapper = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+`;

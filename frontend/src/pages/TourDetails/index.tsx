@@ -4,7 +4,7 @@ import {
   ClockCircleOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
-import { Header, Layout } from "../../styles";
+import { ContentWrapper, Header, Layout } from "../../styles";
 import { ImageGallery } from "./ImageGallery";
 import { Spacer } from "../../components/Spacer";
 import { WhatsIncluded } from "./WhatsIncluded";
@@ -80,26 +80,28 @@ export const TourDetails = () => {
   if (!tour) return null;
 
   return (
-    <Layout>
-      <Wrapper>
-        <Header>
-          <HeaderTexts tour={tour} />
-        </Header>
+    <ContentWrapper>
+      <Layout>
+        <Wrapper>
+          <Header>
+            <HeaderTexts tour={tour} />
+          </Header>
+          <Spacer marginTop="80px" />
+          <ImageGallery tour={tour} />
+          <Spacer marginTop="40px" />
+          <Description />
+          <Padder>
+            <WhatsIncluded />
+            <ItinerarySchedule />
+          </Padder>
+          <Flex justify="center">
+            <Link to={`/book/tour/${tourId}`}>
+              <BookNowButton>{uiStrings.bookNow}</BookNowButton>
+            </Link>
+          </Flex>
+        </Wrapper>
         <Spacer marginTop="80px" />
-        <ImageGallery tour={tour} />
-        <Spacer marginTop="40px" />
-        <Description />
-        <Padder>
-          <WhatsIncluded />
-          <ItinerarySchedule />
-        </Padder>
-        <Flex justify="center">
-          <Link to={`/book/tour/${tourId}`}>
-            <BookNowButton>{uiStrings.bookNow}</BookNowButton>
-          </Link>
-        </Flex>
-      </Wrapper>
-      <Spacer marginTop="80px" />
-    </Layout>
+      </Layout>
+    </ContentWrapper>
   );
 };

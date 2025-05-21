@@ -6,6 +6,7 @@ export const colors = {
     secondary: "#666666",
     light: "#888888",
   },
+  black: "#000000",
   background: {
     badge: "#f5f5f5",
   },

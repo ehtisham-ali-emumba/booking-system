@@ -2,6 +2,7 @@ import { Card, Typography } from "antd";
 import styled from "styled-components";
 import { Button } from "../Button";
 import { colors } from "../../constants";
+import { MoreOutlined } from "@ant-design/icons";
 
 export const { Title, Paragraph, Text } = Typography;
 
@@ -137,3 +138,107 @@ export const UserAvatarContainer = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+
+// honda auto card
+
+export const StyledHondaAutoCard = styled(Card)`
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  height: 415px;
+  width: 300px;
+  .ant-card-cover img {
+    height: 240px;
+  }
+  .ant-card-body {
+    padding: 8px 16px !important;
+  }
+`;
+
+export const HondaAutoCardTitle = styled(Title)`
+  margin-top: 0 !important;
+  margin-bottom: 4px !important;
+  color: ${colors.text.primary};
+  font-size: 18px !important;
+`;
+
+export const HondaAutoCardDescription = styled(Paragraph)`
+  color: ${colors.text.secondary};
+  font-size: 14px;
+  margin-bottom: 8px !important;
+`;
+
+export const HondaAutoMetaInfoContainer = styled.div`
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+`;
+
+export const PriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+
+export const HondaAutoMetaInfo = styled.div`
+  display: flex;
+  background-color: ${colors.background.badge};
+  padding: 3px 16px;
+  border-radius: 100px;
+`;
+
+export const HondaAutoMetaText = styled(Text)`
+  color: ${colors.text.primary};
+  font-size: 14px;
+  font-weight: 500;
+  background-color: ${colors.background.badge};
+  padding: 4px 16px;
+  border-radius: 50px;
+`;
+
+export const PriceText = styled(Text)`
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: 700;
+  color: ${colors.text.primary};
+`;
+// Chip styled component
+export const CarChip = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: #fff;
+  padding: 2px 12px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+`;
+
+// Image wrapper to position the chip
+export const CarImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+export const CarImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  ${StyledHondaAutoCard}:hover & {
+    transform: scale(1.05);
+  }
+`;
+
+export const DropDownIcon = styled(MoreOutlined)({
+  fontSize: "30px",
+  color: "black",
+});

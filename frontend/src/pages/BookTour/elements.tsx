@@ -17,6 +17,7 @@ export const ImageUI = styled(Image)`
   height: 100% !important;
   width: 100% !important;
   object-fit: cover;
+  max-height: 600px !important;
 `;
 export const FormWrapper = styled.div`
   margin: 0 auto;

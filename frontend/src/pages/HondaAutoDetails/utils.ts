@@ -1,6 +1,4 @@
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
-
-export const hondaAutos: HondaAuto[] = [
+export const hondaAutos = [
   {
     id: 1,
     name: "Honda Civic",
@@ -132,9 +130,6 @@ export const hondaAutos: HondaAuto[] = [
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Small car, big personality—perfect for city driving.",
   },
-];
-
-export const hondaAutoData: HondaAuto[] = [
   {
     id: 11,
     name: "Honda Insight",

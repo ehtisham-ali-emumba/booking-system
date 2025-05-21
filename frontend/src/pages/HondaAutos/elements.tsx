@@ -1,6 +1,6 @@
+import { Modal, Form, Typography } from "antd";
 import styled from "styled-components";
 import { Wrapper } from "../../styles";
-import { Typography } from "antd";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
@@ -22,8 +22,9 @@ export const Heading = styled(Typography.Title)({
 export const InputContainer = styled.div({
   display: "flex",
   justifyContent: "center",
-  margin: "20px 0px",
+  margin: "20px 0px 25px 0px",
   width: "100%",
+  gap: "10px",
 });
 
 export const GridWrapper = styled.div<{ width?: number }>`
@@ -38,4 +39,17 @@ export const ListContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   height: 100%;
+`;
+
+export const CarUpdateStyledModal = styled(Modal)`
+  .ant-modal-content {
+    border-radius: 12px;
+    padding: 24px;
+  }
+`;
+
+export const CarUpdateStyledForm = styled(Form)`
+  .ant-form-item {
+    margin-bottom: 18px;
+  }
 `;

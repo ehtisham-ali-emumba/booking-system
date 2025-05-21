@@ -8,6 +8,7 @@ import { BookTour } from "../pages/BookTour";
 import { MyTours } from "../pages/MyTours";
 import { Virtualization } from "../pages/Virtualization";
 import { HondaAutos } from "../pages/HondaAutos";
+import { HondaAutoDetails } from "../pages/HondaAutoDetails";
 
 const routes: RouteObject[] = [
   {
@@ -55,6 +56,14 @@ const routes: RouteObject[] = [
     element: (
       <MainLayout>
         <HondaAutos />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/honda-auto/:hondaAutoId",
+    element: (
+      <MainLayout>
+        <HondaAutoDetails />
       </MainLayout>
     ),
   },
