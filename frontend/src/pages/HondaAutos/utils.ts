@@ -14,6 +14,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2019/08/04/23/28/honda-4384888_1280.jpg",
     description: "A sporty sedan blending style, comfort, and efficiency.",
+    mileage: "15 km/l",
+    fuelCapacity: "47 L",
   },
   {
     id: 2,
@@ -27,6 +29,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2017/04/21/02/20/jdm-2247450_1280.jpg",
     description: "Premium comfort meets powerful performance in this classic.",
+    mileage: "14 km/l",
+    fuelCapacity: "56 L",
   },
   {
     id: 3,
@@ -40,6 +44,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Versatile SUV with spacious interior and advanced safety.",
+    mileage: "13 km/l",
+    fuelCapacity: "57 L",
   },
   {
     id: 4,
@@ -53,6 +59,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Compact crossover with bold design and flexible space.",
+    mileage: "16 km/l",
+    fuelCapacity: "40 L",
   },
   {
     id: 5,
@@ -66,6 +74,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2022/03/28/09/52/car-7097077_1280.png",
     description: "Urban favorite with sleek looks and smart features.",
+    mileage: "17 km/l",
+    fuelCapacity: "40 L",
   },
   {
     id: 6,
@@ -79,6 +89,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2022/03/28/09/52/car-7097077_1280.png",
     description: "Compact hatchback with surprising space and agility.",
+    mileage: "18 km/l",
+    fuelCapacity: "40 L",
   },
   {
     id: 7,
@@ -92,6 +104,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Family SUV with rugged looks and flexible seating.",
+    mileage: "15 km/l",
+    fuelCapacity: "42 L",
   },
   {
     id: 8,
@@ -105,6 +119,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Ultimate minivan for comfort, space, and family trips.",
+    mileage: "11 km/l",
+    fuelCapacity: "55 L",
   },
   {
     id: 9,
@@ -118,6 +134,8 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Spacious SUV with power and advanced tech for adventures.",
+    mileage: "10 km/l",
+    fuelCapacity: "73 L",
   },
   {
     id: 10,
@@ -131,10 +149,12 @@ export const hondaAutos: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Small car, big personality—perfect for city driving.",
+    mileage: "19 km/l",
+    fuelCapacity: "40 L",
   },
 ];
 
-export const hondaAutoData: HondaAuto[] = [
+export const hondaAutosMoreData: HondaAuto[] = [
   {
     id: 11,
     name: "Honda Insight",
@@ -147,6 +167,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Hybrid sedan that blends efficiency with elegance.",
+    mileage: "22 km/l",
+    fuelCapacity: "40 L",
   },
   {
     id: 12,
@@ -160,6 +182,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Rugged pickup with car-like comfort and utility.",
+    mileage: "9 km/l",
+    fuelCapacity: "73 L",
   },
   {
     id: 13,
@@ -173,6 +197,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Adventure-ready SUV with bold style and power.",
+    mileage: "10 km/l",
+    fuelCapacity: "73 L",
   },
   {
     id: 14,
@@ -186,6 +212,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Futuristic electric car with retro-inspired design.",
+    mileage: "220 km/charge",
+    fuelCapacity: "35.5 kWh",
   },
   {
     id: 15,
@@ -199,6 +227,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2018/10/23/20/42/engine-3768913_1280.jpg",
     description: "Fun, compact roadster for pure driving excitement.",
+    mileage: "20 km/l",
+    fuelCapacity: "25 L",
   },
   {
     id: 16,
@@ -212,6 +242,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Smart minivan with hybrid efficiency and space.",
+    mileage: "17 km/l",
+    fuelCapacity: "36 L",
   },
   {
     id: 17,
@@ -225,6 +257,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Spacious van designed for family comfort and travel.",
+    mileage: "15 km/l",
+    fuelCapacity: "52 L",
   },
   {
     id: 18,
@@ -238,6 +272,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2018/10/23/20/42/engine-3768913_1280.jpg",
     description: "Versatile wagon with hybrid power and ample cargo.",
+    mileage: "23 km/l",
+    fuelCapacity: "40 L",
   },
   {
     id: 19,
@@ -251,6 +287,8 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Ultra-compact kei car with maximum interior space.",
+    mileage: "25 km/l",
+    fuelCapacity: "27 L",
   },
   {
     id: 20,
@@ -264,5 +302,7 @@ export const hondaAutoData: HondaAuto[] = [
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
     description: "Eco-friendly sedan with advanced hybrid technology.",
+    mileage: "21 km/l",
+    fuelCapacity: "26.5 L",
   },
 ];

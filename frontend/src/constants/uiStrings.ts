@@ -61,4 +61,7 @@ export const uiStrings = {
   whereYouWantToGo: "Where you want to go?",
   searchPlaceholder: "Search by name or email",
   carSearchPlaceholder: "Search by car name or model",
+  by: "By",
+  hondaAutoNotFound: "Honda Auto not found",
+  carSpecs: "Car Specifications",
 };

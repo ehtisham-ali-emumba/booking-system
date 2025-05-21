@@ -13,6 +13,8 @@ export type HondaAuto = {
   chipText?: string;
   imageSrc: string;
   description: string;
+  mileage: string;
+  fuelCapacity: string;
 };
 
 export const hondaAutosAtom = atomWithStorage<HondaAuto[]>(

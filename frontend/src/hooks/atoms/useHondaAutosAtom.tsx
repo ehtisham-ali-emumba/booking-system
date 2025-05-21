@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useCallback } from "react";
 import { hondaAutosAtom, type HondaAuto } from "../../atoms/hondaAutosAtom";
-import { hondaAutoData } from "../../pages/HondaAutos/utils";
+import { hondaAutosMoreData } from "../../pages/HondaAutos/utils";
 
 export const useHondaAutosAtom = () => {
   const [hondaAutos, setHondaAutos] = useAtom(hondaAutosAtom);
@@ -17,7 +17,7 @@ export const useHondaAutosAtom = () => {
   const addHondaAuto = useCallback(() => {
     setHondaAutos((prevHondaAutos) => [
       ...prevHondaAutos,
-      { ...hondaAutoData[0], id: prevHondaAutos.length + 1 },
+      { ...hondaAutosMoreData[0], id: prevHondaAutos.length + 1 },
     ]);
   }, [setHondaAutos]);
 

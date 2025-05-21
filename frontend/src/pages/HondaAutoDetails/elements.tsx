@@ -63,12 +63,10 @@ export const CarImage = styled.img`
   border-radius: 8px;
 `;
 
-// Car information container
 export const CarInfo = styled.div`
   flex: 1;
 `;
 
-// Car title styling
 export const CarTitle = styled.h1`
   font-size: 32px;
   color: #333;
@@ -77,13 +75,11 @@ export const CarTitle = styled.h1`
   font-weight: 600;
 `;
 
-// Manufacturer styling
 export const Manufacturer = styled.div`
   margin-bottom: 16px;
   font-size: 18px;
 `;
 
-// Manufacturer name styling
 export const ManufacturerName = styled.a`
   color: #d32f2f;
   text-decoration: none;
@@ -94,40 +90,34 @@ export const ManufacturerName = styled.a`
   }
 `;
 
-// Rating container
 export const RatingContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 24px;
 `;
 
-// Star styling
 export const StarRating = styled.div`
   color: #ffd700;
   font-size: 20px;
   margin-right: 8px;
 `;
 
-// Review count styling
 export const ReviewCount = styled.span`
   color: #666;
   font-size: 16px;
 `;
 
-// Price styling
 export const Price = styled.div`
   font-size: 28px;
   font-weight: 700;
   color: #333;
 `;
 
-// Currency symbol styling
 export const CurrencySymbol = styled.span`
   font-weight: 500;
   margin-right: 3px;
 `;
 
-// Container for the car specs list
 export const CarSpecsContainer = styled.div`
   width: 100%;
   max-width: 600px;
@@ -137,7 +127,6 @@ export const CarSpecsContainer = styled.div`
   margin: 0 auto;
 `;
 
-// Title for the specs section
 export const SpecsTitle = styled.h3`
   font-size: 20px;
   color: #333;
@@ -145,14 +134,12 @@ export const SpecsTitle = styled.h3`
   font-weight: 600;
 `;
 
-// Container for each spec item
 export const SpecItem = styled.div`
   display: flex;
   margin-bottom: 12px;
   align-items: center;
 `;
 
-// Label for the spec
 export const SpecLabel = styled.div`
   flex: 0 0 100px;
   font-weight: 600;
@@ -160,11 +147,11 @@ export const SpecLabel = styled.div`
   font-size: 16px;
 `;
 
-// Value of the spec
 export const SpecValue = styled.div`
   flex: 1;
   color: #333;
   font-size: 16px;
+  padding: 0 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -172,11 +159,10 @@ export const SpecValue = styled.div`
 
 export const SpecActions = styled(SpecValue)`
   display: flex;
-  gap: 8px;
+  gap: 12px;
   flex: 0 0 100px;
 `;
 
-// Divider line
 export const Divider = styled.div`
   height: 1px;
   background-color: #e1e4e8;
