@@ -1,8 +1,7 @@
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
+import type { Auto } from "../../atoms/autosAtom";
 
-export const getHondaAutoSpecs = (auto: HondaAuto) => {
-  const specs: { label: keyof HondaAuto; value: HondaAuto[keyof HondaAuto] }[] =
-    [];
+export const getAutoSpecs = (auto: Auto) => {
+  const specs: { label: keyof Auto; value: Auto[keyof Auto] }[] = [];
   Object.entries(auto).map(([key, value]) => {
     if (
       [
@@ -22,7 +21,7 @@ export const getHondaAutoSpecs = (auto: HondaAuto) => {
     )
       return; // Hide these keys in specifications
     specs.push({
-      label: key as keyof HondaAuto,
+      label: key as keyof Auto,
       value: value,
     });
   });

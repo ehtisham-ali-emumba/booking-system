@@ -1,3 +1,3 @@
-export * from "./useHondaAutosAtom";
-export * from "./useHondaAutoDetailsAtom";
+export * from "./useAutosAtom";
+export * from "./useAutoDetailsAtom";
 export * from "./useDeleteBooking";

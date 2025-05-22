@@ -3,20 +3,19 @@ import { Button, Spacer } from "../../components";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors, uiStrings } from "../../constants";
 import { CarSpecsContainer, SpecsTitle, Row } from "./elements";
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
-import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
+import type { Auto } from "../../atoms/autosAtom";
+import { useAutoDetailsAtom } from "../../hooks/atoms";
 import { ModifyCarSpecModal } from "./ModifyCarSpecModal";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { CarSpecsGrid } from "./CarSpecsGrid";
 
 type CarSpecsType = {
-  auto: HondaAuto;
+  auto: Auto;
 };
 
 export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
   const { id } = auto;
-  const { addOrEditHondaAutoAttribute, deleteHondaAutoAttribute } =
-    useHondaAutoDetailsAtom();
+  const { addOrEditAutoAttribute, deleteAutoAttribute } = useAutoDetailsAtom();
 
   const [modifyModalOpen, setModifyModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -45,10 +44,10 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
 
   const handleModifyModalSubmit = useCallback(
     (key: string, value: string) => {
-      addOrEditHondaAutoAttribute(id, key, value);
+      addOrEditAutoAttribute(id, key, value);
       onCloseModifyModal();
     },
-    [id, addOrEditHondaAutoAttribute, onCloseModifyModal]
+    [id, addOrEditAutoAttribute, onCloseModifyModal]
   );
 
   const handleDeleteClick = useCallback((key: string) => {
@@ -62,9 +61,9 @@ export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
   }, []);
 
   const handleDeleteSubmit = useCallback(() => {
-    deleteHondaAutoAttribute(id, deleteSelectedAttr!);
+    deleteAutoAttribute(id, deleteSelectedAttr!);
     onCloseDeleteModal();
-  }, [deleteHondaAutoAttribute, id, deleteSelectedAttr, onCloseDeleteModal]);
+  }, [deleteAutoAttribute, id, deleteSelectedAttr, onCloseDeleteModal]);
 
   return (
     <CarSpecsContainer>

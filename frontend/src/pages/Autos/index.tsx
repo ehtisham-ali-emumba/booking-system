@@ -4,7 +4,7 @@ import { uiStrings } from "../../constants/uiStrings";
 import { ActionWrapper, Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors } from "../../constants";
-import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
+import { useAutosAtom } from "../../hooks/atoms/useAutosAtom";
 import { CarUpdateModal, type CarUpdateFormValues } from "./CarUpdateModal";
 import { CarGrid } from "./CarGrid";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
@@ -24,14 +24,13 @@ export const Autos = () => {
   const [deleteCarId, setDeleteCarId] = useState<number | null>(null);
   const [selectedColor, setSelectedColor] = useState("");
 
-  const { hondaAutos } = useHondaAutosAtom();
+  const { autos } = useAutosAtom();
   const { brands } = useBrandsAtom();
-  const { addHondaAuto, updateHondaAuto, deleteHondaAuto } =
-    useHondaAutosAtom();
+  const { addAuto, updateAuto, deleteAuto } = useAutosAtom();
 
   const filteredAutosBySearch = useMemo(
-    () => searchAutosByFilters(hondaAutos, search, selectedColor),
-    [search, hondaAutos, selectedColor]
+    () => searchAutosByFilters(autos, search, selectedColor),
+    [search, autos, selectedColor]
   );
 
   const handleEditClick = useCallback((carId: number) => {
@@ -46,10 +45,10 @@ export const Autos = () => {
 
   const handleCarUpdateSubmit = useCallback(
     (values: CarUpdateFormValues) => {
-      updateHondaAuto(values);
+      updateAuto(values);
       onCloseEditModal();
     },
-    [updateHondaAuto, onCloseEditModal]
+    [updateAuto, onCloseEditModal]
   );
 
   const handleDeleteClick = useCallback((carId: number) => {
@@ -63,9 +62,9 @@ export const Autos = () => {
   }, []);
 
   const handleDeleteSubmit = useCallback(() => {
-    deleteHondaAuto(deleteCarId!);
+    deleteAuto(deleteCarId!);
     onCloseDeleteModal();
-  }, [deleteHondaAuto, deleteCarId, onCloseDeleteModal]);
+  }, [deleteAuto, deleteCarId, onCloseDeleteModal]);
 
   const isBrandExists = useMemo(
     () => checkBrandExists(Number(brandId), brands),
@@ -102,7 +101,7 @@ export const Autos = () => {
             />
             <Button
               variant="icon-transparent"
-              onClick={() => addHondaAuto(Number(brandId))}
+              onClick={() => addAuto(Number(brandId))}
               title="Add new car"
             >
               <PlusOutlined style={{ color: colors.accentOrange }} />
@@ -110,7 +109,7 @@ export const Autos = () => {
           </ActionWrapper>
         </InputContainer>
         <CarGrid
-          hondaAutos={filteredAutosBySearch}
+          autos={filteredAutosBySearch}
           handleEditClick={handleEditClick}
           handleDeleteClick={handleDeleteClick}
         />

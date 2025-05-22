@@ -6,7 +6,7 @@ import { useHandleResize } from "../../hooks/useHandleResize";
 import { useNavigate, useParams } from "react-router-dom";
 import { filterAutosByBrandId } from "./utils";
 import { uiStrings } from "../../constants";
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
+import type { Auto } from "../../atoms/autosAtom";
 import { AutoCard } from "../../components/Card";
 
 const COLUMN_WIDTH = 325;
@@ -19,16 +19,15 @@ const gridStyles = {
 type CarGridProps = {
   handleEditClick: (carId: number) => void;
   handleDeleteClick: (carId: number) => void;
-  hondaAutos: HondaAuto[];
+  autos: Auto[];
 };
 export const CarGrid = memo(
-  ({ handleEditClick, handleDeleteClick, hondaAutos }: CarGridProps) => {
-    const navigate = useNavigate();
+  ({ handleEditClick, handleDeleteClick, autos }: CarGridProps) => {
     const { brandId } = useParams<{ brandId: string }>();
 
-    const autos = useMemo(
-      () => filterAutosByBrandId(hondaAutos, Number(brandId)),
-      [hondaAutos, brandId]
+    const filteredAutos = useMemo(
+      () => filterAutosByBrandId(autos, Number(brandId)),
+      [autos, brandId]
     );
 
     const [numColumns, setNumColumns] = useState(1);
@@ -48,7 +47,7 @@ export const CarGrid = memo(
     useHandleResize(handleResize);
     useEffect(handleResize, []);
 
-    const rowCount = Math.ceil(autos.length / numColumns);
+    const rowCount = Math.ceil(filteredAutos.length / numColumns);
 
     const Cell = ({
       columnIndex,
@@ -60,7 +59,7 @@ export const CarGrid = memo(
       style: React.CSSProperties;
     }) => {
       const userIndex = rowIndex * numColumns + columnIndex;
-      const auto = autos[userIndex];
+      const auto = filteredAutos[userIndex];
       if (!auto) return null;
 
       return (
@@ -86,7 +85,7 @@ export const CarGrid = memo(
 
     return (
       <ListContainer ref={gridContainerRef}>
-        {autos.length ? (
+        {filteredAutos.length ? (
           <GridWrapper width={numColumns * COLUMN_WIDTH}>
             <Grid
               columnCount={numColumns}

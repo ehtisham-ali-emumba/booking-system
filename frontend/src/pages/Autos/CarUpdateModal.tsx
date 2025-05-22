@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Form, Input, InputNumber } from "antd";
-import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
+import { useAutosAtom } from "../../hooks/atoms/useAutosAtom";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
 import type { TSFixMe } from "../../types";
 import { colors } from "../../constants";
@@ -27,11 +27,11 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
   confirmLoading = false,
 }) => {
   const [form] = Form.useForm();
-  const { hondaAutos } = useHondaAutosAtom();
+  const { autos } = useAutosAtom();
 
   useEffect(() => {
     if (open && editingCarId) {
-      const editingCar = hondaAutos.find((car) => car.id === editingCarId);
+      const editingCar = autos.find((car) => car.id === editingCarId);
       if (editingCar) {
         form.setFieldsValue({ ...editingCar });
       }

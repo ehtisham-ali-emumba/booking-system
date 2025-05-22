@@ -6,8 +6,8 @@ import {
   SpecActions,
   Divider,
 } from "./elements";
-import { deleteIconStyle, editIconStyle, getHondaAutoSpecs } from "./utils";
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
+import { deleteIconStyle, editIconStyle, getAutoSpecs } from "./utils";
+import type { Auto } from "../../atoms/autosAtom";
 import {
   FixedSizeList as List,
   type ListChildComponentProps,
@@ -15,7 +15,7 @@ import {
 import { uiStrings } from "../../constants";
 
 type CarSpecsGridType = {
-  auto: HondaAuto;
+  auto: Auto;
   handleAddEditClick: (
     isEditMode?: boolean,
     key?: string,
@@ -29,7 +29,7 @@ export const CarSpecsGrid: React.FC<CarSpecsGridType> = ({
   handleAddEditClick,
   handleDeleteClick,
 }) => {
-  const carSpecs = getHondaAutoSpecs(auto);
+  const carSpecs = getAutoSpecs(auto);
 
   const Row = ({ index, style }: ListChildComponentProps) => {
     const spec = carSpecs[index];

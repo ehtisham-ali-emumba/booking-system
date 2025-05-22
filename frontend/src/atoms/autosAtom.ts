@@ -1,7 +1,7 @@
 import { atomWithStorage } from "jotai/utils";
-import { hondaAutos } from "../pages/Autos/utils";
+import { autosArray } from "../pages/Autos/utils";
 
-export type HondaAuto = {
+export type Auto = {
   id: number;
   brandId: number;
   name: string;
@@ -20,7 +20,4 @@ export type HondaAuto = {
   bodyType?: string;
 };
 
-export const hondaAutosAtom = atomWithStorage<HondaAuto[]>(
-  "hondaAutos",
-  hondaAutos
-);
+export const autosAtom = atomWithStorage<Auto[]>("hondaAutos", autosArray);

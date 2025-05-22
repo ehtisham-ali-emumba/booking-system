@@ -18,8 +18,8 @@ import {
 } from "./elements";
 import { useParams } from "react-router-dom";
 import ErrorContainer from "../../components/ErrorContainer";
-import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
+import { useAutoDetailsAtom } from "../../hooks/atoms";
+import type { Auto } from "../../atoms/autosAtom";
 import { CarSpecifications } from "./CarSpecifications";
 import {
   AutoMetaInfoContainer,
@@ -29,7 +29,7 @@ import { useMemo } from "react";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 
-const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
+const CarHeader: React.FC<{ auto: Auto }> = ({ auto }) => {
   const { brandId, name, modelYear, price, imageSrc, engine, fuelType, color } =
     auto;
   const { getBrandById } = useBrandsAtom();
@@ -73,8 +73,8 @@ export const AutoDetails = () => {
   const { autoId, brandId } = useParams<{ autoId: string; brandId: string }>();
 
   const { brands } = useBrandsAtom();
-  const { getHondaAutoById } = useHondaAutoDetailsAtom();
-  const autoDetails = getHondaAutoById(Number(autoId), Number(brandId));
+  const { getAutoById } = useAutoDetailsAtom();
+  const autoDetails = getAutoById(Number(autoId), Number(brandId));
   const isBrandExists = useMemo(
     () => checkBrandExists(Number(brandId), brands),
     [brands, brandId]

@@ -174,7 +174,7 @@ export const AutoMetaInfoContainer = styled.div`
   margin-bottom: 14px;
 `;
 
-export const HondaAutoMetaInfo = styled.div`
+export const AutoMetaInfo = styled.div`
   display: flex;
   background-color: ${colors.background.badge};
   padding: 3px 16px;

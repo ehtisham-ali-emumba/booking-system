@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useCallback } from "react";
 import { brandsAtom, type BrandType } from "../../atoms/brandsAtom";
-import { useHondaAutosAtom } from "./useHondaAutosAtom";
+import { useAutosAtom } from "./useAutosAtom";
 
 const brandSample = {
   name: "Suzuki",
@@ -12,7 +12,7 @@ const brandSample = {
 
 export const useBrandsAtom = () => {
   const [brands, setBrands] = useAtom(brandsAtom);
-  const { deleteAutosByBrandId } = useHondaAutosAtom();
+  const { deleteAutosByBrandId } = useAutosAtom();
 
   const addBrand = useCallback(() => {
     setBrands((prevBrands) => [

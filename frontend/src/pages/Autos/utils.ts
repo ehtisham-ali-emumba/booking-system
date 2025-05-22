@@ -1,17 +1,17 @@
-import type { HondaAuto } from "../../atoms/hondaAutosAtom";
+import type { Auto } from "../../atoms/autosAtom";
 
 export const filterAutosByBrandId = (
-  hondaAutos: HondaAuto[],
+  hondaAutos: Auto[],
   brandId: number
-): HondaAuto[] => {
+): Auto[] => {
   return hondaAutos.filter((auto) => auto.brandId === brandId);
 };
 
 export const searchAutosByFilters = (
-  hondaAutos: HondaAuto[],
+  hondaAutos: Auto[],
   search: string,
   selectedColor: string
-): HondaAuto[] => {
+): Auto[] => {
   if (!search && !selectedColor) return hondaAutos;
   const lowerCaseSearch = search?.toLowerCase?.();
   return hondaAutos.filter(
@@ -35,8 +35,7 @@ export const colorOptions = [
   { label: "Gray", value: "Gray" },
   { label: "Green", value: "Green" },
 ];
-export const hondaAutos: HondaAuto[] = [
-  // Honda
+export const autosArray: Auto[] = [
   {
     id: 1,
     brandId: 1,
@@ -233,8 +232,7 @@ export const hondaAutos: HondaAuto[] = [
   },
 ];
 
-export const hondaAutosMoreData: HondaAuto[] = [
-  // Honda
+export const autosMoreData: Auto[] = [
   {
     id: 11,
     brandId: 1,
