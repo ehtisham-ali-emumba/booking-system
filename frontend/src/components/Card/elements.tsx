@@ -164,7 +164,6 @@ export const HondaAutoCardTitle = styled(Title)`
 export const HondaAutoCardDescription = styled(Paragraph)`
   color: ${colors.text.secondary};
   font-size: 14px;
-  margin-bottom: 8px !important;
 `;
 
 export const HondaAutoMetaInfoContainer = styled.div`
@@ -180,6 +179,7 @@ export const PriceWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
+  height: 80px;
 `;
 
 export const HondaAutoMetaInfo = styled.div`
@@ -230,10 +230,11 @@ export const CarImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const CarImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+export const BrandImage = styled.img`
+  width: 90px !important;
+  height: 90px !important;
+  border-radius: 200px;
+  object-fit: contain;
   transition: transform 0.3s ease;
   ${StyledHondaAutoCard}:hover & {
     transform: scale(1.05);
@@ -244,3 +245,24 @@ export const DropDownIcon = styled(MoreOutlined)({
   fontSize: "30px",
   color: "black",
 });
+
+export const CarImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  ${StyledHondaAutoCard}:hover & {
+    transform: scale(1.05);
+  }
+`;
+
+// Image wrapper to position the chip
+export const BrandImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;

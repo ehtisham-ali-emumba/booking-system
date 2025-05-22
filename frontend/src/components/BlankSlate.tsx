@@ -2,11 +2,13 @@ import { PlaceholderSvg } from "../assets";
 import { uiStrings } from "../constants";
 import { BlankSlateTitle, BlankSlateWrapper } from "./elements";
 
-export const BlankSlate = () => {
+export const BlankSlate: React.FC<{ message?: string }> = ({
+  message = uiStrings.noToursMessage,
+}) => {
   return (
     <BlankSlateWrapper>
       <PlaceholderSvg />
-      <BlankSlateTitle>{uiStrings.noToursMessage}</BlankSlateTitle>
+      <BlankSlateTitle>{message}</BlankSlateTitle>
     </BlankSlateWrapper>
   );
 };

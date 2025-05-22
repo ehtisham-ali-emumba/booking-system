@@ -6,8 +6,10 @@ export const useHondaAutoDetailsAtom = () => {
   const [hondaAutos, setHondaAutos] = useAtom(hondaAutosAtom);
 
   const getHondaAutoById = useCallback(
-    (autoId: number) => {
-      return hondaAutos.find((auto) => auto.id === autoId);
+    (autoId: number, brandId: number) => {
+      return hondaAutos.find(
+        (auto) => auto.id === autoId && auto.brandId === brandId
+      );
     },
     [hondaAutos]
   );

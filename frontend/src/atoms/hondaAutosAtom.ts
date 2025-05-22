@@ -3,6 +3,7 @@ import { hondaAutos } from "../pages/HondaAutos/utils";
 
 export type HondaAuto = {
   id: number;
+  brandId: number;
   name: string;
   modelYear: number;
   price: number;

@@ -9,6 +9,7 @@ import { MyTours } from "../pages/MyTours";
 import { Virtualization } from "../pages/Virtualization";
 import { HondaAutos } from "../pages/HondaAutos";
 import { HondaAutoDetails } from "../pages/HondaAutoDetails";
+import { Brands } from "../pages/Brands";
 
 const routes: RouteObject[] = [
   {
@@ -52,7 +53,15 @@ const routes: RouteObject[] = [
     ),
   },
   {
-    path: "/honda-autos",
+    path: "/brands",
+    element: (
+      <MainLayout>
+        <Brands />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/brands/:brandId/autos",
     element: (
       <MainLayout>
         <HondaAutos />
@@ -60,7 +69,7 @@ const routes: RouteObject[] = [
     ),
   },
   {
-    path: "/honda-auto/:hondaAutoId",
+    path: "/brands/:brandId/autos/:autoId",
     element: (
       <MainLayout>
         <HondaAutoDetails />

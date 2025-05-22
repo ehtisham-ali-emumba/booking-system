@@ -5,6 +5,7 @@ import { hondaAutosMoreData } from "../../pages/HondaAutos/utils";
 
 export const useHondaAutosAtom = () => {
   const [hondaAutos, setHondaAutos] = useAtom(hondaAutosAtom);
+  console.log("🚀 ~ useHondaAutosAtom ~ hondaAutos:", hondaAutos);
 
   const deleteHondaAuto = useCallback(
     (id: number) => {
@@ -14,12 +15,29 @@ export const useHondaAutosAtom = () => {
     [hondaAutos]
   );
 
-  const addHondaAuto = useCallback(() => {
-    setHondaAutos((prevHondaAutos) => [
-      ...prevHondaAutos,
-      { ...hondaAutosMoreData[0], id: prevHondaAutos.length + 1 },
-    ]);
-  }, [setHondaAutos]);
+  const deleteAutosByBrandId = useCallback(
+    (brandId: number) => {
+      const updatedHondaAutos = hondaAutos.filter(
+        (auto) => auto.brandId !== brandId
+      );
+      setHondaAutos(updatedHondaAutos);
+    },
+    [hondaAutos]
+  );
+
+  const addHondaAuto = useCallback(
+    (brandId: number) => {
+      if (isNaN(brandId)) {
+        console.error("Invalid brandId:", brandId);
+        return;
+      }
+      setHondaAutos((prevHondaAutos) => [
+        ...prevHondaAutos,
+        { ...hondaAutosMoreData[0], id: prevHondaAutos.length + 1, brandId },
+      ]);
+    },
+    [setHondaAutos]
+  );
 
   const updateHondaAuto = useCallback(
     (updatedHondaAuto: Partial<HondaAuto>) => {
@@ -34,5 +52,11 @@ export const useHondaAutosAtom = () => {
     [setHondaAutos]
   );
 
-  return { hondaAutos, deleteHondaAuto, addHondaAuto, updateHondaAuto };
+  return {
+    hondaAutos,
+    deleteHondaAuto,
+    addHondaAuto,
+    updateHondaAuto,
+    deleteAutosByBrandId,
+  };
 };

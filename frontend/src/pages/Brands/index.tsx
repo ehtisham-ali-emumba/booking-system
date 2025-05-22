@@ -1,71 +1,58 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Button, Input, Spacer } from "../../components";
 import { uiStrings } from "../../constants/uiStrings";
 import { Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors } from "../../constants";
-import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
-import { CarUpdateModal, type CarUpdateFormValues } from "./CarUpdateModal";
-import { CarGrid } from "./CarGrid";
+import {
+  BrandUpdateModal,
+  type BrandUpdateFormValues,
+} from "./BrandUpdateModal";
+import { BrandsGrid } from "./BrandsGrid";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
-import { useParams } from "react-router-dom";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
-import { checkBrandExists } from "../Brands/utils";
-import ErrorContainer from "../../components/ErrorContainer";
 
-export const HondaAutos = () => {
-  const { brandId } = useParams<{ brandId: string }>();
-
+export const Brands = () => {
   const [search, setSearch] = useState("");
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [editingCarId, setEditingCarId] = useState<number | null>(null);
+  const [editingBrandId, setEditingBrandId] = useState<number | null>(null);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [deleteCarId, setDeleteCarId] = useState<number | null>(null);
+  const [deleteBrandId, setDeleteBrandId] = useState<number | null>(null);
 
-  const { brands } = useBrandsAtom();
-  const { addHondaAuto, updateHondaAuto, deleteHondaAuto } =
-    useHondaAutosAtom();
+  const { addBrand, removeBrand, updateBrand } = useBrandsAtom();
 
   const handleEditClick = useCallback((carId: number) => {
-    setEditingCarId(carId);
+    setEditingBrandId(carId);
     setEditModalOpen(true);
   }, []);
 
   const onCloseEditModal = useCallback(() => {
-    setEditingCarId(null);
+    setEditingBrandId(null);
     setEditModalOpen(false);
   }, []);
 
   const handleCarUpdateSubmit = useCallback(
-    (values: CarUpdateFormValues) => {
-      updateHondaAuto(values);
+    (values: BrandUpdateFormValues) => {
+      updateBrand(values);
       onCloseEditModal();
     },
-    [updateHondaAuto, onCloseEditModal]
+    [updateBrand, onCloseEditModal]
   );
 
-  const handleDeleteClick = useCallback((carId: number) => {
-    setDeleteCarId(carId);
+  const handleDeleteClick = useCallback((brandId: number) => {
+    setDeleteBrandId(brandId);
     setDeleteModalOpen(true);
   }, []);
 
   const onCloseDeleteModal = useCallback(() => {
     setDeleteModalOpen(false);
-    setDeleteCarId(null);
+    setDeleteBrandId(null);
   }, []);
 
   const handleDeleteSubmit = useCallback(() => {
-    deleteHondaAuto(deleteCarId!);
+    removeBrand(deleteBrandId!);
     onCloseDeleteModal();
-  }, [deleteHondaAuto, deleteCarId, onCloseDeleteModal]);
-
-  const isBrandExists = useMemo(
-    () => checkBrandExists(Number(brandId), brands),
-    [brands, brandId]
-  );
-
-  if (!isBrandExists)
-    return <ErrorContainer message={uiStrings.brandNotExists} />;
+  }, [removeBrand, deleteBrandId, onCloseDeleteModal]);
 
   return (
     <Container>
@@ -74,28 +61,25 @@ export const HondaAutos = () => {
         <InputContainer>
           <Input
             inputProps={{
-              placeholder: uiStrings.carSearchPlaceholder,
+              placeholder: uiStrings.brandSearchPlaceholder,
               style: { maxWidth: "280px" },
               value: search,
               onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value),
             }}
           />
-          <Button
-            variant="icon-transparent"
-            onClick={() => addHondaAuto(Number(brandId))}
-          >
+          <Button variant="icon-transparent" onClick={addBrand}>
             <PlusOutlined style={{ color: colors.accentOrange }} />
           </Button>
         </InputContainer>
-        <CarGrid
+        <BrandsGrid
           handleEditClick={handleEditClick}
           handleDeleteClick={handleDeleteClick}
         />
       </Box>
-      <CarUpdateModal
+      <BrandUpdateModal
         open={editModalOpen}
-        editingCarId={editingCarId}
+        editingBrandId={editingBrandId}
         onOk={handleCarUpdateSubmit}
         onCancel={onCloseEditModal}
       />
@@ -103,7 +87,7 @@ export const HondaAutos = () => {
         open={deleteModalOpen}
         onConfirm={handleDeleteSubmit}
         onCancel={onCloseDeleteModal}
-        message={uiStrings.deleteAutoConfirmation}
+        message={uiStrings.deleteBrandConfirmation}
       />
     </Container>
   );

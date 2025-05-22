@@ -37,12 +37,12 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       </Link>
       <NavMenu>
         <Space size={36}>
-          <Link to="/honda-autos">
+          <Link to="/brands">
             <Button
               variant="secondary"
-              className={getActiveButtonClass("/honda-autos")}
+              className={getActiveButtonClass("/brands")}
             >
-              {uiStrings.hondaAutos}
+              {uiStrings.brands}
             </Button>
           </Link>
           <Link to="/virtualization">
@@ -98,11 +98,11 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
         </div>
         <div className="menu-links">
           <Link
-            to="/honda-autos"
+            to="/brands"
             onClick={toggleMobileMenu}
-            className={getActiveButtonClass("/honda-autos")}
+            className={getActiveButtonClass("/brands")}
           >
-            {uiStrings.hondaAutos}
+            {uiStrings.brands}
           </Link>
           <Link
             to="/virtualization"

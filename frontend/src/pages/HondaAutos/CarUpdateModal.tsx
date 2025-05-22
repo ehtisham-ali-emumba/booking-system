@@ -3,6 +3,7 @@ import { Form, Input, InputNumber } from "antd";
 import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
 import type { TSFixMe } from "../../types";
+import { colors } from "../../constants";
 
 export type CarUpdateFormValues = {
   id: number;
@@ -52,6 +53,7 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
       okText="Update"
       cancelText="Cancel"
       destroyOnClose
+      okButtonProps={{ style: { backgroundColor: colors.accentOrange } }}
     >
       <CarUpdateStyledForm
         form={form}
