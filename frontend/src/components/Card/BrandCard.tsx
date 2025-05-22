@@ -70,10 +70,15 @@ export const BrandCard: React.FC<BrandCardProps> = ({
     >
       <BrandCardTitle level={4}>{truncate(name, 26, "...")}</BrandCardTitle>
 
+      <HondaAutoCardDescription>
+        {truncate(description, 110, "...")}
+      </HondaAutoCardDescription>
+
       <PriceWrapper>
-        <HondaAutoCardDescription>
-          {truncate(description, 80, "...")}
-        </HondaAutoCardDescription>
+        <RatingContainer>
+          <StarRating>★★★★★</StarRating>
+          <ReviewCount>(5)</ReviewCount>
+        </RatingContainer>
         <Dropdown
           menu={{ items, onClick: handleMenuClick }}
           trigger={["click"]}
@@ -86,10 +91,6 @@ export const BrandCard: React.FC<BrandCardProps> = ({
           </span>
         </Dropdown>
       </PriceWrapper>
-      <RatingContainer>
-        <StarRating>★★★★★</StarRating>
-        <ReviewCount>(5)</ReviewCount>
-      </RatingContainer>
     </StyledBrandCard>
   );
 };

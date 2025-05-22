@@ -172,6 +172,7 @@ export const BrandCardTitle = styled(Title)`
 export const HondaAutoCardDescription = styled(Paragraph)`
   color: ${colors.text.secondary};
   font-size: 14px;
+  min-height: 90px;
 `;
 
 export const HondaAutoMetaInfoContainer = styled.div`
@@ -187,7 +188,6 @@ export const PriceWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
-  height: 80px;
 `;
 
 export const HondaAutoMetaInfo = styled.div`
