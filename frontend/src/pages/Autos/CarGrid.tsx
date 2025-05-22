@@ -3,11 +3,11 @@ import { FixedSizeGrid as Grid } from "react-window";
 import { BlankSlate } from "../../components/BlankSlate";
 import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
-import { HondaAutoCard } from "../../components/Card/HondaAutoCard";
 import { useNavigate, useParams } from "react-router-dom";
 import { filterAutosByBrandId } from "./utils";
 import { uiStrings } from "../../constants";
 import type { HondaAuto } from "../../atoms/hondaAutosAtom";
+import { AutoCard } from "../../components/Card";
 
 const COLUMN_WIDTH = 325;
 const ROW_HEIGHT = 440;
@@ -62,10 +62,12 @@ export const CarGrid = memo(
       const userIndex = rowIndex * numColumns + columnIndex;
       const auto = autos[userIndex];
       if (!auto) return null;
+
       return (
         <div style={style}>
-          <HondaAutoCard
+          <AutoCard
             id={auto.id}
+            brandId={auto.brandId}
             name={auto.name}
             modelYear={auto.modelYear}
             price={auto.price}

@@ -1,5 +1,5 @@
 import { Card, Typography } from "antd";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Button } from "../Button";
 import { colors } from "../../constants";
 import { MoreOutlined } from "@ant-design/icons";
@@ -139,22 +139,7 @@ export const UserAvatarContainer = styled.div`
   flex-direction: column;
 `;
 
-// honda auto card
-
-export const StyledHondaAutoCard = styled(Card)`
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  height: 415px;
-  width: 300px;
-  margin: 0 auto;
-  .ant-card-cover img {
-    height: 240px;
-  }
-  .ant-card-body {
-    padding: 8px 16px !important;
-  }
-`;
-
-export const HondaAutoCardTitle = styled(Title)`
+export const AutoCardTitle = styled(Title)`
   margin-top: 4px !important;
   margin-bottom: 8px !important;
   color: ${colors.text.primary};
@@ -169,7 +154,7 @@ export const BrandCardTitle = styled(Title)`
   text-align: center;
 `;
 
-export const HondaAutoCardDescription = styled(Paragraph)`
+export const AutoCardDescription = styled(Paragraph)`
   color: ${colors.text.secondary};
   font-size: 14px;
   min-height: 55px;
@@ -181,7 +166,7 @@ export const BrandCardDescription = styled(Paragraph)`
   min-height: 80px;
 `;
 
-export const HondaAutoMetaInfoContainer = styled.div`
+export const AutoMetaInfoContainer = styled.div`
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
@@ -202,7 +187,7 @@ export const HondaAutoMetaInfo = styled.div`
   border-radius: 100px;
 `;
 
-export const HondaAutoMetaText = styled(Text)`
+export const AutoMetaText = styled(Text)`
   color: ${colors.text.primary};
   font-size: 14px;
   font-weight: 500;
@@ -213,7 +198,7 @@ export const HondaAutoMetaText = styled(Text)`
 
 export const PriceText = styled(Text)`
   font-size: 20px;
-  margin-top: 5px;
+  // margin-top: 5px;
   font-weight: 700;
   color: ${colors.text.primary};
 `;
@@ -232,42 +217,10 @@ export const CarChip = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 `;
 
-// Image wrapper to position the chip
-export const CarImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-`;
-
-export const BrandImage = styled.img`
-  width: 90px !important;
-  height: 90px !important;
-  border-radius: 200px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  ${StyledHondaAutoCard}:hover & {
-    transform: scale(1.05);
-  }
-`;
-
 export const DropDownIcon = styled(MoreOutlined)({
   fontSize: "30px",
   color: "black",
 });
-
-export const CarImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  ${StyledHondaAutoCard}:hover & {
-    transform: scale(1.05);
-  }
-`;
 
 // Image wrapper to position the chip
 export const BrandImageWrapper = styled.div`
@@ -291,4 +244,98 @@ export const StyledBrandCard = styled(Card)`
   .ant-card-body {
     padding: 8px 16px !important;
   }
+`;
+
+export const BrandImage = styled.img`
+  width: 90px !important;
+  height: 90px !important;
+  border-radius: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  ${StyledBrandCard}:hover & {
+    transform: scale(1.05);
+  }
+`;
+
+type BaseCardType = {
+  dimensions: {
+    width: number;
+    height: number;
+  };
+};
+export const StyledBaseCard = styled(Card)<BaseCardType>`
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  height: ${({ dimensions }) => dimensions.height}px;
+  width: ${({ dimensions }) => dimensions.width}px;
+  margin: 0 auto;
+  position: relative;
+
+  .ant-card-cover img {
+    height: 240px;
+  }
+  .ant-card-body {
+    padding: 8px 16px !important;
+  }
+`;
+
+export const BaseCardImageWrapper = styled.div<{ imageHeight: number }>`
+  position: relative;
+  width: 100%;
+  height: ${({ imageHeight }) => imageHeight}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+export const BaseCardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  ${StyledBaseCard}:hover & {
+    transform: scale(1.05);
+  }
+`;
+
+export const BaseCardContent = styled.div``;
+
+const upperText = css`
+  position: absolute;
+  top: 8px;
+  transition: inherit;
+`;
+export const BaseCardUpperLeft = styled.div`
+  ${upperText} left: 10px;
+`;
+export const BaseCardUpperRight = styled.div`
+  ${upperText} right: 10px;
+`;
+
+export const FooterWrapper = styled.div`
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const AutoCardPriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: olive;
+`;
+
+export const BaseChip = styled.div`
+  background: red;
+  color: #fff;
+  padding: 2px 12px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 `;

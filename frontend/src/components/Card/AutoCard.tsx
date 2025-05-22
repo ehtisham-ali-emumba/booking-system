@@ -1,24 +1,22 @@
 import React from "react";
 import {
-  StyledHondaAutoCard,
-  HondaAutoCardTitle,
-  HondaAutoCardDescription,
-  HondaAutoMetaInfoContainer,
-  HondaAutoMetaText,
-  PriceWrapper,
+  AutoCardTitle,
+  AutoCardDescription,
+  AutoMetaInfoContainer,
+  AutoMetaText,
   PriceText,
-  CarChip,
-  CarImageWrapper,
-  CarImage,
+  BaseChip,
   DropDownIcon,
 } from "./elements";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Dropdown, type MenuProps } from "antd";
 import { truncate } from "../../utils";
+import { BaseCard } from "./BaseCard";
 
-interface HondaAutoCardProps {
+interface AutoCardProps {
   name: string;
   id: number;
+  brandId: number;
   modelYear: number;
   price: number;
   engine: string;
@@ -47,7 +45,7 @@ const items: MenuProps["items"] = [
   },
 ];
 
-export const HondaAutoCard: React.FC<HondaAutoCardProps> = ({
+export const AutoCard: React.FC<AutoCardProps> = ({
   id,
   name,
   modelYear,
@@ -58,62 +56,60 @@ export const HondaAutoCard: React.FC<HondaAutoCardProps> = ({
   color,
   imageSrc,
   onClick,
-  className,
   chipText = "",
   onEditClick,
   onDeleteClick,
+  brandId,
 }) => {
   const handleMenuClick: MenuProps["onClick"] = (info) => {
+    info.domEvent.preventDefault();
     info.domEvent.stopPropagation();
     if (info.key === "edit") onEditClick?.(id);
     else if (info.key === "delete") onDeleteClick?.(id);
   };
-  return (
-    <StyledHondaAutoCard
-      hoverable={false}
-      className={className}
-      onClick={onClick}
-      cover={
-        <CarImageWrapper>
-          {chipText && <CarChip>{chipText}</CarChip>}
-          <CarImage
-            alt={name}
-            src={imageSrc}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-        </CarImageWrapper>
-      }
-    >
-      <HondaAutoCardTitle level={4}>
-        {truncate(`${name} (${modelYear})`, 26, "...")}
-      </HondaAutoCardTitle>
-      <HondaAutoCardDescription>
-        {truncate(description, 60, "...")}
-      </HondaAutoCardDescription>
-      <HondaAutoMetaInfoContainer>
-        <HondaAutoMetaText>{engine}</HondaAutoMetaText>
-        <HondaAutoMetaText>{fuelType}</HondaAutoMetaText>
-        <HondaAutoMetaText>{color}</HondaAutoMetaText>
-      </HondaAutoMetaInfoContainer>
-      <PriceWrapper>
-        <PriceText>$ {price.toLocaleString()}</PriceText>
 
+  return (
+    <BaseCard
+      onClick={onClick}
+      dimensions={{ width: 300, height: 415 }}
+      imageHeight={200}
+      imageSrc={imageSrc}
+      url={`/brands/${brandId}/autos/${id}`}
+      renderContent={() => (
+        <>
+          <AutoCardTitle level={4}>
+            {truncate(`${name} (${modelYear})`, 26, "...")}
+          </AutoCardTitle>
+          <AutoCardDescription>
+            {truncate(description, 60, "...")}
+          </AutoCardDescription>
+          <AutoMetaInfoContainer>
+            <AutoMetaText>{engine}</AutoMetaText>
+            <AutoMetaText>{fuelType}</AutoMetaText>
+            <AutoMetaText>{color}</AutoMetaText>
+          </AutoMetaInfoContainer>
+        </>
+      )}
+      renderUpperRight={() =>
+        chipText ? <BaseChip>{chipText}</BaseChip> : null
+      }
+      renderLowerLeft={() => <PriceText>$ {price.toLocaleString()}</PriceText>}
+      renderLowerRight={() => (
         <Dropdown
           menu={{ items, onClick: handleMenuClick }}
           trigger={["click"]}
         >
           <span
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
             style={{ cursor: "pointer" }}
           >
             <DropDownIcon />
           </span>
         </Dropdown>
-      </PriceWrapper>
-    </StyledHondaAutoCard>
+      )}
+    />
   );
 };

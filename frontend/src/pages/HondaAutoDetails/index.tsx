@@ -22,8 +22,8 @@ import { useHondaAutoDetailsAtom } from "../../hooks/atoms";
 import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 import { CarSpecifications } from "./CarSpecifications";
 import {
-  HondaAutoMetaInfoContainer,
-  HondaAutoMetaText,
+  AutoMetaInfoContainer,
+  AutoMetaText,
 } from "../../components/Card/elements";
 import { useMemo } from "react";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
@@ -57,11 +57,11 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
           <StarRating>★★★★★</StarRating>
           <ReviewCount>(5)</ReviewCount>
         </RatingContainer>
-        <HondaAutoMetaInfoContainer>
-          <HondaAutoMetaText>{engine}</HondaAutoMetaText>
-          <HondaAutoMetaText>{fuelType}</HondaAutoMetaText>
-          <HondaAutoMetaText>{color}</HondaAutoMetaText>
-        </HondaAutoMetaInfoContainer>
+        <AutoMetaInfoContainer>
+          <AutoMetaText>{engine}</AutoMetaText>
+          <AutoMetaText>{fuelType}</AutoMetaText>
+          <AutoMetaText>{color}</AutoMetaText>
+        </AutoMetaInfoContainer>
 
         <CurrencySymbol>$ {price}</CurrencySymbol>
       </CarInfo>
