@@ -3,7 +3,6 @@ import { FixedSizeGrid as Grid } from "react-window";
 import { BlankSlate } from "../../components/BlankSlate";
 import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
-import { useNavigate } from "react-router-dom";
 import type { BrandType } from "../../atoms/brandsAtom";
 import { uiStrings } from "../../constants";
 import { BrandCard } from "../../components/Card";
@@ -22,7 +21,6 @@ type CarGridProps = {
 };
 export const BrandsGrid = memo(
   ({ handleEditClick, handleDeleteClick, brands }: CarGridProps) => {
-    const navigate = useNavigate();
     const [numColumns, setNumColumns] = useState(1);
     const [gridHeight, setGridHeight] = useState(580);
 

@@ -3,7 +3,7 @@ import { Form, Input, InputNumber } from "antd";
 import { useAutosAtom } from "../../hooks/atoms/useAutosAtom";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
 import type { TSFixMe } from "../../types";
-import { colors } from "../../constants";
+import { colors, uiStrings } from "../../constants";
 
 export type CarUpdateFormValues = {
   id: number;
@@ -61,25 +61,30 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
         onFinish={handleFinish as TSFixMe}
       >
         <Form.Item
-          label="Car Name"
+          label={uiStrings.carName}
           name="name"
-          rules={[{ required: true, message: "Please enter the car name" }]}
+          rules={[{ required: true, message: uiStrings.enterTheCarName }]}
         >
-          <Input placeholder="Enter car name" />
+          <Input placeholder={uiStrings.enterCarName} />
         </Form.Item>
         <Form.Item
-          label="Description"
+          label={uiStrings.description}
           name="description"
-          rules={[{ required: true, message: "Please enter a description" }]}
+          rules={[
+            { required: true, message: uiStrings.enterTheCarDescription },
+          ]}
         >
-          <Input.TextArea rows={3} placeholder="Enter description" />
+          <Input.TextArea
+            rows={3}
+            placeholder={uiStrings.enterCarDescription}
+          />
         </Form.Item>
         <Form.Item
-          label="Price"
+          label={uiStrings.price}
           name="price"
           rules={[
-            { required: true, message: "Please enter the price" },
-            { type: "number", min: 0, message: "Price must be positive" },
+            { required: true, message: uiStrings.plzEnterThePrice },
+            { type: "number", min: 0, message: uiStrings.priceMustBePositive },
           ]}
         >
           <InputNumber
@@ -88,7 +93,7 @@ export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
             formatter={(value) =>
               `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
-            placeholder="Enter price"
+            placeholder={uiStrings.enterPrice}
           />
         </Form.Item>
       </CarUpdateStyledForm>

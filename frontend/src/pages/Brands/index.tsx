@@ -77,7 +77,7 @@ export const Brands = () => {
           <Button
             variant="icon-transparent"
             onClick={addBrand}
-            title="Add new brand"
+            title={uiStrings.addNewBrand}
           >
             <PlusOutlined style={{ color: colors.accentOrange }} />
           </Button>

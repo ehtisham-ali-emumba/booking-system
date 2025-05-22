@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Form, Input } from "antd";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
 import type { TSFixMe } from "../../types";
-import { colors } from "../../constants";
+import { colors, uiStrings } from "../../constants";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 
 export type BrandUpdateFormValues = {
@@ -60,18 +60,20 @@ export const BrandUpdateModal: React.FC<CarUpdateModalProps> = ({
         onFinish={handleFinish as TSFixMe}
       >
         <Form.Item
-          label="Brand Name"
+          label={uiStrings.brandName}
           name="name"
-          rules={[{ required: true, message: "Please enter the brand name" }]}
+          rules={[{ required: true, message: uiStrings.plzEnterTheBrandName }]}
         >
-          <Input placeholder="Enter brand name" />
+          <Input placeholder={uiStrings.enterBrandName} />
         </Form.Item>
         <Form.Item
-          label="Description"
+          label={uiStrings.description}
           name="description"
-          rules={[{ required: true, message: "Please enter a description" }]}
+          rules={[
+            { required: true, message: uiStrings.plzEnterTheDescription },
+          ]}
         >
-          <Input.TextArea rows={3} placeholder="Enter description" />
+          <Input.TextArea rows={3} placeholder={uiStrings.enterDescription} />
         </Form.Item>
       </CarUpdateStyledForm>
     </CarUpdateStyledModal>
