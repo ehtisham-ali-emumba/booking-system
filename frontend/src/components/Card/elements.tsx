@@ -139,13 +139,6 @@ export const UserAvatarContainer = styled.div`
   flex-direction: column;
 `;
 
-export const AutoCardTitle = styled(Title)`
-  margin-top: 4px !important;
-  margin-bottom: 8px !important;
-  color: ${colors.text.primary};
-  font-size: 20px !important;
-`;
-
 export const BrandCardTitle = styled(Title)`
   margin-top: 0 !important;
   margin-bottom: 4px !important;
@@ -154,24 +147,10 @@ export const BrandCardTitle = styled(Title)`
   text-align: center;
 `;
 
-export const AutoCardDescription = styled(Paragraph)`
-  color: ${colors.text.secondary};
-  font-size: 14px;
-  min-height: 55px;
-`;
-
 export const BrandCardDescription = styled(Paragraph)`
   color: ${colors.text.secondary};
   font-size: 14px;
   min-height: 80px;
-`;
-
-export const AutoMetaInfoContainer = styled.div`
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  margin-bottom: 14px;
 `;
 
 export const AutoMetaInfo = styled.div`
@@ -181,22 +160,6 @@ export const AutoMetaInfo = styled.div`
   border-radius: 100px;
 `;
 
-export const AutoMetaText = styled(Text)`
-  color: ${colors.text.primary};
-  font-size: 14px;
-  font-weight: 500;
-  background-color: ${colors.chip};
-  padding: 4px 16px;
-  border-radius: 50px;
-`;
-
-export const PriceText = styled(Text)`
-  font-size: 20px;
-  // margin-top: 5px;
-  font-weight: 700;
-  color: ${colors.text.primary};
-`;
-// Chip styled component
 export const CarChip = styled.div`
   position: absolute;
   top: 10px;
@@ -287,15 +250,4 @@ export const AutoCardPriceWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: olive;
-`;
-
-export const BaseChip = styled.div`
-  background: red;
-  color: #fff;
-  padding: 2px 12px;
-  border-radius: 16px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  z-index: 2;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 `;

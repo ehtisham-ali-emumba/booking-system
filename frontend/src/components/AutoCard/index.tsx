@@ -1,17 +1,17 @@
 import React from "react";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Dropdown, type MenuProps } from "antd";
+import { truncate } from "../../utils";
+import { BaseCard } from "../Card";
 import {
   AutoCardTitle,
   AutoCardDescription,
   AutoMetaInfoContainer,
   AutoMetaText,
   PriceText,
-  BaseChip,
+  AutoChip,
   DropDownIcon,
 } from "./elements";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Dropdown, type MenuProps } from "antd";
-import { truncate } from "../../utils";
-import { BaseCard } from "./BaseCard";
 
 interface AutoCardProps {
   name: string;
@@ -91,7 +91,7 @@ export const AutoCard: React.FC<AutoCardProps> = ({
         </>
       )}
       renderUpperRight={() =>
-        chipText ? <BaseChip>{chipText}</BaseChip> : null
+        chipText ? <AutoChip>{chipText}</AutoChip> : null
       }
       renderLowerLeft={() => <PriceText>$ {price.toLocaleString()}</PriceText>}
       renderLowerRight={() => (

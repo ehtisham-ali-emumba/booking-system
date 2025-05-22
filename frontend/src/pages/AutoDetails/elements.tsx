@@ -3,6 +3,9 @@ import { Wrapper } from "../../styles";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
 import { sizeMobile } from "../../utils";
+import { colors } from "../../constants";
+
+export const { Title, Paragraph, Text } = Typography;
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
@@ -186,4 +189,21 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+`;
+
+export const AutoMetaInfoContainer = styled.div`
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 14px;
+`;
+
+export const AutoMetaText = styled(Text)`
+  color: ${colors.text.primary};
+  font-size: 14px;
+  font-weight: 500;
+  background-color: ${colors.chip};
+  padding: 4px 16px;
+  border-radius: 50px;
 `;

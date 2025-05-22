@@ -15,16 +15,14 @@ import {
   StarRating,
   ReviewCount,
   CurrencySymbol,
+  AutoMetaInfoContainer,
+  AutoMetaText,
 } from "./elements";
 import { useParams } from "react-router-dom";
 import ErrorContainer from "../../components/ErrorContainer";
 import { useAutoDetailsAtom } from "../../hooks/atoms";
 import type { Auto } from "../../atoms/autosAtom";
 import { CarSpecifications } from "./CarSpecifications";
-import {
-  AutoMetaInfoContainer,
-  AutoMetaText,
-} from "../../components/Card/elements";
 import { useMemo } from "react";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
