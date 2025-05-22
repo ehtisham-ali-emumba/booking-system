@@ -27,8 +27,10 @@ export const InputContainer = styled.div`
   width: 100%;
   gap: 10px;
   ${sizeMobile(css`
-    gap: 0px;
-    margin: 20px auto;
+    gap: 12px 0px;
+    margin: 25px auto;
+    flex-direction: column;
+    align-items: center;
   `)}
 `;
 

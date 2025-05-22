@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Button, Input, Spacer } from "../../components";
+import { Button, Input, Select, Spacer } from "../../components";
 import { uiStrings } from "../../constants/uiStrings";
 import { Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 import ErrorContainer from "../../components/ErrorContainer";
-import { searchAutosByNameYearAndBodyType } from "./utils";
+import { colorOptions, searchAutosByFilters } from "./utils";
 
 export const Autos = () => {
   const { brandId } = useParams<{ brandId: string }>();
@@ -22,6 +22,7 @@ export const Autos = () => {
   const [editingCarId, setEditingCarId] = useState<number | null>(null);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteCarId, setDeleteCarId] = useState<number | null>(null);
+  const [selectedColor, setSelectedColor] = useState("");
 
   const { hondaAutos } = useHondaAutosAtom();
   const { brands } = useBrandsAtom();
@@ -29,8 +30,8 @@ export const Autos = () => {
     useHondaAutosAtom();
 
   const filteredAutosBySearch = useMemo(
-    () => searchAutosByNameYearAndBodyType(hondaAutos, search),
-    [search, hondaAutos]
+    () => searchAutosByFilters(hondaAutos, search, selectedColor),
+    [search, hondaAutos, selectedColor]
   );
 
   const handleEditClick = useCallback((carId: number) => {
@@ -88,9 +89,20 @@ export const Autos = () => {
                 setSearch(e.target.value),
             }}
           />
+          <Select
+            selectProps={{
+              style: { width: 140, height: "100%" },
+              value: selectedColor,
+              options: colorOptions,
+              onChange: (value) => setSelectedColor(value),
+              placeholder: "Color",
+              allowClear: true,
+            }}
+          />
           <Button
             variant="icon-transparent"
             onClick={() => addHondaAuto(Number(brandId))}
+            title="Add new car"
           >
             <PlusOutlined style={{ color: colors.accentOrange }} />
           </Button>

@@ -74,7 +74,11 @@ export const Brands = () => {
                 setSearch(e.target.value),
             }}
           />
-          <Button variant="icon-transparent" onClick={addBrand}>
+          <Button
+            variant="icon-transparent"
+            onClick={addBrand}
+            title="Add new brand"
+          >
             <PlusOutlined style={{ color: colors.accentOrange }} />
           </Button>
         </InputContainer>

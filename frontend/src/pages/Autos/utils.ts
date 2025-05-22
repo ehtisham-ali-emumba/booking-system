@@ -7,20 +7,33 @@ export const filterAutosByBrandId = (
   return hondaAutos.filter((auto) => auto.brandId === brandId);
 };
 
-export const searchAutosByNameYearAndBodyType = (
+export const searchAutosByFilters = (
   hondaAutos: HondaAuto[],
-  search: string
+  search: string,
+  selectedColor: string
 ): HondaAuto[] => {
-  if (!search) return hondaAutos;
-  const lowerCaseSearch = search.toLowerCase();
+  if (!search && !selectedColor) return hondaAutos;
+  const lowerCaseSearch = search?.toLowerCase?.();
   return hondaAutos.filter(
     (auto) =>
-      auto.name.toLowerCase().includes(lowerCaseSearch) ||
-      auto.bodyType?.toLowerCase?.().includes?.(lowerCaseSearch) ||
-      auto.modelYear?.toString?.().includes?.(lowerCaseSearch)
+      (auto.name.toLowerCase().includes(lowerCaseSearch) ||
+        auto.bodyType?.toLowerCase?.().includes?.(lowerCaseSearch) ||
+        auto.modelYear?.toString?.().includes?.(lowerCaseSearch)) &&
+      auto.color?.toLowerCase?.().includes?.(selectedColor?.toLowerCase?.())
   );
 };
 
+export const colorOptions = [
+  { label: "All Colors", value: "" },
+  { label: "White", value: "White" },
+  { label: "Black", value: "Black" },
+  { label: "Silver", value: "Silver" },
+  { label: "Blue", value: "Blue" },
+  { label: "Red", value: "Red" },
+  { label: "Yellow", value: "Yellow" },
+  { label: "Gray", value: "Gray" },
+  { label: "Green", value: "Green" },
+];
 export const hondaAutos: HondaAuto[] = [
   // Honda
   {
