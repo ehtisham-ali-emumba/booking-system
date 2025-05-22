@@ -20,4 +20,4 @@ export type Auto = {
   bodyType?: string;
 };
 
-export const autosAtom = atomWithStorage<Auto[]>("hondaAutos", autosArray);
+export const autosAtom = atomWithStorage<Auto[]>("autos", autosArray);
