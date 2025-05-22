@@ -5,7 +5,8 @@ import {
   EnvironmentOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import styled from "styled-components";
+import { uiStrings } from "../../constants";
+import { truncate } from "../../utils";
 import {
   StyledUserCard,
   UserCardTitle,
@@ -17,19 +18,7 @@ import {
   UserAvatarContainer,
   UserNameText,
 } from "./elements";
-import { uiStrings } from "../../constants";
-import { truncate } from "../../utils";
-interface UserCardProps {
-  fullName: string;
-  userName: string;
-  imageSrc: string;
-  phone: string;
-  email: string;
-  city: string;
-  country: string;
-  className?: string;
-  onClick?: () => void;
-}
+import type { UserCardProps } from "./type";
 
 const UserCard: React.FC<UserCardProps> = ({
   fullName,
@@ -83,15 +72,4 @@ const UserCard: React.FC<UserCardProps> = ({
   );
 };
 
-// Flex layout wrapper for displaying multiple cards
-
-const listWrapperStyles = {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "25px",
-  justifyContent: "center",
-} as const;
-
-const UserCardWrapper = styled.div({ ...listWrapperStyles });
-
-export { UserCard, UserCardWrapper, listWrapperStyles };
+export { UserCard };

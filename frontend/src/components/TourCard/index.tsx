@@ -7,6 +7,8 @@ import {
 import { Button } from "../Button";
 import { getPriceLabel } from "../../utils/priceUtils";
 import { ConfirmationModal } from "../ConfirmationModal";
+import { uiStrings } from "../../constants";
+import { truncate } from "../../utils";
 import {
   StyledCard,
   CardTitle,
@@ -16,9 +18,7 @@ import {
   MetaText,
   HoverButton,
   BookingActionsContainer,
-} from "../Card/elements";
-import { uiStrings } from "../../constants";
-import { truncate } from "../../utils";
+} from "./elements";
 import type { TourCardProps } from "./type";
 
 const TourCard: React.FC<TourCardProps> = ({

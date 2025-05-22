@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { FixedSizeGrid, FixedSizeGrid as Grid } from "react-window";
 import { useInfiniteUsers, type RandomUser } from "../../hooks/useRandomUsers";
-import { UserCard } from "../../components/Card";
+import { UserCard } from "../../components";
 import { Input, Loader, Spacer } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
 import { BlankSlate } from "../../components/BlankSlate";
