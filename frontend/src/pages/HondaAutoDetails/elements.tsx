@@ -101,7 +101,6 @@ export const ManufacturerName = styled(Link)`
 export const RatingContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
 `;
 
 export const StarRating = styled.div`

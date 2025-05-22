@@ -49,6 +49,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
     <BaseLink to={url} onClick={onClick}>
       <StyledBaseCard
         dimensions={dimensions}
+        imageHeight={imageHeight}
         hoverable={false}
         cover={
           <BaseCardImageWrapper imageHeight={imageHeight}>

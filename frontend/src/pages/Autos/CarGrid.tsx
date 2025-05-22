@@ -76,7 +76,6 @@ export const CarGrid = memo(
             color={auto.color}
             imageSrc={auto.imageSrc}
             description={auto.description}
-            onClick={() => navigate(`/brands/${brandId}/autos/${auto.id}`)}
             chipText={auto?.chipText}
             onEditClick={(carId) => handleEditClick(carId)}
             onDeleteClick={(id) => handleDeleteClick(id)}

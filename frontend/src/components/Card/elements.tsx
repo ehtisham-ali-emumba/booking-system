@@ -174,12 +174,6 @@ export const AutoMetaInfoContainer = styled.div`
   margin-bottom: 14px;
 `;
 
-export const PriceWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 export const HondaAutoMetaInfo = styled.div`
   display: flex;
   background-color: ${colors.background.badge};
@@ -222,46 +216,12 @@ export const DropDownIcon = styled(MoreOutlined)({
   color: "black",
 });
 
-// Image wrapper to position the chip
-export const BrandImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 170px;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-`;
-
-export const StyledBrandCard = styled(Card)`
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  height: 365px;
-  width: 300px;
-  margin: 0 auto;
-  .ant-card-cover img {
-    height: 240px;
-  }
-  .ant-card-body {
-    padding: 8px 16px !important;
-  }
-`;
-
-export const BrandImage = styled.img`
-  width: 90px !important;
-  height: 90px !important;
-  border-radius: 200px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  ${StyledBrandCard}:hover & {
-    transform: scale(1.05);
-  }
-`;
-
 type BaseCardType = {
   dimensions: {
     width: number;
     height: number;
   };
+  imageHeight: number;
 };
 export const StyledBaseCard = styled(Card)<BaseCardType>`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
@@ -271,7 +231,7 @@ export const StyledBaseCard = styled(Card)<BaseCardType>`
   position: relative;
 
   .ant-card-cover img {
-    height: 240px;
+    height: ${({ imageHeight }) => imageHeight}px;
   }
   .ant-card-body {
     padding: 8px 16px !important;
@@ -280,10 +240,10 @@ export const StyledBaseCard = styled(Card)<BaseCardType>`
 
 export const BaseCardImageWrapper = styled.div<{ imageHeight: number }>`
   position: relative;
-  width: 100%;
   height: ${({ imageHeight }) => imageHeight}px;
-  display: flex;
+  display: flex !important;
   align-items: center;
+  flex: 1;
   justify-content: center;
   overflow: hidden;
 `;

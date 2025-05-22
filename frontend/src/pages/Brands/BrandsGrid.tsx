@@ -3,10 +3,10 @@ import { FixedSizeGrid as Grid } from "react-window";
 import { BlankSlate } from "../../components/BlankSlate";
 import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
-import { BrandCard } from "../../components/Card/BrandCard";
 import { useNavigate } from "react-router-dom";
 import type { BrandType } from "../../atoms/brandsAtom";
 import { uiStrings } from "../../constants";
+import { BrandCard } from "../../components/Card";
 
 const COLUMN_WIDTH = 325;
 const ROW_HEIGHT = 390;
@@ -52,16 +52,16 @@ export const BrandsGrid = memo(
       style: React.CSSProperties;
     }) => {
       const userIndex = rowIndex * numColumns + columnIndex;
-      const auto = brands[userIndex];
-      if (!auto) return null;
+      const brand = brands[userIndex];
+      if (!brand) return null;
+
       return (
         <div style={style}>
           <BrandCard
-            id={auto.id}
-            name={auto.name}
-            imageSrc={auto.logoUrl}
-            description={auto.description}
-            onClick={() => navigate(`/brands/${auto.id}/autos`)}
+            id={brand.id}
+            name={brand.name}
+            imageSrc={brand.logoUrl}
+            description={brand.description}
             onEditClick={(brandId) => handleEditClick(brandId)}
             onDeleteClick={(id) => handleDeleteClick(id)}
           />
