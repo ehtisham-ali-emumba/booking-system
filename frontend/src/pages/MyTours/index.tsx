@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TourCard, CardWrapper } from "../../components/Card";
+import { TourCard } from "../../components";
 import { useTourQuery } from "../../hooks/queries";
 import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
@@ -11,6 +11,7 @@ import { BlankSlate } from "../../components/BlankSlate";
 import { uiStrings } from "../../constants/uiStrings";
 import { Box, Heading, MyTourContainer } from "./elements";
 import { filterTours } from "./utils";
+import { CardWrapper } from "../../components/TourCard/elements";
 
 export const MyTours = () => {
   const navigate = useNavigate();

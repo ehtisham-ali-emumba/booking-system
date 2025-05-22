@@ -4,7 +4,6 @@ import {
   ClockCircleOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import styled from "styled-components";
 import { Button } from "../Button";
 import { getPriceLabel } from "../../utils/priceUtils";
 import { ConfirmationModal } from "../ConfirmationModal";
@@ -17,26 +16,14 @@ import {
   MetaText,
   HoverButton,
   BookingActionsContainer,
-} from "./elements";
+} from "../Card/elements";
 import { uiStrings } from "../../constants";
 import { truncate } from "../../utils";
+import type { TourCardProps } from "./type";
 
-interface TourCardProps {
-  imageSrc: string;
-  imageAlt?: string;
-  title: string;
-  description: string;
-  price?: string;
-  duration?: string;
-  className?: string;
-  onClick?: () => void;
-  hasBooking?: boolean;
-  onDeleteBooking?: () => void;
-  onUpdateBooking?: () => void;
-}
 const TourCard: React.FC<TourCardProps> = ({
   imageSrc,
-  imageAlt = "TourCard Image",
+  imageAlt = uiStrings.tourCardImg,
   title,
   description,
   price,
@@ -121,12 +108,4 @@ const TourCard: React.FC<TourCardProps> = ({
   );
 };
 
-// Flex layout wrapper for displaying multiple cards
-const CardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-`;
-
-export { TourCard, CardWrapper };
+export { TourCard };

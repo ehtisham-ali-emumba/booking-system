@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { CardWrapper, TourCard } from "../../components/Card";
+import { TourCard } from "../../components";
 import { useTourQuery } from "../../hooks/queries";
 import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
@@ -10,6 +10,7 @@ import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
 import { BlankSlate } from "../../components";
 import { uiStrings } from "../../constants";
 import { Box, Container, ContentTitle } from "./elements";
+import { CardWrapper } from "../../components/TourCard/elements";
 
 export const Tours = () => {
   const navigate = useNavigate();

@@ -90,4 +90,5 @@ export const uiStrings = {
   plzEnterTheDescription: " Please enter the description",
   enterDescription: " Enter description",
   addNewBrand: "Add new brand",
+  tourCardImg: "TourCard Image",
 };
