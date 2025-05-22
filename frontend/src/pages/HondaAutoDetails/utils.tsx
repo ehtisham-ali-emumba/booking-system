@@ -7,6 +7,7 @@ export const getHondaAutoSpecs = (auto: HondaAuto) => {
     if (
       [
         "id",
+        "brandId",
         "name",
         "price",
         "modelYear",
