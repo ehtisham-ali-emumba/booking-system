@@ -23,6 +23,7 @@ export const searchAutosByFilters = (
   );
 };
 
+export const colorSelectStyles = { width: 140, height: "100%" };
 export const colorOptions = [
   { label: "All Colors", value: "" },
   { label: "White", value: "White" },

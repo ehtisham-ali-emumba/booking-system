@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { Button, Input, Select, Spacer } from "../../components";
 import { uiStrings } from "../../constants/uiStrings";
-import { Box, Container, InputContainer } from "./elements";
+import { ActionWrapper, Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors } from "../../constants";
 import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 import ErrorContainer from "../../components/ErrorContainer";
-import { colorOptions, searchAutosByFilters } from "./utils";
+import { colorOptions, colorSelectStyles, searchAutosByFilters } from "./utils";
 
 export const Autos = () => {
   const { brandId } = useParams<{ brandId: string }>();
@@ -89,23 +89,25 @@ export const Autos = () => {
                 setSearch(e.target.value),
             }}
           />
-          <Select
-            selectProps={{
-              style: { width: 140, height: "100%" },
-              value: selectedColor,
-              options: colorOptions,
-              onChange: (value) => setSelectedColor(value),
-              placeholder: "Color",
-              allowClear: true,
-            }}
-          />
-          <Button
-            variant="icon-transparent"
-            onClick={() => addHondaAuto(Number(brandId))}
-            title="Add new car"
-          >
-            <PlusOutlined style={{ color: colors.accentOrange }} />
-          </Button>
+          <ActionWrapper>
+            <Select
+              selectProps={{
+                style: colorSelectStyles,
+                value: selectedColor,
+                options: colorOptions,
+                onChange: (value) => setSelectedColor(value),
+                placeholder: "Color",
+                allowClear: true,
+              }}
+            />
+            <Button
+              variant="icon-transparent"
+              onClick={() => addHondaAuto(Number(brandId))}
+              title="Add new car"
+            >
+              <PlusOutlined style={{ color: colors.accentOrange }} />
+            </Button>
+          </ActionWrapper>
         </InputContainer>
         <CarGrid
           hondaAutos={filteredAutosBySearch}

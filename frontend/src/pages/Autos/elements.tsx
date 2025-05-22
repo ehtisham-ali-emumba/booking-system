@@ -61,3 +61,8 @@ export const CarUpdateStyledForm = styled(Form)`
     margin-bottom: 18px;
   }
 `;
+
+export const ActionWrapper = styled.div`
+  display: flex;
+  gap: 0px 10px;
+`;
