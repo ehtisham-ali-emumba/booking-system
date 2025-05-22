@@ -3,11 +3,11 @@ import { FixedSizeGrid as Grid } from "react-window";
 import { BlankSlate } from "../../components/BlankSlate";
 import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { filterAutosByBrandId } from "./utils";
 import { uiStrings } from "../../constants";
 import type { Auto } from "../../atoms/autosAtom";
-import { AutoCard } from "../../components/Card";
+import { AutoCard } from "../../components";
 
 const COLUMN_WIDTH = 325;
 const ROW_HEIGHT = 440;

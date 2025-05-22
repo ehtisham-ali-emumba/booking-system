@@ -1,5 +1,4 @@
 import React from "react";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Dropdown, type MenuProps } from "antd";
 import { truncate } from "../../utils";
 import { BaseCard } from "../Card";
@@ -12,38 +11,8 @@ import {
   AutoChip,
   DropDownIcon,
 } from "./elements";
-
-interface AutoCardProps {
-  name: string;
-  id: number;
-  brandId: number;
-  modelYear: number;
-  price: number;
-  engine: string;
-  fuelType: string;
-  color: string;
-  imageSrc: string;
-  onClick?: () => void;
-  className?: string;
-  description: string;
-  chipText?: string;
-  onEditClick?: (id: number) => void;
-  onDeleteClick?: (id: number) => void;
-}
-
-const items: MenuProps["items"] = [
-  {
-    label: "Edit",
-    key: "edit",
-    icon: <EditOutlined />,
-  },
-  {
-    label: "Delete",
-    key: "delete",
-    icon: <DeleteOutlined />,
-    danger: true,
-  },
-];
+import type { AutoCardProps } from "./type";
+import { actionItems } from "./utils";
 
 export const AutoCard: React.FC<AutoCardProps> = ({
   id,
@@ -96,7 +65,7 @@ export const AutoCard: React.FC<AutoCardProps> = ({
       renderLowerLeft={() => <PriceText>$ {price.toLocaleString()}</PriceText>}
       renderLowerRight={() => (
         <Dropdown
-          menu={{ items, onClick: handleMenuClick }}
+          menu={{ items: actionItems, onClick: handleMenuClick }}
           trigger={["click"]}
         >
           <span

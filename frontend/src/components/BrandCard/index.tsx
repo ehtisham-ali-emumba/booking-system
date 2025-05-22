@@ -1,39 +1,17 @@
 import React from "react";
-import { BrandCardTitle, BrandCardDescription, DropDownIcon } from "./elements";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Dropdown, type MenuProps } from "antd";
+import { actionItems, cardDimensions, imageStyles } from "./utils";
 import { truncate } from "../../utils";
+import { BaseCard } from "../Card";
 import {
+  BrandCardTitle,
+  BrandCardDescription,
+  DropDownIcon,
   RatingContainer,
   ReviewCount,
   StarRating,
-} from "../../pages/AutoDetails/elements";
-import { BaseCard } from "./BaseCard";
-
-interface BrandCardProps {
-  id: number;
-  name: string;
-  description: string;
-  imageSrc: string;
-  onClick?: () => void;
-  className?: string;
-  onEditClick?: (id: number) => void;
-  onDeleteClick?: (id: number) => void;
-}
-
-const items: MenuProps["items"] = [
-  {
-    label: "Edit",
-    key: "edit",
-    icon: <EditOutlined />,
-  },
-  {
-    label: "Delete",
-    key: "delete",
-    icon: <DeleteOutlined />,
-    danger: true,
-  },
-];
+} from "./elements";
+import type { BrandCardProps } from "./type";
 
 export const BrandCard: React.FC<BrandCardProps> = ({
   id,
@@ -53,14 +31,10 @@ export const BrandCard: React.FC<BrandCardProps> = ({
   return (
     <BaseCard
       onClick={onClick}
-      dimensions={{ width: 300, height: 365 }}
+      dimensions={cardDimensions}
       imageHeight={170}
       imageSrc={imageSrc}
-      imageStyles={{
-        objectFit: "contain",
-        height: 90,
-        width: 90,
-      }}
+      imageStyles={imageStyles}
       url={`/brands/${id}/autos`}
       renderContent={() => (
         <>
@@ -78,7 +52,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({
       )}
       renderLowerRight={() => (
         <Dropdown
-          menu={{ items, onClick: handleMenuClick }}
+          menu={{ items: actionItems, onClick: handleMenuClick }}
           trigger={["click"]}
         >
           <span

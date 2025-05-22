@@ -5,7 +5,7 @@ import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
 import type { BrandType } from "../../atoms/brandsAtom";
 import { uiStrings } from "../../constants";
-import { BrandCard } from "../../components/Card";
+import { BrandCard } from "../../components";
 
 const COLUMN_WIDTH = 325;
 const ROW_HEIGHT = 390;

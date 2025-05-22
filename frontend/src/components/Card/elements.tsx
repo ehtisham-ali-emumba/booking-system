@@ -2,7 +2,6 @@ import { Card, Typography } from "antd";
 import styled, { css } from "styled-components";
 import { Button } from "../Button";
 import { colors } from "../../constants";
-import { MoreOutlined } from "@ant-design/icons";
 
 export const { Title, Paragraph, Text } = Typography;
 
@@ -139,20 +138,6 @@ export const UserAvatarContainer = styled.div`
   flex-direction: column;
 `;
 
-export const BrandCardTitle = styled(Title)`
-  margin-top: 0 !important;
-  margin-bottom: 4px !important;
-  color: ${colors.text.primary};
-  font-size: 22px !important;
-  text-align: center;
-`;
-
-export const BrandCardDescription = styled(Paragraph)`
-  color: ${colors.text.secondary};
-  font-size: 14px;
-  min-height: 80px;
-`;
-
 export const AutoMetaInfo = styled.div`
   display: flex;
   background-color: ${colors.background.badge};
@@ -173,11 +158,6 @@ export const CarChip = styled.div`
   z-index: 2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 `;
-
-export const DropDownIcon = styled(MoreOutlined)({
-  fontSize: "30px",
-  color: "black",
-});
 
 type BaseCardType = {
   dimensions: {
