@@ -14,7 +14,7 @@ import { checkBrandExists } from "../Brands/utils";
 import ErrorContainer from "../../components/ErrorContainer";
 import { searchAutosByNameYearAndBodyType } from "./utils";
 
-export const HondaAutos = () => {
+export const Autos = () => {
   const { brandId } = useParams<{ brandId: string }>();
 
   const [search, setSearch] = useState("");

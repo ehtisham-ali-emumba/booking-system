@@ -1,5 +1,5 @@
 import { atomWithStorage } from "jotai/utils";
-import { hondaAutos } from "../pages/HondaAutos/utils";
+import { hondaAutos } from "../pages/Autos/utils";
 
 export type HondaAuto = {
   id: number;
