@@ -69,7 +69,7 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
   );
 };
 
-export const HondaAutoDetails = () => {
+export const AutoDetails = () => {
   const { autoId, brandId } = useParams<{ autoId: string; brandId: string }>();
 
   const { brands } = useBrandsAtom();

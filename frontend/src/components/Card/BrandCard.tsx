@@ -7,7 +7,7 @@ import {
   RatingContainer,
   ReviewCount,
   StarRating,
-} from "../../pages/HondaAutoDetails/elements";
+} from "../../pages/AutoDetails/elements";
 import { BaseCard } from "./BaseCard";
 
 interface BrandCardProps {

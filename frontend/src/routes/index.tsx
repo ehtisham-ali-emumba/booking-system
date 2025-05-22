@@ -8,7 +8,7 @@ import { BookTour } from "../pages/BookTour";
 import { MyTours } from "../pages/MyTours";
 import { Virtualization } from "../pages/Virtualization";
 import { Autos } from "../pages/Autos";
-import { HondaAutoDetails } from "../pages/HondaAutoDetails";
+import { AutoDetails } from "../pages/AutoDetails";
 import { Brands } from "../pages/Brands";
 
 const routes: RouteObject[] = [
@@ -72,7 +72,7 @@ const routes: RouteObject[] = [
     path: "/brands/:brandId/autos/:autoId",
     element: (
       <MainLayout>
-        <HondaAutoDetails />
+        <AutoDetails />
       </MainLayout>
     ),
   },
