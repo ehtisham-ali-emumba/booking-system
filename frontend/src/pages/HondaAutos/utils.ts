@@ -77,7 +77,7 @@ export const hondaAutos: HondaAuto[] = [
     fuelType: "Petrol",
     color: "Blue",
     imageSrc:
-      "https://cdn.pixabay.com/photo/2017/01/06/19/15/toyota-1957037_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/29/09/32/toyota-1868726_1280.jpg",
     description: "Spacious sedan with advanced safety and technology.",
     mileage: "14 km/l",
     fuelCapacity: "60 L",
@@ -97,7 +97,7 @@ export const hondaAutos: HondaAuto[] = [
     color: "Red",
     chipText: "Popular",
     imageSrc:
-      "https://cdn.pixabay.com/photo/2017/03/27/13/28/ford-2173952_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/29/09/32/toyota-1868726_1280.jpg",
     description: "Compact hatchback with agile handling and modern features.",
     mileage: "18 km/l",
     fuelCapacity: "52 L",
@@ -135,7 +135,7 @@ export const hondaAutos: HondaAuto[] = [
     color: "Gray",
     chipText: "New Arrival",
     imageSrc:
-      "https://cdn.pixabay.com/photo/2021/03/10/17/40/car-6085109_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/29/09/32/toyota-1868726_1280.jpg",
     description: "Compact crossover with flexible space and modern features.",
     mileage: "16 km/l",
     fuelCapacity: "40 L",
@@ -169,13 +169,13 @@ export const hondaAutos: HondaAuto[] = [
     name: "Edge",
     modelYear: 2023,
     price: 35000,
-    engine: "2.0L EcoBoost",
+    engine: "2.0L",
     transmission: "Automatic",
     fuelType: "Petrol",
     color: "Blue",
     chipText: "Family",
     imageSrc:
-      "https://cdn.pixabay.com/photo/2017/03/27/13/28/ford-2173952_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/29/09/32/toyota-1868726_1280.jpg",
     description: "Mid-size SUV with advanced safety and comfort.",
     mileage: "12 km/l",
     fuelCapacity: "68 L",

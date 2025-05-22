@@ -71,4 +71,5 @@ export const uiStrings = {
   deleteBrandConfirmation: "Would you like to delete this brand?",
   noSpecsFound: "No specifications available",
   noCarsMessage: "No cars available",
+  unknownBrand: "Unknown Brand",
 };

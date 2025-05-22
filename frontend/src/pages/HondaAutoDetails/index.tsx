@@ -30,7 +30,12 @@ import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 
 const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
-  const { name, modelYear, price, imageSrc, engine, fuelType, color } = auto;
+  const { brandId, name, modelYear, price, imageSrc, engine, fuelType, color } =
+    auto;
+  const { getBrandById } = useBrandsAtom();
+  const brand = getBrandById(brandId);
+  const brandName = brand?.name || uiStrings.unknownBrand;
+
   return (
     <CarContainer>
       <CarImageContainer>
@@ -43,7 +48,9 @@ const CarHeader: React.FC<{ auto: HondaAuto }> = ({ auto }) => {
         </CarTitle>
         <Manufacturer>
           {uiStrings.by}:{" "}
-          <ManufacturerName href="#">{uiStrings.hondaAutos}</ManufacturerName>
+          <ManufacturerName to={`/brands/${brandId}/autos`}>
+            {brandName}
+          </ManufacturerName>
         </Manufacturer>
 
         <RatingContainer>
@@ -86,6 +93,7 @@ export const HondaAutoDetails = () => {
           <CarHeader auto={autoDetails} />
           <Spacer marginTop="20px" />
           <CarSpecifications auto={autoDetails} />
+          <div style={{ minHeight: "50px" }} />
         </Box>
       </ContentWrapper>
     </Container>

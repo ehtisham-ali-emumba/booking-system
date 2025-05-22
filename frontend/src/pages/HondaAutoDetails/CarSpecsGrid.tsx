@@ -54,7 +54,7 @@ export const CarSpecsGrid: React.FC<CarSpecsGridType> = ({
     );
   };
 
-  const listHeight = Math.max(carSpecs.length * 60, 200);
+  const listHeight = Math.max(carSpecs.length * 56, 200);
 
   return carSpecs.length ? (
     <List

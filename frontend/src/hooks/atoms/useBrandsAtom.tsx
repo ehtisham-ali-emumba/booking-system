@@ -21,6 +21,13 @@ export const useBrandsAtom = () => {
     ]);
   }, [setBrands]);
 
+  const getBrandById = useCallback(
+    (brandId: number) => {
+      return brands.find((brand) => brand.id === brandId);
+    },
+    [brands]
+  );
+
   const removeBrand = useCallback(
     (brandId: number) => {
       setBrands((prevBrands) =>
@@ -42,5 +49,5 @@ export const useBrandsAtom = () => {
     [setBrands]
   );
 
-  return { brands, addBrand, removeBrand, updateBrand };
+  return { brands, addBrand, removeBrand, updateBrand, getBrandById };
 };

@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Wrapper } from "../../styles";
 import { Typography } from "antd";
+import { Link } from "react-router-dom";
+import { sizeMobile } from "../../utils";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
@@ -49,11 +51,16 @@ export const CarContainer = styled.div`
   max-width: 900px;
   margin: 32px auto;
   padding: 0 16px;
+  gap: 32px;
+  ${sizeMobile(css`
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  `)}
 `;
 
 export const CarImageContainer = styled.div`
   flex: 0 0 auto;
-  margin-right: 32px;
 `;
 
 export const CarImage = styled.img`
@@ -81,7 +88,7 @@ export const Manufacturer = styled.div`
   font-size: 18px;
 `;
 
-export const ManufacturerName = styled.a`
+export const ManufacturerName = styled(Link)`
   color: #d32f2f;
   text-decoration: none;
   font-weight: 500;
@@ -121,6 +128,10 @@ export const CarSpecsContainer = styled.div`
   padding: 32px 64px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
+  ${sizeMobile(css`
+    padding: 12px;
+    max-width: 300px;
+  `)}
 `;
 
 export const SpecsTitle = styled.h3`
@@ -154,12 +165,14 @@ export const SpecValue = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 120px;
 `;
 
 export const SpecActions = styled(SpecValue)`
   display: flex;
   gap: 12px;
   flex: 0 0 100px;
+  justify-content: flex-end;
 `;
 
 export const Divider = styled.div`
@@ -167,6 +180,7 @@ export const Divider = styled.div`
   background-color: #e1e4e8;
   margin: 8px 0;
   opacity: 0.6;
+  width: 100%;
 `;
 
 export const Row = styled.div`
