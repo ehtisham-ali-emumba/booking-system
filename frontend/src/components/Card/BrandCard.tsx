@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  StyledHondaAutoCard,
-  HondaAutoCardTitle,
+  StyledBrandCard,
+  BrandCardTitle,
   HondaAutoCardDescription,
   PriceWrapper,
   BrandImageWrapper,
@@ -11,6 +11,11 @@ import {
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Dropdown, type MenuProps } from "antd";
 import { truncate } from "../../utils";
+import {
+  RatingContainer,
+  ReviewCount,
+  StarRating,
+} from "../../pages/HondaAutoDetails/elements";
 
 interface BrandCardProps {
   id: number;
@@ -53,7 +58,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({
     else if (info.key === "delete") onDeleteClick?.(id);
   };
   return (
-    <StyledHondaAutoCard
+    <StyledBrandCard
       hoverable={false}
       className={className}
       onClick={onClick}
@@ -63,9 +68,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({
         </BrandImageWrapper>
       }
     >
-      <HondaAutoCardTitle level={4}>
-        {truncate(name, 26, "...")}
-      </HondaAutoCardTitle>
+      <BrandCardTitle level={4}>{truncate(name, 26, "...")}</BrandCardTitle>
 
       <PriceWrapper>
         <HondaAutoCardDescription>
@@ -83,6 +86,10 @@ export const BrandCard: React.FC<BrandCardProps> = ({
           </span>
         </Dropdown>
       </PriceWrapper>
-    </StyledHondaAutoCard>
+      <RatingContainer>
+        <StarRating>★★★★★</StarRating>
+        <ReviewCount>(5)</ReviewCount>
+      </RatingContainer>
+    </StyledBrandCard>
   );
 };

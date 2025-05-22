@@ -5,7 +5,6 @@ import { hondaAutosMoreData } from "../../pages/HondaAutos/utils";
 
 export const useHondaAutosAtom = () => {
   const [hondaAutos, setHondaAutos] = useAtom(hondaAutosAtom);
-  console.log("🚀 ~ useHondaAutosAtom ~ hondaAutos:", hondaAutos);
 
   const deleteHondaAuto = useCallback(
     (id: number) => {

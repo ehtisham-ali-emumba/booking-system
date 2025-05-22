@@ -161,6 +161,14 @@ export const HondaAutoCardTitle = styled(Title)`
   font-size: 18px !important;
 `;
 
+export const BrandCardTitle = styled(Title)`
+  margin-top: 0 !important;
+  margin-bottom: 4px !important;
+  color: ${colors.text.primary};
+  font-size: 22px !important;
+  text-align: center;
+`;
+
 export const HondaAutoCardDescription = styled(Paragraph)`
   color: ${colors.text.secondary};
   font-size: 14px;
@@ -260,9 +268,22 @@ export const CarImage = styled.img`
 export const BrandImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 170px;
   display: flex !important;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+`;
+
+export const StyledBrandCard = styled(Card)`
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  height: 365px;
+  width: 300px;
+  margin: 0 auto;
+  .ant-card-cover img {
+    height: 240px;
+  }
+  .ant-card-body {
+    padding: 8px 16px !important;
+  }
 `;

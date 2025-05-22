@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 
 const COLUMN_WIDTH = 325;
-const ROW_HEIGHT = 440;
+const ROW_HEIGHT = 390;
 const gridStyles = {
   margin: "0px auto",
   overflowX: "hidden",
