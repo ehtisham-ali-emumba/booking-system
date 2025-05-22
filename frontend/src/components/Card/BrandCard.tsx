@@ -2,7 +2,7 @@ import React from "react";
 import {
   StyledBrandCard,
   BrandCardTitle,
-  HondaAutoCardDescription,
+  BrandCardDescription,
   PriceWrapper,
   BrandImageWrapper,
   BrandImage,
@@ -70,9 +70,9 @@ export const BrandCard: React.FC<BrandCardProps> = ({
     >
       <BrandCardTitle level={4}>{truncate(name, 26, "...")}</BrandCardTitle>
 
-      <HondaAutoCardDescription>
+      <BrandCardDescription>
         {truncate(description, 110, "...")}
-      </HondaAutoCardDescription>
+      </BrandCardDescription>
 
       <PriceWrapper>
         <RatingContainer>

@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 import ErrorContainer from "../../components/ErrorContainer";
+import { searchAutosByNameYearAndBodyType } from "./utils";
 
 export const HondaAutos = () => {
   const { brandId } = useParams<{ brandId: string }>();
@@ -22,9 +23,15 @@ export const HondaAutos = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteCarId, setDeleteCarId] = useState<number | null>(null);
 
+  const { hondaAutos } = useHondaAutosAtom();
   const { brands } = useBrandsAtom();
   const { addHondaAuto, updateHondaAuto, deleteHondaAuto } =
     useHondaAutosAtom();
+
+  const filteredAutosBySearch = useMemo(
+    () => searchAutosByNameYearAndBodyType(hondaAutos, search),
+    [search, hondaAutos]
+  );
 
   const handleEditClick = useCallback((carId: number) => {
     setEditingCarId(carId);
@@ -89,6 +96,7 @@ export const HondaAutos = () => {
           </Button>
         </InputContainer>
         <CarGrid
+          hondaAutos={filteredAutosBySearch}
           handleEditClick={handleEditClick}
           handleDeleteClick={handleDeleteClick}
         />

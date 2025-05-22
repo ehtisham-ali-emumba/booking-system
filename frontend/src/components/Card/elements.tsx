@@ -155,10 +155,10 @@ export const StyledHondaAutoCard = styled(Card)`
 `;
 
 export const HondaAutoCardTitle = styled(Title)`
-  margin-top: 0 !important;
-  margin-bottom: 4px !important;
+  margin-top: 4px !important;
+  margin-bottom: 8px !important;
   color: ${colors.text.primary};
-  font-size: 18px !important;
+  font-size: 20px !important;
 `;
 
 export const BrandCardTitle = styled(Title)`
@@ -172,7 +172,13 @@ export const BrandCardTitle = styled(Title)`
 export const HondaAutoCardDescription = styled(Paragraph)`
   color: ${colors.text.secondary};
   font-size: 14px;
-  min-height: 90px;
+  min-height: 55px;
+`;
+
+export const BrandCardDescription = styled(Paragraph)`
+  color: ${colors.text.secondary};
+  font-size: 14px;
+  min-height: 80px;
 `;
 
 export const HondaAutoMetaInfoContainer = styled.div`
@@ -187,7 +193,6 @@ export const PriceWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
 `;
 
 export const HondaAutoMetaInfo = styled.div`

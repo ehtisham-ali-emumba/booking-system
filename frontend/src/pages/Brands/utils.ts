@@ -6,6 +6,17 @@ export const checkBrandExists = (
 ): boolean => {
   return brandsArray.some((brand) => brand.id === brandId);
 };
+
+export const filterBrandsBySearch = (
+  search: string,
+  brandsArray: BrandType[]
+): BrandType[] => {
+  if (!search) return brandsArray;
+  return brandsArray.filter((brand) =>
+    brand.name.toLowerCase().includes(search.toLowerCase())
+  );
+};
+
 export const brands: BrandType[] = [
   {
     id: 1,

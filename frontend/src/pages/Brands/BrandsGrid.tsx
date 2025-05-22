@@ -5,7 +5,8 @@ import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { BrandCard } from "../../components/Card/BrandCard";
 import { useNavigate } from "react-router-dom";
-import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import type { BrandType } from "../../atoms/brandsAtom";
+import { uiStrings } from "../../constants";
 
 const COLUMN_WIDTH = 325;
 const ROW_HEIGHT = 390;
@@ -17,11 +18,11 @@ const gridStyles = {
 type CarGridProps = {
   handleEditClick: (brandId: number) => void;
   handleDeleteClick: (brandId: number) => void;
+  brands: BrandType[];
 };
 export const BrandsGrid = memo(
-  ({ handleEditClick, handleDeleteClick }: CarGridProps) => {
+  ({ handleEditClick, handleDeleteClick, brands }: CarGridProps) => {
     const navigate = useNavigate();
-    const { brands } = useBrandsAtom();
     const [numColumns, setNumColumns] = useState(1);
     const [gridHeight, setGridHeight] = useState(580);
 
@@ -85,7 +86,7 @@ export const BrandsGrid = memo(
             </Grid>
           </GridWrapper>
         ) : (
-          <BlankSlate />
+          <BlankSlate message={uiStrings.brandNotFound} />
         )}
       </ListContainer>
     );

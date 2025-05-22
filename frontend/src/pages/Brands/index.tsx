@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Button, Input, Spacer } from "../../components";
 import { uiStrings } from "../../constants/uiStrings";
 import { Box, Container, InputContainer } from "./elements";
@@ -11,6 +11,7 @@ import {
 import { BrandsGrid } from "./BrandsGrid";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import { filterBrandsBySearch } from "./utils";
 
 export const Brands = () => {
   const [search, setSearch] = useState("");
@@ -19,7 +20,12 @@ export const Brands = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteBrandId, setDeleteBrandId] = useState<number | null>(null);
 
-  const { addBrand, removeBrand, updateBrand } = useBrandsAtom();
+  const { addBrand, removeBrand, updateBrand, brands } = useBrandsAtom();
+
+  const filteredBrandsBySearch = useMemo(
+    () => filterBrandsBySearch(search, brands),
+    [search, brands]
+  );
 
   const handleEditClick = useCallback((carId: number) => {
     setEditingBrandId(carId);
@@ -73,6 +79,7 @@ export const Brands = () => {
           </Button>
         </InputContainer>
         <BrandsGrid
+          brands={filteredBrandsBySearch}
           handleEditClick={handleEditClick}
           handleDeleteClick={handleDeleteClick}
         />

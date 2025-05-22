@@ -65,6 +65,7 @@ export const uiStrings = {
   by: "By",
   autoNotFound: "Auto not found",
   brandNotExists: "Brand does not exist",
+  brandNotFound: "Brand not found",
   carSpecs: "Car Specifications",
   deleteSpecConfirmation: "Would you like to delete this specification?",
   deleteAutoConfirmation: "Would you like to delete this auto?",

@@ -5,9 +5,9 @@ import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { HondaAutoCard } from "../../components/Card/HondaAutoCard";
 import { useNavigate, useParams } from "react-router-dom";
-import { useHondaAutosAtom } from "../../hooks/atoms/useHondaAutosAtom";
 import { filterAutosByBrandId } from "./utils";
 import { uiStrings } from "../../constants";
+import type { HondaAuto } from "../../atoms/hondaAutosAtom";
 
 const COLUMN_WIDTH = 325;
 const ROW_HEIGHT = 440;
@@ -19,13 +19,12 @@ const gridStyles = {
 type CarGridProps = {
   handleEditClick: (carId: number) => void;
   handleDeleteClick: (carId: number) => void;
+  hondaAutos: HondaAuto[];
 };
 export const CarGrid = memo(
-  ({ handleEditClick, handleDeleteClick }: CarGridProps) => {
+  ({ handleEditClick, handleDeleteClick, hondaAutos }: CarGridProps) => {
     const navigate = useNavigate();
     const { brandId } = useParams<{ brandId: string }>();
-
-    const { hondaAutos } = useHondaAutosAtom();
 
     const autos = useMemo(
       () => filterAutosByBrandId(hondaAutos, Number(brandId)),

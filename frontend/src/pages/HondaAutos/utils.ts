@@ -6,6 +6,21 @@ export const filterAutosByBrandId = (
 ): HondaAuto[] => {
   return hondaAutos.filter((auto) => auto.brandId === brandId);
 };
+
+export const searchAutosByNameYearAndBodyType = (
+  hondaAutos: HondaAuto[],
+  search: string
+): HondaAuto[] => {
+  if (!search) return hondaAutos;
+  const lowerCaseSearch = search.toLowerCase();
+  return hondaAutos.filter(
+    (auto) =>
+      auto.name.toLowerCase().includes(lowerCaseSearch) ||
+      auto.bodyType?.toLowerCase?.().includes?.(lowerCaseSearch) ||
+      auto.modelYear?.toString?.().includes?.(lowerCaseSearch)
+  );
+};
+
 export const hondaAutos: HondaAuto[] = [
   // Honda
   {
