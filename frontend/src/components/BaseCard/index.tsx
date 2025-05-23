@@ -1,5 +1,4 @@
 import React from "react";
-import { BaseLink } from "../StyledComponents";
 import {
   StyledBaseCard,
   BaseCardImageWrapper,
@@ -10,6 +9,7 @@ import {
   FooterWrapper,
 } from "./elements";
 import type { BaseCardProps } from "./type";
+import { BaseLink } from "../elements";
 
 export const BaseCard: React.FC<BaseCardProps> = ({
   imageSrc,

@@ -1,7 +1,15 @@
 import { Typography } from "antd";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
+
+export const BaseLink = styled(Link)`
+  text-decoration: none;
+  :hover {
+    text-decoration: none;
+  }
+`;
 
 export const BlankSlateWrapper = styled.div`
   display: flex;
