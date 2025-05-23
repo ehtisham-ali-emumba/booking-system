@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import type { Booking } from "../../atoms/bookingAtom";
+import type { Booking } from "../../../atoms/bookingAtom";
 
 export const bookFormValidationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),

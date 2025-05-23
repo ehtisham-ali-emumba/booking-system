@@ -1,6 +1,6 @@
-import { Flex1, Layout, ContentWrapper as RootWrapper } from "../../styles";
-import { Spacer } from "../../components/Spacer";
-import { images_png } from "../../assets";
+import { Flex1, Layout, ContentWrapper as RootWrapper } from "../../../styles";
+import { Spacer } from "../../../components/Spacer";
+import { images_png } from "../../../assets";
 import { BookForm } from "./BookForm";
 import { Box, ContentWrapper, ImageUI, ImageWrapper } from "./elements";
 

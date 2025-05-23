@@ -3,22 +3,22 @@ import { useParams } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Typography, Row, Col } from "antd";
-import { Button, Spacer } from "../../components";
-import { FormInput } from "../../components/Form";
+import { Button, Spacer } from "../../../components";
+import { FormInput } from "../../../components/Form";
 import {
   bookFormValidationSchema,
   getBookingByTourId,
   isBookingExists,
   removeBookingByTourId,
 } from "./utils";
-import FormSelect from "../../components/Form/FormSelect";
+import FormSelect from "../../../components/Form/FormSelect";
 import { FormWrapper } from "./elements";
-import { FormPhoneInput } from "../../components/Form/FormPhoneInput";
-import { bookingAtom } from "../../atoms/bookingAtom";
+import { FormPhoneInput } from "../../../components/Form/FormPhoneInput";
+import { bookingAtom } from "../../../atoms/bookingAtom";
 import { useEffect } from "react";
-import { notifee } from "../../services";
+import { notifee } from "../../../services";
 import { useNavigate } from "react-router-dom";
-import { uiStrings } from "../../constants";
+import { uiStrings } from "../../../constants";
 import type { BookFormDataType } from "./type";
 
 const { Title } = Typography;
