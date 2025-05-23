@@ -1,8 +1,5 @@
-import { Input as InputField, type InputProps } from "antd";
-
-export type InputType = {
-  inputProps?: InputProps;
-};
+import { Input as InputField } from "antd";
+import type { InputType } from "./type";
 
 export const Input: React.FC<InputType> = ({ inputProps }) => {
   return (

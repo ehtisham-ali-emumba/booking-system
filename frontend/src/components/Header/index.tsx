@@ -13,10 +13,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { uiStrings } from "../../constants/uiStrings";
 import { TourLogoSvg } from "../../assets";
 import { useIsActiveRoute } from "../../hooks/useIsActiveRoute";
-
-type HeaderProps = {
-  hideExplore?: boolean;
-};
+import type { HeaderProps } from "./type";
 
 export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

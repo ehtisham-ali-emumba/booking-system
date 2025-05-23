@@ -1,23 +1,8 @@
-import { Button as AntdButton, type ButtonProps } from "antd";
+import { Button as AntdButton } from "antd";
 import styled, { css } from "styled-components";
-import { colors } from "../constants";
+import { colors } from "../../constants";
+import type { StyledButtonProps } from "./type";
 
-// Define the button variants
-type ButtonVariant =
-  | "primary"
-  | "outlined"
-  | "secondary"
-  | "icon"
-  | "icon-transparent";
-
-// Define the props interface
-type StyledButtonProps = Omit<ButtonProps, "variant"> & {
-  variant?: ButtonVariant;
-  size?: "small" | "medium" | "large";
-  fullWidth?: boolean;
-};
-
-// Apply size styles using function for better readability
 const getSizeStyles = (size = "medium") => {
   switch (size) {
     case "small":
@@ -42,7 +27,6 @@ const getSizeStyles = (size = "medium") => {
   }
 };
 
-// Define primary button styles
 const primaryStyles = css`
   background-color: ${colors.accentOrange};
   color: ${colors.white};
@@ -117,13 +101,11 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
   align-items: center;
   justify-content: center;
 
-  // Apply size styles
   ${({ size = "medium", variant }) =>
     ["icon", "icon-transparent"].includes(variant!)
       ? null
       : getSizeStyles(size)}
 
-  // Apply variant styles
   ${({ variant = "primary" }) => {
     switch (variant) {
       case "secondary":
@@ -139,8 +121,7 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
         return primaryStyles;
     }
   }}
-
-   // Apply fullWidth styles
+ 
   ${({ fullWidth }) =>
     fullWidth &&
     css`
