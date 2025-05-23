@@ -1,71 +1,15 @@
 import { Spacer } from "../../components";
 import { ContentWrapper } from "../../styles";
 import { uiStrings } from "../../constants";
-import {
-  Box,
-  Container,
-  CarContainer,
-  CarImage,
-  CarImageContainer,
-  CarInfo,
-  CarTitle,
-  Manufacturer,
-  ManufacturerName,
-  RatingContainer,
-  StarRating,
-  ReviewCount,
-  CurrencySymbol,
-  AutoMetaInfoContainer,
-  AutoMetaText,
-} from "./elements";
+import { Box, Container } from "./elements";
 import { useParams } from "react-router-dom";
 import ErrorContainer from "../../components/ErrorContainer";
 import { useAutoDetailsAtom } from "../../hooks/atoms";
-import type { Auto } from "../../atoms/autosAtom";
 import { CarSpecifications } from "./CarSpecifications";
 import { useMemo } from "react";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
-
-const CarHeader: React.FC<{ auto: Auto }> = ({ auto }) => {
-  const { brandId, name, modelYear, price, imageSrc, engine, fuelType, color } =
-    auto;
-  const { getBrandById } = useBrandsAtom();
-  const brand = getBrandById(brandId);
-  const brandName = brand?.name || uiStrings.unknownBrand;
-
-  return (
-    <CarContainer>
-      <CarImageContainer>
-        <CarImage src={imageSrc} alt={`${name} - ${modelYear}`} />
-      </CarImageContainer>
-
-      <CarInfo>
-        <CarTitle>
-          {name} - {modelYear}
-        </CarTitle>
-        <Manufacturer>
-          {uiStrings.by}:{" "}
-          <ManufacturerName to={`/brands/${brandId}/autos`}>
-            {brandName}
-          </ManufacturerName>
-        </Manufacturer>
-
-        <RatingContainer>
-          <StarRating>★★★★★</StarRating>
-          <ReviewCount>(5)</ReviewCount>
-        </RatingContainer>
-        <AutoMetaInfoContainer>
-          <AutoMetaText>{engine}</AutoMetaText>
-          <AutoMetaText>{fuelType}</AutoMetaText>
-          <AutoMetaText>{color}</AutoMetaText>
-        </AutoMetaInfoContainer>
-
-        <CurrencySymbol>$ {price}</CurrencySymbol>
-      </CarInfo>
-    </CarContainer>
-  );
-};
+import { CarHeader } from "./CarHeader";
 
 export const AutoDetails = () => {
   const { autoId, brandId } = useParams<{ autoId: string; brandId: string }>();

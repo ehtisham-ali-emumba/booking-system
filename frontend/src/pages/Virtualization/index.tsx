@@ -22,13 +22,7 @@ import {
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { debounce } from "../../utils/appUtils";
 import { UserDetailsModal } from "./UserDetailsModal";
-
-const COLUMN_WIDTH = 300;
-const ROW_HEIGHT = 370;
-const gridStyles = {
-  overflowX: "hidden",
-  padding: "0 5px",
-} as const;
+import { COLUMN_WIDTH, gridStyles, ROW_HEIGHT } from "./utils";
 
 export const Virtualization = () => {
   const [search, setSearch] = useState("");

@@ -91,4 +91,12 @@ export const uiStrings = {
   enterDescription: " Enter description",
   addNewBrand: "Add new brand",
   tourCardImg: "TourCard Image",
+  nA: "N/A",
+  email: "Email",
+  phone: "Phone",
+  age: "Age",
+  street: "Street",
+  city: "City",
+  country: "Country",
+  close: "Close",
 };

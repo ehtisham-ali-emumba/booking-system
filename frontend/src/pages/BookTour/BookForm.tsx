@@ -19,18 +19,10 @@ import { useEffect } from "react";
 import { notifee } from "../../services";
 import { useNavigate } from "react-router-dom";
 import { uiStrings } from "../../constants";
+import type { BookFormDataType } from "./type";
 
 const { Title } = Typography;
 
-type BookFormDataType = {
-  name: string;
-  email: string;
-  phone: string;
-  adults: number;
-  children: number;
-  paymentMethod: string;
-  countryCode: string;
-};
 export const BookForm = () => {
   const { tourId } = useParams<{ tourId: string }>();
   const navigate = useNavigate();

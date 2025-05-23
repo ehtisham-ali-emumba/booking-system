@@ -26,12 +26,12 @@ import {
 import { useTourQueryById } from "../../hooks/queries";
 import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
-import type { Tour } from "../../types";
 import { getPriceLabel } from "../../utils/priceUtils";
 import { ItinerarySchedule } from "./ItinerarySchedule";
 import { uiStrings } from "../../constants/uiStrings";
+import type { HeaderTextType } from "./type";
 
-const HeaderTexts = ({ tour }: { tour: Tour }) => {
+const HeaderTexts = ({ tour }: HeaderTextType) => {
   return (
     <Container2>
       <TourTitle>{tour.name}</TourTitle>

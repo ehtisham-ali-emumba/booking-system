@@ -4,23 +4,16 @@ import { BlankSlate } from "../../components/BlankSlate";
 import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { useParams } from "react-router-dom";
-import { filterAutosByBrandId } from "./utils";
+import {
+  COLUMN_WIDTH,
+  filterAutosByBrandId,
+  gridStyles,
+  ROW_HEIGHT,
+} from "./utils";
 import { uiStrings } from "../../constants";
-import type { Auto } from "../../atoms/autosAtom";
 import { AutoCard } from "../../components";
+import type { CarGridProps } from "./type";
 
-const COLUMN_WIDTH = 325;
-const ROW_HEIGHT = 440;
-const gridStyles = {
-  margin: "0px auto",
-  overflowX: "hidden",
-} as const;
-
-type CarGridProps = {
-  handleEditClick: (carId: number) => void;
-  handleDeleteClick: (carId: number) => void;
-  autos: Auto[];
-};
 export const CarGrid = memo(
   ({ handleEditClick, handleDeleteClick, autos }: CarGridProps) => {
     const { brandId } = useParams<{ brandId: string }>();

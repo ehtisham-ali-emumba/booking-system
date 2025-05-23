@@ -39,3 +39,16 @@ export const ListContainer = styled.div`
   flex-direction: column;
   height: 100%;
 `;
+
+export const UserImage = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+`;
+
+export const UserDetailsContainer = styled.div`
+  padding: 24px !important;
+  min-width: 320px !important;
+  text-align: center;
+`;

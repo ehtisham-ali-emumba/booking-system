@@ -7,22 +7,12 @@ import {
   Divider,
 } from "./elements";
 import { deleteIconStyle, editIconStyle, getAutoSpecs } from "./utils";
-import type { Auto } from "../../atoms/autosAtom";
 import {
   FixedSizeList as List,
   type ListChildComponentProps,
 } from "react-window";
 import { uiStrings } from "../../constants";
-
-type CarSpecsGridType = {
-  auto: Auto;
-  handleAddEditClick: (
-    isEditMode?: boolean,
-    key?: string,
-    value?: string | number
-  ) => void;
-  handleDeleteClick: (key: string) => void;
-};
+import type { CarSpecsGridType } from "./type";
 
 export const CarSpecsGrid: React.FC<CarSpecsGridType> = ({
   auto,

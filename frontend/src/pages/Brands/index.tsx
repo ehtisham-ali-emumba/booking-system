@@ -4,14 +4,12 @@ import { uiStrings } from "../../constants/uiStrings";
 import { Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors } from "../../constants";
-import {
-  BrandUpdateModal,
-  type BrandUpdateFormValues,
-} from "./BrandUpdateModal";
+import { BrandUpdateModal } from "./BrandUpdateModal";
 import { BrandsGrid } from "./BrandsGrid";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
-import { filterBrandsBySearch } from "./utils";
+import { filterBrandsBySearch, inputSearchStyles } from "./utils";
+import type { BrandUpdateFormValues } from "./type";
 
 export const Brands = () => {
   const [search, setSearch] = useState("");
@@ -68,7 +66,7 @@ export const Brands = () => {
           <Input
             inputProps={{
               placeholder: uiStrings.brandSearchPlaceholder,
-              style: { maxWidth: "280px" },
+              style: inputSearchStyles,
               value: search,
               onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value),

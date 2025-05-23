@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TourCard } from "../../components";
+import { BlankSlate, TourCard } from "../../components";
 import { useTourQuery } from "../../hooks/queries";
 import { Loader } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
@@ -7,7 +7,6 @@ import { useAtom } from "jotai";
 import { bookingAtom } from "../../atoms/bookingAtom";
 import { useMemo } from "react";
 import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
-import { BlankSlate } from "../../components/BlankSlate";
 import { uiStrings } from "../../constants/uiStrings";
 import { Box, Heading, MyTourContainer } from "./elements";
 import { filterTours } from "./utils";

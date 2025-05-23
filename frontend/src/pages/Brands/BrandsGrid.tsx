@@ -3,24 +3,13 @@ import { FixedSizeGrid as Grid } from "react-window";
 import { BlankSlate } from "../../components/BlankSlate";
 import { GridWrapper, ListContainer } from "./elements";
 import { useHandleResize } from "../../hooks/useHandleResize";
-import type { BrandType } from "../../atoms/brandsAtom";
 import { uiStrings } from "../../constants";
 import { BrandCard } from "../../components";
+import type { BrandGridProps } from "./type";
+import { COLUMN_WIDTH, gridStyles, ROW_HEIGHT } from "./utils";
 
-const COLUMN_WIDTH = 325;
-const ROW_HEIGHT = 390;
-const gridStyles = {
-  margin: "0px auto",
-  overflowX: "hidden",
-} as const;
-
-type CarGridProps = {
-  handleEditClick: (brandId: number) => void;
-  handleDeleteClick: (brandId: number) => void;
-  brands: BrandType[];
-};
 export const BrandsGrid = memo(
-  ({ handleEditClick, handleDeleteClick, brands }: CarGridProps) => {
+  ({ handleEditClick, handleDeleteClick, brands }: BrandGridProps) => {
     const [numColumns, setNumColumns] = useState(1);
     const [gridHeight, setGridHeight] = useState(580);
 

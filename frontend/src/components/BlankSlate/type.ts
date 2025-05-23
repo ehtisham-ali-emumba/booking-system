@@ -1,1 +1,1 @@
-export type BlankSlateType = { message: string };
+export type BlankSlateType = { message?: string };

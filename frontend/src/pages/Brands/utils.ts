@@ -98,3 +98,12 @@ export const brands: BrandType[] = [
       "Chevrolet, colloquially referred to as Chevy, is an American automobile division of the American manufacturer General Motors.",
   },
 ];
+
+export const inputSearchStyles = { maxWidth: "280px" };
+
+export const COLUMN_WIDTH = 325;
+export const ROW_HEIGHT = 390;
+export const gridStyles = {
+  margin: "0px auto",
+  overflowX: "hidden",
+} as const;

@@ -6,7 +6,7 @@ import {
   DollarOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Input, type DatePickerOnChangeType } from "../../components";
+import { Input } from "../../components";
 import { CustomRangePicker } from "../../components";
 import { Select } from "../../components/Select";
 import {
@@ -21,6 +21,7 @@ import {
 import { generateParams, priceRanges } from "./utils";
 import { useNavigate } from "react-router-dom";
 import { uiStrings } from "../../constants";
+import type { DatePickerOnChangeType } from "../../components/DatePickers/type";
 
 const SearchBox = () => {
   const [location, setLocation] = useState<string>("");

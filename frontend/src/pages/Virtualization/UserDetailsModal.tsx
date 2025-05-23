@@ -1,24 +1,17 @@
 import React from "react";
 import { Modal } from "antd";
-import { type RandomUser } from "../../hooks/useRandomUsers";
-import styled from "styled-components";
+import type { UserDetailsModalProps } from "./type";
+import { UserDetailsContainer, UserImage } from "./elements";
+import { uiStrings } from "../../constants";
 
-type Props = {
-  user: RandomUser | null;
-  onClose: () => void;
-};
-
-const UserImage = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 16px;
-`;
-export const UserDetailsModal: React.FC<Props> = ({ user, onClose }) => {
+export const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
+  user,
+  onClose,
+}) => {
   if (!user) return null;
   return (
     <Modal open={!!user} onCancel={onClose} footer={null}>
-      <div style={{ padding: 24, minWidth: 320, textAlign: "center" }}>
+      <UserDetailsContainer>
         <UserImage
           src={user.picture.large}
           alt={`${user.name.first} ${user.name.last}`}
@@ -27,28 +20,28 @@ export const UserDetailsModal: React.FC<Props> = ({ user, onClose }) => {
           {user.name.first} {user.name.last}
         </h2>
         <p>
-          <b>Email:</b> {user.email}
+          <b>{uiStrings.email}:</b> {user.email}
         </p>
         <p>
-          <b>Phone:</b> {user.phone}
+          <b>{uiStrings.phone}:</b> {user.phone}
         </p>
         <p>
-          <b>Age:</b> {user.dob.age} years old
+          <b>{uiStrings.age}:</b> {user.dob.age} years old
         </p>
         <p>
-          <b>Street:</b>
+          <b>{uiStrings.street}:</b>
           {user.location.street
             ? `${user.location.street.number} ${user.location.street.name}`
-            : "N/A"}
+            : uiStrings.nA}
         </p>
         <p>
-          <b>City:</b> {user.location.city}
+          <b>{uiStrings.city}:</b> {user.location.city}
         </p>
         <p>
-          <b>Country:</b> {user.location.country}
+          <b>{uiStrings.country}:</b> {user.location.country}
         </p>
-        <button onClick={onClose}>Close</button>
-      </div>
+        <button onClick={onClose}>{uiStrings.close}</button>
+      </UserDetailsContainer>
     </Modal>
   );
 };

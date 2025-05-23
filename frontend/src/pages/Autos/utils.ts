@@ -24,6 +24,7 @@ export const searchAutosByFilters = (
 };
 
 export const colorSelectStyles = { width: 140, height: "100%" };
+export const inputSearchStyles = { maxWidth: "280px" };
 export const colorOptions = [
   { label: "All Colors", value: "" },
   { label: "White", value: "White" },
@@ -345,3 +346,10 @@ export const autosMoreData: Auto[] = [
     bodyType: "Hatchback",
   },
 ];
+
+export const COLUMN_WIDTH = 325;
+export const ROW_HEIGHT = 440;
+export const gridStyles = {
+  margin: "0px auto",
+  overflowX: "hidden",
+} as const;

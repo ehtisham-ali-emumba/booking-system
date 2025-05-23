@@ -3,15 +3,11 @@ import { Button, Spacer } from "../../components";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors, uiStrings } from "../../constants";
 import { CarSpecsContainer, SpecsTitle, Row } from "./elements";
-import type { Auto } from "../../atoms/autosAtom";
 import { useAutoDetailsAtom } from "../../hooks/atoms";
 import { ModifyCarSpecModal } from "./ModifyCarSpecModal";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { CarSpecsGrid } from "./CarSpecsGrid";
-
-type CarSpecsType = {
-  auto: Auto;
-};
+import type { CarSpecsType } from "./type";
 
 export const CarSpecifications: React.FC<CarSpecsType> = ({ auto }) => {
   const { id } = auto;

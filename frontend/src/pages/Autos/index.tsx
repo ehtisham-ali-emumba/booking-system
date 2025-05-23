@@ -5,14 +5,20 @@ import { ActionWrapper, Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
 import { colors } from "../../constants";
 import { useAutosAtom } from "../../hooks/atoms/useAutosAtom";
-import { CarUpdateModal, type CarUpdateFormValues } from "./CarUpdateModal";
+import { CarUpdateModal } from "./CarUpdateModal";
 import { CarGrid } from "./CarGrid";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { useParams } from "react-router-dom";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 import ErrorContainer from "../../components/ErrorContainer";
-import { colorOptions, colorSelectStyles, searchAutosByFilters } from "./utils";
+import {
+  colorOptions,
+  colorSelectStyles,
+  inputSearchStyles,
+  searchAutosByFilters,
+} from "./utils";
+import type { CarUpdateFormValues } from "./type";
 
 export const Autos = () => {
   const { brandId } = useParams<{ brandId: string }>();
@@ -82,7 +88,7 @@ export const Autos = () => {
           <Input
             inputProps={{
               placeholder: uiStrings.carSearchPlaceholder,
-              style: { maxWidth: "280px" },
+              style: inputSearchStyles,
               value: search,
               onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value),

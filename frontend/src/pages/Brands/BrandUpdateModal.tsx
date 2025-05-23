@@ -4,19 +4,7 @@ import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
 import type { TSFixMe } from "../../types";
 import { colors, uiStrings } from "../../constants";
 import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
-
-export type BrandUpdateFormValues = {
-  id: number;
-  name: string;
-  description: string;
-};
-interface CarUpdateModalProps {
-  open: boolean;
-  editingBrandId: number | null;
-  onOk: (values: BrandUpdateFormValues) => void;
-  onCancel: () => void;
-  confirmLoading?: boolean;
-}
+import type { BrandUpdateFormValues, CarUpdateModalProps } from "./type";
 
 export const BrandUpdateModal: React.FC<CarUpdateModalProps> = ({
   open,

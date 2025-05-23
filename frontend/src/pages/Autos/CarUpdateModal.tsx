@@ -4,20 +4,7 @@ import { useAutosAtom } from "../../hooks/atoms/useAutosAtom";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
 import type { TSFixMe } from "../../types";
 import { colors, uiStrings } from "../../constants";
-
-export type CarUpdateFormValues = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-};
-interface CarUpdateModalProps {
-  open: boolean;
-  editingCarId: number | null;
-  onOk: (values: CarUpdateFormValues) => void;
-  onCancel: () => void;
-  confirmLoading?: boolean;
-}
+import type { CarUpdateFormValues, CarUpdateModalProps } from "./type";
 
 export const CarUpdateModal: React.FC<CarUpdateModalProps> = ({
   open,

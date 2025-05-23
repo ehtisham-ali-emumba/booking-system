@@ -1,8 +1,8 @@
 import { Flex1 } from "../../styles";
-import type { Tour } from "../../types";
 import { GroupImageCol, ImageUI, SmallImage, WrapperImages } from "./elements";
+import type { ImageGalleryType } from "./type";
 
-export const ImageGallery = ({ tour }: { tour: Tour }) => {
+export const ImageGallery = ({ tour }: ImageGalleryType) => {
   const { imageSrc, images } = tour;
   return (
     <WrapperImages>
