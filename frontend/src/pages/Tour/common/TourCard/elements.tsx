@@ -2,7 +2,7 @@ import { Typography } from "antd";
 import styled from "styled-components";
 import { colors } from "../../../../constants";
 import { Button } from "../../../../components";
-import { StyledBaseCard } from "../../../../components/BaseCard/elements";
+import { StyledBaseCard } from "../../../../components/Card/elements";
 
 export const { Title, Paragraph, Text } = Typography;
 

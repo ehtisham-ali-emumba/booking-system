@@ -12,7 +12,7 @@ import { BaseLink } from "../elements";
 import { cardDimensions } from "./utils";
 import type { CardProps } from "./type";
 
-export const BaseCard: React.FC<CardProps> = ({
+export const Card: React.FC<CardProps> = ({
   imageSrc,
   onClick,
   imageHeight = 200,

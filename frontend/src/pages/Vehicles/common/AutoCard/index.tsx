@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Dropdown, type MenuProps } from "antd";
 import { truncate } from "../../../../utils";
-import { BaseCard } from "../../../../components";
+import { Card } from "../../../../components";
 import {
   AutoCardTitle,
   AutoCardDescription,
@@ -43,7 +43,7 @@ export const AutoCard: React.FC<AutoCardProps> = ({
   }, []);
 
   return (
-    <BaseCard
+    <Card
       onClick={onClick}
       dimensions={cardDimensions}
       imageHeight={200}

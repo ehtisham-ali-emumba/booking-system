@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { Dropdown, type MenuProps } from "antd";
 import { actionItems, cardDimensions, imageStyles } from "./utils";
 import { truncate } from "../../../../utils";
-import { BaseCard } from "../../../../components";
+import { Card } from "../../../../components";
 import {
   BrandCardTitle,
   BrandCardDescription,
@@ -35,7 +35,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({
   }, []);
 
   return (
-    <BaseCard
+    <Card
       onClick={onClick}
       dimensions={cardDimensions}
       imageHeight={170}
@@ -66,6 +66,6 @@ export const BrandCard: React.FC<BrandCardProps> = ({
           </span>
         </Dropdown>
       )}
-    ></BaseCard>
+    />
   );
 };

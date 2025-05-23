@@ -7,7 +7,7 @@ export * from "./FormSelect/Select";
 export * from "./BlankSlate";
 export * from "./Loader";
 export * from "./ConfirmationModal";
-export * from "./BaseCard";
+export * from "./Card";
 export * from "./FormInput";
 export * from "./FormPhoneInput";
 export * from "./FormSelect";

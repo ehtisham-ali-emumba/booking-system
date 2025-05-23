@@ -22,7 +22,7 @@ import {
 } from "./elements";
 import type { TourCardProps } from "./type";
 import { Link } from "react-router-dom";
-import { BaseCard } from "../../../../components/BaseCard";
+import { Card } from "../../../../components/Card";
 import { buttonIconStyles, cardDimensions, metaInfoIconStyles } from "./utils";
 
 const TourCard: React.FC<TourCardProps> = ({
@@ -49,7 +49,7 @@ const TourCard: React.FC<TourCardProps> = ({
     : uiStrings.deleteLimitText({ title });
 
   return (
-    <BaseCard
+    <Card
       dimensions={cardDimensions}
       imageHeight={180}
       onClick={onClick}

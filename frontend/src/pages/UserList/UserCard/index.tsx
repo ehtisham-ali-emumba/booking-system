@@ -15,7 +15,7 @@ import {
 } from "./elements";
 import type { UserCardProps } from "./type";
 import { cardDimensions, imageStyles } from "./utils";
-import { BaseCard } from "../../../components";
+import { Card } from "../../../components";
 
 const UserCard: React.FC<UserCardProps> = ({
   userName,
@@ -28,7 +28,7 @@ const UserCard: React.FC<UserCardProps> = ({
   fullName,
 }) => {
   return (
-    <BaseCard
+    <Card
       url=""
       onClick={onClick}
       dimensions={cardDimensions}
