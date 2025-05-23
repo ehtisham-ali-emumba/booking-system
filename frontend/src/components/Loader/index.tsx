@@ -1,12 +1,9 @@
-import { Spin } from "antd";
 import React from "react";
 import type { LoaderProps } from "./type";
-import { CenteredWrapper } from "./elements";
+import { CenteredWrapper, OrangeSpin } from "./elements";
 
-export const Loader: React.FC<LoaderProps> = ({ marginTop, paddingTop }) => {
-  return (
-    <CenteredWrapper marginTop={marginTop} paddingTop={paddingTop}>
-      <Spin size="large" />
-    </CenteredWrapper>
-  );
-};
+export const Loader: React.FC<LoaderProps> = ({ marginTop, paddingTop }) => (
+  <CenteredWrapper marginTop={marginTop} paddingTop={paddingTop}>
+    <OrangeSpin size="large" />
+  </CenteredWrapper>
+);

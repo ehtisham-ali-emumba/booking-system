@@ -4,71 +4,75 @@ import {
   PhoneOutlined,
   EnvironmentOutlined,
   GlobalOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
-import { uiStrings } from "../../constants";
 import { truncate } from "../../utils";
 import {
-  StyledUserCard,
-  UserCardTitle,
   UserInfoContainer,
   UserMetaInfo,
   UserMetaText,
-  HoverButton,
-  UserAvatar,
-  UserAvatarContainer,
   UserNameText,
 } from "./elements";
 import type { UserCardProps } from "./type";
+import { BaseCard } from "../BaseCard";
+import { cardDimensions, imageStyles } from "./utils";
 
 const UserCard: React.FC<UserCardProps> = ({
-  fullName,
   userName,
   imageSrc,
   phone,
   email,
   city,
   country,
-  className,
   onClick,
+  fullName,
 }) => {
   return (
-    <StyledUserCard hoverable={false} className={className} onClick={onClick}>
-      <UserCardTitle level={4}>{fullName}</UserCardTitle>
-      <UserAvatarContainer>
-        <UserAvatar src={imageSrc} />
-        <UserNameText>{truncate(userName, 18, "...")}</UserNameText>
-      </UserAvatarContainer>
-
-      <>
-        <UserInfoContainer>
-          {email && (
-            <UserMetaInfo>
-              <MailOutlined />
-              <UserMetaText>{truncate(email, 25, "...")}</UserMetaText>
-            </UserMetaInfo>
-          )}
-          {phone && (
-            <UserMetaInfo>
-              <PhoneOutlined />
-              <UserMetaText>{phone}</UserMetaText>
-            </UserMetaInfo>
-          )}
-          {city && (
-            <UserMetaInfo>
-              <EnvironmentOutlined />
-              <UserMetaText>{city}</UserMetaText>
-            </UserMetaInfo>
-          )}
-          {country && (
-            <UserMetaInfo>
-              <GlobalOutlined />
-              <UserMetaText>{country}</UserMetaText>
-            </UserMetaInfo>
-          )}
-        </UserInfoContainer>
-        <HoverButton>{uiStrings.viewDetails}</HoverButton>
-      </>
-    </StyledUserCard>
+    <BaseCard
+      url=""
+      onClick={onClick}
+      dimensions={cardDimensions}
+      imageHeight={150}
+      imageSrc={imageSrc}
+      imageStyles={imageStyles}
+      renderContent={() => (
+        <>
+          <UserNameText>{truncate(userName, 18, "...")}</UserNameText>
+          <UserInfoContainer>
+            {email && (
+              <UserMetaInfo>
+                <UserOutlined />
+                <UserMetaText>{truncate(fullName, 25, "...")}</UserMetaText>
+              </UserMetaInfo>
+            )}
+            {email && (
+              <UserMetaInfo>
+                <MailOutlined />
+                <UserMetaText>{truncate(email, 22, "...")}</UserMetaText>
+              </UserMetaInfo>
+            )}
+            {phone && (
+              <UserMetaInfo>
+                <PhoneOutlined />
+                <UserMetaText>{phone}</UserMetaText>
+              </UserMetaInfo>
+            )}
+            {city && (
+              <UserMetaInfo>
+                <EnvironmentOutlined />
+                <UserMetaText>{city}</UserMetaText>
+              </UserMetaInfo>
+            )}
+            {country && (
+              <UserMetaInfo>
+                <GlobalOutlined />
+                <UserMetaText>{country}</UserMetaText>
+              </UserMetaInfo>
+            )}
+          </UserInfoContainer>
+        </>
+      )}
+    />
   );
 };
 

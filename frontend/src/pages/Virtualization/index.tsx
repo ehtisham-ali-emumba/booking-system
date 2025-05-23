@@ -32,6 +32,8 @@ export const Virtualization = () => {
   const gridContainerRef = useRef<HTMLDivElement>(null);
   const [numColumns, setNumColumns] = useState(1);
 
+  const [gridHeight, setGridHeight] = useState(580);
+
   const {
     data,
     isLoading,
@@ -69,6 +71,8 @@ export const Virtualization = () => {
     if (gridContainerRef.current) {
       const width = gridContainerRef.current.offsetWidth;
       setNumColumns(Math.max(1, Math.floor(width / COLUMN_WIDTH)));
+      const height = gridContainerRef.current.offsetHeight;
+      setGridHeight(height - 60);
     }
   };
 
@@ -139,7 +143,7 @@ export const Virtualization = () => {
                 <Grid
                   columnCount={numColumns}
                   columnWidth={COLUMN_WIDTH}
-                  height={580}
+                  height={gridHeight}
                   rowCount={rowCount}
                   rowHeight={ROW_HEIGHT}
                   width={numColumns * COLUMN_WIDTH}
