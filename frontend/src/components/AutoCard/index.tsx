@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, type MenuProps } from "antd";
 import { truncate } from "../../utils";
-import { BaseCard } from "../Card";
+import { BaseCard } from "../BaseCard";
 import {
   AutoCardTitle,
   AutoCardDescription,

@@ -1,4 +1,5 @@
 import React from "react";
+import { BaseLink } from "../StyledComponents";
 import {
   StyledBaseCard,
   BaseCardImageWrapper,
@@ -8,25 +9,7 @@ import {
   BaseCardUpperRight,
   FooterWrapper,
 } from "./elements";
-import { BaseLink } from "../StyledComponents";
-
-interface BaseCardProps {
-  imageSrc: string;
-  onClick?: () => void;
-  imageHeight: number;
-  dimensions: {
-    width: number;
-    height: number;
-  };
-  imageStyles?: React.CSSProperties;
-  footerStyles?: React.CSSProperties;
-  renderLowerLeft?: () => React.ReactNode;
-  renderLowerRight?: () => React.ReactNode;
-  renderUpperLeft?: () => React.ReactNode;
-  renderUpperRight?: () => React.ReactNode;
-  renderContent?: () => React.ReactNode;
-  url: string;
-}
+import type { BaseCardProps } from "./type";
 
 export const BaseCard: React.FC<BaseCardProps> = ({
   imageSrc,

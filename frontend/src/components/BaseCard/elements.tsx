@@ -1,6 +1,7 @@
 import { Card, Typography } from "antd";
 import styled, { css } from "styled-components";
 import { colors } from "../../constants";
+import type { StyledBaseCardType } from "./type";
 
 export const { Title, Paragraph, Text } = Typography;
 
@@ -25,14 +26,7 @@ export const CarChip = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 `;
 
-type BaseCardType = {
-  dimensions: {
-    width: number;
-    height: number;
-  };
-  imageHeight: number;
-};
-export const StyledBaseCard = styled(Card)<BaseCardType>`
+export const StyledBaseCard = styled(Card)<StyledBaseCardType>`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   height: ${({ dimensions }) => dimensions.height}px;
   width: ${({ dimensions }) => dimensions.width}px;
