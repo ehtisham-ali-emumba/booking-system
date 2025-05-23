@@ -4,9 +4,9 @@ import {
   ClockCircleOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
-import { ContentWrapper, Header, Layout } from "../../styles";
+import { ContentWrapper, Header, Layout } from "../../../styles";
 import { ImageGallery } from "./ImageGallery";
-import { Spacer } from "../../components/Spacer";
+import { Spacer } from "../../../components/Spacer";
 import { WhatsIncluded } from "./WhatsIncluded";
 import { Link, useParams } from "react-router-dom";
 
@@ -23,12 +23,12 @@ import {
   InfoBox,
   BookNowButton,
 } from "./elements";
-import { useTourQueryById } from "../../hooks/queries";
-import { Loader } from "../../components";
-import ErrorContainer from "../../components/ErrorContainer";
-import { getPriceLabel } from "../../utils/priceUtils";
+import { useTourQueryById } from "../../../hooks/queries";
+import { Loader } from "../../../components";
+import ErrorContainer from "../../../components/ErrorContainer";
+import { getPriceLabel } from "../../../utils/priceUtils";
 import { ItinerarySchedule } from "./ItinerarySchedule";
-import { uiStrings } from "../../constants/uiStrings";
+import { uiStrings } from "../../../constants/uiStrings";
 import type { HeaderTextType } from "./type";
 
 const HeaderTexts = ({ tour }: HeaderTextType) => {

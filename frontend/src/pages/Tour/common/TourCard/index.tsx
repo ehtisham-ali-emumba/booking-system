@@ -6,11 +6,11 @@ import {
   EyeOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-import { Button } from "../Button";
-import { getPriceLabel } from "../../utils/priceUtils";
-import { ConfirmationModal } from "../ConfirmationModal";
-import { uiStrings } from "../../constants";
-import { truncate } from "../../utils";
+import { Button } from "../../../../components";
+import { getPriceLabel } from "../../../../utils/priceUtils";
+import { ConfirmationModal } from "../../../../components";
+import { uiStrings } from "../../../../constants";
+import { truncate } from "../../../../utils";
 import {
   CardTitle,
   CardDescription,
@@ -21,8 +21,8 @@ import {
   BookingActionsContainer,
 } from "./elements";
 import type { TourCardProps } from "./type";
-import { BaseCard } from "../BaseCard";
 import { Link } from "react-router-dom";
+import { BaseCard } from "../../../../components/BaseCard";
 
 const TourCard: React.FC<TourCardProps> = ({
   imageSrc,

@@ -1,16 +1,16 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { TourCard } from "../../components";
-import { useTourQuery } from "../../hooks/queries";
-import { Loader } from "../../components";
-import ErrorContainer from "../../components/ErrorContainer";
+import { useTourQuery } from "../../../hooks/queries";
+import { Loader } from "../../../components";
+import ErrorContainer from "../../../components/ErrorContainer";
 import { useAtom } from "jotai";
-import { bookingAtom } from "../../atoms/bookingAtom";
+import { bookingAtom } from "../../../atoms/bookingAtom";
 import { useMemo } from "react";
-import { useDeleteBooking } from "../../hooks/atoms/useDeleteBooking";
-import { BlankSlate } from "../../components";
-import { uiStrings } from "../../constants";
+import { useDeleteBooking } from "../../../hooks/atoms/useDeleteBooking";
+import { BlankSlate } from "../../../components";
+import { uiStrings } from "../../../constants";
 import { Box, Container, ContentTitle } from "./elements";
-import { CardWrapper } from "../../components/TourCard/elements";
+import { CardWrapper } from "../common/TourCard/elements";
+import { TourCard } from "../common/TourCard";
 
 export const Tours = () => {
   const navigate = useNavigate();

@@ -8,5 +8,5 @@ export * from "./BlankSlate";
 export * from "./Loader";
 export * from "./AutoCard";
 export * from "./BrandCard";
-export * from "./TourCard";
 export * from "./UserCard";
+export * from "./ConfirmationModal";

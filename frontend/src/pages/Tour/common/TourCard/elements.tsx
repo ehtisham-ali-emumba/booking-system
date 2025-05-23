@@ -1,8 +1,8 @@
 import { Typography } from "antd";
 import styled from "styled-components";
-import { colors } from "../../constants";
-import { Button } from "../Button";
-import { StyledBaseCard } from "../BaseCard/elements";
+import { colors } from "../../../../constants";
+import { Button } from "../../../../components";
+import { StyledBaseCard } from "../../../../components/BaseCard/elements";
 
 export const { Title, Paragraph, Text } = Typography;
 

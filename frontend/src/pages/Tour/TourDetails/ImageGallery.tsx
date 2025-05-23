@@ -1,4 +1,4 @@
-import { Flex1 } from "../../styles";
+import { Flex1 } from "../../../styles";
 import { GroupImageCol, ImageUI, SmallImage, WrapperImages } from "./elements";
 import type { ImageGalleryType } from "./type";
 

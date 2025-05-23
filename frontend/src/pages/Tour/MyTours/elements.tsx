@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Wrapper } from "../../styles";
+import { Wrapper } from "../../../styles";
 
 export const MyTourContainer = styled(Wrapper)`
   justify-content: flex-start;

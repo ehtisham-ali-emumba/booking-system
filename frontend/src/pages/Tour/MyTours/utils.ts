@@ -1,5 +1,5 @@
-import type { Booking } from "../../atoms/bookingAtom";
-import type { ToursResponse } from "../../types";
+import type { Booking } from "../../../atoms/bookingAtom";
+import type { ToursResponse } from "../../../types";
 
 export const filterTours = (
   tours: ToursResponse | undefined,

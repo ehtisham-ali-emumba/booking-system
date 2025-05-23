@@ -1,8 +1,8 @@
 import { Card, Col, Divider, Flex, Typography } from "antd";
 import styled, { css } from "styled-components";
-import { sizeMobile, sizeLg, sizeTablet } from "../../utils";
-import { Button } from "../../components";
-import { colors } from "../../constants";
+import { sizeMobile, sizeLg, sizeTablet } from "../../../utils";
+import { Button } from "../../../components";
+import { colors } from "../../../constants";
 
 const { Title: TitleAntd, Text } = Typography;
 

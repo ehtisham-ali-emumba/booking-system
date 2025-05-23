@@ -1,11 +1,9 @@
 import { type RouteObject } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Explore } from "../pages/Explore";
-import { TourDetails } from "../pages/TourDetails";
 import { MainLayout } from "../layout/MainLayout";
-import { Tours } from "../pages/Tours";
+import { Tours, MyTours, TourDetails } from "../pages/Tour";
 import { BookTour } from "../pages/BookTour";
-import { MyTours } from "../pages/MyTours";
 import { Virtualization } from "../pages/Virtualization";
 import { Autos } from "../pages/Autos";
 import { AutoDetails } from "../pages/AutoDetails";

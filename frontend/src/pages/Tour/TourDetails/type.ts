@@ -1,4 +1,4 @@
-import type { Tour } from "../../types";
+import type { Tour } from "../../../types";
 
 export type HeaderTextType = { tour: Tour };
 
