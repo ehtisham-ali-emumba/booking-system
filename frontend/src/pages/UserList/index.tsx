@@ -21,7 +21,13 @@ import {
 import { useHandleResize } from "../../hooks/useHandleResize";
 import { debounce } from "../../utils/appUtils";
 import { UserDetailsModal } from "./UserDetailsModal";
-import { COLUMN_WIDTH, gridStyles, ROW_HEIGHT } from "./utils";
+import {
+  COLUMN_WIDTH,
+  filterUsers,
+  flattenUsers,
+  gridStyles,
+  ROW_HEIGHT,
+} from "./utils";
 import { UserCard } from "./UserCard";
 
 export const UserList = () => {
@@ -44,19 +50,11 @@ export const UserList = () => {
     hasNextPage,
   } = useInfiniteUsers();
 
-  const users: RandomUser[] = data
-    ? data.pages.flatMap((page) => page.users)
-    : [];
-
-  const filteredUsers = !debouncedSearch
-    ? users
-    : users.filter((user) => {
-        const fullName = `${user.name.first} ${user.name.last}`.toLowerCase();
-        return (
-          fullName.includes(debouncedSearch.toLowerCase()) ||
-          user.email.toLowerCase().includes(debouncedSearch.toLowerCase())
-        );
-      });
+  const users: RandomUser[] = useMemo(() => flattenUsers(data), [data]);
+  const filteredUsers = useMemo(
+    () => filterUsers(users, debouncedSearch),
+    [users, debouncedSearch]
+  );
 
   const debouncedCallback = useMemo(() => {
     return debounce<(value: string) => void>((value: string) => {
