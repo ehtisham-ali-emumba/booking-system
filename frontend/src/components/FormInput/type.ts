@@ -1,5 +1,10 @@
 import type { FieldValues, Path, UseFormReturn } from "react-hook-form";
-import type { InputType } from "../../Input/type";
+
+import type { InputProps } from "antd";
+
+export type InputType = {
+  inputProps?: InputProps;
+};
 
 export interface FormInputProps<T extends FieldValues> {
   name: Path<T>;

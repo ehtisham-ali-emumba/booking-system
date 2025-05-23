@@ -5,9 +5,9 @@ import {
   type Path,
 } from "react-hook-form";
 import { FieldLabel } from "../elements";
-import PhoneInput from "../../PhoneInput";
 import { ErrorText } from "./elements";
 import type { FormPhoneInputProps, FormPhoneInputValues } from "./type";
+import PhoneInput from "./PhoneInput";
 
 export const FormPhoneInput = <T extends FormPhoneInputValues>({
   name,

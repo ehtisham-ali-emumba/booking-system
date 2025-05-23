@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Input } from "../../components";
 import { CustomRangePicker } from "../../components";
-import { Select } from "../../components/Select";
+import { Select } from "../../components/FormSelect/Select";
 import {
   CardUI,
   ItemWrapper,

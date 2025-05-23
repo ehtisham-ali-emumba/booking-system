@@ -1,15 +1,15 @@
 import { Controller, type FieldValues } from "react-hook-form";
-import { Select } from "../../Select";
 import { FieldLabel } from "../elements";
 import { ErrorText } from "./elements";
-import type { FormSelectProps } from "./type";
+import type { FormInputProps } from "./type";
+import { Input } from "./Input";
 
-const FormSelect = <T extends FieldValues>({
+export const FormInput = <T extends FieldValues>({
   name,
   control,
-  selectProps,
+  inputProps,
   label = name,
-}: FormSelectProps<T>) => {
+}: FormInputProps<T>) => {
   return (
     <div>
       <Controller
@@ -18,14 +18,10 @@ const FormSelect = <T extends FieldValues>({
         render={({ field, fieldState: { error } }) => (
           <>
             <FieldLabel>{label}</FieldLabel>
-            <Select
-              {...field}
-              selectProps={{
-                ...selectProps,
-                onChange: (value) => {
-                  field.onChange(value);
-                },
-                value: field.value,
+            <Input
+              inputProps={{
+                ...field,
+                ...inputProps,
               }}
             />
             {error && <ErrorText>{error.message}</ErrorText>}
@@ -35,5 +31,3 @@ const FormSelect = <T extends FieldValues>({
     </div>
   );
 };
-
-export default FormSelect;
