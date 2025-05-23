@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Dropdown, type MenuProps } from "antd";
 import { truncate } from "../../../../utils";
 import { BaseCard } from "../../../../components";
@@ -12,7 +12,7 @@ import {
   DropDownIcon,
 } from "./elements";
 import type { AutoCardProps } from "./type";
-import { actionItems } from "./utils";
+import { actionItems, cardDimensions } from "./utils";
 
 export const AutoCard: React.FC<AutoCardProps> = ({
   id,
@@ -37,10 +37,15 @@ export const AutoCard: React.FC<AutoCardProps> = ({
     else if (info.key === "delete") onDeleteClick?.(id);
   };
 
+  const dropdownClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
   return (
     <BaseCard
       onClick={onClick}
-      dimensions={{ width: 300, height: 415 }}
+      dimensions={cardDimensions}
       imageHeight={200}
       imageSrc={imageSrc}
       url={`/brands/${brandId}/autos/${id}`}
@@ -68,13 +73,7 @@ export const AutoCard: React.FC<AutoCardProps> = ({
           menu={{ items: actionItems, onClick: handleMenuClick }}
           trigger={["click"]}
         >
-          <span
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-            style={{ cursor: "pointer" }}
-          >
+          <span onClick={dropdownClick}>
             <DropDownIcon />
           </span>
         </Dropdown>

@@ -8,17 +8,15 @@ import {
   BaseCardUpperRight,
   FooterWrapper,
 } from "./elements";
-import type { BaseCardProps } from "./type";
 import { BaseLink } from "../elements";
+import { cardDimensions } from "./utils";
+import type { CardProps } from "./type";
 
-export const BaseCard: React.FC<BaseCardProps> = ({
+export const BaseCard: React.FC<CardProps> = ({
   imageSrc,
   onClick,
   imageHeight = 200,
-  dimensions = {
-    width: 300,
-    height: 415,
-  },
+  dimensions = cardDimensions,
   imageStyles = {},
   footerStyles = {},
   renderLowerLeft = () => null,

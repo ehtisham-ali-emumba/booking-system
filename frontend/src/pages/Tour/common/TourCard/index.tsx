@@ -23,6 +23,7 @@ import {
 import type { TourCardProps } from "./type";
 import { Link } from "react-router-dom";
 import { BaseCard } from "../../../../components/BaseCard";
+import { buttonIconStyles, cardDimensions, metaInfoIconStyles } from "./utils";
 
 const TourCard: React.FC<TourCardProps> = ({
   imageSrc,
@@ -49,7 +50,7 @@ const TourCard: React.FC<TourCardProps> = ({
 
   return (
     <BaseCard
-      dimensions={{ width: 300, height: 360 }}
+      dimensions={cardDimensions}
       imageHeight={180}
       onClick={onClick}
       imageSrc={imageSrc}
@@ -73,20 +74,20 @@ const TourCard: React.FC<TourCardProps> = ({
                       e.stopPropagation();
                       onOpen();
                     }}
-                    icon={<DeleteOutlined style={{ fontSize: 26 }} />}
+                    icon={<DeleteOutlined style={buttonIconStyles} />}
                   />
                 )}
               </ConfirmationModal>
               <Link to={`/tour/${id}`}>
                 <Button
                   variant="icon-transparent"
-                  icon={<EyeOutlined style={{ fontSize: 26 }} />}
+                  icon={<EyeOutlined style={buttonIconStyles} />}
                 />
               </Link>
               <Button
                 variant="icon-transparent"
                 onClick={onUpdateBookingClick}
-                icon={<EditOutlined style={{ fontSize: 26 }} />}
+                icon={<EditOutlined style={buttonIconStyles} />}
               />
             </BookingActionsContainer>
           ) : (
@@ -94,13 +95,13 @@ const TourCard: React.FC<TourCardProps> = ({
               <MetaInfoContainer>
                 {price && (
                   <MetaInfo>
-                    <DollarOutlined style={{ color: "black" }} />
+                    <DollarOutlined style={metaInfoIconStyles} />
                     <MetaText>{getPriceLabel(price)}</MetaText>
                   </MetaInfo>
                 )}
                 {duration && (
                   <MetaInfo>
-                    <ClockCircleOutlined style={{ color: "black" }} />
+                    <ClockCircleOutlined style={metaInfoIconStyles} />
                     <MetaText>
                       {duration} {uiStrings.days}
                     </MetaText>

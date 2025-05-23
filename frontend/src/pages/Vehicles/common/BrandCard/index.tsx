@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Dropdown, type MenuProps } from "antd";
 import { actionItems, cardDimensions, imageStyles } from "./utils";
 import { truncate } from "../../../../utils";
@@ -28,6 +28,12 @@ export const BrandCard: React.FC<BrandCardProps> = ({
     if (info.key === "edit") onEditClick?.(id);
     else if (info.key === "delete") onDeleteClick?.(id);
   };
+
+  const dropdownClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
   return (
     <BaseCard
       onClick={onClick}
@@ -55,13 +61,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({
           menu={{ items: actionItems, onClick: handleMenuClick }}
           trigger={["click"]}
         >
-          <span
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-            style={{ cursor: "pointer" }}
-          >
+          <span onClick={dropdownClick}>
             <DropDownIcon />
           </span>
         </Dropdown>

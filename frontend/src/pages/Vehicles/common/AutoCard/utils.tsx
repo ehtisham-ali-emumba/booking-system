@@ -14,3 +14,5 @@ export const actionItems: MenuProps["items"] = [
     danger: true,
   },
 ];
+
+export const cardDimensions = { width: 300, height: 415 };

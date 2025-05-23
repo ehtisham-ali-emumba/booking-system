@@ -1,4 +1,4 @@
-export interface BaseCardProps {
+export interface CardProps {
   imageSrc: string;
   onClick?: () => void;
   imageHeight: number;
