@@ -1,18 +1,11 @@
 import { DatePicker } from "antd";
-import type { RangePickerProps } from "antd/es/date-picker";
 import { useState } from "react";
 import { Button } from "../Button";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { InlineSpacer } from "../Spacer";
 import { uiStrings } from "../../constants";
 import { CustomText, datePickerStyles, iconStyles } from "./elements";
-
-type DateType = {
-  dateProps?: RangePickerProps;
-  customText?: string;
-};
-
-export type DatePickerOnChangeType = RangePickerProps["onChange"];
+import type { DatePickerOnChangeType, DateType } from "./type";
 
 export const CustomRangePicker: React.FC<DateType> = ({
   dateProps = {},
