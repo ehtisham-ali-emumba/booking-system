@@ -3,7 +3,7 @@ import { Home } from "../pages/Home";
 import { Explore } from "../pages/Explore";
 import { MainLayout } from "../layout/MainLayout";
 import { Tours, MyTours, TourDetails, BookTour } from "../pages/Tour";
-import { Virtualization } from "../pages/Virtualization";
+import { UserList } from "../pages/UserList";
 import { Brands, AutoDetails, Autos } from "../pages/Vehicles";
 
 const routes: RouteObject[] = [
@@ -43,7 +43,7 @@ const routes: RouteObject[] = [
     path: "/virtualization",
     element: (
       <MainLayout>
-        <Virtualization />
+        <UserList />
       </MainLayout>
     ),
   },

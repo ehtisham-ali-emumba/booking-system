@@ -6,6 +6,5 @@ export * from "./Spacer";
 export * from "./Select";
 export * from "./BlankSlate";
 export * from "./Loader";
-export * from "./UserCard";
 export * from "./ConfirmationModal";
 export * from "./BaseCard";

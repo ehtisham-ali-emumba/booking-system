@@ -6,7 +6,7 @@ import {
   GlobalOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { truncate } from "../../utils";
+import { truncate } from "../../../utils";
 import {
   UserInfoContainer,
   UserMetaInfo,
@@ -14,8 +14,8 @@ import {
   UserNameText,
 } from "./elements";
 import type { UserCardProps } from "./type";
-import { BaseCard } from "../BaseCard";
 import { cardDimensions, imageStyles } from "./utils";
+import { BaseCard } from "../../../components";
 
 const UserCard: React.FC<UserCardProps> = ({
   userName,

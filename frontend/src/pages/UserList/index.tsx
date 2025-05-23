@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { FixedSizeGrid, FixedSizeGrid as Grid } from "react-window";
 import { useInfiniteUsers, type RandomUser } from "../../hooks/useRandomUsers";
-import { UserCard } from "../../components";
 import { Input, Loader, Spacer } from "../../components";
 import ErrorContainer from "../../components/ErrorContainer";
 import { BlankSlate } from "../../components/BlankSlate";
@@ -23,8 +22,9 @@ import { useHandleResize } from "../../hooks/useHandleResize";
 import { debounce } from "../../utils/appUtils";
 import { UserDetailsModal } from "./UserDetailsModal";
 import { COLUMN_WIDTH, gridStyles, ROW_HEIGHT } from "./utils";
+import { UserCard } from "./UserCard";
 
-export const Virtualization = () => {
+export const UserList = () => {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedUser, setSelectedUser] = useState<RandomUser | null>(null);
