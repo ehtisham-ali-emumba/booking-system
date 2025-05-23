@@ -12,8 +12,10 @@ import {
 } from "../../../components";
 import {
   bookFormValidationSchema,
+  formDefaultValues,
   getBookingByTourId,
   isBookingExists,
+  paymentMethodsStyle,
   removeBookingByTourId,
 } from "./utils";
 import { FormWrapper } from "./elements";
@@ -32,15 +34,7 @@ export const BookForm = () => {
   const [bookings, setBookings] = useAtom(bookingAtom);
 
   const formMethods = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      adults: 0,
-      children: 0,
-      paymentMethod: "",
-      countryCode: "+1",
-    },
+    defaultValues: formDefaultValues,
     resolver: yupResolver(bookFormValidationSchema),
   });
   const { control, handleSubmit, reset } = formMethods;
@@ -122,7 +116,7 @@ export const BookForm = () => {
             label={uiStrings.paymentMethod}
             control={control}
             selectProps={{
-              style: { width: "100%" },
+              style: paymentMethodsStyle,
               placeholder: uiStrings.selectPaymentMethod,
               size: "large",
               options: [

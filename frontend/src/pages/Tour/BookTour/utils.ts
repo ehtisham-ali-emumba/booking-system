@@ -38,3 +38,15 @@ export const getBookingByTourId = (bookings: Booking[], tourId: string) => {
 export const removeBookingByTourId = (bookings: Booking[], tourId: string) => {
   return bookings.filter((booking) => booking.tourId !== tourId);
 };
+
+export const formDefaultValues = {
+  name: "",
+  email: "",
+  phone: "",
+  adults: 0,
+  children: 0,
+  paymentMethod: "",
+  countryCode: "+1",
+};
+
+export const paymentMethodsStyle = { width: "100%" };

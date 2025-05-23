@@ -11,6 +11,7 @@ import { uiStrings } from "../../../constants";
 import { Box, Container, ContentTitle } from "./elements";
 import { CardWrapper } from "../common/TourCard/elements";
 import { TourCard } from "../common/TourCard";
+import { filterTours, parsePriceRange } from "./utils";
 
 export const Tours = () => {
   const navigate = useNavigate();
@@ -29,47 +30,18 @@ export const Tours = () => {
     () => new Map(bookings.map((booking) => [booking.tourId, booking])),
     [bookings]
   );
-
-  // Parse price range
-  const [startPrice, endPrice] = useMemo(() => {
-    if (!price) return [null, null];
-    const [start, end] = price.split("-").map((p) => parseFloat(p));
-    return [start, end];
-  }, [price]);
-
-  // Filter tours based on city name, price range, and date range
-  const filteredTours = useMemo(() => {
-    let filtered = tours ?? [];
-
-    // Filter by city
-    if (city) {
-      filtered = filtered.filter(
-        (tour) => tour.city.toLowerCase() === city.toLowerCase()
-      );
-    }
-
-    // Filter by price range
-    if (startPrice !== null && endPrice !== null) {
-      filtered = filtered.filter((tour) => {
-        const tourPrice = parseFloat(tour.price);
-        return tourPrice >= startPrice && tourPrice <= endPrice;
-      });
-    }
-
-    // Filter by date range
-    if (start_date && end_date) {
-      const filterStartDate = new Date(start_date);
-      const filterEndDate = new Date(end_date);
-      filtered = filtered.filter((tour) => {
-        const tourStartDate = new Date(tour.startDate);
-        const tourEndDate = new Date(tour.endDate);
-
-        return tourStartDate <= filterEndDate && tourEndDate >= filterStartDate;
-      });
-    }
-
-    return filtered;
-  }, [city, tours, startPrice, endPrice, start_date, end_date]);
+  const [startPrice, endPrice] = useMemo(() => parsePriceRange(price), [price]);
+  const filteredTours = useMemo(
+    () =>
+      filterTours(tours ?? [], {
+        city,
+        startPrice,
+        endPrice,
+        start_date,
+        end_date,
+      }),
+    [city, tours, startPrice, endPrice, start_date, end_date]
+  );
 
   return (
     <Container>

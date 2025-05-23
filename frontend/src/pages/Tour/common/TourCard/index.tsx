@@ -48,6 +48,12 @@ const TourCard: React.FC<TourCardProps> = ({
     ? uiStrings.wantToDeleteBooking
     : uiStrings.deleteLimitText({ title });
 
+  const deleteHandler = (e: React.MouseEvent, onOpen: () => void) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onOpen();
+  };
+
   return (
     <Card
       dimensions={cardDimensions}
@@ -69,11 +75,7 @@ const TourCard: React.FC<TourCardProps> = ({
                 {(onOpen) => (
                   <Button
                     variant="icon-transparent"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      onOpen();
-                    }}
+                    onClick={(e) => deleteHandler(e, onOpen)}
                     icon={<DeleteOutlined style={buttonIconStyles} />}
                   />
                 )}
