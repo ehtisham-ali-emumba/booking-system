@@ -2,29 +2,14 @@ import {
   Controller,
   useFormContext,
   useWatch,
-  type FieldValues,
   type Path,
-  type UseFormReturn,
 } from "react-hook-form";
-import styled from "styled-components";
-import { FieldLabel } from "./elements";
-import PhoneInput from "../PhoneInput";
+import { FieldLabel } from "../elements";
+import PhoneInput from "../../PhoneInput";
+import { ErrorText } from "./elements";
+import type { FormPhoneInputProps, FormPhoneInputValues } from "./type";
 
-const ErrorText = styled.div`
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-`;
-
-type FormPhoneInputProps<T extends FieldValues & { countryCode: string }> = {
-  name: Path<T>;
-  control: UseFormReturn<T>["control"];
-  label?: string;
-};
-
-export const FormPhoneInput = <
-  T extends FieldValues & { countryCode: string }
->({
+export const FormPhoneInput = <T extends FormPhoneInputValues>({
   name,
   control,
   label = name,

@@ -1,25 +1,8 @@
-import {
-  Controller,
-  type FieldValues,
-  type Path,
-  type UseFormReturn,
-} from "react-hook-form";
-import { Input, type InputType } from "../Input";
-import styled from "styled-components";
-import { FieldLabel } from "./elements";
-
-const ErrorText = styled.div`
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-`;
-
-interface FormInputProps<T extends FieldValues> {
-  name: Path<T>;
-  control: UseFormReturn<T>["control"];
-  inputProps?: InputType["inputProps"];
-  label?: string;
-}
+import { Controller, type FieldValues } from "react-hook-form";
+import { Input } from "../../Input";
+import { FieldLabel } from "../elements";
+import { ErrorText } from "./elements";
+import type { FormInputProps } from "./type";
 
 export const FormInput = <T extends FieldValues>({
   name,
