@@ -133,7 +133,7 @@ export const UserList = () => {
           />
         </InputContainer>
         <ListContainer ref={gridContainerRef}>
-          {isLoading ? (
+          {isLoading && !filteredUsers.length ? (
             <Loader />
           ) : isError ? (
             <ErrorContainer message={`Error: ${(error as Error).message}`} />
@@ -157,7 +157,7 @@ export const UserList = () => {
               {isFetchingNextPage && <Loader paddingTop={"0px"} />}
             </>
           ) : (
-            <BlankSlate />
+            !isLoading && !filteredUsers.length && <BlankSlate />
           )}
         </ListContainer>
         <UserDetailsModal

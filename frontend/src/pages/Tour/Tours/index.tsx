@@ -78,33 +78,31 @@ export const Tours = () => {
           {`${uiStrings.topDestinations}${city ? ` at "${city}"` : ""}`}
         </ContentTitle>
 
-        {isLoading ? (
+        {isLoading && !filteredTours.length ? (
           <Loader />
         ) : error ? (
           <ErrorContainer message={`Error: ${error.message}`} />
         ) : (
           <CardWrapper>
-            {filteredTours.length ? (
-              filteredTours.map((tour) => {
-                const hasBooking = bookingMap.has(tour._id);
-                return (
-                  <TourCard
-                    key={tour._id}
-                    id={tour._id}
-                    imageSrc={tour.imageSrc}
-                    title={tour.name}
-                    description={tour.description}
-                    price={tour.price}
-                    duration={tour.duration}
-                    hasBooking={hasBooking}
-                    onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
-                    onDeleteBooking={() => deleteBooking(tour._id)}
-                  />
-                );
-              })
-            ) : (
-              <BlankSlate />
-            )}
+            {filteredTours.length
+              ? filteredTours.map((tour) => {
+                  const hasBooking = bookingMap.has(tour._id);
+                  return (
+                    <TourCard
+                      key={tour._id}
+                      id={tour._id}
+                      imageSrc={tour.imageSrc}
+                      title={tour.name}
+                      description={tour.description}
+                      price={tour.price}
+                      duration={tour.duration}
+                      hasBooking={hasBooking}
+                      onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
+                      onDeleteBooking={() => deleteBooking(tour._id)}
+                    />
+                  );
+                })
+              : !isLoading && !filteredTours.length && <BlankSlate />}
           </CardWrapper>
         )}
       </Box>

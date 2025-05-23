@@ -28,32 +28,30 @@ export const MyTours = () => {
     <MyTourContainer>
       <Box>
         <Heading>{uiStrings.myTours}</Heading>
-        {isLoading ? (
+        {isLoading && !filterMyTours.length ? (
           <Loader />
         ) : error ? (
           <ErrorContainer message={`Error: ${error.message}`} />
         ) : (
           <CardWrapper>
-            {filterMyTours.length ? (
-              filterMyTours.map((tour) => {
-                return (
-                  <TourCard
-                    key={tour._id}
-                    id={tour._id}
-                    imageSrc={tour.imageSrc}
-                    title={tour.name}
-                    description={tour.description}
-                    price={tour.price}
-                    duration={tour.duration}
-                    hasBooking
-                    onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
-                    onDeleteBooking={() => deleteBooking(tour._id)}
-                  />
-                );
-              })
-            ) : (
-              <BlankSlate />
-            )}
+            {filterMyTours.length
+              ? filterMyTours.map((tour) => {
+                  return (
+                    <TourCard
+                      key={tour._id}
+                      id={tour._id}
+                      imageSrc={tour.imageSrc}
+                      title={tour.name}
+                      description={tour.description}
+                      price={tour.price}
+                      duration={tour.duration}
+                      hasBooking
+                      onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
+                      onDeleteBooking={() => deleteBooking(tour._id)}
+                    />
+                  );
+                })
+              : !isLoading && !filterMyTours.length && <BlankSlate />}
           </CardWrapper>
         )}
       </Box>
