@@ -1,17 +1,17 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Button, Input, Select, Spacer } from "../../components";
-import { uiStrings } from "../../constants/uiStrings";
+import { Button, Input, Select, Spacer } from "../../../components";
+import { uiStrings } from "../../../constants/uiStrings";
 import { ActionWrapper, Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
-import { colors } from "../../constants";
-import { useAutosAtom } from "../../hooks/atoms/useAutosAtom";
+import { colors } from "../../../constants";
+import { useAutosAtom } from "../../../hooks/atoms/useAutosAtom";
 import { CarUpdateModal } from "./CarUpdateModal";
 import { CarGrid } from "./CarGrid";
-import { ConfirmationModal } from "../../components/ConfirmationModal";
+import { ConfirmationModal } from "../../../components/ConfirmationModal";
 import { useParams } from "react-router-dom";
-import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import { useBrandsAtom } from "../../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
-import ErrorContainer from "../../components/ErrorContainer";
+import ErrorContainer from "../../../components/ErrorContainer";
 import {
   colorOptions,
   colorSelectStyles,

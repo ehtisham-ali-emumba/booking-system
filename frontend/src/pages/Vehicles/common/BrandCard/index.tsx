@@ -1,8 +1,8 @@
 import React from "react";
 import { Dropdown, type MenuProps } from "antd";
 import { actionItems, cardDimensions, imageStyles } from "./utils";
-import { truncate } from "../../utils";
-import { BaseCard } from "../BaseCard";
+import { truncate } from "../../../../utils";
+import { BaseCard } from "../../../../components";
 import {
   BrandCardTitle,
   BrandCardDescription,

@@ -1,13 +1,13 @@
-import { Spacer } from "../../components";
-import { ContentWrapper } from "../../styles";
-import { uiStrings } from "../../constants";
+import { Spacer } from "../../../components";
+import { ContentWrapper } from "../../../styles";
+import { uiStrings } from "../../../constants";
 import { Box, Container } from "./elements";
 import { useParams } from "react-router-dom";
-import ErrorContainer from "../../components/ErrorContainer";
-import { useAutoDetailsAtom } from "../../hooks/atoms";
+import ErrorContainer from "../../../components/ErrorContainer";
+import { useAutoDetailsAtom } from "../../../hooks/atoms";
 import { CarSpecifications } from "./CarSpecifications";
 import { useMemo } from "react";
-import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import { useBrandsAtom } from "../../../hooks/atoms/useBrandsAtom";
 import { checkBrandExists } from "../Brands/utils";
 import { CarHeader } from "./CarHeader";
 

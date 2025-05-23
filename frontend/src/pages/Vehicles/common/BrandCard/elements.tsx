@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Typography } from "antd";
 import { MoreOutlined } from "@ant-design/icons";
-import { colors } from "../../constants";
+import { colors } from "../../../../constants";
 
 export const { Title, Paragraph, Text } = Typography;
 export const BrandCardTitle = styled(Title)`

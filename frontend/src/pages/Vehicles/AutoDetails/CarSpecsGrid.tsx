@@ -11,7 +11,7 @@ import {
   FixedSizeList as List,
   type ListChildComponentProps,
 } from "react-window";
-import { uiStrings } from "../../constants";
+import { uiStrings } from "../../../constants";
 import type { CarSpecsGridType } from "./type";
 
 export const CarSpecsGrid: React.FC<CarSpecsGridType> = ({

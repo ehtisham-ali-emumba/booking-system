@@ -4,9 +4,7 @@ import { Explore } from "../pages/Explore";
 import { MainLayout } from "../layout/MainLayout";
 import { Tours, MyTours, TourDetails, BookTour } from "../pages/Tour";
 import { Virtualization } from "../pages/Virtualization";
-import { Autos } from "../pages/Autos";
-import { AutoDetails } from "../pages/AutoDetails";
-import { Brands } from "../pages/Brands";
+import { Brands, AutoDetails, Autos } from "../pages/Vehicles";
 
 const routes: RouteObject[] = [
   {

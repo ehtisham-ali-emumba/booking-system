@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
-import { Wrapper } from "../../styles";
+import { Wrapper } from "../../../styles";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
-import { sizeMobile } from "../../utils";
-import { colors } from "../../constants";
+import { sizeMobile } from "../../../utils";
+import { colors } from "../../../constants";
 
 export const { Title, Paragraph, Text } = Typography;
 

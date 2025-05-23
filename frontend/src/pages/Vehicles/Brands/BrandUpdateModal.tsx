@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Form, Input } from "antd";
 import { CarUpdateStyledForm, CarUpdateStyledModal } from "./elements";
-import type { TSFixMe } from "../../types";
-import { colors, uiStrings } from "../../constants";
-import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import type { TSFixMe } from "../../../types";
+import { colors, uiStrings } from "../../../constants";
+import { useBrandsAtom } from "../../../hooks/atoms/useBrandsAtom";
 import type { BrandUpdateFormValues, CarUpdateModalProps } from "./type";
 
 export const BrandUpdateModal: React.FC<CarUpdateModalProps> = ({

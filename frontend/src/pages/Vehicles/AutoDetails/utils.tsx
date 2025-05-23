@@ -1,4 +1,4 @@
-import type { Auto } from "../../atoms/autosAtom";
+import type { Auto } from "../../../atoms/autosAtom";
 
 export const getAutoSpecs = (auto: Auto) => {
   const specs: { label: keyof Auto; value: Auto[keyof Auto] }[] = [];

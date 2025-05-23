@@ -1,4 +1,4 @@
-import type { BrandType } from "../../atoms/brandsAtom";
+import type { BrandType } from "../../../atoms/brandsAtom";
 
 export const checkBrandExists = (
   brandId: number,

@@ -1,4 +1,4 @@
-import type { Auto } from "../../atoms/autosAtom";
+import type { Auto } from "../../../atoms/autosAtom";
 
 export type CarHeaderType = { auto: Auto };
 

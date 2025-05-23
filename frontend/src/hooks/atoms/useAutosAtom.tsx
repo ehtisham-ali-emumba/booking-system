@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useCallback } from "react";
 import { autosAtom, type Auto } from "../../atoms/autosAtom";
-import { autosMoreData } from "../../pages/Autos/utils";
+import { autosMoreData } from "../../pages/Vehicles/Autos/utils";
 
 export const useAutosAtom = () => {
   const [autos, setAutos] = useAtom(autosAtom);

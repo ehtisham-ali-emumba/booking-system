@@ -1,7 +1,7 @@
 import { Modal, Form, Typography } from "antd";
 import styled, { css } from "styled-components";
-import { Wrapper } from "../../styles";
-import { sizeMobile } from "../../utils";
+import { Wrapper } from "../../../styles";
+import { sizeMobile } from "../../../utils";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;

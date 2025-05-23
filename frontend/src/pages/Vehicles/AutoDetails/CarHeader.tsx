@@ -1,5 +1,5 @@
-import { uiStrings } from "../../constants";
-import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import { uiStrings } from "../../../constants";
+import { useBrandsAtom } from "../../../hooks/atoms/useBrandsAtom";
 import {
   CarContainer,
   CarImage,

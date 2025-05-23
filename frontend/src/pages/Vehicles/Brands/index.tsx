@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Button, Input, Spacer } from "../../components";
-import { uiStrings } from "../../constants/uiStrings";
+import { Button, Input, Spacer } from "../../../components";
+import { uiStrings } from "../../../constants/uiStrings";
 import { Box, Container, InputContainer } from "./elements";
 import { PlusOutlined } from "@ant-design/icons";
-import { colors } from "../../constants";
+import { colors } from "../../../constants";
 import { BrandUpdateModal } from "./BrandUpdateModal";
 import { BrandsGrid } from "./BrandsGrid";
-import { ConfirmationModal } from "../../components/ConfirmationModal";
-import { useBrandsAtom } from "../../hooks/atoms/useBrandsAtom";
+import { ConfirmationModal } from "../../../components/ConfirmationModal";
+import { useBrandsAtom } from "../../../hooks/atoms/useBrandsAtom";
 import { filterBrandsBySearch, inputSearchStyles } from "./utils";
 import type { BrandUpdateFormValues } from "./type";
 
