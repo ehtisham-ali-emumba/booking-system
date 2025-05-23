@@ -38,6 +38,7 @@ export const MyTours = () => {
                 return (
                   <TourCard
                     key={tour._id}
+                    id={tour._id}
                     imageSrc={tour.imageSrc}
                     title={tour.name}
                     description={tour.description}
@@ -46,7 +47,6 @@ export const MyTours = () => {
                     hasBooking
                     onUpdateBooking={() => navigate(`/book/tour/${tour._id}`)}
                     onDeleteBooking={() => deleteBooking(tour._id)}
-                    onClick={() => navigate(`/tour/${tour._id}`)}
                   />
                 );
               })

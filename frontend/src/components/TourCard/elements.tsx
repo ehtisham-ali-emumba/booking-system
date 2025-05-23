@@ -1,7 +1,8 @@
-import { Card, Typography } from "antd";
+import { Typography } from "antd";
 import styled from "styled-components";
 import { colors } from "../../constants";
 import { Button } from "../Button";
+import { StyledBaseCard } from "../BaseCard/elements";
 
 export const { Title, Paragraph, Text } = Typography;
 
@@ -12,22 +13,12 @@ export const CardWrapper = styled.div`
   justify-content: center;
 `;
 
-export const StyledCard = styled(Card)`
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  height: 100%;
-  width: 350px;
-
-  .ant-card-cover img {
-    height: 240px;
-  }
-`;
-
 export const MetaInfoContainer = styled.div`
   display: flex;
-  gap: 16px;
-  margin-top: 25px;
-  margin-bottom: 8px;
-  ${StyledCard}:hover & {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+  ${StyledBaseCard}:hover & {
     display: none;
   }
 `;
@@ -46,14 +37,14 @@ export const MetaInfo = styled.div`
   display: flex;
   align-items: center;
   background-color: ${colors.background.badge};
-  padding: 3px 16px;
+  padding: 4px 16px;
   border-radius: 100px;
-  gap: 8px;
+  gap: 4px;
 `;
 
 export const MetaText = styled(Text)`
-  color: ${colors.text.secondary};
-  font-size: 16px;
+  color: black;
+  font-size: 15px;
   font-weight: 500;
 `;
 
@@ -65,14 +56,14 @@ export const HoverButton = styled(Button)`
   &:hover {
     background-color: #147dd6;
   }
-  ${StyledCard}:hover & {
+  ${StyledBaseCard}:hover & {
     display: block;
   }
 `;
 export const BookingActionsContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   padding: 0 8px;
 `;

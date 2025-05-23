@@ -1,4 +1,5 @@
 export interface TourCardProps {
+  id: string;
   imageSrc: string;
   imageAlt?: string;
   title: string;
