@@ -27,8 +27,10 @@ export const CardUI = styled(Card)`
   margin-bottom: -63px;
   height: auto;
   ${sizeMobile(css`
-    margin-bottom: -153px;
-    min-width: 280px !important;
+    &&.ant-card {
+      margin-bottom: -153px;
+      min-width: 280px;
+    }
   `)};
   ${sizeLg(css`
     margin-bottom: -210px;
@@ -116,10 +118,10 @@ export const SearchBox = styled(Flex)`
   align-items: center;
   justify-content: center;
   ${sizeMobile(css`
-    margin-top: 70px !important;
+    margin-top: 70px;
   `)}
   ${sizeLg(css`
-    margin-top: 110px !important;
+    margin-top: 110px;
   `)}
 `;
 

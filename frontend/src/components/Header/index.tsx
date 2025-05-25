@@ -5,7 +5,8 @@ import {
   ExploreButton,
   HamburgerMenu,
   MobileMenu,
-} from "./styles";
+  LogoLink,
+} from "./elements";
 import { Button } from "../Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -29,40 +30,31 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
 
   return (
     <StyledHeader>
-      <Link to="/">
-        <TourLogoSvg style={{ marginTop: "30px" }} />
-      </Link>
+      <LogoLink to="/">
+        <TourLogoSvg />
+      </LogoLink>
       <NavMenu>
         <Space size={36}>
           <Link to="/brands">
-            <Button
-              variant="secondary"
-              className={getActiveButtonClass("/brands")}
-            >
+            <Button variant="secondary" id={getActiveButtonClass("/brands")}>
               {uiStrings.brands}
             </Button>
           </Link>
           <Link to="/virtualization">
             <Button
               variant="secondary"
-              className={getActiveButtonClass("/virtualization")}
+              id={getActiveButtonClass("/virtualization")}
             >
               {uiStrings.virtualization}
             </Button>
           </Link>
           <Link to="/tours">
-            <Button
-              variant="secondary"
-              className={getActiveButtonClass("/tours")}
-            >
+            <Button variant="secondary" id={getActiveButtonClass("/tours")}>
               {uiStrings.bookTour}
             </Button>
           </Link>
           <Link to="/my-tours">
-            <Button
-              variant="secondary"
-              className={getActiveButtonClass("/my-tours")}
-            >
+            <Button variant="secondary" id={getActiveButtonClass("/my-tours")}>
               {uiStrings.myTours}
             </Button>
           </Link>
@@ -88,7 +80,9 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
       {/* Mobile Menu Modal */}
       <MobileMenu isOpen={isMobileMenuOpen}>
         <div className="menu-header">
-          <TourLogoSvg style={{ marginTop: "5px" }} />
+          <LogoLink to="/">
+            <TourLogoSvg />
+          </LogoLink>
           <Button variant="icon-transparent" onClick={toggleMobileMenu}>
             <CloseOutlined />
           </Button>
@@ -97,28 +91,28 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
           <Link
             to="/brands"
             onClick={toggleMobileMenu}
-            className={getActiveButtonClass("/brands")}
+            id={getActiveButtonClass("/brands")}
           >
             {uiStrings.brands}
           </Link>
           <Link
             to="/virtualization"
             onClick={toggleMobileMenu}
-            className={getActiveButtonClass("/virtualization")}
+            id={getActiveButtonClass("/virtualization")}
           >
             {uiStrings.virtualization}
           </Link>
           <Link
             to="/tours"
             onClick={toggleMobileMenu}
-            className={getActiveButtonClass("/tours")}
+            id={getActiveButtonClass("/tours")}
           >
             {uiStrings.bookTour}
           </Link>
           <Link
             to="/my-tours"
             onClick={toggleMobileMenu}
-            className={getActiveButtonClass("/my-tours")}
+            id={getActiveButtonClass("/my-tours")}
           >
             {uiStrings.myTours}
           </Link>
@@ -126,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({ hideExplore }) => {
             <Link
               to="/explore"
               onClick={toggleMobileMenu}
-              className={getActiveButtonClass("/explore")}
+              id={getActiveButtonClass("/explore")}
             >
               {uiStrings.exploreNews}
             </Link>

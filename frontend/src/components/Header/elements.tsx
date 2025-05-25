@@ -1,7 +1,9 @@
-import { Layout, Button, Image } from "antd";
+import { Layout } from "antd";
 import styled, { css } from "styled-components";
 import { colors } from "../../constants";
 import { sizeTablet, zIndex } from "../../utils";
+import { Button } from "../Button";
+import { Link } from "react-router-dom";
 
 export const StyledHeader = styled(Layout.Header)`
   display: flex;
@@ -15,10 +17,8 @@ export const StyledHeader = styled(Layout.Header)`
   z-index: ${zIndex.navBar};
 `;
 
-export const Logo = styled(Image)`
-  height: 100px !important;
-  width: 100px !important;
-  object-fit: cover;
+export const LogoLink = styled(Link)`
+  margin-top: 15px;
 `;
 
 export const NavMenu = styled.div`
@@ -29,23 +29,18 @@ export const NavMenu = styled.div`
      display: none; /* Hide desktop menu on mobile */
    `)} 
   }
-  .active-button {
+  #active-button {
     color: ${colors.accentOrange};
   }
 `;
 
-export const ExploreButton = styled(Button)`
-  background-color: ${colors.accentOrange};
-  height: 48px;
-  padding: 0 24px;
+export const ExploreButton = styled((props) => (
+  <Button variant="primary" {...props} />
+))`
+  padding: 0 16px;
   border-radius: 8px;
   cursor: pointer;
-  &:hover,
-  &:focus {
-    background-color: #e56e50 !important;
-    border-color: #e56e50 !important;
-    color: white !important;
-  }
+
   ${sizeTablet(css`
     display: none; /* Hide desktop menu on mobile */
   `)}
@@ -96,7 +91,7 @@ export const MobileMenu = styled.div<{ isOpen: boolean }>`
     margin-top: 24px;
     align-items: center;
 
-    .active-button {
+    #active-button {
       color: ${colors.accentOrange};
       text-decoration: underline;
     }

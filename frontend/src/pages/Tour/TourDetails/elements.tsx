@@ -159,8 +159,8 @@ export const GroupImageCol = styled(Col)`
   `)}
 `;
 export const ImageUI = styled.img`
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 24px;
   margin-right: 12px;
@@ -168,20 +168,21 @@ export const ImageUI = styled.img`
     margin-right: 0px;
   `)}
   ${sizeLg(css`
-    height: 400px !important;
+    margin-right: 0px;
+    height: 400px;
   `)}
 `;
 
 export const SmallImage = styled.img`
   flex: 1;
   height: 190px;
-  min-width: 300px !important;
-  width: 100% !important;
+  min-width: 300px;
+  width: 100%;
   padding: 8px;
   object-fit: cover;
   border-radius: 24px;
   ${sizeLg(css`
-    height: 320px !important;
+    height: 320px;
   `)}
 `;
 

@@ -14,10 +14,12 @@ export const ImageWrapper = styled(Flex)`
   `)}
 `;
 export const ImageUI = styled(Image)`
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover;
-  max-height: 600px !important;
+  &.ant-image-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    max-height: 600px;
+  }
 `;
 export const FormWrapper = styled.div`
   margin: 0 auto;
