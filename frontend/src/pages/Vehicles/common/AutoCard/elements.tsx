@@ -6,10 +6,11 @@ import { MoreOutlined } from "@ant-design/icons";
 export const { Title, Paragraph, Text } = Typography;
 
 export const AutoCardTitle = styled(Title)`
-  margin-top: 4px !important;
-  margin-bottom: 8px !important;
-  color: ${colors.text.primary};
-  font-size: 20px !important;
+  &.ant-typography {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    color: ${colors.text.primary};
+  }
 `;
 
 export const AutoCardDescription = styled(Paragraph)`

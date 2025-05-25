@@ -4,7 +4,7 @@ import { Typography } from "antd";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
-  height: 100vh !important;
+  height: 100vh;
 `;
 
 export const Box = styled.div({
@@ -27,8 +27,8 @@ export const InputContainer = styled.div({
 });
 
 export const GridWrapper = styled.div<{ width?: number }>`
-  margin: 0 auto !important;
-  width: ${(props) => props.width || "100%"} !important;
+  margin: 0 auto;
+  width: ${(props) => props.width || "100%"};
 `;
 
 export const ListContainer = styled.div`
@@ -48,7 +48,7 @@ export const UserImage = styled.img`
 `;
 
 export const UserDetailsContainer = styled.div`
-  padding: 24px !important;
-  min-width: 320px !important;
+  padding: 24px;
+  min-width: 320px;
   text-align: center;
 `;

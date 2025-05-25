@@ -23,14 +23,18 @@ export const MetaInfoContainer = styled.div`
   }
 `;
 export const CardTitle = styled(Title)`
-  margin-top: 0 !important;
-  margin-bottom: 4px !important;
+  &.ant-typography {
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
 `;
 
 export const CardDescription = styled(Paragraph)`
-  color: ${colors.text.secondary};
-  font-size: 16px;
-  margin-bottom: 16px !important;
+  &.ant-typography {
+    color: ${colors.text.secondary};
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
 `;
 
 export const MetaInfo = styled.div`

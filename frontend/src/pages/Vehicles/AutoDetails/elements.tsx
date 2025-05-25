@@ -9,7 +9,7 @@ export const { Title, Paragraph, Text } = Typography;
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
-  height: 100vh !important;
+  height: 100vh;
   padding-bottom: 80px;
 `;
 
@@ -35,8 +35,8 @@ export const InputContainer = styled.div({
 });
 
 export const GridWrapper = styled.div<{ width?: number }>`
-  margin: 0 auto !important;
-  width: ${(props) => props.width || "100%"} !important;
+  margin: 0 auto;
+  width: ${(props) => props.width || "100%"};
 `;
 
 export const ListContainer = styled.div`

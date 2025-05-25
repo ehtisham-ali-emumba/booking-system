@@ -94,10 +94,12 @@ export const PopularSearchBox = styled.div`
 `;
 
 export const StyledTitle = styled(Title)`
-  font-size: 28px !important;
-  ${sizeMobile(css`
-    margin-bottom: 20px !important;
-  `)}
+  &.ant-typography {
+    font-size: 28px;
+    ${sizeMobile(css`
+      margin-bottom: 20px;
+    `)}
+  }
 `;
 
 export const ButtonWrapper = styled(Button)`

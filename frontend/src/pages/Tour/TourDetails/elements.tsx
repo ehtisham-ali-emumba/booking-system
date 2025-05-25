@@ -75,16 +75,17 @@ export const Padder = styled.div`
 export const Container2 = styled.div``;
 
 export const TourTitle = styled(TitleAntd)`
-  color: #1c223b;
-  font-weight: 700;
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 24px !important;
+  &.ant-typography {
+    color: #1c223b;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 24px;
 
-   ${sizeMobile(css`
-     font-size: 32px !important;
-     text-align: center;
-   `)}
+    ${sizeMobile(css`
+      font-size: 32px;
+      text-align: center;
+    `)}
   }
 `;
 
@@ -234,11 +235,11 @@ export const StyledDivider = styled(Divider)`
 
 export const TextDay = styled.span`
   font-size: 22px;
-  font-weight: 500 !important;
+  font-weight: 500;
 `;
 export const TextWeather = styled.span`
   font-size: 22px;
-  font-weight: 500 !important;
+  font-weight: 500;
 `;
 export const TextDetail = styled.span`
   font-size: 15px;

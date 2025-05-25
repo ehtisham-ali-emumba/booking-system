@@ -37,18 +37,21 @@ export const StyledBaseCard = styled(Card)<StyledBaseCardType>`
     height: ${({ imageHeight }) => imageHeight}px;
   }
   .ant-card-body {
-    padding: 8px 16px !important;
+    padding: 8px 16px;
   }
 `;
 
 export const BaseCardImageWrapper = styled.div<{ imageHeight: number }>`
   position: relative;
+  min-height: ${({ imageHeight }) => imageHeight}px;
   height: ${({ imageHeight }) => imageHeight}px;
-  display: flex !important;
   align-items: center;
   flex: 1;
   justify-content: center;
   overflow: hidden;
+  && {
+    display: flex;
+  }
 `;
 export const BaseCardImage = styled.img`
   width: 100%;

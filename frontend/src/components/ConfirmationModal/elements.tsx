@@ -4,8 +4,10 @@ import styled from "styled-components";
 const { Title } = Typography;
 
 export const ErrorHeading = styled(Title)`
-  color: red !important;
-  font-size: 18px !important;
+  &.ant-typography {
+    color: red;
+    font-size: 18px;
+  }
 `;
 export const ButtonContainer = styled.div`
   display: flex;

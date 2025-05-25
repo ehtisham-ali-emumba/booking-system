@@ -126,7 +126,7 @@ export const ImageTileLg = styled.div<{ image: string }>`
   ${sizeLg(css`
     min-height: 400px;
     background-repeat: no-repeat;
-    border-radius: 24px !important;
+    border-radius: 24px;
     background-size: cover;
     margin: 0px;
   `)};
@@ -140,7 +140,7 @@ export const ImageTileSm = styled.div<{ image: string }>`
 
   ${sizeLg(css`
     min-height: 300px;
-    border-radius: 24px !important;
+    border-radius: 24px;
   `)};
 `;
 export const HeroContent = styled.div`

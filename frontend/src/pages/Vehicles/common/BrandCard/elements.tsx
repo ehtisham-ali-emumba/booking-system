@@ -5,11 +5,13 @@ import { colors } from "../../../../constants";
 
 export const { Title, Paragraph, Text } = Typography;
 export const BrandCardTitle = styled(Title)`
-  margin-top: 0 !important;
-  margin-bottom: 4px !important;
-  color: ${colors.text.primary};
-  font-size: 22px !important;
-  text-align: center;
+  &.ant-typography {
+    margin-top: 0;
+    margin-bottom: 4px;
+    color: ${colors.text.primary};
+    font-size: 22px;
+    text-align: center;
+  }
 `;
 
 export const BrandCardDescription = styled(Paragraph)`

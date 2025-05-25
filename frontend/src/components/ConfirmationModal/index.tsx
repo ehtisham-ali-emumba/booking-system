@@ -36,7 +36,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
   return (
     <>
-      {/* Render the custom comp if children is provided */}
       {typeof children === "function" && children(handleOpen)}
 
       <Modal

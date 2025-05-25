@@ -5,7 +5,7 @@ import { sizeMobile } from "../../../utils";
 
 export const Container = styled(Wrapper)`
   justify-content: flex-start;
-  height: 100vh !important;
+  height: 100vh;
 `;
 
 export const Box = styled.div({
@@ -35,8 +35,8 @@ export const InputContainer = styled.div`
 `;
 
 export const GridWrapper = styled.div<{ width?: number }>`
-  margin: 0 auto !important;
-  width: ${(props) => props.width || "100%"} !important;
+  margin: 0 auto;
+  width: ${(props) => props.width || "100%"};
   height: 100%;
 `;
 

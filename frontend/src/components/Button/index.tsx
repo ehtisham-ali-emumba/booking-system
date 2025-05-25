@@ -28,60 +28,68 @@ const getSizeStyles = (size = "medium") => {
 };
 
 const primaryStyles = css`
-  background-color: ${colors.accentOrange};
-  color: ${colors.white};
-  border: none;
-  &:hover,
-  &:focus {
-    background-color: #e56e50 !important;
-    border-color: #e56e50 !important;
-    color: white !important;
+  &&.ant-btn {
+    background-color: ${colors.accentOrange};
+    color: ${colors.white};
+    border: none;
+    &:hover,
+    &:focus {
+      background-color: #e56e50;
+      border-color: #e56e50;
+      color: white;
+    }
   }
 `;
 
 const secondaryStyles = css`
-  background-color: transparent;
-  color: ${colors.btnSecondary};
-  border: none;
-  box-shadow: none;
+  &&.ant-btn {
+    background-color: transparent;
+    color: ${colors.btnSecondary};
+    border: none;
+    box-shadow: none;
 
-  &:hover {
-    background-color: transparent !important;
-    color: ${colors.btnHover.secondary} !important;
-    border-color: transparent !important;
+    &:hover {
+      background-color: transparent;
+      color: ${colors.btnHover.secondary};
+      border-color: transparent;
+    }
   }
 `;
 
 const outlinedStyles = css`
-  background-color: transparent;
-  color: ${colors.outline};
-  border: 1px solid ${colors.outline};
-  font-weight: 600;
-  &:hover,
-  &:focus {
-    background-color: ${colors.btnHover.outlined} !important;
-    color: ${colors.outline} !important;
-    border-color: ${colors.outline} !important;
+  &&.ant-btn {
+    background-color: transparent;
+    color: ${colors.outline};
+    border: 1px solid ${colors.outline};
+    font-weight: 600;
+    &:hover,
+    &:focus {
+      background-color: ${colors.btnHover.outlined};
+      color: ${colors.outline};
+      border-color: ${colors.outline};
+    }
   }
 `;
 
 const iconStyles = css`
-  width: 50px !important;
-  height: 50px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 24px;
-  color: ${colors.accentOrange};
-  border: none;
+  &&.ant-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 24px;
+    color: ${colors.accentOrange};
+    border: none;
 
-  &:hover,
-  &:focus {
-    background-color: rgb(235, 234, 234) !important;
-    border-color: #e56e50 !important;
-    color: ${colors.accentOrange} !important;
+    &:hover,
+    &:focus {
+      background-color: rgb(235, 234, 234);
+      border-color: #e56e50;
+      color: ${colors.accentOrange};
+    }
   }
 `;
 
@@ -127,10 +135,10 @@ export const Button = styled(AntdButton)<StyledButtonProps>`
     css`
       width: 100%;
     `}
-  
-  &:disabled {
+    
+    &:disabled {
     cursor: not-allowed;
     pointer-events: none;
-    background-color: ${colors.disabledColor} !important;
+    background-color: ${colors.disabledColor};
   }
 `;

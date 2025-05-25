@@ -5,8 +5,10 @@ import { Typography } from "antd";
 const { Title } = Typography;
 
 export const ContentTitle = styled(Title)`
-  text-align: center;
-  margin-bottom: 40px !important;
+  &.ant-typography {
+    text-align: center;
+    margin-bottom: 40px;
+  }
 `;
 
 export const Container = styled(Wrapper)`
