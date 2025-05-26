@@ -26,6 +26,7 @@ import {
   filterUsers,
   flattenUsers,
   gridStyles,
+  inputStyles,
   ROW_HEIGHT,
 } from "./utils";
 import { UserCard } from "./UserCard";
@@ -123,7 +124,7 @@ export const UserList = () => {
           <Input
             inputProps={{
               placeholder: uiStrings.searchPlaceholder,
-              style: { maxWidth: "320px" },
+              style: inputStyles,
               value: search,
               onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value),

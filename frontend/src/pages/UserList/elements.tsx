@@ -22,8 +22,9 @@ export const Heading = styled(Typography.Title)({
 export const InputContainer = styled.div({
   display: "flex",
   justifyContent: "center",
-  margin: "20px 0px",
+  margin: "20px 0px 25px 0px",
   width: "100%",
+  gap: "10px",
 });
 
 export const GridWrapper = styled.div<{ width?: number }>`
