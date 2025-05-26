@@ -9,7 +9,7 @@ import { connectDB } from "./config/db";
 import { tourRoutes } from "./routes/tours";
 
 const app = express();
-const PORT = 3003;
+const PORT = process.env.PORT;
 
 // Middlewares
 app.use(cors({ origin: "*" })); // Allow all origins
